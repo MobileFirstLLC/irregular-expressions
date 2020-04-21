@@ -1,12 +1,14 @@
-![icon](/assets/irregex.png)
-
 # Irregular Expressions
 
 Virtual keyboard for Android devices. With this keyboard you can add expressive flair to your typing, even in places where font styles are not allowed.
 
-<a href='https://play.google.com/store/apps/details?id=mf.asciitext.lite'><img alt='Get it on Google Play' height="72" src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png'/></a>
-
+<p align="center">
 <img src="/assets/sample.gif" alt="preview" />
+</p>
+
+#### Install from Google Play
+
+<a href='https://play.google.com/store/apps/details?id=mf.asciitext.lite'><img alt='Get it on Google Play' height="72" src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png'/></a>
 
 ## Available Font Styles
 
@@ -25,6 +27,3 @@ Note: some fonts are not supported by older versions of Android. Android Oreo (8
 | ̐̈H̐̈a̐̈p̐̈p̐̈y ̐̈F̐̈a̐̈c̐̈e̐̈s̐̈ | ͛T͛h͛u͛n͛d͛e͛r͛s͛t͛r͛u͛c͛k͛ | ̸S̸l̸a̸s̸h̸e̸d̸ |
 | ̼M̼u̼s̼t̼a̼c̼h̼e̼ | ͙S͙t͙a͙r͙r͙y ͙N͙i͙g͙h͙t͙ | Regular |
 
-## Privacy Policy
-
- This application does not collect any user information, analytics or perform any other types of tracking. Feel free to inspect the source code to verify this.
