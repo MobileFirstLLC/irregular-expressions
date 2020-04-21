@@ -1,0 +1,39 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/main_scroll_view">
+
+    <LinearLayout style="@style/main_linear">
+
+        <TextView style="@style/main_header" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout style="@style/main_intro_card">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/icon"
+                style="@style/main_icon" />
+
+            <TextView
+                android:id="@+id/header"
+                style="@style/main_card_text_view_1" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/step_1"
+                style="@style/main_card_button_1" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/step_2"
+                style="@style/main_card_button_2" />
+
+            <TextView
+                android:id="@+id/try_hint"
+                style="@style/main_card_text_view_2" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/test_input"
+                style="@style/main_input_text_input_layout">
+
+                <com.google.android.material.textfield.TextInputEditText style="@style/main_input_text_input_edit_text" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+</ScrollView>

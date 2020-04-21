@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- TODO: version this for older Androids-->
+
+    <array name="art_pieces">
+        <item>@array/art_john_lennon</item>
+        <item>@array/art_up_yours</item>
+        <item>@array/art_closed_eyes</item>
+        <item>@array/art_lenny_wink</item>
+        <item>@array/art_angry_stare</item>
+        <item>@array/art_flower_child</item>
+        <item>@array/art_round_face</item>
+        <item>@array/art_sweat_lenny</item>
+        <item>@array/art_jake_dog</item>
+        <item>@array/art_party_face</item>
+        <item>@array/art_staring_face</item>
+        <item>@array/art_upsidedown_lenny</item>
+        <item>@array/art_headset_face</item>
+        <item>@array/art_bear_face</item>
+        <item>@array/art_disapproval</item>
+        <item>@array/art_yummy_face</item>
+        <item>@array/art_shocked_face</item>
+        <item>@array/art_shrug_face</item>
+        <item>@array/art_face_happy</item>
+        <item>@array/art_face_happy_cheeks</item>
+        <item>@array/art_face_unsure_look</item>
+        <item>@array/art_face_flower_child</item>
+        <item>@array/art_face_one_big_eye</item>
+        <item>@array/art_face_success_kid</item>
+        <item>@array/art_face_gloomy</item>
+        <item>@array/art_face_doubtful</item>
+        <item>@array/art_face_flexing</item>
+        <item>@array/art_face_loved</item>
+        <item>@array/art_happy_dog</item>
+        <item>@array/art_ghost_face</item>
+        <item>@array/art_lenny_face</item>
+        <item>@array/art_eyebrow_lenny</item>
+        <item>@array/art_grumpy_cat</item>
+        <item>@array/art_regular_cat</item>
+        <item>@array/art_lines_1</item>
+        <item>@array/art_lines_2</item>
+        <item>@array/art_lines_3</item>
+        <item>@array/art_animals_dog</item>
+        <item>@array/art_faces_eyes</item>
+        <item>@array/art_faces_monster</item>
+        <item>@array/art_faces_fingers</item>
+        <item>@array/art_faces_care</item>
+        <item>@array/art_faces_shades_1</item>
+        <item>@array/art_faces_shades_2</item>
+        <item>@array/art_lines_long_sword_2</item>
+        <item>@array/art_faces_sad</item>
+        <item>@array/art_animals_pig</item>
+        <item>@array/art_animals_cat</item>
+        <item>@array/art_cute_cat</item>
+        <item>@array/art_hairstyle</item>
+        <item>@array/art_faces_happy_square</item>
+        <item>@array/art_lines_4</item>
+        <item>@array/art_animals_bird</item>
+        <item>@array/art_faces_dead</item>
+        <item>@array/art_faces_crying</item>
+        <item>@array/art_lines_5</item>
+    </array>
+
+</resources>

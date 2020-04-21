@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="charset_fonts">
+        <item>@array/charset_clear_boxes</item>
+        <item>@array/charset_filled_boxes</item>
+        <item>@array/charset_mono</item>
+        <item>@array/charset_cutout</item>
+        <item>@array/charset_small_caps</item>
+        <item>@array/charset_olde</item>
+        <item>@array/charset_olde_bold</item>
+        <item>@array/charset_script</item>
+        <item>@array/charset_script_bold</item>
+        <item>@array/charset_clear_circles</item>
+        <item>@array/charset_filled_circles</item>
+        <item>@array/charset_extra_wide</item>
+        <item>@array/sans_bold</item>
+        <item>@array/charset_bold_serif</item>
+        <item>@array/sans_italic</item>
+        <item>@array/charset_serif_italic</item>
+        <item>@array/sans_bolditalic</item>
+        <item>@array/charset_bolditalic</item>
+        <item>@array/charset_underlined</item>
+        <item>@array/charset_strikethrough</item>
+        <item>@array/charset_clapclap</item>
+        <item>@array/charset_upside_down</item>
+        <item>@array/charset_mirrored</item>
+    </array>
+</resources>

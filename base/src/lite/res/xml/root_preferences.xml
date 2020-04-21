@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--suppress AndroidDomInspection -->
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+<!--    <PreferenceCategory android:title="@string/keyboard_settings">-->
+<!--        <ListPreference-->
+<!--            android:defaultValue="1"-->
+<!--            android:entries="@array/KeyboardColor"-->
+<!--            android:entryValues="@array/KeyboardColorSet"-->
+<!--            android:key="emoji_keyboard_color"-->
+<!--            android:title="@string/keyboard_color"-->
+<!--            app:useSimpleSummaryProvider="true" />-->
+<!--    </PreferenceCategory>-->
+
+    <PreferenceCategory android:title="@string/label_about">
+        <PreferenceScreen
+            android:icon="@drawable/ic_star_outline"
+            android:summary="@string/upgrade_link"
+            android:title="@string/label_rate_app">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="@string/rateUri" />
+        </PreferenceScreen>
+<!--        <PreferenceScreen-->
+<!--            android:icon="@drawable/ic_arrow_up_circle_outline"-->
+<!--            android:summary="@string/upgrade_link"-->
+<!--            android:title="@string/label_upgrade_title">-->
+<!--            <intent-->
+<!--                android:action="android.intent.action.VIEW"-->
+<!--                android:data="https://play.google.com/store/apps/details?id=mf.asciitext" />-->
+<!--        </PreferenceScreen>-->
+        <PreferenceScreen
+            android:icon="@drawable/ic_mf"
+            android:summary="@string/developer"
+            android:title="@string/label_developer">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://mobilefirst.me" />
+        </PreferenceScreen>
+        <Preference
+            android:icon="@drawable/ic_information_outline"
+            android:summary="@string/versionName"
+            android:title="@string/label_version" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

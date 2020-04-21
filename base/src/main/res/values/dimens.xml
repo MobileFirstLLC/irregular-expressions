@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="match_parent">-1px</dimen>
+
+    <!-- keyboard dimens -->
+    <dimen name="kbd_font_picker_h_padding">10dp</dimen>
+    <dimen name="kbd_icon_size">32dp</dimen>
+    <dimen name="kbd_icon_h_margin">6dp</dimen>
+    <dimen name="kdb_icon_padding">6dp</dimen>
+
+    <!-- main activity dimens -->
+    <dimen name="main_card_width">350dp</dimen>
+    <dimen name="main_card_content_width">290dp</dimen>
+    <dimen name="main_element_spacing">20dp</dimen>
+    <dimen name="main_element_spacing_2x">40dp</dimen>
+    <dimen name="main_icon_size">64dp</dimen>
+    <integer name="main_input_lines">2</integer>
+
+</resources>
