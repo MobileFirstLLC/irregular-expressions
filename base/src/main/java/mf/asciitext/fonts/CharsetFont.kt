@@ -8,10 +8,6 @@ open class CharsetFont internal constructor(
     private val reverse: Boolean
 ) : AppFont(id, name, premium) {
 
-    override fun isReversed(): Boolean {
-        return reverse;
-    }
-
     override fun encode(text: String?): String? {
         if (!isEmpty(text)) {
             val firstChar = ' '.toInt()

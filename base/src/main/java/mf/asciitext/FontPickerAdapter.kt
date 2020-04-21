@@ -37,7 +37,7 @@ class FontPickerAdapter(
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val value = dataSource!![position]
-        holder.mTextView.text = value.GetStyledName()
+        holder.mTextView.text = value.styledName
     }
 
     override fun getItemCount(): Int {

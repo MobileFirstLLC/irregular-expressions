@@ -63,8 +63,23 @@
         <item name="android:text">@string/intro_header</item>
     </style>
 
+    <style name="main_card_container" parent="@style/main_linear">
+        <item name="android:orientation">horizontal</item>
+        <item name="android:layout_width">@dimen/match_parent</item>
+        <item name="android:gravity">center_horizontal</item>
+    </style>
+
+    <style name="main_intro_card_gutter">
+        <item name="android:layout_weight">1</item>
+        <item name="android:minWidth">@dimen/main_card_width</item>
+        <item name="android:layout_height">@dimen/match_parent</item>
+        <item name="android:layout_width">0dp</item>
+    </style>
+
     <style name="main_intro_card">
-        <item name="android:layout_width">@dimen/main_card_width</item>
+        <item name="android:layout_weight">8</item>
+        <item name="android:maxWidth">@dimen/main_card_width</item>
+        <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_gravity">center_horizontal</item>
         <item name="android:layout_marginBottom">@dimen/main_element_spacing</item>
@@ -85,8 +100,7 @@
     <style name="main_card_text_view">
         <item name="android:layout_width">@dimen/main_card_content_width</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:paddingTop">@dimen/main_element_spacing</item>
-        <item name="android:paddingBottom">@dimen/main_element_spacing</item>
+        <item name="android:padding">@dimen/main_element_spacing</item>
         <item name="layout_constraintLeft_toLeftOf">parent</item>
         <item name="layout_constraintRight_toRightOf">parent</item>
         <item name="android:textStyle">bold</item>
@@ -106,6 +120,10 @@
 
     <style name="main_card_button">
         <item name="android:enabled">false</item>
+        <item name="android:layout_marginStart">@dimen/main_element_spacing</item>
+        <item name="android:layout_marginLeft">@dimen/main_element_spacing</item>
+        <item name="android:layout_marginEnd">@dimen/main_element_spacing</item>
+        <item name="android:layout_marginRight">@dimen/main_element_spacing</item>
         <item name="android:layout_width">@dimen/main_card_content_width</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="layout_constraintLeft_toLeftOf">parent</item>
@@ -125,6 +143,10 @@
     <style name="main_input_text_input_layout" parent="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="android:layout_width">@dimen/main_card_content_width</item>
         <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/main_element_spacing</item>
+        <item name="android:layout_marginLeft">@dimen/main_element_spacing</item>
+        <item name="android:layout_marginEnd">@dimen/main_element_spacing</item>
+        <item name="android:layout_marginRight">@dimen/main_element_spacing</item>
         <item name="endIconMode">clear_text</item>
         <item name="layout_constraintLeft_toLeftOf">parent</item>
         <item name="layout_constraintRight_toRightOf">parent</item>

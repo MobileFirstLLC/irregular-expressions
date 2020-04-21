@@ -11,7 +11,7 @@
 
     <!-- main activity dimens -->
     <dimen name="main_card_width">350dp</dimen>
-    <dimen name="main_card_content_width">290dp</dimen>
+    <dimen name="main_card_content_width">@dimen/match_parent</dimen>
     <dimen name="main_element_spacing">20dp</dimen>
     <dimen name="main_element_spacing_2x">40dp</dimen>
     <dimen name="main_icon_size">64dp</dimen>

@@ -20,52 +20,64 @@ import java.util.List;
 import mf.asciitext.fonts.AppFont;
 import mf.asciitext.fonts.AvailableFonts;
 
-
+/**
+ * This class sets up and handles virtual keyboard events
+ */
 public class MyInputMethodService extends InputMethodService implements KeyboardView.OnKeyboardActionListener {
 
+    // Primary vs. secondary keyboards
     private final int ALPHA_KEYBOARD_KEYCODE = -10;
     private final int SECONDARY_KBD_KEYCODE = -11;
+
+    // All available font styles
+    final private List<AppFont> fonts = AvailableFonts.INSTANCE.getFonts();
+
+    // Font with "no style"
+    private final int REGULAR_FONT_INDEX = -1;
+
+    // Keyboard variations
     private final int ALPHA_KBD = 0;
     private final int NUMBER_KBD = 1;
     private final int MATH_KBD = 2;
-    private final int REGULAR_FONT_INDEX = -1;
 
-
+    // UI Elements
     private KeyboardView keyboardView;
     private Keyboard keyboard;
-    private int keyboardChoice = ALPHA_KBD;
     private AppCompatImageView fontStyleToggle;
+    private RecyclerView fontPicker;
+    private FontPickerAdapter adapter;
 
-    final private List<AppFont> fonts = AvailableFonts.INSTANCE.getFonts();
+    // keyboard default state
+    private int keyboardChoice = ALPHA_KBD;
     private int fontIndex = REGULAR_FONT_INDEX;
     private int lastSelectedStyleIndex = REGULAR_FONT_INDEX;
-
-    RecyclerView fontPicker;
-    GridLayoutManager layoutManager;
-    FontPickerAdapter adapter;
 
     @Override
     public View onCreateInputView() {
         final View layout = getLayoutInflater().inflate(R.layout.keyboard_view, null);
         final Context ctx = layout.getContext();
 
+        /* initialize keyboard */
         keyboardView = layout.findViewById(R.id.keyboard_view);
         keyboard = new Keyboard(this, R.xml.keyboard);
         keyboardView.setKeyboard(keyboard);
         keyboardView.setOnKeyboardActionListener(this);
 
+        /* setup font picker recyclerView */
         fontPicker = layout.findViewById(R.id.fontPicker);
         adapter = new FontPickerAdapter(fonts, onFontSelection());
-        layoutManager = new GridLayoutManager(ctx, 1, LinearLayoutManager.HORIZONTAL, false);
+        GridLayoutManager layoutManager = new GridLayoutManager(
+                ctx, 1, LinearLayoutManager.HORIZONTAL, false);
         fontPicker.setLayoutManager(layoutManager);
         fontPicker.setAdapter(adapter);
         adapter.setSelectedFont(fontIndex);
 
+        /* setup UI icon buttons */
         fontStyleToggle = layout.findViewById(R.id.font_button);
         fontStyleToggle.setOnClickListener(onFontButtonClick());
         setFontStyleIcon(fontIndex == REGULAR_FONT_INDEX);
-
-        layout.findViewById(R.id.settings_button).setOnClickListener(onSettingsClick(ctx));
+        AppCompatImageView settingsButton = layout.findViewById(R.id.settings_button);
+        settingsButton.setOnClickListener(onSettingsClick(ctx));
 
         return layout;
     }
@@ -161,6 +173,11 @@ public class MyInputMethodService extends InputMethodService implements Keyboard
 
     }
 
+    /**
+     * Handle font change
+     * Keep track of previous selection before current to enable
+     * style on-off toggle;
+     */
     private FontPickerAdapter.OnItemClickListener onFontSelection() {
         return new FontPickerAdapter.OnItemClickListener() {
             @Override
@@ -176,6 +193,9 @@ public class MyInputMethodService extends InputMethodService implements Keyboard
         };
     }
 
+    /**
+     * Settings button click launches settings activity
+     */
     private View.OnClickListener onSettingsClick(final Context context) {
         return new View.OnClickListener() {
             @Override
@@ -187,6 +207,11 @@ public class MyInputMethodService extends InputMethodService implements Keyboard
         };
     }
 
+    /**
+     * Clicking font icon toggles styled font on and off.
+     * OFF: type in regular letter case
+     * ON: restore previous styled font (if selection exists)
+     */
     private View.OnClickListener onFontButtonClick() {
 
         return new View.OnClickListener() {
@@ -200,12 +225,19 @@ public class MyInputMethodService extends InputMethodService implements Keyboard
         };
     }
 
+    /**
+     * Update font icon based on if custom styles are enabled/disabled
+     * @param disable - custom styles are disabled
+     */
     private void setFontStyleIcon(boolean disable) {
         fontStyleToggle.setImageResource(disable ?
                 R.drawable.ic_font_off : R.drawable.ic_format_font);
         fontPicker.setAlpha(disable ? 0.5f : 1.0f);
     }
 
+    /**
+     * Update keyboard shift key icon to match caps lock state
+     */
     private void setShiftKeyIcon() {
         List<Keyboard.Key> keys = keyboard.getKeys();
 
