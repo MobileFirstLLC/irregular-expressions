@@ -1,11 +1,23 @@
-# Irregular Expressions
+<p align="center">
+  <a href="https://play.google.com/store/apps/details?id=mf.asciitext.lite">
+    <img alt="Irregular Expressions" src="/assets/irregex.png" width="100" />
+  </a>
+</p>
+<h1 align="center">
+  <a href="https://play.google.com/store/apps/details?id=mf.asciitext.lite">🅸🆁🅁🄴🅖🅄🄻🄰🅁 Expressions</a>
+</h1>
 
-> Virtual keyboard for Android devices. With this keyboard you can add expressive flair to your typing, even in places where font styles are not allowed. Use with SMS, Twitter, Facebook, Instagram, reddit, email, any app with typing!
+<h3 align="center">
+Irregular Expressions is a virtual keyboard for Android devices. With this keyboard you can add expressive flair to your typing, even in places where font styles are not allowed: SMS, Twitter, Facebook, Instagram &mdash; any app with typing!
+</h3>
+
+<br/><br/>
 
 <p align="center">
 <img src="/assets/sample.gif" alt="preview" />
 </p>
 
+<br/><br/>
 
 ## Install from Google Play
 
