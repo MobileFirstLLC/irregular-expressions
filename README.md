@@ -19,9 +19,18 @@ Irregular Expressions is a virtual keyboard for Android devices. With this keybo
 
 <br/><br/>
 
-## Install from Google Play
+<p align="center">
+<a href='https://play.google.com/store/apps/details?id=mf.asciitext.lite'> 
+<strong>Install from Google Play</strong>
+</a>
+</p>
+<p align="center">
+<a href='https://play.google.com/store/apps/details?id=mf.asciitext.lite'> 
+<img alt='Get it on Google Play' height="72" align="center" src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png'/>
+</a>
+</p>
 
-<a href='https://play.google.com/store/apps/details?id=mf.asciitext.lite'><img alt='Get it on Google Play' height="72" src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png'/></a>
+<br/><br/>
 
 ## Available Font Styles
 
