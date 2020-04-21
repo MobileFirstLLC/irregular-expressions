@@ -49,8 +49,10 @@ Note: some fonts are not supported by older versions of Android. Android Oreo (8
 | ̐̈H̐̈a̐̈p̐̈p̐̈y ̐̈F̐̈a̐̈c̐̈e̐̈s̐̈ | ͛T͛h͛u͛n͛d͛e͛r͛s͛t͛r͛u͛c͛k͛ | ̸S̸l̸a̸s̸h̸e̸d̸ |
 | ̼M̼u̼s̼t̼a̼c̼h̼e̼ | ͙S͙t͙a͙r͙r͙y ͙N͙i͙g͙h͙t͙ | Regular |
 
-## About
+<br/>
 
-- Made by [Mobile First](https://mobilefirst.me)
-- Read the [Privacy Policy](privacy.md)
-- License: [MIT](LICENSE)
+* * *
+
+Made by [Mobile First](https://mobilefirst.me) • Read the [Privacy Policy](privacy.md) • License: [MIT](LICENSE)
+
+* * *
