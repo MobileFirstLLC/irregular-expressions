@@ -41,9 +41,9 @@ Irregular Expressions is a virtual keyboard for Android devices. With this keybo
 <table width="100%">
 <tbody>
 <tr>
-<td width="33%">bɘɿoɿɿiM</td>
-<td width="33%">𝙼𝚘𝚗𝚘𝚜𝚙𝚊𝚌𝚎</td>
-<td width="33%">Sᴍᴀʟʟ Cᴀᴘs</td>
+<td width="304px">bɘɿoɿɿiM</td>
+<td width="304px">𝙼𝚘𝚗𝚘𝚜𝚙𝚊𝚌𝚎</td>
+<td width="304px">Sᴍᴀʟʟ Cᴀᴘs</td>
 </tr>
 <tr>
 <td>🄲🄻🄴🄰🅁 🄱🄾🅇🄴🅂</td>
