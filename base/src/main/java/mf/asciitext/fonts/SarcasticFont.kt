@@ -1,5 +1,9 @@
 package mf.asciitext.fonts
 
+// TODO: add back this font style
+// the challenge is this: you need a longer sequence to determine casing
+// but when encoding keypresses, the input is a single char
+
 class SarcasticFont internal constructor(
     id: String,
     name: String,

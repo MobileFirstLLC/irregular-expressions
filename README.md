@@ -7,6 +7,10 @@
   <a href="https://play.google.com/store/apps/details?id=mf.asciitext.lite">🅸🆁🅁🄴🅖🅄🄻🄰🅁 Expressions</a>
 </h1>
 
+<p align="center">
+<a href="https://codeclimate.com/github/MobileFirstLLC/irregular-expressions/maintainability"><img src="https://api.codeclimate.com/v1/badges/7acf23c4d105b11b5d3e/maintainability" /></a>
+</p>
+
 <h3 align="center">
 Irregular Expressions is a virtual keyboard for Android devices. With this keyboard you can add expressive flair to your typing, even in places where font styles are not allowed: SMS, Twitter, Facebook, Instagram &mdash; any app with typing!
 </h3>
