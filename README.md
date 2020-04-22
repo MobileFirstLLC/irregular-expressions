@@ -4,7 +4,7 @@
   </a>
 </p>
 <h1 align="center">
-  <a href="https://play.google.com/store/apps/details?id=mf.asciitext.lite">🅸🆁🅁🄴🅖🅄🄻🄰🅁 Expressions</a>
+  <a href="https://play.google.com/store/apps/details?id=mf.asciitext.lite">🅸🆁𝚛🄴🅖🅄ʟ🄰ⓡ<br/>Expressions</a>
 </h1>
 
 <p align="center">
@@ -35,8 +35,8 @@ Irregular Expressions is a virtual keyboard for Android devices. With this keybo
 </p>
 
 <br/><br/>
-
-## Available Font Styles
+ 
+<h2 align="center">Available Font Styles</h2>
 
 <table width="100%">
 <tbody>
