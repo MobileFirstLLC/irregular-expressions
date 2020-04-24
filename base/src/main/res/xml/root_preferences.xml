@@ -8,8 +8,6 @@
 <!--        android:entryValues="@array/KeyboardColorSet"-->
 <!--        android:defaultValue="1" />-->
 
-
-
     <PreferenceCategory android:title="@string/label_about">
         <PreferenceScreen
             android:icon="@drawable/ic_star_outline"
