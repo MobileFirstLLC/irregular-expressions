@@ -8,15 +8,22 @@ import android.inputmethodservice.InputMethodService
 import android.inputmethodservice.Keyboard
 import android.inputmethodservice.KeyboardView
 import android.inputmethodservice.KeyboardView.OnKeyboardActionListener
+import android.os.Build
+import android.os.VibrationEffect
+import android.os.Vibrator
+import android.preference.PreferenceManager
 import android.text.TextUtils
 import android.view.KeyEvent
 import android.view.View
+import android.view.inputmethod.EditorInfo
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import mf.asciitext.fonts.AppFont
 import mf.asciitext.fonts.AvailableFonts.getFonts
+import java.util.concurrent.TimeUnit
+
 
 /**
  * This class sets up and handles virtual keyboard events
@@ -49,8 +56,13 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
     private var fontIndex = REGULAR_FONT_INDEX
     private var lastSelectedStyleIndex = REGULAR_FONT_INDEX
 
-    override fun onCreateInputView(): View {
+    // user preferences
+    private var keyVibrations = false
 
+    // TODO: this too can be be a user preference like in Gboard?
+    private val VIBRATION_DURATION_MS = 25L
+
+    override fun onCreateInputView(): View {
         val layout = layoutInflater.inflate(R.layout.keyboard_view, null)
         val ctx = layout.context
 
@@ -79,7 +91,18 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
         setFontStyleIcon(fontIndex == REGULAR_FONT_INDEX)
         val settingsButton: AppCompatImageView = layout.findViewById(R.id.settings_button)
         settingsButton.setOnClickListener(onSettingsClick(ctx))
+
+        initPreferences()
         return layout
+    }
+
+    /**
+     * Reload user preferences every time keyboard is inflated
+     * as these preferences may have changed
+     */
+    override fun onStartInputView(info: EditorInfo?, restarting: Boolean) {
+        super.onStartInputView(info, restarting)
+        initPreferences()
     }
 
     /**
@@ -87,6 +110,7 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
      */
     override fun onKey(primaryCode: Int, keyCodes: IntArray) {
         if (currentInputConnection != null) {
+            vibrate(this)
             when (primaryCode) {
                 SECONDARY_KBD_KEYCODE -> toggleExtendedKeyboardView()
                 ALPHA_KEYBOARD_KEYCODE -> enableAlphaKeyboard()
@@ -258,5 +282,29 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
                 break
             }
         }
+    }
+
+    /**
+     * Generate key vibration effect
+     **/
+    private fun vibrate(ctx: Context) {
+        if (!keyVibrations) return
+        val vibrator = ctx.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val vibrationEffect = VibrationEffect.createOneShot(
+                VIBRATION_DURATION_MS, VibrationEffect.DEFAULT_AMPLITUDE
+            )
+            vibrator.vibrate(vibrationEffect)
+        } else {
+            vibrator.vibrate(TimeUnit.MILLISECONDS.toMillis(VIBRATION_DURATION_MS))
+        }
+    }
+
+    /**
+     * Initialize user preference variables
+     */
+    private fun initPreferences() {
+        val prefs = PreferenceManager.getDefaultSharedPreferences(this)
+        keyVibrations = prefs.getBoolean("key_vibrations", false)
     }
 }

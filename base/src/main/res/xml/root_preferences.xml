@@ -1,12 +1,19 @@
 <!--suppress AndroidDomInspection -->
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-<!--    <ListPreference-->
-<!--        android:key="emoji_keyboard_color"-->
-<!--        android:title="@string/keyboard_color"-->
-<!--        android:entries="@array/KeyboardColor"-->
-<!--        android:entryValues="@array/KeyboardColorSet"-->
-<!--        android:defaultValue="1" />-->
+    <PreferenceCategory android:title="@string/label_settings">
+        <SwitchPreference
+            android:key="key_vibrations"
+            android:summaryOff="@string/disabled"
+            android:summaryOn="@string/enabled"
+            android:title="@string/key_vibrations" />
+        <!--    <ListPreference-->
+        <!--        android:key="keyboard_color"-->
+        <!--        android:title="@string/keyboard_color"-->
+        <!--        android:entries="@array/KeyboardColor"-->
+        <!--        android:entryValues="@array/KeyboardColorSet"-->
+        <!--        android:defaultValue="1" />-->
+    </PreferenceCategory>
 
     <PreferenceCategory android:title="@string/label_about">
         <PreferenceScreen
