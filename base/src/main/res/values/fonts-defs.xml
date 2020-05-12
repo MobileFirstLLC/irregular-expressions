@@ -232,7 +232,13 @@
         <item name="reverse">0</item>
         <item name="charset">@array/cutout</item>
     </array>
-
+    <array name="charset_organic">
+        <item>charset_organic</item>
+        <item name="name">@string/font_name_organic</item>
+        <item name="premium">0</item>
+        <item name="reverse">0</item>
+        <item name="charset">@array/organic</item>
+    </array>
     <array name="charset_regular">
         <item>charset_regular</item>
         <item name="name">@string/font_name_regular</item>

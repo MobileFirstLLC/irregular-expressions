@@ -8,6 +8,7 @@
         <item>@array/charset_small_caps</item>
         <item>@array/charset_olde</item>
         <item>@array/charset_olde_bold</item>
+        <item>@array/charset_organic</item>
         <item>@array/charset_script</item>
         <item>@array/charset_script_bold</item>
         <item>@array/charset_clear_circles</item>
