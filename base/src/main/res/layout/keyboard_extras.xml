@@ -8,7 +8,7 @@
 
     <LinearLayout
         android:layout_width="0dp"
-        android:layout_weight="9"
+        android:layout_weight="85"
         android:layout_height="wrap_content"
         android:background="@drawable/key_background"
         android:gravity="top|start"
@@ -23,6 +23,8 @@
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/font_button"
             style="@style/kbd_icon"
+            android:padding="4dp"
+            android:layout_width="40dp"
             app:srcCompat="@drawable/ic_font_off" />
 
         <View style="@style/kbd_vertical_divider" />
@@ -32,14 +34,17 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1" />
+
+        <!-- TODO: refactor this nested weight -->
     </LinearLayout>
 
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/settings_button"
         style="@style/kbd_icon"
         android:layout_width="0dp"
-        android:layout_weight="1"
+        android:layout_weight="15"
         android:layout_margin="0dp"
+        android:padding="12dp"
         android:background="@drawable/key_background"
         android:layout_height="@dimen/match_parent"
         app:srcCompat="@drawable/ic_settings" />
