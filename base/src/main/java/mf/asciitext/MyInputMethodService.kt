@@ -9,6 +9,7 @@ import android.inputmethodservice.Keyboard
 import android.inputmethodservice.KeyboardView
 import android.inputmethodservice.KeyboardView.OnKeyboardActionListener
 import android.os.Build
+import android.os.Handler
 import android.os.VibrationEffect
 import android.os.Vibrator
 import android.preference.PreferenceManager
@@ -17,19 +18,23 @@ import android.view.KeyEvent
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import androidx.appcompat.widget.AppCompatImageButton
-import androidx.appcompat.widget.AppCompatImageView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import mf.asciitext.fonts.AppFont
 import mf.asciitext.fonts.AvailableFonts.getFonts
 import java.util.concurrent.TimeUnit
+import kotlin.math.max
 
 
 /**
  * This class sets up and handles virtual keyboard events
  */
 class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
+
+    private val SHIFT_DOUBLETAP_MAX_INTERVAL_MS = 800L
+    private val VIBRATION_DURATION_MS = 25L
+
     // Primary vs. secondary keyboards
     private val ALPHA_KEYBOARD_KEYCODE = -10
     private val SECONDARY_KBD_KEYCODE = -11
@@ -57,11 +62,16 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
     private var fontIndex = REGULAR_FONT_INDEX
     private var lastSelectedStyleIndex = REGULAR_FONT_INDEX
 
+    // SHIFT key related variables
+    private var uppercaseNextKeyOnly = false
+    private var shiftKeyPressCounter = 0
+    private val keyPressRepeat = Handler()
+    private val delayedRunnable = Runnable {
+        shiftKeyPressCounter = -1
+    }
+
     // user preferences
     private var keyVibrations = false
-
-    // TODO: this too can be be a user preference like in Gboard?
-    private val VIBRATION_DURATION_MS = 25L
 
     override fun onCreateInputView(): View {
         val layout = layoutInflater.inflate(R.layout.keyboard_view, null)
@@ -154,6 +164,8 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
     private fun enableAlphaKeyboard() {
         keyboard = Keyboard(this, R.xml.keyboard)
         keyboardChoice = ALPHA_KBD
+        keyboard!!.isShifted = false
+        uppercaseNextKeyOnly = false
         setShiftKeyIcon()
         keyboardView!!.keyboard = keyboard
         keyboardView!!.invalidateAllKeys()
@@ -163,7 +175,33 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
      * When user clicks shift key
      */
     private fun handleShiftKeyPress() {
-        keyboard!!.isShifted = !keyboard!!.isShifted
+        keyPressRepeat.removeCallbacks(delayedRunnable)
+        shiftKeyPressCounter = max(0, shiftKeyPressCounter + 1) % 3
+
+        if (shiftKeyPressCounter == 0) {
+            uppercaseNextKeyOnly = false
+            keyboard!!.isShifted = false
+        } else {
+            uppercaseNextKeyOnly = shiftKeyPressCounter == 1
+            if (uppercaseNextKeyOnly) {
+                keyPressRepeat.postDelayed(delayedRunnable, SHIFT_DOUBLETAP_MAX_INTERVAL_MS)
+            }
+            keyboard!!.isShifted = true
+        }
+        setShiftKeyIcon()
+        keyboardView!!.invalidateAllKeys()
+    }
+
+    /**
+     * When shift is supposed to uppercase next letter only,
+     * this method will reset to keyboard lowercase. Call it
+     * after key press has occurred.
+     */
+    private fun unsetShift() {
+        keyboard!!.isShifted = false
+        uppercaseNextKeyOnly = false
+        shiftKeyPressCounter = 0
+        keyPressRepeat.removeCallbacks(delayedRunnable)
         setShiftKeyIcon()
         keyboardView!!.invalidateAllKeys()
     }
@@ -211,6 +249,8 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
             text = style.encode(text).toString()
         }
         inputConnection.commitText(text, 1)
+
+        if (uppercaseNextKeyOnly) unsetShift()
     }
 
     /**
@@ -275,16 +315,15 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
      */
     private fun setShiftKeyIcon() {
         val keys = keyboard!!.keys
-        for (n in 0 until keys.size - 1) {
-            val currentKey = keys[n]
-            if (currentKey.codes[0] == Keyboard.KEYCODE_SHIFT) {
-                currentKey.icon = resources.getDrawable(
-                    if (keyboard!!.isShifted) R.drawable.ic_keyboard_caps_filled
-                    else R.drawable.ic_arrow_up_bold_outline
-                )
-                break
-            }
+        val shiftIndex = keyboard!!.shiftKeyIndex
+        val currentKey = keys[shiftIndex]
+
+        val icon = when {
+            uppercaseNextKeyOnly -> R.drawable.ic_arrow_up_bold
+            keyboard!!.isShifted -> R.drawable.ic_keyboard_caps_filled
+            else -> R.drawable.ic_arrow_up_bold_outline
         }
+        currentKey.icon = resources.getDrawable(icon)
     }
 
     /**
