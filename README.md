@@ -88,12 +88,17 @@ Irregular Expressions is a virtual keyboard for Android devices. With this keybo
 <tr>
 <td align="center">̼M̼u̼s̼t̼a̼c̼h̼e̼</td>
 <td align="center">͙S͙t͙a͙r͙r͙y ͙N͙i͙g͙h͙t͙</td>
+<!-- <td align="center">Oяցαηιɕ <sup>1</sup></td>  
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"></td> -->
 <td align="center">Regular</td>
 </tr>
 </tbody>
 </table>
 <p align="center">
-Note: some fonts are not supported by older versions of Android. Android Oreo (8.0) or higher supports all styles.
+Note: some fonts are not supported by older versions of Android. Android Oreo (8.0) or higher supports all styles. 
 </p>
 
 * * *
