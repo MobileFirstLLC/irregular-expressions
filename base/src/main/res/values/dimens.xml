@@ -5,9 +5,9 @@
 
     <!-- keyboard dimens -->
     <dimen name="kbd_font_picker_h_padding">10dp</dimen>
-    <dimen name="kbd_icon_size">32dp</dimen>
-    <dimen name="kbd_icon_h_margin">6dp</dimen>
-    <dimen name="kdb_icon_padding">6dp</dimen>
+    <dimen name="kbd_icon_size">34dp</dimen>
+    <dimen name="kbd_icon_h_margin">0dp</dimen>
+    <dimen name="kdb_icon_padding">8dp</dimen>
 
     <!-- main activity dimens -->
     <dimen name="main_card_width">350dp</dimen>

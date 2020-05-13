@@ -16,6 +16,7 @@ import android.text.TextUtils
 import android.view.KeyEvent
 import android.view.View
 import android.view.inputmethod.EditorInfo
+import androidx.appcompat.widget.AppCompatImageButton
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -47,7 +48,7 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
     // UI Elements
     private var keyboardView: KeyboardView? = null
     private var keyboard: Keyboard? = null
-    private var fontStyleToggle: AppCompatImageView? = null
+    private var fontStyleToggle: AppCompatImageButton? = null
     private var fontPicker: RecyclerView? = null
     private var adapter: FontPickerAdapter? = null
 
@@ -89,7 +90,7 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
         fontStyleToggle = layout.findViewById(R.id.font_button)
         fontStyleToggle?.setOnClickListener(onFontButtonClick())
         setFontStyleIcon(fontIndex == REGULAR_FONT_INDEX)
-        val settingsButton: AppCompatImageView = layout.findViewById(R.id.settings_button)
+        val settingsButton: View = layout.findViewById(R.id.settings_button)
         settingsButton.setOnClickListener(onSettingsClick(ctx))
 
         initPreferences()
@@ -110,7 +111,6 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
      */
     override fun onKey(primaryCode: Int, keyCodes: IntArray) {
         if (currentInputConnection != null) {
-            vibrate(this)
             when (primaryCode) {
                 SECONDARY_KBD_KEYCODE -> toggleExtendedKeyboardView()
                 ALPHA_KEYBOARD_KEYCODE -> enableAlphaKeyboard()
@@ -122,7 +122,10 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
         }
     }
 
-    override fun onPress(i: Int) {}
+    override fun onPress(i: Int) {
+        vibrate(this)
+    }
+
     override fun onRelease(i: Int) {}
     override fun onText(charSequence: CharSequence) {}
     override fun swipeLeft() {}

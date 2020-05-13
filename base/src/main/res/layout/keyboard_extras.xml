@@ -3,35 +3,44 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="2dp"
-    android:layout_marginBottom="2dp"
-    android:background="@drawable/key_background"
-    android:gravity="top|start"
-    android:orientation="horizontal"
-    android:paddingStart="2dp"
-    android:paddingLeft="2dp"
-    android:paddingTop="6dp"
-    android:paddingEnd="2dp"
-    android:paddingRight="2dp"
-    android:paddingBottom="6dp">
+    android:layout_marginBottom="0dp"
+    android:orientation="horizontal">
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/font_button"
-        style="@style/kbd_icon"
-        app:srcCompat="@drawable/ic_font_off" />
-
-    <View style="@style/kbd_vertical_divider" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/fontPicker"
+    <LinearLayout
         android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1" />
+        android:layout_weight="9"
+        android:layout_height="wrap_content"
+        android:background="@drawable/key_background"
+        android:gravity="top|start"
+        android:orientation="horizontal"
+        android:paddingStart="2dp"
+        android:paddingLeft="2dp"
+        android:paddingTop="6dp"
+        android:paddingEnd="2dp"
+        android:paddingRight="2dp"
+        android:paddingBottom="6dp">
 
-    <View style="@style/kbd_vertical_divider" />
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/font_button"
+            style="@style/kbd_icon"
+            app:srcCompat="@drawable/ic_font_off" />
 
-    <androidx.appcompat.widget.AppCompatImageView
+        <View style="@style/kbd_vertical_divider" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/fontPicker"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/settings_button"
         style="@style/kbd_icon"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_margin="0dp"
+        android:background="@drawable/key_background"
+        android:layout_height="@dimen/match_parent"
         app:srcCompat="@drawable/ic_settings" />
-
 </LinearLayout>
