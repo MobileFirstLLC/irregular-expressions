@@ -45,7 +45,7 @@
         android:layout_weight="15"
         android:layout_margin="0dp"
         android:padding="12dp"
-        android:background="@drawable/key_background"
+        android:background="?android:attr/selectableItemBackground"
         android:layout_height="@dimen/match_parent"
         app:srcCompat="@drawable/ic_settings" />
 </LinearLayout>
