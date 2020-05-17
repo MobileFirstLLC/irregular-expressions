@@ -8,15 +8,14 @@ import android.inputmethodservice.InputMethodService
 import android.inputmethodservice.Keyboard
 import android.inputmethodservice.KeyboardView
 import android.inputmethodservice.KeyboardView.OnKeyboardActionListener
-import android.os.Build
-import android.os.Handler
-import android.os.VibrationEffect
-import android.os.Vibrator
+import android.os.*
 import android.preference.PreferenceManager
 import android.text.TextUtils
+import android.util.Log
 import android.view.KeyEvent
 import android.view.View
 import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.widget.AppCompatImageButton
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -24,20 +23,20 @@ import androidx.recyclerview.widget.RecyclerView
 import mf.asciitext.fonts.AppFont
 import mf.asciitext.fonts.AvailableFonts.getFonts
 import java.util.concurrent.TimeUnit
-import kotlin.math.max
-
 
 /**
  * This class sets up and handles virtual keyboard events
  */
 class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
 
-    private val SHIFT_DOUBLETAP_MAX_INTERVAL_MS = 800L
+    private val DOUBLETAP_MAX_DELAY_MS = 500L
     private val VIBRATION_DURATION_MS = 25L
+    private val LONG_PRESS = 200L
 
     // Primary vs. secondary keyboards
     private val ALPHA_KEYBOARD_KEYCODE = -10
     private val SECONDARY_KBD_KEYCODE = -11
+    private val KEYCODE_SPACE = 32
 
     // All available font styles
     private val fonts = getFonts()
@@ -64,11 +63,11 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
 
     // SHIFT key related variables
     private var uppercaseNextKeyOnly = false
-    private var shiftKeyPressCounter = 0
-    private val keyPressRepeat = Handler()
-    private val delayedRunnable = Runnable {
-        shiftKeyPressCounter = -1
-    }
+    private var lastShift: Long = 0
+
+    // SPACE bar variables
+    private var spaceDown: Long = 0
+    private var pickerInflated: Boolean = false
 
     // user preferences
     private var keyVibrations = false
@@ -117,7 +116,7 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
     }
 
     /**
-     * Handle keyboard key presses
+     * Handle keyboard key presses; if key is held down this fires multiple times
      */
     override fun onKey(primaryCode: Int, keyCodes: IntArray) {
         if (currentInputConnection != null) {
@@ -127,16 +126,24 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
                 Keyboard.KEYCODE_DELETE -> handleDeleteKeyPress()
                 Keyboard.KEYCODE_SHIFT -> handleShiftKeyPress()
                 Keyboard.KEYCODE_DONE -> handleDoneKeyPress()
+                KEYCODE_SPACE -> return
                 else -> encodeCharacter(primaryCode)
             }
         }
     }
 
+    /**
+     * Fired each time key is pressed; if key is held down this fires only once
+     */
     override fun onPress(i: Int) {
         vibrate(this)
+        if (i == KEYCODE_SPACE) onSpaceKeyDown()
     }
 
-    override fun onRelease(i: Int) {}
+    override fun onRelease(i: Int) {
+        if (i == KEYCODE_SPACE) onSpaceKeyRelease()
+    }
+
     override fun onText(charSequence: CharSequence) {}
     override fun swipeLeft() {}
     override fun swipeRight() {}
@@ -172,24 +179,45 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
     }
 
     /**
+     * Special handler for space down
+     */
+    private fun onSpaceKeyDown() {
+        spaceDown = SystemClock.uptimeMillis()
+        pickerInflated = false
+    }
+
+    /**
+     * Short press on space bar results in space key press
+     * Long press inflates keyboard picker
+     */
+    private fun onSpaceKeyRelease() {
+        val spaceUp = SystemClock.uptimeMillis()
+        if (spaceUp - spaceDown < LONG_PRESS)
+            encodeCharacter(KEYCODE_SPACE)
+        else if (!pickerInflated) {
+            showKeyboardPicker()
+            // prevent continuously inflating this menu
+            pickerInflated = true
+        }
+    }
+
+    /**
      * When user clicks shift key
      */
     private fun handleShiftKeyPress() {
-        keyPressRepeat.removeCallbacks(delayedRunnable)
-        shiftKeyPressCounter = max(0, shiftKeyPressCounter + 1) % 3
+        val now = SystemClock.uptimeMillis()
+        val quickPress = now - lastShift < DOUBLETAP_MAX_DELAY_MS
 
-        if (shiftKeyPressCounter == 0) {
+        if (keyboard!!.isShifted && !quickPress) {
             uppercaseNextKeyOnly = false
             keyboard!!.isShifted = false
         } else {
-            uppercaseNextKeyOnly = shiftKeyPressCounter == 1
-            if (uppercaseNextKeyOnly) {
-                keyPressRepeat.postDelayed(delayedRunnable, SHIFT_DOUBLETAP_MAX_INTERVAL_MS)
-            }
+            uppercaseNextKeyOnly = !quickPress
             keyboard!!.isShifted = true
         }
         setShiftKeyIcon()
         keyboardView!!.invalidateAllKeys()
+        lastShift = now
     }
 
     /**
@@ -200,8 +228,7 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
     private fun unsetShift() {
         keyboard!!.isShifted = false
         uppercaseNextKeyOnly = false
-        shiftKeyPressCounter = 0
-        keyPressRepeat.removeCallbacks(delayedRunnable)
+        lastShift = 0L
         setShiftKeyIcon()
         keyboardView!!.invalidateAllKeys()
     }
@@ -249,7 +276,6 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
             text = style.encode(text).toString()
         }
         inputConnection.commitText(text, 1)
-
         if (uppercaseNextKeyOnly) unsetShift()
     }
 
@@ -348,5 +374,13 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
     private fun initPreferences() {
         val prefs = PreferenceManager.getDefaultSharedPreferences(this)
         keyVibrations = prefs.getBoolean("key_vibrations", false)
+    }
+
+    /**
+     * Show keyboard switcher
+     */
+    private fun showKeyboardPicker() {
+        val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.showInputMethodPicker()
     }
 }

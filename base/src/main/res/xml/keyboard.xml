@@ -43,7 +43,7 @@
         <Key android:codes="-11" android:keyIcon="@drawable/ic_numeric"  android:keyWidth="15%p" android:keyEdgeFlags="left"/>
         <Key android:codes="63,33" android:keyLabel="\?!"/>
         <Key android:codes="44" android:keyLabel="," />
-        <Key android:codes="32" android:keyLabel="SPACE" android:keyWidth="40%p" android:isRepeatable="true"/>
+        <Key android:codes="32" android:keyLabel=" " android:keyWidth="40%p" android:isRepeatable="true"/>
         <Key android:codes="46" android:keyLabel="."/>
         <Key android:codes="-4" android:keyIcon="@drawable/ic_keyboard_return" android:keyWidth="15%p" android:keyEdgeFlags="right"/>
     </Row>

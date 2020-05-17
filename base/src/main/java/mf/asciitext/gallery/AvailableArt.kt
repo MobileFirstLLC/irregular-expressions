@@ -6,6 +6,8 @@ import androidx.annotation.StyleableRes
 import mf.asciitext.R
 import java.util.*
 
+// TODO: emojis, gifs etc
+
 object AvailableArt {
 
     private val categories = LinkedList<ArtCategory>()
