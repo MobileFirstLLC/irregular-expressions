@@ -29,13 +29,13 @@
 
         <View style="@style/kbd_vertical_divider" />
 
+        <!-- TODO: refactor this nested weight -->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/fontPicker"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1" />
 
-        <!-- TODO: refactor this nested weight -->
     </LinearLayout>
 
     <androidx.appcompat.widget.AppCompatImageButton

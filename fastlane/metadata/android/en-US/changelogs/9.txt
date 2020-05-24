@@ -1,0 +1,6 @@
+In This Release
+===============
+- Space bar long press to switch keyboards
+- Updated shift key behavior
+- Added key vibrations (enable from settings)
+- 1 ηєω ƒσηԏ ѕԏуℓє: OᖇᘜᗩᑎIᑕ
