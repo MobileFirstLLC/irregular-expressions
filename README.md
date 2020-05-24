@@ -101,6 +101,12 @@ Irregular Expressions is a virtual keyboard for Android devices. With this keybo
 Note: some fonts are not supported by older versions of Android. Android Oreo (8.0) or higher supports all styles. 
 </p>
 
+<br/><br/>
+
+### Interested in becoming a beta tester?
+
+If you would like to become a beta tester and get early access to releases before anyone else, **[follow these instructions](https://github.com/MobileFirstLLC/irregular-expressions/issues/19).**
+
 * * *
 
 <p align="center">
