@@ -107,6 +107,10 @@ Note: some fonts are not supported by older versions of Android. Android Oreo (8
 
 If you would like to become a beta tester and get early access to releases before anyone else, **[follow these instructions](https://play.google.com/apps/testing/mf.asciitext.lite).**
 
+### Helpful References
+
+- [Mathematical Alphanumeric Symbols](https://www.unicode.org/charts/PDF/U1D400.pdf)<br/>Range: 1D400–1D7FF
+
 * * *
 
 <p align="center">
