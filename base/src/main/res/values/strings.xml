@@ -21,6 +21,19 @@
     <string name="enable_keyboard">1. Enable Keyboard</string>
     <string name="select_keyboard">2. Select Keyboard</string>
     <string name="now_try_it">3. Now try it — type here:</string>
+    <string name="setting_keyboard_layout">Keyboard Layout</string>
+    <string name="kbd_layout_qwerty">QWERTY</string>
+    <string name="kbd_layout_azerty">AZERTY</string>
+
+    <string-array name="settings_layout_names_array">
+        <item>@string/kbd_layout_qwerty</item>
+        <item>@string/kbd_layout_azerty</item>
+    </string-array>
+
+    <string-array name="settings_layout_values_array">
+        <item>1</item>
+        <item>2</item>
+    </string-array>
 
     <!-- font names -->
     <string name="font_name_frowny_faces">Frowny</string>

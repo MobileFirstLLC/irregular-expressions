@@ -11,7 +11,6 @@ import android.inputmethodservice.KeyboardView.OnKeyboardActionListener
 import android.os.*
 import android.preference.PreferenceManager
 import android.text.TextUtils
-import android.util.Log
 import android.view.KeyEvent
 import android.view.View
 import android.view.inputmethod.EditorInfo
@@ -32,6 +31,8 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
     private val DOUBLETAP_MAX_DELAY_MS = 500L
     private val VIBRATION_DURATION_MS = 25L
     private val LONG_PRESS = 200L
+    private val DEFAULT_KBD_LAYOUT = "1" // 1 = qwerty, 2 = azerty
+    private val DEFAULT_VIBRATIONS = false
 
     // Primary vs. secondary keyboards
     private val ALPHA_KEYBOARD_KEYCODE = -10
@@ -70,18 +71,19 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
     private var pickerInflated: Boolean = false
 
     // user preferences
-    private var keyVibrations = false
+    private var keyVibrations = DEFAULT_VIBRATIONS
+    private var keyboardLayout = DEFAULT_KBD_LAYOUT
 
+    // called initially when inflating keyboard
     override fun onCreateInputView(): View {
         val layout = layoutInflater.inflate(R.layout.keyboard_view, null)
         val ctx = layout.context
+        initPreferences()
 
         /* initialize keyboard */
-
         keyboardView = layout.findViewById(R.id.keyboard_view)
-        keyboard = Keyboard(this, R.xml.keyboard)
-        keyboardView?.keyboard = keyboard
         keyboardView?.setOnKeyboardActionListener(this)
+        enableAlphaKeyboard()
 
         /* setup font picker recyclerView */
 
@@ -102,7 +104,6 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
         val settingsButton: View = layout.findViewById(R.id.settings_button)
         settingsButton.setOnClickListener(onSettingsClick(ctx))
 
-        initPreferences()
         return layout
     }
 
@@ -113,6 +114,7 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
     override fun onStartInputView(info: EditorInfo?, restarting: Boolean) {
         super.onStartInputView(info, restarting)
         initPreferences()
+        enableAlphaKeyboard()
     }
 
     /**
@@ -169,7 +171,9 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
      * Change view to alphabetic keyboard
      */
     private fun enableAlphaKeyboard() {
-        keyboard = Keyboard(this, R.xml.keyboard)
+        val keyLayout = if (keyboardLayout == DEFAULT_KBD_LAYOUT)
+            R.xml.keyboard_qwerty else R.xml.keyboard_azerty
+        keyboard = Keyboard(this, keyLayout)
         keyboardChoice = ALPHA_KBD
         keyboard!!.isShifted = false
         uppercaseNextKeyOnly = false
@@ -373,7 +377,8 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
      */
     private fun initPreferences() {
         val prefs = PreferenceManager.getDefaultSharedPreferences(this)
-        keyVibrations = prefs.getBoolean("key_vibrations", false)
+        keyVibrations = prefs.getBoolean("key_vibrations", DEFAULT_VIBRATIONS)
+        keyboardLayout = prefs.getString("kbd_layout", DEFAULT_KBD_LAYOUT).toString()
     }
 
     /**

@@ -1,5 +1,6 @@
 <!--suppress AndroidDomInspection -->
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <PreferenceCategory android:title="@string/label_settings">
         <SwitchPreference
@@ -7,12 +8,14 @@
             android:summaryOff="@string/disabled"
             android:summaryOn="@string/enabled"
             android:title="@string/key_vibrations" />
-        <!--    <ListPreference-->
-        <!--        android:key="keyboard_color"-->
-        <!--        android:title="@string/keyboard_color"-->
-        <!--        android:entries="@array/KeyboardColor"-->
-        <!--        android:entryValues="@array/KeyboardColorSet"-->
-        <!--        android:defaultValue="1" />-->
+
+        <ListPreference
+            android:key="kbd_layout"
+            android:entries="@array/settings_layout_names_array"
+            android:entryValues="@array/settings_layout_values_array"
+            android:defaultValue="1"
+            android:summary="%s"
+            android:title="@string/setting_keyboard_layout" />
     </PreferenceCategory>
 
     <PreferenceCategory android:title="@string/label_about">
