@@ -11,6 +11,7 @@ import android.inputmethodservice.KeyboardView.OnKeyboardActionListener
 import android.os.*
 import android.preference.PreferenceManager
 import android.text.TextUtils
+import android.util.Log
 import android.view.KeyEvent
 import android.view.View
 import android.view.inputmethod.EditorInfo
@@ -346,14 +347,15 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
     private fun setShiftKeyIcon() {
         val keys = keyboard!!.keys
         val shiftIndex = keyboard!!.shiftKeyIndex
-        val currentKey = keys[shiftIndex]
-
-        val icon = when {
-            uppercaseNextKeyOnly -> R.drawable.ic_arrow_up_bold
-            keyboard!!.isShifted -> R.drawable.ic_keyboard_caps_filled
-            else -> R.drawable.ic_arrow_up_bold_outline
+        if (shiftIndex >= 0 && shiftIndex < keys.size) {
+            val currentKey = keys[shiftIndex]
+            val icon = when {
+                uppercaseNextKeyOnly -> R.drawable.ic_arrow_up_bold
+                keyboard!!.isShifted -> R.drawable.ic_keyboard_caps_filled
+                else -> R.drawable.ic_arrow_up_bold_outline
+            }
+            currentKey.icon = resources.getDrawable(icon)
         }
-        currentKey.icon = resources.getDrawable(icon)
     }
 
     /**
