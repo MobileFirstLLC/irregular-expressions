@@ -27,6 +27,14 @@
                 android:data="@string/rateUri" />
         </PreferenceScreen>
         <PreferenceScreen
+            android:icon="@drawable/ic_chat_processing_outline"
+            android:title="@string/label_feedback"
+            android:summary="@string/feedback_summary">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="@string/feedbackUri" />
+        </PreferenceScreen>
+        <PreferenceScreen
             android:icon="@drawable/ic_mf"
             android:summary="@string/developer"
             android:title="@string/label_developer">

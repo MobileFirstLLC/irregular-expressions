@@ -7,8 +7,10 @@
     <string name="label_about">About</string>
     <string name="label_version">Version</string>
     <string name="label_rate_app">Rate App</string>
+    <string name="label_feedback">Send Feedback</string>
     <string name="key_vibrations">Key Vibrations</string>
     <string name="developer">Mobile First</string>
+    <string name="feedback_summary">Report issues or request features</string>
     <string name="enabled">Enabled</string>
     <string name="disabled">Disabled</string>
     <string name="all_categories">all</string>

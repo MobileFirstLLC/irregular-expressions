@@ -36,6 +36,7 @@ android {
                 }
 
                 variant.resValue "string", "versionName", variant.versionName
+                variant.resValue "string", "feedbackUri", "https://mobilefirst.me/feedback?appId=irregular-expressions&amp;os=android&amp;version=" + variant.versionName
                 variant.resValue "string", "rateUri", "https://play.google.com/store/apps/details?id=" + packageName
         }
     }
