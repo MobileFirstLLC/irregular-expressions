@@ -1,11 +1,9 @@
 package mf.asciitext.fonts
 
-import android.util.Log
-
 class RandomCaps internal constructor(
     id: String,
     name: String
-) : AppFont(id, name) {
+) : AppFont(id, name, false, true) {
 
     override fun encode(text: String?, sequence: CharSequence?): String? {
         if (!isEmpty(text)) {

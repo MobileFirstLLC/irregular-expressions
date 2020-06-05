@@ -245,7 +245,10 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
         val inputConnection = currentInputConnection
         val selectedText = inputConnection.getSelectedText(0)
         if (TextUtils.isEmpty(selectedText)) {
-            inputConnection.deleteSurroundingText(1, 0)
+            if (reverseCursorDirection) {
+                inputConnection.deleteSurroundingText(0, 1)
+            } else
+                inputConnection.deleteSurroundingText(1, 0)
         } else {
             inputConnection.commitText("", 1)
         }
@@ -278,12 +281,16 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
         var text = code.toString()
         if (fontIndex >= 0 && fontIndex < fonts.size) {
             val style = fonts[fontIndex]
-            val seq = inputConnection.getTextBeforeCursor(5, 0)
-            text = style.encode(text, seq).toString()
+            text = if (style.isSequenceAware) {
+                val seq = inputConnection.getTextBeforeCursor(5, 0)
+                style.encode(text, seq).toString()
+            } else {
+                style.encode(text).toString()
+            }
         }
         inputConnection.commitText(text, 1)
 
-        // adjust cursor when typing R -> L
+        // adjust cursor position when typing right to left
         if (reverseCursorDirection)
             inputConnection.commitText("", -text.length)
 
@@ -311,11 +318,11 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
         }
     }
 
-    private fun setCursorDirection(fontIndex:Int){
+    private fun setCursorDirection(fontIndex: Int) {
         if (fontIndex >= 0 && fontIndex < fonts.size) {
             val style = fonts[fontIndex]
-            reverseCursorDirection =  style.isReversed
-        }else reverseCursorDirection = false
+            reverseCursorDirection = style.isReversed
+        } else reverseCursorDirection = false
     }
 
     /**
