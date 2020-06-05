@@ -68,5 +68,6 @@
     <string name="font_name_mirror">Mirrored</string>
     <string name="font_name_cutout">Cutout</string>
     <string name="font_name_regular">Regular</string>
+    <string name="font_name_spongemock">Spongemock</string>
 
 </resources>

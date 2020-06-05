@@ -3,11 +3,10 @@ package mf.asciitext.fonts
 class AccentFont internal constructor(
     id: String,
     name: String,
-    private val uChar: String,
-    premium: Boolean
-) : AppFont(id, name, premium) {
+    private val uChar: String
+) : AppFont(id, name) {
 
-    override fun encode(text: String?): String? {
+    override fun encode(text: String?, sequence: CharSequence?): String? {
         if (!isEmpty(text)) {
             val cs = text!!.toCharArray()
             val temp = StringBuilder()

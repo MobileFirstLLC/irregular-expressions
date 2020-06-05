@@ -278,8 +278,12 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
         var text = code.toString()
         if (fontIndex >= 0 && fontIndex < fonts.size) {
             val style = fonts[fontIndex]
-            text = style.encode(text).toString()
+            val seq = inputConnection.getTextBeforeCursor(5, 0)
+            text = style.encode(text, seq).toString()
         }
+        // newCursorPosition
+        // If > 0, this is relative to the end of the text - 1;
+        // if <= 0, this is relative to the start of the text
         inputConnection.commitText(text, 1)
         if (uppercaseNextKeyOnly) unsetShift()
     }

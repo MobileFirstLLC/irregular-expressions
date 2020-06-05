@@ -4,11 +4,10 @@ open class CharsetFont internal constructor(
     id: String,
     name: String,
     private val charset: Array<String>?,
-    premium: Boolean,
     private val reverse: Boolean
-) : AppFont(id, name, premium) {
+) : AppFont(id, name) {
 
-    override fun encode(text: String?): String? {
+    override fun encode(text: String?, sequence: CharSequence?): String? {
         if (!isEmpty(text)) {
             val firstChar = ' '.toInt()
             val cs = text!!.toCharArray()

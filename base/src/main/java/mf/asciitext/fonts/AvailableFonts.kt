@@ -22,8 +22,8 @@ import java.util.*
      */
     fun init(res: Resources) {
         fonts.clear()
-        // fonts.add(SarcasticFont("c000", res.getString(R.string.font_name_sarcastic), false))
         initCharsetFonts(res, res.obtainTypedArray(R.array.charset_fonts))
+        fonts.add(RandomCaps("spongemock", res.getString(R.string.font_name_spongemock)))
         initAccentFonts(res, res.obtainTypedArray(R.array.accent_fonts))
     }
 
@@ -37,7 +37,6 @@ import java.util.*
 
         @StyleableRes val idIndex = res.getInteger(R.integer.CharsetIdIndex)
         @StyleableRes val nameIndex = res.getInteger(R.integer.CharsetNameIndex)
-        @StyleableRes val premiumIndex = res.getInteger(R.integer.CharsetPremiumIndex)
         @StyleableRes val reverseIndex = res.getInteger(R.integer.CharsetReverseIndex)
         @StyleableRes val charsetIndex = res.getInteger(R.integer.CharsetIndex)
 
@@ -48,10 +47,9 @@ import java.util.*
                 val fontId = fontDef.getString(nameIndex) + i.toShort();
                 val name = fontDef.getString(nameIndex)
                 val charset = res.getStringArray(fontDef.getResourceId(charsetIndex, 0))
-                val premium = true and fontDef.getBoolean(premiumIndex, false)
                 val reversed = fontDef.getBoolean(reverseIndex, false)
                 if (name != null)
-                    fonts.add(CharsetFont(fontId, name, charset, premium, reversed))
+                    fonts.add(CharsetFont(fontId, name, charset, reversed))
 
                 fontDef.recycle()
             } else {
@@ -72,7 +70,6 @@ import java.util.*
         // Initialize Accented fonts
         @StyleableRes val accentIdIndex = res.getInteger(R.integer.AccentIdIndex)
         @StyleableRes val accentNameIndex = res.getInteger(R.integer.AccentNameIndex)
-        @StyleableRes val accentPremiumIndex = res.getInteger(R.integer.AccentPremiumIndex)
         @StyleableRes val accentCharIndex = res.getInteger(R.integer.AccentValue)
 
         for (i in 0 until ta.length()) {
@@ -82,9 +79,8 @@ import java.util.*
                 val fontId = fontDef.getString(accentIdIndex)
                 val name = fontDef.getString(accentNameIndex)
                 val accentChar = fontDef.getString(accentCharIndex)
-                val premium = fontDef.getBoolean(accentPremiumIndex, false)
                 if (fontId != null && name != null && accentChar != null)
-                    fonts.add(AccentFont(fontId, name, accentChar, premium))
+                    fonts.add(AccentFont(fontId, name, accentChar))
                 fontDef.recycle()
             } else {
                 Log.d("INIT FONTS", "Invalid resource Id!")
@@ -92,6 +88,4 @@ import java.util.*
         }
         ta.recycle()
     }
-
-
 }

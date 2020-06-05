@@ -2,8 +2,7 @@ package mf.asciitext.fonts
 
 abstract class AppFont(
     protected var id: String,
-    protected var name: String,
-    premium: Boolean
+    protected var name: String
 ) {
     val styledName: String
         get() = encode(name)!!
@@ -12,6 +11,6 @@ abstract class AppFont(
         return text == null || text.isEmpty()
     }
 
-    abstract fun encode(text: String?): String?
+    abstract fun encode(text: String?, sequence: CharSequence? = null): String?
 
 }
