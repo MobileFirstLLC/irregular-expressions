@@ -4,8 +4,8 @@ open class CharsetFont internal constructor(
     id: String,
     name: String,
     private val charset: Array<String>?,
-    private val reverse: Boolean
-) : AppFont(id, name) {
+    reverse: Boolean
+) : AppFont(id, name, reverse) {
 
     override fun encode(text: String?, sequence: CharSequence?): String? {
         if (!isEmpty(text)) {
@@ -20,7 +20,7 @@ open class CharsetFont internal constructor(
             } else {
                 temp.append(text)
             }
-            return (if (reverse) temp.reverse() else temp).toString()
+            return (if (this.reverse) temp.reverse() else temp).toString()
         }
         return text
     }

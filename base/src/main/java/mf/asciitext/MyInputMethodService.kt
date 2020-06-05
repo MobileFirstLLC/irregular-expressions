@@ -11,7 +11,6 @@ import android.inputmethodservice.KeyboardView.OnKeyboardActionListener
 import android.os.*
 import android.preference.PreferenceManager
 import android.text.TextUtils
-import android.util.Log
 import android.view.KeyEvent
 import android.view.View
 import android.view.inputmethod.EditorInfo
@@ -62,6 +61,7 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
     private var keyboardChoice = ALPHA_KBD
     private var fontIndex = REGULAR_FONT_INDEX
     private var lastSelectedStyleIndex = REGULAR_FONT_INDEX
+    private var reverseCursorDirection = false
 
     // SHIFT key related variables
     private var uppercaseNextKeyOnly = false
@@ -281,10 +281,12 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
             val seq = inputConnection.getTextBeforeCursor(5, 0)
             text = style.encode(text, seq).toString()
         }
-        // newCursorPosition
-        // If > 0, this is relative to the end of the text - 1;
-        // if <= 0, this is relative to the start of the text
         inputConnection.commitText(text, 1)
+
+        // adjust cursor when typing R -> L
+        if (reverseCursorDirection)
+            inputConnection.commitText("", -text.length)
+
         if (uppercaseNextKeyOnly) unsetShift()
     }
 
@@ -300,11 +302,20 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
                 fontIndex = index
                 lastSelectedStyleIndex = index
                 setFontStyleIcon(false)
+                setCursorDirection(fontIndex)
                 adapter!!.setSelectedFont(fontIndex)
                 adapter!!.notifyItemChanged(fontIndex)
                 adapter!!.notifyItemChanged(previous)
+
             }
         }
+    }
+
+    private fun setCursorDirection(fontIndex:Int){
+        if (fontIndex >= 0 && fontIndex < fonts.size) {
+            val style = fonts[fontIndex]
+            reverseCursorDirection =  style.isReversed
+        }else reverseCursorDirection = false
     }
 
     /**
@@ -327,6 +338,7 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
         return View.OnClickListener {
             val disable = fontIndex != REGULAR_FONT_INDEX
             fontIndex = if (disable) REGULAR_FONT_INDEX else lastSelectedStyleIndex
+            setCursorDirection(fontIndex)
             setFontStyleIcon(disable)
             adapter!!.setSelectedFont(fontIndex)
         }
