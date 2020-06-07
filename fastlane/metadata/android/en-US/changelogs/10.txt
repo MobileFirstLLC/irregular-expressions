@@ -1,0 +1,4 @@
+New:
+================
+* AZERTY layout
+* Random caps style: SpOnGeMocK
