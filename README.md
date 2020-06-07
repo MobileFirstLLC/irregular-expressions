@@ -106,7 +106,7 @@ Note: some fonts are not supported by older versions of Android. Android Oreo (8
 
 ### Interested in becoming a beta tester?
 
-If you would like to become a beta tester and get early access to releases before anyone else, **[follow these instructions](https://play.google.com/apps/testing/mf.asciitext.lite).**
+If you would like to become a beta tester and get early access to releases **[follow these instructions](https://play.google.com/apps/testing/mf.asciitext.lite).**
 
 ### Helpful References
 
