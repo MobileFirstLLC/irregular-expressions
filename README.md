@@ -91,7 +91,7 @@ Irregular Expressions is a virtual keyboard for Android devices. With this keybo
 <td align="center">Oяցαηιɕ</td>  
 </tr>
 <tr>
-<td align="center">SpOnGeMoCk <sup>(*</sup></td>
+<td align="center">SpOnGeMoCk</td>
 <td align="center">Regular</td>
 <td align="center"></td>
 </tr>
@@ -99,8 +99,7 @@ Irregular Expressions is a virtual keyboard for Android devices. With this keybo
 </table>
 <p align="center">
 Note: some fonts are not supported by older versions of Android. Android Oreo (8.0) or higher supports all styles. 
-<br/><br/>
-<sup>*)</sup> unreleased 
+
 </p>
 
 <br/><br/>
