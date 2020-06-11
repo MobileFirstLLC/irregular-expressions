@@ -1,0 +1,20 @@
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="@dimen/font_config_row_minHeight">
+
+    <Switch
+        android:id="@+id/enable_box"
+        style="@style/config_checkbox" />
+
+    <TextView
+        android:id="@+id/text_value"
+        style="@style/config_font" />
+
+    <Button
+        android:id="@+id/order_btn"
+        android:text="Move Top"
+        style="@style/config_order_btn" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,18 +1,55 @@
 package mf.asciitext.fonts
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.content.res.Resources
 import android.content.res.TypedArray
 import android.util.Log
 import androidx.annotation.StyleableRes
+import androidx.preference.PreferenceManager
 import mf.asciitext.R
 import java.util.*
+import kotlin.collections.HashSet
 
- object AvailableFonts {
+object AvailableFonts {
+
+    val disabled_key = "pref_disabled_fonts"
+    val order_key = "pref_font_order"
 
     private val fonts = LinkedList<AppFont>()
+    private val disabledList = HashSet<String>()
+    private val fontOrder = LinkedList<String>()
+    private lateinit var prefs: SharedPreferences
 
+    class SortComparator : Comparator<AppFont> {
+        val indexVal: (String) -> Int = {
+            if (fontOrder.contains(it))
+                fontOrder.indexOf(it)
+            else fontOrder.size
+        }
+
+        override fun compare(font1: AppFont, font2: AppFont): Int {
+            val a = indexVal(font1.fontId)
+            val b = indexVal(font2.fontId)
+            return if (a < b) -1 else if (a > b) 1 else 0
+        }
+    }
+
+    /**
+     * This method returns a list of all known fonts
+     */
     fun getFonts(): List<AppFont> {
-        return fonts
+        return fonts.sortedWith(SortComparator())
+    }
+
+    /**
+     * This method returns a list of enabled fonts only.
+     * All fonts are enabled by default but user may
+     * choose to disable some
+     */
+    fun getEnabledFonts(): List<AppFont> {
+        val enableCondition: ((AppFont)) -> Boolean = { it.isEnabled }
+        return fonts.filter(enableCondition).sortedWith(SortComparator())
     }
 
     /**
@@ -20,11 +57,62 @@ import java.util.*
      *
      * @param res - Reference to android resources
      */
-    fun init(res: Resources) {
+    fun init(ctx: Context) {
         fonts.clear()
+        val res = ctx.resources
+        prefs = PreferenceManager.getDefaultSharedPreferences(ctx)
+        initPreferences()
         initCharsetFonts(res, res.obtainTypedArray(R.array.charset_fonts))
-        fonts.add(RandomCaps("spongemock", res.getString(R.string.font_name_spongemock)))
+        initRandomCaps(res.getString(R.string.font_name_spongemock))
         initAccentFonts(res, res.obtainTypedArray(R.array.accent_fonts))
+    }
+
+    private fun initPreferences() {
+        restoreDisabledList()
+        restoreOrder()
+    }
+
+    private fun persistDisabledList() {
+        val arr = disabledList.toSet()
+        val editor = prefs.edit()
+        editor.putStringSet(disabled_key, arr)
+        editor.apply()
+    }
+
+    private fun restoreDisabledList() {
+        val prefList = prefs.getStringSet(disabled_key, null)
+        if (prefList != null) disabledList.addAll(prefList)
+    }
+
+    private fun persistOrder() {
+        val arr = fontOrder.joinToString(",")
+        val editor = prefs.edit()
+        editor.putString(order_key, arr)
+        editor.apply()
+    }
+
+    private fun restoreOrder() {
+        val prefList = prefs.getString(order_key, null) ?: return
+        fontOrder.addAll(prefList.split(","))
+    }
+
+    fun setFirst(index: Int) {
+        if (index < 0 || index > fonts.size) return
+        val newFirst = fonts.removeAt(index)
+        fonts.add(0, newFirst)
+        persistOrder()
+    }
+
+    fun toggleEnabled(index: Int) {
+        if (index < 0 || index > fonts.size) return
+        val nextState = !fonts[index].isEnabled
+        val fontID = fonts[index].fontId
+
+        fonts[index].isEnabled = nextState
+        if (!nextState) disabledList.add(fontID)
+        else disabledList.remove(fontID)
+
+        persistDisabledList()
     }
 
     /**
@@ -48,8 +136,9 @@ import java.util.*
                 val name = fontDef.getString(nameIndex)
                 val charset = res.getStringArray(fontDef.getResourceId(charsetIndex, 0))
                 val reversed = fontDef.getBoolean(reverseIndex, false)
+                val enabled = !disabledList.contains(fontId)
                 if (name != null)
-                    fonts.add(CharsetFont(fontId, name, charset, reversed))
+                    fonts.add(CharsetFont(fontId, name, enabled, charset, reversed))
 
                 fontDef.recycle()
             } else {
@@ -79,13 +168,20 @@ import java.util.*
                 val fontId = fontDef.getString(accentIdIndex)
                 val name = fontDef.getString(accentNameIndex)
                 val accentChar = fontDef.getString(accentCharIndex)
+                val enabled = !disabledList.contains(fontId)
                 if (fontId != null && name != null && accentChar != null)
-                    fonts.add(AccentFont(fontId, name, accentChar))
+                    fonts.add(AccentFont(fontId, name, enabled, accentChar))
                 fontDef.recycle()
             } else {
                 Log.d("INIT FONTS", "Invalid resource Id!")
             }
         }
         ta.recycle()
+    }
+
+    private fun initRandomCaps(name: String) {
+        val id = "spongemock"
+        val enabled = !disabledList.contains(id)
+        fonts.add(RandomCaps(id, name, enabled))
     }
 }

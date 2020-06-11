@@ -159,4 +159,40 @@
         <item name="android:lines">@integer/main_input_lines</item>
     </style>
 
+    <!-- font config -->
+
+    <style name="config_checkbox">
+        <item name="android:paddingStart">@dimen/font_config_padding</item>
+        <item name="android:paddingEnd">@dimen/font_config_padding</item>
+        <item name="android:paddingLeft">@dimen/font_config_padding</item>
+        <item name="android:paddingRight">@dimen/font_config_padding</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="layout_constraintEnd_toEndOf">parent</item>
+        <item name="layout_constraintTop_toTopOf">parent</item>
+        <item name="layout_constraintBottom_toBottomOf">parent</item>
+    </style>
+
+    <style name="config_font">
+        <item name="android:paddingStart">@dimen/font_config_padding</item>
+        <item name="android:paddingEnd">@dimen/font_config_padding</item>
+        <item name="android:paddingLeft">@dimen/font_config_padding</item>
+        <item name="android:paddingRight">@dimen/font_config_padding</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center_vertical|start</item>
+        <item name="layout_constraintEnd_toStartOf">@id/order_btn</item>
+        <item name="layout_constraintStart_toStartOf">parent</item>
+        <item name="layout_constraintTop_toTopOf">parent</item>
+        <item name="layout_constraintBottom_toBottomOf">parent</item>
+    </style>
+
+    <style name="config_order_btn" parent="@style/Widget.MaterialComponents.Button.TextButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="layout_constraintEnd_toStartOf">@id/enable_box</item>
+        <item name="layout_constraintTop_toTopOf">parent</item>
+        <item name="layout_constraintBottom_toBottomOf">parent</item>
+    </style>
+
 </resources>

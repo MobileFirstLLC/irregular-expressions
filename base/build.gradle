@@ -16,8 +16,8 @@ android {
         applicationId "mf.asciitext.lite"
         minSdkVersion 14
         targetSdkVersion 29
-        versionCode 10
-        versionName "2.2.0"
+        versionCode 11
+        versionName "2.3.0"
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         resValue "string", "versionName", versionName

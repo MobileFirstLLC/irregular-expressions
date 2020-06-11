@@ -71,5 +71,7 @@
     <string name="font_name_cutout">Cutout</string>
     <string name="font_name_regular">Regular</string>
     <string name="font_name_spongemock">Spongemock</string>
+    <string name="configure_fonts">Configure Fonts</string>
+    <string name="config_fonts_summary">Show, hide and rearrange fonts</string>
 
 </resources>

@@ -3,9 +3,10 @@ package mf.asciitext.fonts
 open class CharsetFont internal constructor(
     id: String,
     name: String,
+    enabled : Boolean,
     private val charset: Array<String>?,
     reverse: Boolean
-) : AppFont(id, name, reverse) {
+) : AppFont(id, name, enabled, reverse) {
 
     override fun encode(text: String?, sequence: CharSequence?): String? {
         if (!isEmpty(text)) {

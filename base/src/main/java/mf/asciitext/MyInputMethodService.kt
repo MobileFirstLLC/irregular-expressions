@@ -11,6 +11,7 @@ import android.inputmethodservice.KeyboardView.OnKeyboardActionListener
 import android.os.*
 import android.preference.PreferenceManager
 import android.text.TextUtils
+import android.util.Log
 import android.view.KeyEvent
 import android.view.View
 import android.view.inputmethod.EditorInfo
@@ -20,6 +21,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import mf.asciitext.fonts.AppFont
+import mf.asciitext.fonts.AvailableFonts.getEnabledFonts
 import mf.asciitext.fonts.AvailableFonts.getFonts
 import java.util.concurrent.TimeUnit
 
@@ -40,7 +42,7 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
     private val KEYCODE_SPACE = 32
 
     // All available font styles
-    private val fonts = getFonts()
+    private var fonts = getEnabledFonts()
 
     // Font with "no style"
     private val REGULAR_FONT_INDEX = -1
@@ -115,6 +117,8 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
     override fun onStartInputView(info: EditorInfo?, restarting: Boolean) {
         super.onStartInputView(info, restarting)
         initPreferences()
+        fonts = getEnabledFonts()
+        adapter!!.updateFonts(fonts)
         enableAlphaKeyboard()
     }
 
@@ -313,16 +317,19 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
                 adapter!!.setSelectedFont(fontIndex)
                 adapter!!.notifyItemChanged(fontIndex)
                 adapter!!.notifyItemChanged(previous)
-
             }
         }
     }
 
+    /**
+     * Determine if cursor should move left -> right
+     * or left <- right following keyboard input
+     */
     private fun setCursorDirection(fontIndex: Int) {
-        if (fontIndex >= 0 && fontIndex < fonts.size) {
+        reverseCursorDirection = if (fontIndex >= 0 && fontIndex < fonts.size) {
             val style = fonts[fontIndex]
-            reverseCursorDirection = style.isReversed
-        } else reverseCursorDirection = false
+            style.isReversed
+        } else false
     }
 
     /**

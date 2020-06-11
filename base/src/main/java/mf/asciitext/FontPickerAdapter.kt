@@ -9,7 +9,7 @@ import mf.asciitext.FontPickerAdapter.ItemViewHolder
 import mf.asciitext.fonts.AppFont
 
 class FontPickerAdapter(
-    private val dataSource: List<AppFont>?,
+    private var dataSource: List<AppFont>?,
     private val mItemClickListener: OnItemClickListener
 ) : RecyclerView.Adapter<ItemViewHolder>() {
     private val activeItemType = 1
@@ -17,6 +17,11 @@ class FontPickerAdapter(
 
     interface OnItemClickListener {
         fun onItemClick(item: AppFont?, index: Int)
+    }
+
+    fun updateFonts(newDataSource: List<AppFont>?){
+        dataSource = newDataSource
+        notifyDataSetChanged()
     }
 
     fun setSelectedFont(index: Int) {

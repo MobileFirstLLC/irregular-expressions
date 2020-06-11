@@ -17,4 +17,9 @@
     <dimen name="main_icon_size">64dp</dimen>
     <integer name="main_input_lines">2</integer>
 
+    <!-- settings -->
+    <dimen name="font_config_padding">20dp</dimen>
+    <dimen name="font_config_row_minHeight">64dp</dimen>
+    <integer name="font_config_column_count">1</integer>
+
 </resources>

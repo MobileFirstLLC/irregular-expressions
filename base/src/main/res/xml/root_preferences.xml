@@ -3,6 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <PreferenceCategory android:title="@string/label_settings">
+
+        <Preference
+            android:key="font_configs"
+            android:summary="@string/config_fonts_summary"
+            android:title="@string/configure_fonts"
+            app:fragment="mf.asciitext.settings.FontConfigFragment" />
+
         <SwitchPreference
             android:key="key_vibrations"
             android:summaryOff="@string/disabled"
@@ -10,10 +17,10 @@
             android:title="@string/key_vibrations" />
 
         <ListPreference
-            android:key="kbd_layout"
+            android:defaultValue="1"
             android:entries="@array/settings_layout_names_array"
             android:entryValues="@array/settings_layout_values_array"
-            android:defaultValue="1"
+            android:key="kbd_layout"
             android:summary="%s"
             android:title="@string/setting_keyboard_layout" />
     </PreferenceCategory>
@@ -28,8 +35,8 @@
         </PreferenceScreen>
         <PreferenceScreen
             android:icon="@drawable/ic_chat_processing_outline"
-            android:title="@string/label_feedback"
-            android:summary="@string/feedback_summary">
+            android:summary="@string/feedback_summary"
+            android:title="@string/label_feedback">
             <intent
                 android:action="android.intent.action.VIEW"
                 android:data="@string/feedbackUri" />
@@ -47,6 +54,5 @@
             android:summary="@string/versionName"
             android:title="@string/label_version" />
     </PreferenceCategory>
-
 
 </PreferenceScreen>
