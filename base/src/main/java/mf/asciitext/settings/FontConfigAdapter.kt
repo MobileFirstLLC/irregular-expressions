@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.button.MaterialButton
 import mf.asciitext.R
 import mf.asciitext.fonts.AppFont
+import java.util.*
 
 class FontConfigAdapter(
     private var dataSource: List<AppFont>?,
@@ -18,11 +19,12 @@ class FontConfigAdapter(
 ) : RecyclerView.Adapter<FontConfigAdapter.ItemViewHolder>() {
 
     interface OnItemClickListener {
-        fun onEnableClick(index: Int)
-        fun onReorderClick(index: Int)
+        fun onEnableClick(fontId: String)
+        fun onReorderClick(fontId: String, position: Int)
+        fun onDragComplete(fontId: String, position: Int)
     }
 
-    fun updateFonts(newDataSource: List<AppFont>?){
+    fun updateFonts(newDataSource: List<AppFont>?) {
         dataSource = newDataSource
         notifyDataSetChanged()
     }
@@ -34,16 +36,13 @@ class FontConfigAdapter(
         )
     }
 
-    override fun getItemViewType(position: Int): Int {
-        return -1
-    }
-
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val value = dataSource!![position]
         holder.mTextView.text = value.styledName
         holder.mCheckbox.isChecked = value.isEnabled
         holder.mTextView.alpha = if (value.isEnabled) 1f else 0.5f
-        holder.mButton.visibility = if (position == 0 || !value.isEnabled) GONE else VISIBLE
+        holder.mButtonDown.visibility = if (value.isEnabled) VISIBLE else GONE
+        holder.mButtonUp.visibility = if (value.isEnabled) VISIBLE else GONE
     }
 
     override fun getItemCount(): Int {
@@ -54,16 +53,23 @@ class FontConfigAdapter(
         View.OnClickListener {
         val mTextView: TextView = v.findViewById(R.id.text_value)
         val mCheckbox: Switch = v.findViewById(R.id.enable_box)
-        val mButton: MaterialButton = v.findViewById(R.id.order_btn)
+        val mButtonUp: MaterialButton = v.findViewById(R.id.order_btn_up)
+        val mButtonDown: MaterialButton = v.findViewById(R.id.order_btn_down)
 
         override fun onClick(v: View) {
             try {
                 val index = adapterPosition
+                val style = dataSource?.get(index) ?: return
+
                 if (v.id == R.id.enable_box) {
-                    mItemClickListener.onEnableClick(index)
+                    mItemClickListener.onEnableClick(style.fontId)
+                    notifyItemChanged(index)
                 }
-                if (v.id == R.id.order_btn) {
-                    mItemClickListener.onReorderClick(index)
+                if (v.id == R.id.order_btn_up) {
+                    mItemClickListener.onReorderClick(style.fontId, 0)
+                }
+                if (v.id == R.id.order_btn_down) {
+                    mItemClickListener.onReorderClick(style.fontId, itemCount - 1)
                 }
             } catch (e: Exception) {
                 e.printStackTrace()
@@ -72,7 +78,29 @@ class FontConfigAdapter(
 
         init {
             mCheckbox.setOnClickListener(this)
-            mButton.setOnClickListener(this)
+            mButtonUp.setOnClickListener(this)
+            mButtonDown.setOnClickListener(this)
         }
+    }
+
+    fun onItemDismiss(position: Int) {
+        // mItems.remove(position);
+        // notifyItemRemoved(position);
+    }
+
+    fun onItemMove(fromPosition: Int, toPosition: Int) {
+        val style = dataSource?.get(fromPosition) ?: return
+        mItemClickListener.onDragComplete(style.fontId, toPosition)
+
+        if (fromPosition < toPosition) {
+            for (i in fromPosition until toPosition) {
+                Collections.swap(dataSource, i, i + 1)
+            }
+        } else {
+            for (i in fromPosition downTo toPosition + 1) {
+                Collections.swap(dataSource, i, i - 1)
+            }
+        }
+        notifyItemMoved(fromPosition, toPosition)
     }
 }

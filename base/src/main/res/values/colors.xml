@@ -14,5 +14,6 @@
     <color name="keyboardDivider">#99111111</color>
     <color name="activity_bg">#f2f2f2</color>
     <color name="icon_color">#88000000</color>
+    <color name="settings_background">#ddd</color>
 
 </resources>

@@ -13,24 +13,17 @@ import kotlin.collections.HashSet
 
 object AvailableFonts {
 
-    val disabled_key = "pref_disabled_fonts"
-    val order_key = "pref_font_order"
-
+    private const val disabled_key = "pref_disabled_fonts"
+    private const val order_key = "pref_font_order"
     private val fonts = LinkedList<AppFont>()
     private val disabledList = HashSet<String>()
     private val fontOrder = LinkedList<String>()
     private lateinit var prefs: SharedPreferences
 
     class SortComparator : Comparator<AppFont> {
-        val indexVal: (String) -> Int = {
-            if (fontOrder.contains(it))
-                fontOrder.indexOf(it)
-            else fontOrder.size
-        }
-
         override fun compare(font1: AppFont, font2: AppFont): Int {
-            val a = indexVal(font1.fontId)
-            val b = indexVal(font2.fontId)
+            val a = font1.priority
+            val b = font2.priority
             return if (a < b) -1 else if (a > b) 1 else 0
         }
     }
@@ -61,15 +54,11 @@ object AvailableFonts {
         fonts.clear()
         val res = ctx.resources
         prefs = PreferenceManager.getDefaultSharedPreferences(ctx)
-        initPreferences()
+        restoreDisabledList()
+        restoreOrder()
         initCharsetFonts(res, res.obtainTypedArray(R.array.charset_fonts))
         initRandomCaps(res.getString(R.string.font_name_spongemock))
         initAccentFonts(res, res.obtainTypedArray(R.array.accent_fonts))
-    }
-
-    private fun initPreferences() {
-        restoreDisabledList()
-        restoreOrder()
     }
 
     private fun persistDisabledList() {
@@ -92,27 +81,44 @@ object AvailableFonts {
     }
 
     private fun restoreOrder() {
-        val prefList = prefs.getString(order_key, null) ?: return
-        fontOrder.addAll(prefList.split(","))
+        val prefList = prefs.getString(order_key, null)
+        if (prefList != null) {
+            val temp = prefList.split(",")
+            fontOrder.addAll(temp)
+        }
     }
 
-    fun setFirst(index: Int) {
-        if (index < 0 || index > fonts.size) return
-        val newFirst = fonts.removeAt(index)
-        fonts.add(0, newFirst)
+    private fun getOrder(fontId: String): Int {
+        if (fontOrder.contains(fontId))
+            return fontOrder.indexOf(fontId)
+        return fonts.size
+    }
+
+    fun setNewPosition(fontId: String, position: Int) {
+        fontOrder.clear()
+        val softedFonts = getFonts()
+        for (i in softedFonts.indices) {
+            val fId = softedFonts.get(i).fontId
+            if (fontId != fId) fontOrder.add(fId)
+        }
+        fontOrder.add(position, fontId)
+        for (i in fonts.indices) {
+            fonts[i].priority = fontOrder.indexOf(fonts[i].fontId)
+        }
         persistOrder()
     }
 
-    fun toggleEnabled(index: Int) {
-        if (index < 0 || index > fonts.size) return
-        val nextState = !fonts[index].isEnabled
-        val fontID = fonts[index].fontId
-
-        fonts[index].isEnabled = nextState
-        if (!nextState) disabledList.add(fontID)
-        else disabledList.remove(fontID)
-
-        persistDisabledList()
+    fun toggleEnabled(fontId: String) {
+        fonts.forEach {
+            if (it.fontId == fontId) {
+                val nextState = !it.isEnabled
+                it.isEnabled = nextState
+                if (!nextState) disabledList.add(fontId)
+                else disabledList.remove(fontId)
+                persistDisabledList()
+                return
+            }
+        }
     }
 
     /**
@@ -138,7 +144,16 @@ object AvailableFonts {
                 val reversed = fontDef.getBoolean(reverseIndex, false)
                 val enabled = !disabledList.contains(fontId)
                 if (name != null)
-                    fonts.add(CharsetFont(fontId, name, enabled, charset, reversed))
+                    fonts.add(
+                        CharsetFont(
+                            fontId,
+                            name,
+                            getOrder(fontId),
+                            enabled,
+                            charset,
+                            reversed
+                        )
+                    )
 
                 fontDef.recycle()
             } else {
@@ -170,7 +185,15 @@ object AvailableFonts {
                 val accentChar = fontDef.getString(accentCharIndex)
                 val enabled = !disabledList.contains(fontId)
                 if (fontId != null && name != null && accentChar != null)
-                    fonts.add(AccentFont(fontId, name, enabled, accentChar))
+                    fonts.add(
+                        AccentFont(
+                            fontId,
+                            name,
+                            getOrder(fontId),
+                            enabled,
+                            accentChar
+                        )
+                    )
                 fontDef.recycle()
             } else {
                 Log.d("INIT FONTS", "Invalid resource Id!")
@@ -180,8 +203,8 @@ object AvailableFonts {
     }
 
     private fun initRandomCaps(name: String) {
-        val id = "spongemock"
-        val enabled = !disabledList.contains(id)
-        fonts.add(RandomCaps(id, name, enabled))
+        val fontId = "spongemock"
+        val enabled = !disabledList.contains(fontId)
+        fonts.add(RandomCaps(fontId, name, getOrder(fontId), enabled))
     }
 }

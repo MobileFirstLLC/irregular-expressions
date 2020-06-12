@@ -3,8 +3,9 @@ package mf.asciitext.fonts
 class RandomCaps internal constructor(
     id: String,
     name: String,
+    priority: Int,
     enabled: Boolean
-) : AppFont(id, name,enabled, false, true) {
+) : AppFont(id, name, enabled, priority, false, true) {
 
     override fun encode(text: String?, sequence: CharSequence?): String? {
         if (!isEmpty(text)) {

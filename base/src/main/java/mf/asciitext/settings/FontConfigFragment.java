@@ -7,9 +7,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -59,23 +61,77 @@ public class FontConfigFragment extends Fragment {
         mRecyclerView.setAdapter(adapter);
         mRecyclerView.setLayoutParams(new RecyclerView.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT,
                 RecyclerView.LayoutParams.MATCH_PARENT));
+
+        ItemTouchHelper.Callback callback = new SimpleItemTouchHelperCallback(adapter);
+        ItemTouchHelper touchHelper = new ItemTouchHelper(callback);
+        touchHelper.attachToRecyclerView(mRecyclerView);
+
         mRecyclerView.addItemDecoration(new DividerItemDecoration(ctx, layoutManager.getOrientation()));
+        int BgColor = ContextCompat.getColor(mRecyclerView.getContext(), R.color.settings_background);
+        mRecyclerView.setBackgroundColor(BgColor);
         return mRecyclerView;
     }
 
     private FontConfigAdapter.OnItemClickListener onClick() {
         return new FontConfigAdapter.OnItemClickListener() {
             @Override
-            public void onReorderClick(int index) {
-                AvailableFonts.INSTANCE.setFirst(index);
+            public void onDragComplete(String fontId, int position) {
+                AvailableFonts.INSTANCE.setNewPosition(fontId, position);
+            }
+
+            @Override
+            public void onReorderClick(String fontId, int position) {
+                AvailableFonts.INSTANCE.setNewPosition(fontId, position);
                 adapter.updateFonts(AvailableFonts.INSTANCE.getFonts());
             }
 
             @Override
-            public void onEnableClick(int index) {
-                AvailableFonts.INSTANCE.toggleEnabled(index);
-                adapter.notifyItemChanged(index);
+            public void onEnableClick(String fontId) {
+                AvailableFonts.INSTANCE.toggleEnabled(fontId);
             }
         };
+    }
+
+    static class SimpleItemTouchHelperCallback extends ItemTouchHelper.Callback {
+
+        private final FontConfigAdapter adapter;
+
+        SimpleItemTouchHelperCallback(FontConfigAdapter adapter) {
+            this.adapter = adapter;
+        }
+
+        @Override
+        public boolean isLongPressDragEnabled() {
+            return true;
+        }
+
+        @Override
+        public boolean isItemViewSwipeEnabled() {
+            return false;
+        }
+
+        @Override
+        public int getMovementFlags(
+                @NonNull RecyclerView recyclerView,
+                @NonNull RecyclerView.ViewHolder viewHolder) {
+            int dragFlags = ItemTouchHelper.UP | ItemTouchHelper.DOWN;
+            int swipeFlags = ItemTouchHelper.START | ItemTouchHelper.END;
+            return makeMovementFlags(dragFlags, swipeFlags);
+        }
+
+        @Override
+        public boolean onMove(
+                @NonNull RecyclerView recyclerView,
+                @NonNull RecyclerView.ViewHolder viewHolder,
+                @NonNull RecyclerView.ViewHolder target) {
+            adapter.onItemMove(viewHolder.getAdapterPosition(), target.getAdapterPosition());
+            return true;
+        }
+
+        @Override
+        public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+            adapter.onItemDismiss(viewHolder.getAdapterPosition());
+        }
+
     }
 }
