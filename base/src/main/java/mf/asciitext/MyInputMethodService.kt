@@ -8,10 +8,12 @@ import android.inputmethodservice.InputMethodService
 import android.inputmethodservice.Keyboard
 import android.inputmethodservice.KeyboardView
 import android.inputmethodservice.KeyboardView.OnKeyboardActionListener
-import android.os.*
+import android.os.Build
+import android.os.SystemClock
+import android.os.VibrationEffect
+import android.os.Vibrator
 import android.preference.PreferenceManager
 import android.text.TextUtils
-import android.util.Log
 import android.view.KeyEvent
 import android.view.View
 import android.view.inputmethod.EditorInfo
@@ -22,7 +24,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import mf.asciitext.fonts.AppFont
 import mf.asciitext.fonts.AvailableFonts.getEnabledFonts
-import mf.asciitext.fonts.AvailableFonts.getFonts
 import java.util.concurrent.TimeUnit
 
 /**

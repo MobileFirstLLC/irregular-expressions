@@ -2,7 +2,6 @@ package mf.asciitext.settings
 
 import android.os.Bundle
 import android.view.View
-import androidx.fragment.app.Fragment
 import androidx.preference.PreferenceFragmentCompat
 import mf.asciitext.R
 
