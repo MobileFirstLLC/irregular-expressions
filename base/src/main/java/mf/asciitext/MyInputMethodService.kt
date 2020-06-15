@@ -14,6 +14,7 @@ import android.os.VibrationEffect
 import android.os.Vibrator
 import android.preference.PreferenceManager
 import android.text.TextUtils
+import android.text.method.MetaKeyKeyListener
 import android.view.KeyEvent
 import android.view.View
 import android.view.inputmethod.EditorInfo
@@ -26,11 +27,14 @@ import mf.asciitext.fonts.AppFont
 import mf.asciitext.fonts.AvailableFonts.getEnabledFonts
 import java.util.concurrent.TimeUnit
 
+
 /**
  * This class sets up and handles virtual keyboard events
  */
 class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
 
+    // set true to also process hard keyboard click events
+    private val PROCESS_HARD_KEYS = true
     private val DOUBLETAP_MAX_DELAY_MS = 500L
     private val VIBRATION_DURATION_MS = 25L
     private val LONG_PRESS = 200L
@@ -65,6 +69,8 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
     private var fontIndex = REGULAR_FONT_INDEX
     private var lastSelectedStyleIndex = REGULAR_FONT_INDEX
     private var reverseCursorDirection = false
+    private val mComposing = StringBuilder()
+    private var mMetaState: Long = 0
 
     // SHIFT key related variables
     private var uppercaseNextKeyOnly = false
@@ -148,8 +154,41 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
         if (i == KEYCODE_SPACE) onSpaceKeyDown()
     }
 
+    // TODO: figure out how to handle space key presses
+    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
+        if (PROCESS_HARD_KEYS && event != null) return translateKeyDown(keyCode, event)
+        return super.onKeyDown(keyCode, event)
+    }
+
+    override fun onKeyUp(keyCode: Int, event: KeyEvent?): Boolean {
+        // If we want to do transformations on text being entered with a hard
+        // keyboard, we need to process the up events to update the meta key
+        // state we are tracking.
+        if (PROCESS_HARD_KEYS) {
+            mMetaState = MetaKeyKeyListener.handleKeyUp(mMetaState, keyCode, event)
+        }
+        return super.onKeyUp(keyCode, event)
+    }
+
     override fun onRelease(i: Int) {
         if (i == KEYCODE_SPACE) onSpaceKeyRelease()
+    }
+
+    /**
+     * This translates incoming hard key events in to edit operations on an
+     * InputConnection.  It is only needed when using the
+     * PROCESS_HARD_KEYS option.
+     */
+    private fun translateKeyDown(keyCode: Int, event: KeyEvent): Boolean {
+        mMetaState = MetaKeyKeyListener.handleKeyDown(mMetaState, keyCode, event)
+        val c = event.getUnicodeChar(MetaKeyKeyListener.getMetaState(mMetaState))
+        mMetaState = MetaKeyKeyListener.adjustMetaAfterKeypress(mMetaState)
+        val ic = currentInputConnection
+        if (c == 0 || ic == null) {
+            return false
+        }
+        onKey(c, IntArray(0))
+        return true
     }
 
     override fun onText(charSequence: CharSequence) {}

@@ -110,7 +110,13 @@ If you would like to become a beta tester and get early access to releases **[fo
 
 ### Helpful References
 
+- [Create an input method](https://developer.android.com/guide/topics/text/creating-input-method.html)
 - [Mathematical Alphanumeric Symbols](https://www.unicode.org/charts/PDF/U1D400.pdf)<br/>Range: 1D400–1D7FF
+- [Good Sample Code](https://android.googlesource.com/platform/development/+/master/samples/SoftKeyboard/src/com/example/android/softkeyboard/SoftKeyboard.java?autodive=0%2F%2F%2F%2F)
+
+#### IME Lifecycle
+
+![img](https://developer.android.com/resources/articles/images/inputmethod_lifecycle_image.png)
 
 * * *
 
