@@ -108,6 +108,8 @@ Note: some fonts are not supported by older versions of Android. Android Oreo (8
 
 If you would like to become a beta tester and get early access to releases **[follow these instructions](https://play.google.com/apps/testing/mf.asciitext.lite).**
 
+* * *
+
 ### Helpful References
 
 - [Create an input method](https://developer.android.com/guide/topics/text/creating-input-method.html)
@@ -116,7 +118,9 @@ If you would like to become a beta tester and get early access to releases **[fo
 
 #### IME Lifecycle
 
-![img](https://developer.android.com/resources/articles/images/inputmethod_lifecycle_image.png)
+<p align="center">
+<img src="https://developer.android.com/resources/articles/images/inputmethod_lifecycle_image.png" alt=''/>
+</p>
 
 * * *
 
