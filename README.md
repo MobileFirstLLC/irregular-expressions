@@ -104,6 +104,12 @@ Note: some fonts are not supported by older versions of Android. Android Oreo (8
 
 <br/><br/>
 
+### Sponsor this project
+
+If you enjoy this keyboard and/or find the source code useful consider sponsoring the project. We make ad-free, free software and do not spy or steal your data. Thanks!
+
+[Become a sponsor](https://github.com/sponsors/MobileFirstLLC?o=sd&sc=t)
+
 ### Interested in becoming a beta tester?
 
 If you would like to become a beta tester and get early access to releases **[follow these instructions](https://play.google.com/apps/testing/mf.asciitext.lite).**
