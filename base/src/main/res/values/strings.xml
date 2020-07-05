@@ -72,6 +72,7 @@
     <string name="font_name_regular">Regular</string>
     <string name="font_name_spongemock">Spongemock</string>
     <string name="configure_fonts">Configure Fonts</string>
-    <string name="config_fonts_summary">Show, hide and rearrange fonts</string>
+    <string name="config_fonts_summary">Show, hide and reorder fonts</string>
+    <string name="font_config_instructions">Reorder fonts by long-pressing then dragging and dropping to new position. Arrows move font to top/bottom. Toggle off to hide font from keyboard.</string>
 
 </resources>

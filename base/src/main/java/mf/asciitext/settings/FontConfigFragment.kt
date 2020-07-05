@@ -7,11 +7,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.*
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import mf.asciitext.R
 import mf.asciitext.fonts.AvailableFonts.getFonts
 import mf.asciitext.fonts.AvailableFonts.setNewPosition
 import mf.asciitext.fonts.AvailableFonts.toggleEnabled
+
 
 class FontConfigFragment : Fragment() {
     private val EXTRA_RVSTATE = "recyclerview_state"
@@ -44,26 +48,19 @@ class FontConfigFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        restoreRecyclerViewState(savedInstanceState)
+        val view: View = inflater.inflate(R.layout.fragment_font_config, container, false)
         val ctx: Context? = activity
         val fonts = getFonts()
-        mRecyclerView = RecyclerView(ctx!!)
+        mRecyclerView = view.findViewById(R.id.recyclerView)
         adapter = FontConfigAdapter(fonts, onClick())
         val layoutManager = GridLayoutManager(ctx, columnCount())
         mRecyclerView!!.layoutManager = layoutManager
         mRecyclerView!!.adapter = adapter
-        mRecyclerView!!.layoutParams = RecyclerView.LayoutParams(
-            RecyclerView.LayoutParams.MATCH_PARENT,
-            RecyclerView.LayoutParams.MATCH_PARENT
-        )
         val callback: ItemTouchHelper.Callback = SimpleItemTouchHelperCallback(adapter!!)
         val touchHelper = ItemTouchHelper(callback)
         touchHelper.attachToRecyclerView(mRecyclerView)
-        mRecyclerView!!.addItemDecoration(DividerItemDecoration(ctx, layoutManager.orientation))
-        val BgColor =
-            ContextCompat.getColor(mRecyclerView!!.context, R.color.settings_background)
-        mRecyclerView!!.setBackgroundColor(BgColor)
-        return mRecyclerView
+        restoreRecyclerViewState(savedInstanceState)
+        return view
     }
 
     private fun onClick(): FontConfigAdapter.OnItemClickListener {
