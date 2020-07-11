@@ -102,7 +102,7 @@ Note: some fonts are not supported by older versions of Android. Android Oreo (8
 
 </p>
 
-<br/><br/>
+* * *
 
 ### Sponsor this project
 
