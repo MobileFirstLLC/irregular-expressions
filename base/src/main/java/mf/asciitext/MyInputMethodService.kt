@@ -183,9 +183,13 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
         mMetaState = MetaKeyKeyListener.handleKeyDown(mMetaState, keyCode, event)
         val c = event.getUnicodeChar(MetaKeyKeyListener.getMetaState(mMetaState))
         mMetaState = MetaKeyKeyListener.adjustMetaAfterKeypress(mMetaState)
-        val ic = currentInputConnection
-        if (c == 0 || ic == null) {
+        if (c == 0 || currentInputConnection == null) {
             return false
+        }
+        if (c == 32) // space
+        {
+            encodeCharacter(KEYCODE_SPACE)
+            return true
         }
         onKey(c, IntArray(0))
         return true
