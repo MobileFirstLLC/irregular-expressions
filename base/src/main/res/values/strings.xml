@@ -73,6 +73,9 @@
     <string name="font_name_spongemock">Spongemock</string>
     <string name="configure_fonts">Configure Fonts</string>
     <string name="config_fonts_summary">Show, hide and reorder fonts</string>
-    <string name="font_config_instructions">Reorder fonts by long-pressing then dragging and dropping to new position. Arrows move font to top/bottom. Toggle off to hide font from keyboard.</string>
+    <string name="font_config_instructions">Reorder fonts by long-pressing then dragging to new position. Arrows move font to top/bottom. Toggle off to hide font from keyboard.</string>
+    <string name="label_send_key">Send</string>
+    <string name="label_next_key">Next</string>
+    <string name="label_go_key">GO</string>
 
 </resources>

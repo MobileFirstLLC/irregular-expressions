@@ -6,6 +6,7 @@ import android.content.Context
 import android.content.Intent
 import android.inputmethodservice.InputMethodService
 import android.inputmethodservice.Keyboard
+import android.inputmethodservice.Keyboard.KEYCODE_DONE
 import android.inputmethodservice.KeyboardView
 import android.inputmethodservice.KeyboardView.OnKeyboardActionListener
 import android.os.Build
@@ -13,8 +14,10 @@ import android.os.SystemClock
 import android.os.VibrationEffect
 import android.os.Vibrator
 import android.preference.PreferenceManager
+import android.text.InputType
 import android.text.TextUtils
 import android.text.method.MetaKeyKeyListener
+import android.util.Log
 import android.view.KeyEvent
 import android.view.View
 import android.view.inputmethod.EditorInfo
@@ -26,7 +29,6 @@ import androidx.recyclerview.widget.RecyclerView
 import mf.asciitext.fonts.AppFont
 import mf.asciitext.fonts.AvailableFonts.getEnabledFonts
 import java.util.concurrent.TimeUnit
-
 
 /**
  * This class sets up and handles virtual keyboard events
@@ -65,11 +67,11 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
     private var adapter: FontPickerAdapter? = null
 
     // keyboard default state
+    private val mComposing = StringBuilder()
     private var keyboardChoice = ALPHA_KBD
     private var fontIndex = REGULAR_FONT_INDEX
     private var lastSelectedStyleIndex = REGULAR_FONT_INDEX
     private var reverseCursorDirection = false
-    private val mComposing = StringBuilder()
     private var mMetaState: Long = 0
 
     // SHIFT key related variables
@@ -79,6 +81,9 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
     // SPACE bar variables
     private var spaceDown: Long = 0
     private var pickerInflated: Boolean = false
+
+    // ENTER key variables
+    private var mEnterKeyIndex: Int = -1
 
     // user preferences
     private var keyVibrations = DEFAULT_VIBRATIONS
@@ -93,7 +98,17 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
         /* initialize keyboard */
         keyboardView = layout.findViewById(R.id.keyboard_view)
         keyboardView?.setOnKeyboardActionListener(this)
-        enableAlphaKeyboard()
+        if (keyboardChoice == NUMBER_KBD) {
+            enableSymbolicKeyboard()
+        } else {
+            enableAlphaKeyboard()
+        }
+        for (i in 0..(keyboard!!.keys).size) {
+            if (keyboard!!.keys[i].codes.contains(KEYCODE_DONE)) {
+                mEnterKeyIndex = i
+                break
+            }
+        }
 
         /* setup font picker recyclerView */
 
@@ -118,6 +133,48 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
     }
 
     /**
+     * This is the main point where we do our initialization of the input method
+     * to begin operating on an application.  At this point we have been
+     * bound to the client, and are now receiving all of the detailed information
+     * about the target of our edits.
+     */
+    override fun onStartInput(attribute: EditorInfo, restarting: Boolean) {
+        super.onStartInput(attribute, restarting)
+
+        // Reset our state.  We want to do this even if restarting, because
+        // the underlying state of the text editor could have changed in any way.
+        mComposing.setLength(0)
+        if (!restarting) mMetaState = 0
+
+        when (attribute.inputType and InputType.TYPE_MASK_CLASS) {
+            InputType.TYPE_CLASS_NUMBER, InputType.TYPE_CLASS_DATETIME -> {
+                // Numbers and dates default to the symbols keyboard, with
+                // no extra features.
+                keyboardChoice = NUMBER_KBD
+            }
+            InputType.TYPE_CLASS_PHONE -> {
+                // Phones will also default to the symbols keyboard, though
+                // often you will want to have a dedicated phone keyboard.
+                keyboardChoice = NUMBER_KBD
+            }
+            InputType.TYPE_CLASS_TEXT -> {
+                // This is general text editing.  We will default to the
+                // normal alphabetic keyboard, and assume that we should
+                // be doing predictive text (showing candidates as the
+                // user types).
+                keyboardChoice = ALPHA_KBD
+            }
+            else -> {
+                // For all unknown input types, default to the alphabetic
+                // keyboard with no special features.
+                // mCurKeyboard = mQwertyKeyboard
+                keyboardChoice = ALPHA_KBD
+            }
+        }
+        setImeOptions(attribute.imeOptions)
+    }
+
+    /**
      * Reload user preferences every time keyboard is inflated
      * as these preferences may have changed
      */
@@ -126,7 +183,6 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
         initPreferences()
         fonts = getEnabledFonts()
         adapter!!.updateFonts(fonts)
-        enableAlphaKeyboard()
     }
 
     /**
@@ -154,7 +210,6 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
         if (i == KEYCODE_SPACE) onSpaceKeyDown()
     }
 
-    // TODO: figure out how to handle space key presses
     override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
         if (PROCESS_HARD_KEYS && event != null) return translateKeyDown(keyCode, event)
         return super.onKeyDown(keyCode, event)
@@ -186,7 +241,7 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
         if (c == 0 || currentInputConnection == null) {
             return false
         }
-        if (c == 32) // space
+        if (c == KEYCODE_SPACE)
         {
             encodeCharacter(KEYCODE_SPACE)
             return true
@@ -194,12 +249,6 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
         onKey(c, IntArray(0))
         return true
     }
-
-    override fun onText(charSequence: CharSequence) {}
-    override fun swipeLeft() {}
-    override fun swipeRight() {}
-    override fun swipeDown() {}
-    override fun swipeUp() {}
 
     /**
      * Switch between numeric and symbolic keyboard
@@ -212,6 +261,13 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
             keyboard = Keyboard(this, R.xml.keyboard_extended)
             keyboardChoice = NUMBER_KBD
         }
+        keyboardView!!.keyboard = keyboard
+        keyboardView!!.invalidateAllKeys()
+    }
+
+    private fun enableSymbolicKeyboard() {
+        keyboard = Keyboard(this, R.xml.keyboard_extended)
+        keyboardChoice = NUMBER_KBD
         keyboardView!!.keyboard = keyboard
         keyboardView!!.invalidateAllKeys()
     }
@@ -307,12 +363,8 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
      */
     private fun handleDoneKeyPress() {
         val inputConnection = currentInputConnection
-        inputConnection.sendKeyEvent(
-            KeyEvent(
-                KeyEvent.ACTION_DOWN,
-                KeyEvent.KEYCODE_ENTER
-            )
-        )
+        inputConnection.sendKeyEvent(KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_ENTER))
+        inputConnection.sendKeyEvent(KeyEvent(KeyEvent.ACTION_UP, KeyEvent.KEYCODE_ENTER))
     }
 
     /**
@@ -464,4 +516,49 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
         val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.showInputMethodPicker()
     }
+
+    /**
+     * This looks at the ime options given by the current editor, to set the
+     * appropriate label on the keyboard's enter key (if it has one).
+     */
+    private fun setImeOptions(options: Int) {
+
+        val mEnterKey =
+            (if (keyboard != null && mEnterKeyIndex >= 0 && mEnterKeyIndex < keyboard!!.keys.size)
+                keyboard!!.keys[mEnterKeyIndex] else null)
+                ?: return
+
+        when (options and (EditorInfo.IME_MASK_ACTION or EditorInfo.IME_FLAG_NO_ENTER_ACTION)) {
+            EditorInfo.IME_ACTION_GO -> {
+                mEnterKey.iconPreview = null
+                mEnterKey.icon = null
+                mEnterKey.label = resources.getText(R.string.label_go_key)
+            }
+            EditorInfo.IME_ACTION_NEXT -> {
+                mEnterKey.iconPreview = null
+                mEnterKey.icon = null
+                mEnterKey.label = resources.getText(R.string.label_next_key)
+            }
+            EditorInfo.IME_ACTION_SEARCH -> {
+                mEnterKey.icon = resources.getDrawable(R.drawable.ic_keybaord_search)
+                mEnterKey.label = null
+            }
+            EditorInfo.IME_ACTION_SEND -> {
+                mEnterKey.iconPreview = null
+                mEnterKey.icon = null
+                mEnterKey.label = resources.getText(R.string.label_send_key)
+            }
+            else -> {
+                mEnterKey.icon = resources.getDrawable(R.drawable.ic_keyboard_return)
+                mEnterKey.label = null
+            }
+        }
+        if (keyboardView != null) keyboardView!!.invalidateKey(mEnterKeyIndex)
+    }
+
+    override fun onText(charSequence: CharSequence) {}
+    override fun swipeLeft() {}
+    override fun swipeRight() {}
+    override fun swipeDown() {}
+    override fun swipeUp() {}
 }
