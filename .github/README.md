@@ -27,12 +27,20 @@ Irregular Expressions is a virtual keyboard for Android devices. With this keybo
 <a href='https://play.google.com/store/apps/details?id=mf.asciitext.lite'> 
 <strong>Install from Google Play</strong>
 </a>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+<a href='https://f-droid.org/en/packages/mf.asciitext.lite/'>  
+<strong>N̐̈E̐̈W̐̈: Get it on F-Droid</strong>
+</a> 
 </p>
 <p align="center">
 <a href='https://play.google.com/store/apps/details?id=mf.asciitext.lite'> 
 <img alt='Get it on Google Play' height="72" align="center" src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png'/>
 </a>
-</p>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+<a href='https://f-droid.org/en/packages/mf.asciitext.lite/'> 
+<img alt='Get it on Fdroid' height="72" align="center" src='https://fdroid.gitlab.io/artwork/badge/get-it-on.png'/>
+</a>
+</p> 
 
 <br/><br/>
  
