@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <input-method xmlns:android="http://schemas.android.com/apk/res/android"
     android:icon="@drawable/ic_settings"
-    android:settingsActivity="mf.asciitext.SettingsActivity">
+    android:settingsActivity="mf.irregex.SettingsActivity">
     <subtype android:imeSubtypeMode="keyboard" />
 </input-method>

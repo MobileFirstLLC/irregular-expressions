@@ -21,17 +21,17 @@
         android:paddingBottom="6dp">
 
         <androidx.appcompat.widget.AppCompatImageButton
-            android:id="@+id/font_button"
+            android:id="@+id/style_button"
             style="@style/kbd_icon"
             android:padding="4dp"
             android:layout_width="40dp"
-            app:srcCompat="@drawable/ic_font_off" />
+            app:srcCompat="@drawable/ic_style_off" />
 
         <View style="@style/kbd_vertical_divider" />
 
         <!-- TODO: refactor this nested weight -->
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/fontPicker"
+            android:id="@+id/stylePicker"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1" />

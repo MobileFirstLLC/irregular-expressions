@@ -4,7 +4,7 @@
     <dimen name="match_parent">-1px</dimen>
 
     <!-- keyboard dimens -->
-    <dimen name="kbd_font_picker_h_padding">10dp</dimen>
+    <dimen name="kbd_style_picker_horizontal_padding">10dp</dimen>
     <dimen name="kbd_icon_size">34dp</dimen>
     <dimen name="kbd_icon_h_margin">0dp</dimen>
     <dimen name="kdb_icon_padding">8dp</dimen>
@@ -18,8 +18,8 @@
     <integer name="main_input_lines">2</integer>
 
     <!-- settings -->
-    <dimen name="font_config_padding">20dp</dimen>
-    <dimen name="font_config_row_minHeight">64dp</dimen>
-    <integer name="font_config_column_count">1</integer>
+    <dimen name="style_config_padding">20dp</dimen>
+    <dimen name="style_config_row_minHeight">64dp</dimen>
+    <integer name="style_config_column_count">1</integer>
 
 </resources>

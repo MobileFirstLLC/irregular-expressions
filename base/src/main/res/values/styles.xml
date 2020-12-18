@@ -13,20 +13,20 @@
         <item name="android:padding">@dimen/kdb_icon_padding</item>
     </style>
 
-    <style name="kbd_font_picker_font">
+    <style name="kbd_style_picker_option">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">@dimen/match_parent</item>
         <item name="android:gravity">center</item>
-        <item name="android:paddingStart">@dimen/kbd_font_picker_h_padding</item>
-        <item name="android:paddingLeft">@dimen/kbd_font_picker_h_padding</item>
-        <item name="android:paddingEnd">@dimen/kbd_font_picker_h_padding</item>
-        <item name="android:paddingRight">@dimen/kbd_font_picker_h_padding</item>
+        <item name="android:paddingStart">@dimen/kbd_style_picker_horizontal_padding</item>
+        <item name="android:paddingLeft">@dimen/kbd_style_picker_horizontal_padding</item>
+        <item name="android:paddingEnd">@dimen/kbd_style_picker_horizontal_padding</item>
+        <item name="android:paddingRight">@dimen/kbd_style_picker_horizontal_padding</item>
         <item name="android:textColor">@color/keyboardTextColor</item>
         <item name="layout_constraintStart_toStartOf">parent</item>
         <item name="layout_constraintTop_toTopOf">parent</item>
     </style>
 
-    <style name="kbd_font_picker_font_active" parent="kbd_font_picker_font">
+    <style name="kbd_style_picker_option_active" parent="kbd_style_picker_option">
         <item name="android:background">@drawable/rounded_primary_bg</item>
     </style>
 
@@ -159,13 +159,13 @@
         <item name="android:lines">@integer/main_input_lines</item>
     </style>
 
-    <!-- font config -->
+    <!-- style config -->
 
     <style name="config_checkbox">
-        <item name="android:paddingStart">@dimen/font_config_padding</item>
-        <item name="android:paddingEnd">@dimen/font_config_padding</item>
-        <item name="android:paddingLeft">@dimen/font_config_padding</item>
-        <item name="android:paddingRight">@dimen/font_config_padding</item>
+        <item name="android:paddingStart">@dimen/style_config_padding</item>
+        <item name="android:paddingEnd">@dimen/style_config_padding</item>
+        <item name="android:paddingLeft">@dimen/style_config_padding</item>
+        <item name="android:paddingRight">@dimen/style_config_padding</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="layout_constraintEnd_toEndOf">parent</item>
@@ -173,11 +173,11 @@
         <item name="layout_constraintBottom_toBottomOf">parent</item>
     </style>
 
-    <style name="config_font">
-        <item name="android:paddingStart">@dimen/font_config_padding</item>
-        <item name="android:paddingEnd">@dimen/font_config_padding</item>
-        <item name="android:paddingLeft">@dimen/font_config_padding</item>
-        <item name="android:paddingRight">@dimen/font_config_padding</item>
+    <style name="config_style">
+        <item name="android:paddingStart">@dimen/style_config_padding</item>
+        <item name="android:paddingEnd">@dimen/style_config_padding</item>
+        <item name="android:paddingLeft">@dimen/style_config_padding</item>
+        <item name="android:paddingRight">@dimen/style_config_padding</item>
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:gravity">center_vertical|start</item>

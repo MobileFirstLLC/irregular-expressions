@@ -1,0 +1,216 @@
+<resources>
+
+
+    <!--
+    ========================================================
+    Accent styles use regular ASCII letters but use unicode
+    characters that add accents of other decorations around
+    each character. Same accent will be applied to all letters.
+
+    Character set styles replace regular ASCII table printing
+    characters with unicode characters to create different
+    styles; characters are defined for ASCII range:
+    32 (space) - 126 (tilde).
+    ========================================================
+    -->
+
+    <!-- follow this schema when defining accent character style! -->
+    <!-- see existing arrays below for examples -->
+    <integer name="AccentIdIndex">0</integer>
+    <integer name="AccentNameIndex">1</integer>
+    <integer name="AccentValue">2</integer>
+
+    <!-- follow this schema when defining style character sets! -->
+    <!-- see existing arrays below for examples -->
+    <integer name="CharsetIdIndex">0</integer>
+    <integer name="CharsetNameIndex">1</integer>
+    <integer name="CharsetReverseIndex">2</integer>
+    <integer name="CharsetIndex">3</integer>
+
+    <array name="accent_frowny_face">
+        <item>accent_frowny_face</item>
+        <item name="name">@string/name_frowny_faces</item>
+        <item name="char">\u0311\u0307\u0308</item>
+    </array>
+    <array name="accent_happy_face">
+        <item>accent_happy_face</item>
+        <item name="name">@string/name_happy_faces</item>
+        <item name="char">\u0310\u0308</item>
+    </array>
+    <array name="accent_thunder">
+        <item>accent_thunder</item>
+        <item name="name">@string/name_thunder</item>
+        <item name="char">\u035b</item>
+    </array>
+    <array name="accents_slashed">
+        <item>accents_slashed</item>
+        <item name="name">@string/name_slashed</item>
+        <item name="char">\u0338</item>
+    </array>
+    <array name="accents_mustache">
+        <item>accents_mustache</item>
+        <item name="name">@string/name_mustache</item>
+        <item name="char">\u033c</item>
+    </array>
+    <array name="starry_night">
+        <item>starry_night</item>
+        <item name="name">@string/name_starry_night</item>
+        <item name="char">\u0359</item>
+    </array>
+    <array name="accents_lite_strikes">
+        <item>accents_lite_strikes</item>
+        <item name="name">@string/name_lite_strikes</item>
+        <item name="char">\u0335</item>
+    </array>
+    <array name="charset_bold_serif">
+        <item>charset_bold_serif</item>
+        <item name="name">@string/name_serif_bold</item>
+        <item name="reverse">0</item>
+        <item name="charset">@array/serif_bold</item>
+    </array>
+    <array name="charset_serif_italic">
+        <item>charset_serif_italic</item>
+        <item name="name">@string/name_serif_italic</item>
+        <item name="reverse">0</item>
+        <item name="charset">@array/serif_italic</item>
+    </array>
+    <array name="charset_bolditalic">
+        <item>charset_bolditalic</item>
+        <item name="name">@string/name_serif_bold_italic</item>
+        <item name="reverse">0</item>
+        <item name="charset">@array/serif_bolditalic</item>
+    </array>
+    <array name="sans_bold">
+        <item>sans_bold</item>
+        <item name="name">@string/name_ss_bold</item>
+        <item name="reverse">0</item>
+        <item name="charset">@array/sansserif_bold</item>
+    </array>
+    <array name="sans_italic">
+        <item>sans_italic</item>
+        <item name="name">@string/name_ss_italic</item>
+        <item name="reverse">0</item>
+        <item name="charset">@array/sansserif_italic</item>
+    </array>
+    <array name="sans_bolditalic">
+        <item>sans_bolditalic</item>
+        <item name="name">@string/name_ss_bold_italic</item>
+        <item name="reverse">0</item>
+        <item name="charset">@array/sansserif_bolditalic</item>
+    </array>
+    <array name="charset_clear_boxes">
+        <item>charset_clear_boxes</item>
+        <item name="name">@string/name_clear_boxes</item>
+        <item name="reverse">0</item>
+        <item name="charset">@array/clear_box</item>
+    </array>
+    <array name="charset_clear_circles">
+        <item>charset_clear_circles</item>
+        <item name="name">@string/name_clear_circles</item>
+        <item name="reverse">0</item>
+        <item name="charset">@array/clear_circle</item>
+    </array>
+    <array name="charset_filled_boxes">
+        <item>charset_filled_boxes</item>
+        <item name="name">@string/name_filled_boxes</item>
+        <item name="reverse">0</item>
+        <item name="charset">@array/filled_box</item>
+    </array>
+    <array name="charset_filled_circles">
+        <item>charset_filled_circles</item>
+        <item name="name">@string/name_filled_circles</item>
+        <item name="reverse">0</item>
+        <item name="charset">@array/filled_circle</item>
+    </array>
+    <array name="charset_underlined">
+        <item>charset_underlined</item>
+        <item name="name">@string/name_underlined</item>
+        <item name="reverse">0</item>
+        <item name="charset">@array/underlined</item>
+    </array>
+    <array name="charset_strikethrough">
+        <item>charset_strikethrough</item>
+        <item name="name">@string/name_strikethrough</item>
+        <item name="reverse">0</item>
+        <item name="charset">@array/longstrikes</item>
+    </array>
+    <array name="charset_clapclap">
+        <item>charset_clapclap</item>
+        <item name="name">@string/name_clapclap</item>
+        <item name="reverse">0</item>
+        <item name="charset">@array/clapback</item>
+    </array>
+    <array name="charset_upside_down">
+        <item>charset_upside_down</item>
+        <item name="name">@string/name_upsidedown</item>
+        <item name="reverse">1</item>
+        <item name="charset">@array/upsidedown</item>
+    </array>
+    <array name="charset_olde">
+        <item>charset_olde</item>
+        <item name="name">@string/name_olde</item>
+        <item name="reverse">0</item>
+        <item name="charset">@array/oldenglish</item>
+    </array>
+    <array name="charset_olde_bold">
+        <item>charset_olde_bold</item>
+        <item name="name">@string/name_olde_bold</item>
+        <item name="reverse">0</item>
+        <item name="charset">@array/thinkoldenglish</item>
+    </array>
+    <array name="charset_mono">
+        <item>charset_mono</item>
+        <item name="name">@string/name_mono</item>
+        <item name="reverse">0</item>
+        <item name="charset">@array/mono</item>
+    </array>
+    <array name="charset_small_caps">
+        <item>charset_small_caps</item>
+        <item name="name">@string/name_small_caps</item>
+        <item name="reverse">0</item>
+        <item name="charset">@array/smallcaps</item>
+    </array>
+    <array name="charset_mirrored">
+        <item>charset_mirrored</item>
+        <item name="name">@string/name_mirror</item>
+        <item name="reverse">1</item>
+        <item name="charset">@array/mirror</item>
+    </array>
+    <array name="charset_script">
+        <item>charset_script</item>
+        <item name="name">@string/name_script</item>
+        <item name="reverse">0</item>
+        <item name="charset">@array/script</item>
+    </array>
+    <array name="charset_script_bold">
+        <item>charset_script_bold</item>
+        <item name="name">@string/name_script_bold</item>
+        <item name="reverse">0</item>
+        <item name="charset">@array/script_bold</item>
+    </array>
+    <array name="charset_extra_wide">
+        <item>charset_extra_wide</item>
+        <item name="name">@string/name_full_width</item>
+        <item name="reverse">0</item>
+        <item name="charset">@array/full_width</item>
+    </array>
+    <array name="charset_cutout">
+        <item>charset_cutout</item>
+        <item name="name">@string/name_cutout</item>
+        <item name="reverse">0</item>
+        <item name="charset">@array/cutout</item>
+    </array>
+    <array name="charset_organic">
+        <item>charset_organic</item>
+        <item name="name">@string/name_organic</item>
+        <item name="reverse">0</item>
+        <item name="charset">@array/organic</item>
+    </array>
+    <array name="charset_regular">
+        <item>charset_regular</item>
+        <item name="name">@string/name_regular</item>
+        <item name="reverse">0</item>
+        <item name="charset">@array/regular</item>
+    </array>
+
+</resources>

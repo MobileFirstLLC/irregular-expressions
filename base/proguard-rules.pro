@@ -20,4 +20,4 @@
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
 
--keep public class mf.asciitext.settings.FontConfigFragment {*;}
+-keep public class mf.irregex.settings.StyleConfigFragment {*;}

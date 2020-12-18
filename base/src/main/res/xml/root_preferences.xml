@@ -5,11 +5,11 @@
     <PreferenceCategory android:title="@string/label_settings">
 
         <Preference
-            android:key="font_configs"
+            android:key="style_configs"
             android:icon="@drawable/ic_sort"
-            android:summary="@string/config_fonts_summary"
-            android:title="@string/configure_fonts"
-            app:fragment="mf.asciitext.settings.FontConfigFragment" />
+            android:summary="@string/config_styles_summary"
+            android:title="@string/configure_styles"
+            app:fragment="mf.irregex.settings.StyleConfigFragment" />
 
         <SwitchPreference
             android:key="key_vibrations"
@@ -45,6 +45,18 @@
                 android:data="@string/feedbackUri" />
         </PreferenceScreen>
         <PreferenceScreen
+            android:icon="@drawable/ic_code"
+            android:summary="@string/source_summary"
+            android:title="@string/source_code">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://github.com/MobileFirstLLC/irregular-expressions" />
+        </PreferenceScreen>
+        <Preference
+            android:icon="@drawable/ic_information_outline"
+            android:summary="@string/versionName"
+            android:title="@string/label_version" />
+        <PreferenceScreen
             android:icon="@drawable/ic_mf"
             android:summary="@string/developer"
             android:title="@string/label_developer">
@@ -52,10 +64,6 @@
                 android:action="android.intent.action.VIEW"
                 android:data="https://mobilefirst.me" />
         </PreferenceScreen>
-        <Preference
-            android:icon="@drawable/ic_information_outline"
-            android:summary="@string/versionName"
-            android:title="@string/label_version" />
     </PreferenceCategory>
 
 </PreferenceScreen>

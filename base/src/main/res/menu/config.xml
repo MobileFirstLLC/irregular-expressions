@@ -1,0 +1,9 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/help"
+        android:icon="@drawable/ic_information_outline_white"
+        android:title="@string/help"
+        app:showAsAction="always" />
+</menu>

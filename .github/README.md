@@ -35,7 +35,7 @@ Irregular Expressions is a virtual keyboard for Android devices. With this keybo
 
 <br/><br/>
  
-<h2 align="center">Available Font Styles</h2>
+<h2 align="center">Available Text Styles</h2>
 
 <table width="100%">
 <tbody>
@@ -97,7 +97,7 @@ Irregular Expressions is a virtual keyboard for Android devices. With this keybo
 </tbody>
 </table>
 <p align="center">
-Note: some fonts are not supported by older versions of Android. Android Oreo (8.0) or higher supports all styles. 
+Note: some styles are not supported by older versions of Android. Android Oreo (8.0) or higher supports all styles.
 
 </p>
 
