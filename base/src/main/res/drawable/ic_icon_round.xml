@@ -8,9 +8,9 @@
       android:strokeAlpha="1"
       android:strokeLineJoin="miter"
       android:strokeWidth="74.26480865"
-      android:fillColor="#000000"
+      android:fillColor="@color/splash_background"
       android:strokeColor="#00000000"
-      android:fillAlpha="0.04878049"
+      android:fillAlpha="1"
       android:strokeLineCap="round"/>
   <path
       android:pathData="m286.053,181.898l8.754,32.67c0.375,1.4 0.179,2.894 -0.546,4.149l-9.403,16.287c-0.725,1.256 -1.919,2.172 -3.32,2.547l-84.788,22.719c-1.4,0.375 -2.894,0.179 -4.149,-0.546L176.313,250.322c-1.256,-0.725 -2.172,-1.919 -2.547,-3.32l-8.754,-32.67z"

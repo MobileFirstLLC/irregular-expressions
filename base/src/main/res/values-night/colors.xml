@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#03A9F4</color>
+    <color name="colorPrimaryDark">#111</color>
+    <color name="colorAccent">@color/colorPrimary</color>
+    <color name="splash_background">#343538</color>
+    <color name="settings_background">#111</color>
+    <color name="icon_color">#88FFFFFF</color>
+    <color name="activity_bg">#292a2d</color>
+    <color name="text_color">#FFF</color>
+</resources>

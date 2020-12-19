@@ -30,7 +30,7 @@
     <string name="configure_styles">Configure text styles</string>
     <string name="configure_styles_help">How to configure text styles</string>
     <string name="config_styles_summary">Show, hide and reorder text styles</string>
-    <string name="config_instructions">Long-press then drag to reorder styles\n\nUse arrows to move style to top/bottom\n\nToggle off to hide style from keyboard</string>
+    <string name="config_instructions">\nLong-press then drag to reorder\n\nUse arrows to move to top/bottom\n\nToggle off to hide style from keyboard</string>
     <string name="label_send_key">Send</string>
     <string name="label_next_key">Next</string>
     <string name="label_go_key">GO</string>

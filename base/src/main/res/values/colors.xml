@@ -6,7 +6,7 @@
     <color name="colorPrimaryDark">#3B3F57</color>
     <color name="colorAccent">@color/colorPrimary</color>
     <color name="ic_launcher_background">#E6E6E6</color>
-    <color name="splash_background">#EEEEEE</color>
+    <color name="splash_background">#ddd</color>
 
     <!-- style colors -->
     <color name="keyboardBackground">#333333</color>
@@ -15,5 +15,6 @@
     <color name="activity_bg">#f2f2f2</color>
     <color name="icon_color">#88000000</color>
     <color name="settings_background">#ddd</color>
+    <color name="text_color">#222</color>
 
 </resources>
