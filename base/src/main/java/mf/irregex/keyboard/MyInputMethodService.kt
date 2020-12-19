@@ -35,7 +35,6 @@ import mf.irregex.styles.StylePickerAdapter
 import java.util.concurrent.TimeUnit
 import kotlin.math.roundToInt
 
-
 /**
  * This class sets up and handles virtual keyboard events
  */
@@ -48,7 +47,7 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
     private val LONG_PRESS = 200L
     private val DEFAULT_KBD_LAYOUT = "1" // 1 = qwerty, 2 = azerty
     private val DEFAULT_VIBRATIONS = false
-    private val DEFAULT_HEIGHT = 7
+    private val DEFAULT_HEIGHT = 8
 
     // Primary vs. secondary keyboards
     private val ALPHA_KEYBOARD_KEYCODE = -10
@@ -529,11 +528,8 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
 
         keyVibrations = prefs.getBoolean("key_vibrations", DEFAULT_VIBRATIONS)
         keyboardLayout = prefs.getString("kbd_layout", DEFAULT_KBD_LAYOUT).toString()
-        keyHeight = (Math.min(
-            15f, heightMultiplier * (prefs.getInt(
-                "kdb_key_height",
-                DEFAULT_HEIGHT
-            ) / 100f)
+        keyHeight = (Math.min(.15f, heightMultiplier * (prefs.getInt(
+                "kdb_key_height", DEFAULT_HEIGHT) / 100f)
         ) * window.defaultDisplay.height).roundToInt()
 
         return keyHeight != previousKeyHeight ||

@@ -2,7 +2,6 @@ package mf.irregex.keyboard
 
 import android.content.Context
 import android.inputmethodservice.Keyboard
-import android.util.Log
 
 @Suppress("DEPRECATION")
 internal class IrregularKeyboard(
