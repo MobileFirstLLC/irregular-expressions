@@ -34,7 +34,8 @@
                     android:id="@+id/test_input"
                     style="@style/main_input_text_input_layout">
 
-                    <com.google.android.material.textfield.TextInputEditText style="@style/main_input_text_input_edit_text" />
+                    <com.google.android.material.textfield.TextInputEditText
+                        style="@style/main_input_text_input_edit_text" />
 
                 </com.google.android.material.textfield.TextInputLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>

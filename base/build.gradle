@@ -9,9 +9,9 @@ apply plugin: 'kotlin-kapt'
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
-    dataBinding {
-        enabled = true
-    }
+//    dataBinding {
+//        enabled = true
+//    }
     defaultConfig {
         applicationId "mf.asciitext.lite"
         minSdkVersion 14
