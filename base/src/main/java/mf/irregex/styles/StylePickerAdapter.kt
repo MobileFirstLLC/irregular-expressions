@@ -19,7 +19,7 @@ class StylePickerAdapter(
         fun onItemClick(item: AppTextStyle?, index: Int)
     }
 
-    fun updateFonts(newDataSource: List<AppTextStyle>?){
+    fun updateStyles(newDataSource: List<AppTextStyle>?){
         dataSource = newDataSource
         notifyDataSetChanged()
     }

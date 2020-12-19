@@ -4,6 +4,7 @@ package mf.irregex.keyboard
 
 import android.content.Context
 import android.content.Intent
+import android.content.res.Configuration
 import android.inputmethodservice.InputMethodService
 import android.inputmethodservice.Keyboard
 import android.inputmethodservice.Keyboard.KEYCODE_DONE
@@ -141,9 +142,9 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
 
     /**
      * This is the main point where we do our initialization of the input method
-     * to begin operating on an application.  At this point we have been
-     * bound to the client, and are now receiving all of the detailed information
-     * about the target of our edits.
+     * to begin operating on an application.  At this point keyboard is
+     * bound to client, and is now receiving all of the detailed information
+     * about the target of edits.
      */
     override fun onStartInput(attribute: EditorInfo, restarting: Boolean) {
         super.onStartInput(attribute, restarting)
@@ -187,9 +188,16 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
      */
     override fun onStartInputView(info: EditorInfo?, restarting: Boolean) {
         super.onStartInputView(info, restarting)
-        initPreferences()
+        val invalidate = initPreferences()
         styles = getEnabledStyles()
-        adapter!!.updateFonts(styles)
+        adapter!!.updateStyles(styles)
+        if (invalidate) {
+            if (keyboardChoice == NUMBER_KBD) {
+                enableSymbolicKeyboard()
+            } else {
+                enableAlphaKeyboard()
+            }
+        }
     }
 
     /**
@@ -508,15 +516,23 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
 
     /**
      * Initialize user preference variables
+     *
+     * Return boolean to indicate if key height has changed -> invalidate view
      */
-    private fun initPreferences() {
+    private fun initPreferences(): Boolean {
         val window = getSystemService(WINDOW_SERVICE) as WindowManager
+        val orientation = resources.configuration.orientation
+        val heightMultiplier = if (orientation == Configuration.ORIENTATION_LANDSCAPE) 1.7f else 1f
         val prefs = PreferenceManager.getDefaultSharedPreferences(this)
+        val previousKeyHeight = keyHeight
 
         keyVibrations = prefs.getBoolean("key_vibrations", DEFAULT_VIBRATIONS)
         keyboardLayout = prefs.getString("kbd_layout", DEFAULT_KBD_LAYOUT).toString()
-        keyHeight = ((prefs.getInt("kdb_key_height", DEFAULT_HEIGHT) / 100f) *
-                window.defaultDisplay.height).roundToInt()
+        keyHeight = (Math.min(15f, heightMultiplier * (prefs.getInt(
+                "kdb_key_height", DEFAULT_HEIGHT) / 100f)
+        ) * window.defaultDisplay.height).roundToInt()
+
+        return keyHeight != previousKeyHeight
     }
 
     /**
