@@ -17,9 +17,9 @@ import android.preference.PreferenceManager
 import android.text.InputType
 import android.text.TextUtils
 import android.text.method.MetaKeyKeyListener
-import android.util.Log
 import android.view.KeyEvent
 import android.view.View
+import android.view.WindowManager
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.widget.AppCompatImageButton
@@ -32,6 +32,8 @@ import mf.irregex.styles.AppTextStyle
 import mf.irregex.styles.AvailableStyles.getEnabledStyles
 import mf.irregex.styles.StylePickerAdapter
 import java.util.concurrent.TimeUnit
+import kotlin.math.roundToInt
+
 
 /**
  * This class sets up and handles virtual keyboard events
@@ -45,7 +47,7 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
     private val LONG_PRESS = 200L
     private val DEFAULT_KBD_LAYOUT = "1" // 1 = qwerty, 2 = azerty
     private val DEFAULT_VIBRATIONS = false
-    private val DEFAULT_HEIGHT = 5
+    private val DEFAULT_HEIGHT = 7
 
     // Primary vs. secondary keyboards
     private val ALPHA_KEYBOARD_KEYCODE = -10
@@ -65,7 +67,7 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
 
     // UI Elements
     private var keyboardView: KeyboardView? = null
-    private var keyboard: Keyboard? = null
+    private var keyboard: IrregularKeyboard? = null
     private var styleToggle: AppCompatImageButton? = null
     private var stylePicker: RecyclerView? = null
     private var adapter: StylePickerAdapter? = null
@@ -259,10 +261,10 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
      */
     private fun toggleExtendedKeyboardView() {
         if (keyboardChoice == NUMBER_KBD) {
-            keyboard = Keyboard(this, R.xml.keyboard_math)
+            keyboard = IrregularKeyboard(this, R.xml.keyboard_math, keyHeight)
             keyboardChoice = MATH_KBD
         } else {
-            keyboard = Keyboard(this, R.xml.keyboard_extended)
+            keyboard = IrregularKeyboard(this, R.xml.keyboard_extended, keyHeight)
             keyboardChoice = NUMBER_KBD
         }
         keyboardView!!.keyboard = keyboard
@@ -270,7 +272,7 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
     }
 
     private fun enableSymbolicKeyboard() {
-        keyboard = Keyboard(this, R.xml.keyboard_extended)
+        keyboard = IrregularKeyboard(this, R.xml.keyboard_extended, keyHeight)
         keyboardChoice = NUMBER_KBD
         keyboardView!!.keyboard = keyboard
         keyboardView!!.invalidateAllKeys()
@@ -282,7 +284,7 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
     private fun enableAlphaKeyboard() {
         val keyLayout = if (keyboardLayout == DEFAULT_KBD_LAYOUT)
             R.xml.keyboard_qwerty else R.xml.keyboard_azerty
-        keyboard = Keyboard(this, keyLayout)
+        keyboard = IrregularKeyboard(this, keyLayout, keyHeight)
         keyboardChoice = ALPHA_KBD
         keyboard!!.isShifted = false
         uppercaseNextKeyOnly = false
@@ -508,10 +510,13 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
      * Initialize user preference variables
      */
     private fun initPreferences() {
+        val window = getSystemService(WINDOW_SERVICE) as WindowManager
         val prefs = PreferenceManager.getDefaultSharedPreferences(this)
+
         keyVibrations = prefs.getBoolean("key_vibrations", DEFAULT_VIBRATIONS)
         keyboardLayout = prefs.getString("kbd_layout", DEFAULT_KBD_LAYOUT).toString()
-        keyHeight = prefs.getInt("kdb_key_height", DEFAULT_HEIGHT)
+        keyHeight = ((prefs.getInt("kdb_key_height", DEFAULT_HEIGHT) / 100f) *
+                window.defaultDisplay.height).roundToInt()
     }
 
     /**

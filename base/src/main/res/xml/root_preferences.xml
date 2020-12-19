@@ -28,12 +28,12 @@
             android:title="@string/setting_keyboard_layout" />
 
         <SeekBarPreference
+            app:key="kdb_key_height"
             app:showSeekBarValue="true"
             android:icon="@drawable/ic_arrow_up_down"
-            app:defaultValue="5"
-            app:key="kdb_key_height"
-            app:min="1"
+            app:min="5"
             android:max="10"
+            app:defaultValue="7"
             app:title="@string/key_height" />
     </PreferenceCategory>
 

@@ -36,6 +36,7 @@
     <string name="label_go_key">GO</string>
     <string name="ok">OK</string>
     <string name="help">Help</string>
+    <string name="key_height">Key height (%)</string>
 
     <string-array name="settings_layout_names_array">
         <item>@string/kbd_layout_qwerty</item>
@@ -97,6 +98,5 @@
     <string name="name_cutout">Cutout</string>
     <string name="name_regular">Regular</string>
     <string name="name_spongemock">Spongemock</string>
-    <string name="key_height">Key height</string>
 
 </resources>
