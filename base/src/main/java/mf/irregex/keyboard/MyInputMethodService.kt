@@ -17,6 +17,7 @@ import android.preference.PreferenceManager
 import android.text.InputType
 import android.text.TextUtils
 import android.text.method.MetaKeyKeyListener
+import android.util.Log
 import android.view.KeyEvent
 import android.view.View
 import android.view.inputmethod.EditorInfo
@@ -44,6 +45,7 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
     private val LONG_PRESS = 200L
     private val DEFAULT_KBD_LAYOUT = "1" // 1 = qwerty, 2 = azerty
     private val DEFAULT_VIBRATIONS = false
+    private val DEFAULT_HEIGHT = 5
 
     // Primary vs. secondary keyboards
     private val ALPHA_KEYBOARD_KEYCODE = -10
@@ -90,6 +92,7 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
     // user preferences
     private var keyVibrations = DEFAULT_VIBRATIONS
     private var keyboardLayout = DEFAULT_KBD_LAYOUT
+    private var keyHeight = DEFAULT_HEIGHT
 
     // called initially when inflating keyboard
     override fun onCreateInputView(): View {
@@ -243,8 +246,7 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
         if (c == 0 || currentInputConnection == null) {
             return false
         }
-        if (c == KEYCODE_SPACE)
-        {
+        if (c == KEYCODE_SPACE) {
             encodeCharacter(KEYCODE_SPACE)
             return true
         }
@@ -509,6 +511,7 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
         val prefs = PreferenceManager.getDefaultSharedPreferences(this)
         keyVibrations = prefs.getBoolean("key_vibrations", DEFAULT_VIBRATIONS)
         keyboardLayout = prefs.getString("kbd_layout", DEFAULT_KBD_LAYOUT).toString()
+        keyHeight = prefs.getInt("kdb_key_height", DEFAULT_HEIGHT)
     }
 
     /**
