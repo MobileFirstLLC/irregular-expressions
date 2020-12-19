@@ -525,14 +525,19 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
         val heightMultiplier = if (orientation == Configuration.ORIENTATION_LANDSCAPE) 1.7f else 1f
         val prefs = PreferenceManager.getDefaultSharedPreferences(this)
         val previousKeyHeight = keyHeight
+        val previousLayout = keyboardLayout
 
         keyVibrations = prefs.getBoolean("key_vibrations", DEFAULT_VIBRATIONS)
         keyboardLayout = prefs.getString("kbd_layout", DEFAULT_KBD_LAYOUT).toString()
-        keyHeight = (Math.min(15f, heightMultiplier * (prefs.getInt(
-                "kdb_key_height", DEFAULT_HEIGHT) / 100f)
+        keyHeight = (Math.min(
+            15f, heightMultiplier * (prefs.getInt(
+                "kdb_key_height",
+                DEFAULT_HEIGHT
+            ) / 100f)
         ) * window.defaultDisplay.height).roundToInt()
 
-        return keyHeight != previousKeyHeight
+        return keyHeight != previousKeyHeight ||
+                previousLayout != keyboardLayout
     }
 
     /**
