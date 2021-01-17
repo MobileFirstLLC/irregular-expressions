@@ -62,6 +62,12 @@
         <item name="name">@string/name_lite_strikes</item>
         <item name="char">\u0335</item>
     </array>
+    <array name="charset_supertiny">
+        <item>charset_supertiny</item>
+        <item name="name">@string/name_supertiny</item>
+        <item name="reverse">0</item>
+        <item name="charset">@array/super_tiny</item>
+    </array>
     <array name="charset_bold_serif">
         <item>charset_bold_serif</item>
         <item name="name">@string/name_serif_bold</item>
