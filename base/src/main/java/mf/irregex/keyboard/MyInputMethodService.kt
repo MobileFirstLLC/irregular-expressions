@@ -64,6 +64,7 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
     private val ALPHA_KBD = 0
     private val NUMBER_KBD = 1
     private val MATH_KBD = 2
+    private val PHONE_KBD = 3
 
     // UI Elements
     private var keyboardView: KeyboardView? = null
@@ -162,7 +163,7 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
             InputType.TYPE_CLASS_PHONE -> {
                 // Phones will also default to the symbols keyboard, though
                 // often you will want to have a dedicated phone keyboard.
-                keyboardChoice = NUMBER_KBD
+                keyboardChoice = PHONE_KBD
             }
             InputType.TYPE_CLASS_TEXT -> {
                 // This is general text editing.  We will default to the
@@ -174,7 +175,6 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
             else -> {
                 // For all unknown input types, default to the alphabetic
                 // keyboard with no special features.
-                // mCurKeyboard = mQwertyKeyboard
                 keyboardChoice = ALPHA_KBD
             }
         }
@@ -187,15 +187,13 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
      */
     override fun onStartInputView(info: EditorInfo?, restarting: Boolean) {
         super.onStartInputView(info, restarting)
-        val invalidate = initPreferences()
+        initPreferences()
         styles = getEnabledStyles()
         adapter!!.updateStyles(styles)
-        if (invalidate) {
-            if (keyboardChoice == NUMBER_KBD) {
-                enableSymbolicKeyboard()
-            } else {
-                enableAlphaKeyboard()
-            }
+        when (keyboardChoice) {
+            NUMBER_KBD -> enableSymbolicKeyboard()
+            PHONE_KBD -> enablePhoneKeyboard()
+            else -> enableAlphaKeyboard()
         }
     }
 
@@ -281,6 +279,13 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
     private fun enableSymbolicKeyboard() {
         keyboard = IrregularKeyboard(this, R.xml.keyboard_extended, keyHeight)
         keyboardChoice = NUMBER_KBD
+        keyboardView!!.keyboard = keyboard
+        keyboardView!!.invalidateAllKeys()
+    }
+
+    private fun enablePhoneKeyboard() {
+        keyboard = IrregularKeyboard(this, R.xml.keyboard_phone, keyHeight)
+        keyboardChoice = PHONE_KBD
         keyboardView!!.keyboard = keyboard
         keyboardView!!.invalidateAllKeys()
     }
@@ -572,7 +577,7 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
                 mEnterKey.label = resources.getText(R.string.label_next_key)
             }
             EditorInfo.IME_ACTION_SEARCH -> {
-                mEnterKey.icon = resources.getDrawable(R.drawable.ic_keybaord_search)
+                mEnterKey.icon = resources.getDrawable(R.drawable.ic_keyboard_search)
                 mEnterKey.label = null
             }
             EditorInfo.IME_ACTION_SEND -> {
