@@ -45,7 +45,7 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
     private val DOUBLETAP_MAX_DELAY_MS = 500L
     private val VIBRATION_DURATION_MS = 25L
     private val LONG_PRESS = 200L
-    private val DEFAULT_KBD_LAYOUT = "1" // 1 = qwerty, 2 = azerty
+    private val DEFAULT_KBD_LAYOUT = "1" // 1 = qwerty, 2 = azerty, 3 = qwertz
     private val DEFAULT_VIBRATIONS = false
     private val DEFAULT_HEIGHT = 8
 
@@ -289,8 +289,11 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
      * Change view to alphabetic keyboard
      */
     private fun enableAlphaKeyboard() {
-        val keyLayout = if (keyboardLayout == DEFAULT_KBD_LAYOUT)
-            R.xml.keyboard_qwerty else R.xml.keyboard_azerty
+        val keyLayout: Int = when (keyboardLayout) {
+            "2" -> R.xml.keyboard_azerty
+            "3" -> R.xml.keyboard_qwertz
+            else -> R.xml.keyboard_qwerty
+        }
         keyboard = IrregularKeyboard(this, keyLayout, keyHeight)
         keyboardChoice = ALPHA_KBD
         keyboard!!.isShifted = false
@@ -528,8 +531,10 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
 
         keyVibrations = prefs.getBoolean("key_vibrations", DEFAULT_VIBRATIONS)
         keyboardLayout = prefs.getString("kbd_layout", DEFAULT_KBD_LAYOUT).toString()
-        keyHeight = (Math.min(.15f, heightMultiplier * (prefs.getInt(
-                "kdb_key_height", DEFAULT_HEIGHT) / 100f)
+        keyHeight = (Math.min(
+            .15f, heightMultiplier * (prefs.getInt(
+                "kdb_key_height", DEFAULT_HEIGHT
+            ) / 100f)
         ) * window.defaultDisplay.height).roundToInt()
 
         return keyHeight != previousKeyHeight ||
