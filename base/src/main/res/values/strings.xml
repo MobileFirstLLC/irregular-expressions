@@ -101,5 +101,6 @@
     <string name="name_cutout">Cutout</string>
     <string name="name_regular">Regular</string>
     <string name="name_spongemock">Spongemock</string>
+    <string name="name_supertiny">Supertiny</string>
 
 </resources>
