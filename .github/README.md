@@ -106,13 +106,17 @@ Note: some styles are not supported by older versions of Android. Android Oreo (
 
 ### Sponsor this project
 
-If you enjoy this keyboard and/or find the source code useful consider sponsoring the project. We make ad-free, free software and do not spy or steal your data. Thanks!
+If you enjoy this keyboard and/or find the source code useful consider sponsoring the project. We make ad-free, free software and do not spy or steal your data. All support is greatly appreciated.
 
-[Become a sponsor](https://github.com/sponsors/MobileFirstLLC?o=sd&sc=t)
+**[Become a sponsor](https://github.com/sponsors/MobileFirstLLC?o=sd&sc=t)**
 
-### Interested in becoming a beta tester?
+* * *
 
-If you would like to become a beta tester and get early access to releases **[follow these instructions](https://play.google.com/apps/testing/mf.asciitext.lite).**
+### Want to become a beta tester?
+
+Beta testers are a vital part of software development process. As a beta tester you get early access to releases and can provide feedback to the developer if something is not working correctly, before the software is released to all users. Becoming a beta tester does not cost anything and you can leave the program at any time.
+
+ **[Join Beta Tester Program](https://play.google.com/apps/testing/mf.asciitext.lite).**
 
 * * *
 
