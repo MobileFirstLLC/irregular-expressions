@@ -9,6 +9,7 @@ import android.inputmethodservice.InputMethodService
 import android.inputmethodservice.Keyboard
 import android.inputmethodservice.Keyboard.KEYCODE_DONE
 import android.inputmethodservice.KeyboardView
+import android.inputmethodservice.KeyboardView.GONE
 import android.inputmethodservice.KeyboardView.OnKeyboardActionListener
 import android.os.Build
 import android.os.SystemClock
@@ -20,6 +21,7 @@ import android.text.TextUtils
 import android.text.method.MetaKeyKeyListener
 import android.view.KeyEvent
 import android.view.View
+import android.view.View.VISIBLE
 import android.view.WindowManager
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
@@ -64,6 +66,7 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
     private val ALPHA_KBD = 0
     private val NUMBER_KBD = 1
     private val MATH_KBD = 2
+    private val PHONE_KBD = 3
 
     // UI Elements
     private var keyboardView: KeyboardView? = null
@@ -71,6 +74,7 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
     private var styleToggle: AppCompatImageButton? = null
     private var stylePicker: RecyclerView? = null
     private var adapter: StylePickerAdapter? = null
+    private var keyboardExtras: View? = null
 
     // keyboard default state
     private val mComposing = StringBuilder()
@@ -120,6 +124,7 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
         /* setup style picker recyclerView */
 
         stylePicker = layout.findViewById(R.id.stylePicker)
+        keyboardExtras = layout.findViewById(R.id.keyboard_extras)
         adapter = StylePickerAdapter(styles, onFontSelection())
         val layoutManager = GridLayoutManager(
             ctx, 1, LinearLayoutManager.HORIZONTAL, false
@@ -140,6 +145,36 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
     }
 
     /**
+     * determine which keyboard view to show initially based on input type
+     */
+    private fun chooseKeyboardFromInputType(attribute: EditorInfo?) {
+        when (attribute?.inputType?.and(InputType.TYPE_MASK_CLASS)) {
+            InputType.TYPE_CLASS_NUMBER, InputType.TYPE_CLASS_DATETIME -> {
+                // Numbers and dates default to the symbols keyboard, with
+                // no extra features.
+                keyboardChoice = NUMBER_KBD
+            }
+            InputType.TYPE_CLASS_PHONE -> {
+                // Phones will also default to the symbols keyboard, though
+                // often you will want to have a dedicated phone keyboard.
+                keyboardChoice = PHONE_KBD
+            }
+            InputType.TYPE_CLASS_TEXT -> {
+                // This is general text editing.  We will default to the
+                // normal alphabetic keyboard, and assume that we should
+                // be doing predictive text (showing candidates as the
+                // user types).
+                keyboardChoice = ALPHA_KBD
+            }
+            else -> {
+                // For all unknown input types, default to the alphabetic
+                // keyboard with no special features.
+                keyboardChoice = ALPHA_KBD
+            }
+        }
+    }
+
+    /**
      * This is the main point where we do our initialization of the input method
      * to begin operating on an application.  At this point keyboard is
      * bound to client, and is now receiving all of the detailed information
@@ -152,32 +187,7 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
         // the underlying state of the text editor could have changed in any way.
         mComposing.setLength(0)
         if (!restarting) mMetaState = 0
-
-        when (attribute.inputType and InputType.TYPE_MASK_CLASS) {
-            InputType.TYPE_CLASS_NUMBER, InputType.TYPE_CLASS_DATETIME -> {
-                // Numbers and dates default to the symbols keyboard, with
-                // no extra features.
-                keyboardChoice = NUMBER_KBD
-            }
-            InputType.TYPE_CLASS_PHONE -> {
-                // Phones will also default to the symbols keyboard, though
-                // often you will want to have a dedicated phone keyboard.
-                keyboardChoice = NUMBER_KBD
-            }
-            InputType.TYPE_CLASS_TEXT -> {
-                // This is general text editing.  We will default to the
-                // normal alphabetic keyboard, and assume that we should
-                // be doing predictive text (showing candidates as the
-                // user types).
-                keyboardChoice = ALPHA_KBD
-            }
-            else -> {
-                // For all unknown input types, default to the alphabetic
-                // keyboard with no special features.
-                // mCurKeyboard = mQwertyKeyboard
-                keyboardChoice = ALPHA_KBD
-            }
-        }
+        chooseKeyboardFromInputType(attribute)
         setImeOptions(attribute.imeOptions)
     }
 
@@ -187,15 +197,15 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
      */
     override fun onStartInputView(info: EditorInfo?, restarting: Boolean) {
         super.onStartInputView(info, restarting)
-        val invalidate = initPreferences()
+        initPreferences()
+        keyboardExtras?.visibility = VISIBLE
         styles = getEnabledStyles()
         adapter!!.updateStyles(styles)
-        if (invalidate) {
-            if (keyboardChoice == NUMBER_KBD) {
-                enableSymbolicKeyboard()
-            } else {
-                enableAlphaKeyboard()
-            }
+        chooseKeyboardFromInputType(info)
+        when (keyboardChoice) {
+            NUMBER_KBD -> enableSymbolicKeyboard()
+            PHONE_KBD -> enablePhoneKeyboard()
+            else -> enableAlphaKeyboard()
         }
     }
 
@@ -281,6 +291,14 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
     private fun enableSymbolicKeyboard() {
         keyboard = IrregularKeyboard(this, R.xml.keyboard_extended, keyHeight)
         keyboardChoice = NUMBER_KBD
+        keyboardView!!.keyboard = keyboard
+        keyboardView!!.invalidateAllKeys()
+    }
+
+    private fun enablePhoneKeyboard() {
+        keyboard = IrregularKeyboard(this, R.xml.keyboard_phone, keyHeight)
+        keyboardExtras?.visibility = GONE
+        keyboardChoice = PHONE_KBD
         keyboardView!!.keyboard = keyboard
         keyboardView!!.invalidateAllKeys()
     }
@@ -572,7 +590,7 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
                 mEnterKey.label = resources.getText(R.string.label_next_key)
             }
             EditorInfo.IME_ACTION_SEARCH -> {
-                mEnterKey.icon = resources.getDrawable(R.drawable.ic_keybaord_search)
+                mEnterKey.icon = resources.getDrawable(R.drawable.ic_keyboard_search)
                 mEnterKey.label = null
             }
             EditorInfo.IME_ACTION_SEND -> {
