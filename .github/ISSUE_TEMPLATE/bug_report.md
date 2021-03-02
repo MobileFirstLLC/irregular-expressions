@@ -1,7 +1,6 @@
 ---
 name: Bug report
 about: Report an issue with current solution
-title: "[BUG]"
 labels: bug
 assignees: nkrusch
 
