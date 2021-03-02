@@ -104,6 +104,14 @@ Note: some styles are not supported by older versions of Android. Android Oreo (
 
 * * *
 
+### Privacy Policy
+
+This app collects no data about the user, None, 0 KB. 
+
+𝒯𝒽ℯ ℰ𝓃𝒹. 
+
+* * *
+
 ### Sponsor this project
 
 If you enjoy this keyboard and/or find the source code useful consider sponsoring the project. We make ad-free, free software and do not spy or steal your data. All support is greatly appreciated.
