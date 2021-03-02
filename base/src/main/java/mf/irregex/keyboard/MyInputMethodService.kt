@@ -235,7 +235,21 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
     }
 
     override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
-        if (PROCESS_HARD_KEYS && event != null) return translateKeyDown(keyCode, event)
+        when (keyCode) {
+            // The InputMethodService already takes care of the back
+            // key for us, to dismiss the input method if it is shown.
+            KeyEvent.KEYCODE_BACK ->
+                if (event?.repeatCount == 0 && keyboardView != null) {
+                    if (keyboardView!!.handleBack()) {
+                        return true
+                    }
+                }
+            else -> {
+                if (PROCESS_HARD_KEYS && event != null) {
+                    return translateKeyDown(keyCode, event)
+                }
+            }
+        }
         return super.onKeyDown(keyCode, event)
     }
 
@@ -542,7 +556,8 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
     private fun initPreferences(): Boolean {
         val window = getSystemService(WINDOW_SERVICE) as WindowManager
         val orientation = resources.configuration.orientation
-        val heightMultiplier = if (orientation == Configuration.ORIENTATION_LANDSCAPE) 1.7f else 1f
+        val heightMultiplier =
+            if (orientation == Configuration.ORIENTATION_LANDSCAPE) 1.7f else 1f
         val prefs = PreferenceManager.getDefaultSharedPreferences(this)
         val previousKeyHeight = keyHeight
         val previousLayout = keyboardLayout
