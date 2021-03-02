@@ -18,8 +18,8 @@ Steps to reproduce the behavior:
 **Expected behavior**
 A clear and concise description of what you expected to happen.
 
-**Smartphone (please complete the following information):**
- - Android version [e.g. 29 or "Oreo"]
+**Android version**
+Android version of your phone, for example 29 or "Oreo".
 
 **Additional context**
 Add any other context about the problem here.
