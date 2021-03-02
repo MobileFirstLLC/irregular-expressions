@@ -19,7 +19,6 @@ import android.preference.PreferenceManager
 import android.text.InputType
 import android.text.TextUtils
 import android.text.method.MetaKeyKeyListener
-import android.util.Log
 import android.view.KeyEvent
 import android.view.View
 import android.view.View.VISIBLE
