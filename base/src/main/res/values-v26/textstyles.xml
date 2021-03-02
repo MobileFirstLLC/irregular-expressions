@@ -25,5 +25,6 @@
         <item>@array/charset_clapclap</item>
         <item>@array/charset_upside_down</item>
         <item>@array/charset_mirrored</item>
+        <item>@array/charset_supertiny</item>
     </array>
 </resources>

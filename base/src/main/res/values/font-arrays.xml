@@ -1,7 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+
     <string-array name="regular" />
+
+    <string-array name="super_tiny">
+        <item>\u0020</item>
+        <item>ᵎ</item>
+        <item>“</item>
+        <item>#</item>
+        <item>$</item>
+        <item>%</item>
+        <item>\u0026</item>
+        <item>‘</item>
+        <item>⁽</item>
+        <item>⁾</item>
+        <item>*</item>
+        <item>⁺</item>
+        <item>,</item>
+        <item>⁻</item>
+        <item>.</item>
+        <item>/</item>
+        <item>⁰</item>
+        <item>¹</item>
+        <item>²</item>
+        <item>³</item>
+        <item>⁴</item>
+        <item>⁵</item>
+        <item>⁶</item>
+        <item>⁷</item>
+        <item>⁸</item>
+        <item>⁹</item>
+        <item>:</item>
+        <item>;</item>
+        <item>\u003c</item>
+        <item>⁼</item>
+        <item>></item>
+        <item>\u003f</item>
+        <item>\u0040</item>
+        <item>ᴬ</item>
+        <item>ᴮ</item>
+        <item>ᶜ</item>
+        <item>ᴰ</item>
+        <item>ᴱ</item>
+        <item>ᶠ</item>
+        <item>ᴳ</item>
+        <item>ᴴ</item>
+        <item>ᴵ</item>
+        <item>ᴶ</item>
+        <item>ᴷ</item>
+        <item>ᴸ</item>
+        <item>ᴹ</item>
+        <item>ᴺ</item>
+        <item>ᴼ</item>
+        <item>ᴾ</item>
+        <item>ᵠ</item>
+        <item>ᴿ</item>
+        <item>ˢ</item>
+        <item>ᵀ</item>
+        <item>ᵁ</item>
+        <item>ⱽ</item>
+        <item>ᵂ</item>
+        <item>ˣ</item>
+        <item>ʸ</item>
+        <item>ᶻ</item>
+        <item>[</item>
+        <item>\</item>
+        <item>]</item>
+        <item>^</item>
+        <item>_</item>
+        <item>`</item>
+        <item>ᵃ</item>
+        <item>ᵇ</item>
+        <item>ᶜ</item>
+        <item>ᵈ</item>
+        <item>ᵉ</item>
+        <item>ᶠ</item>
+        <item>ᵍ</item>
+        <item>ʰ</item>
+        <item>ᶦ</item>
+        <item>ʲ</item>
+        <item>ᵏ</item>
+        <item>ˡ</item>
+        <item>ᵐ</item>
+        <item>ⁿ</item>
+        <item>ᵒ</item>
+        <item>ᵖ</item>
+        <item>ᵠ</item>
+        <item>ʳ</item>
+        <item>ˢ</item>
+        <item>ᵗ</item>
+        <item>ᵘ</item>
+        <item>ᵛ</item>
+        <item>ʷ</item>
+        <item>ˣ</item>
+        <item>ʸ</item>
+        <item>ᶻ</item>
+        <item>{</item>
+        <item>|</item>
+        <item>}</item>
+        <item>~</item>
+    </string-array>
 
     <string-array name="organic">
         <item>\u0020</item>
