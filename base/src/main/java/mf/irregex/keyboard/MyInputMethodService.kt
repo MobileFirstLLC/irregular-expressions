@@ -297,7 +297,7 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
     }
 
     private fun enablePhoneKeyboard() {
-        keyboard = IrregularKeyboard(this, R.xml.keyboard_phone, keyHeight - 2)
+        keyboard = IrregularKeyboard(this, R.xml.keyboard_phone, keyHeight)
         keyboardExtras?.visibility = GONE
         keyboardChoice = PHONE_KBD
         keyboardView!!.keyboard = keyboard
