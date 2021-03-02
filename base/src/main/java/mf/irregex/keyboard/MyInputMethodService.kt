@@ -9,6 +9,7 @@ import android.inputmethodservice.InputMethodService
 import android.inputmethodservice.Keyboard
 import android.inputmethodservice.Keyboard.KEYCODE_DONE
 import android.inputmethodservice.KeyboardView
+import android.inputmethodservice.KeyboardView.GONE
 import android.inputmethodservice.KeyboardView.OnKeyboardActionListener
 import android.os.Build
 import android.os.SystemClock
@@ -18,8 +19,10 @@ import android.preference.PreferenceManager
 import android.text.InputType
 import android.text.TextUtils
 import android.text.method.MetaKeyKeyListener
+import android.util.Log
 import android.view.KeyEvent
 import android.view.View
+import android.view.View.VISIBLE
 import android.view.WindowManager
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
@@ -72,6 +75,7 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
     private var styleToggle: AppCompatImageButton? = null
     private var stylePicker: RecyclerView? = null
     private var adapter: StylePickerAdapter? = null
+    private var keyboardExtras: View? = null
 
     // keyboard default state
     private val mComposing = StringBuilder()
@@ -121,6 +125,7 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
         /* setup style picker recyclerView */
 
         stylePicker = layout.findViewById(R.id.stylePicker)
+        keyboardExtras = layout.findViewById(R.id.keyboard_extras)
         adapter = StylePickerAdapter(styles, onFontSelection())
         val layoutManager = GridLayoutManager(
             ctx, 1, LinearLayoutManager.HORIZONTAL, false
@@ -141,20 +146,10 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
     }
 
     /**
-     * This is the main point where we do our initialization of the input method
-     * to begin operating on an application.  At this point keyboard is
-     * bound to client, and is now receiving all of the detailed information
-     * about the target of edits.
+     * determine which keyboard view to show initially based on input type
      */
-    override fun onStartInput(attribute: EditorInfo, restarting: Boolean) {
-        super.onStartInput(attribute, restarting)
-
-        // Reset our state.  We want to do this even if restarting, because
-        // the underlying state of the text editor could have changed in any way.
-        mComposing.setLength(0)
-        if (!restarting) mMetaState = 0
-
-        when (attribute.inputType and InputType.TYPE_MASK_CLASS) {
+    private fun chooseKeyboardFromInputType(attribute: EditorInfo?) {
+        when (attribute?.inputType?.and(InputType.TYPE_MASK_CLASS)) {
             InputType.TYPE_CLASS_NUMBER, InputType.TYPE_CLASS_DATETIME -> {
                 // Numbers and dates default to the symbols keyboard, with
                 // no extra features.
@@ -178,6 +173,22 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
                 keyboardChoice = ALPHA_KBD
             }
         }
+    }
+
+    /**
+     * This is the main point where we do our initialization of the input method
+     * to begin operating on an application.  At this point keyboard is
+     * bound to client, and is now receiving all of the detailed information
+     * about the target of edits.
+     */
+    override fun onStartInput(attribute: EditorInfo, restarting: Boolean) {
+        super.onStartInput(attribute, restarting)
+
+        // Reset our state.  We want to do this even if restarting, because
+        // the underlying state of the text editor could have changed in any way.
+        mComposing.setLength(0)
+        if (!restarting) mMetaState = 0
+        chooseKeyboardFromInputType(attribute)
         setImeOptions(attribute.imeOptions)
     }
 
@@ -188,8 +199,10 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
     override fun onStartInputView(info: EditorInfo?, restarting: Boolean) {
         super.onStartInputView(info, restarting)
         initPreferences()
+        keyboardExtras?.visibility = VISIBLE
         styles = getEnabledStyles()
         adapter!!.updateStyles(styles)
+        chooseKeyboardFromInputType(info)
         when (keyboardChoice) {
             NUMBER_KBD -> enableSymbolicKeyboard()
             PHONE_KBD -> enablePhoneKeyboard()
@@ -284,7 +297,8 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
     }
 
     private fun enablePhoneKeyboard() {
-        keyboard = IrregularKeyboard(this, R.xml.keyboard_phone, keyHeight)
+        keyboard = IrregularKeyboard(this, R.xml.keyboard_phone, keyHeight - 2)
+        keyboardExtras?.visibility = GONE
         keyboardChoice = PHONE_KBD
         keyboardView!!.keyboard = keyboard
         keyboardView!!.invalidateAllKeys()
