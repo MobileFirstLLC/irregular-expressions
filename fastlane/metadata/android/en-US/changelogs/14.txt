@@ -1,0 +1,11 @@
+New:
+================
+* QWERTZ layout
+* Accents keys àáâ... etc
+* ˢᵘᵖᵉʳᵗᶦⁿʸ style
+* Numberpad keyboard
+
+Bug fixes:
+================
+* Fix Android back behavior
+* Increase range of options for key height
