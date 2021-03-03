@@ -31,7 +31,7 @@
             app:key="kdb_key_height"
             app:showSeekBarValue="true"
             android:icon="@drawable/ic_arrow_up_down"
-            app:min="6"
+            app:min="5"
             android:max="12"
             app:defaultValue="8"
             app:title="@string/key_height" />

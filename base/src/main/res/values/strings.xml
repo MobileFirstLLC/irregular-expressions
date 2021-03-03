@@ -51,22 +51,6 @@
         <item>3</item>
     </string-array>
 
-    <string-array name="settings_key_height_array">
-        <item>1 - shortest</item>
-        <item>2 - shorter</item>
-        <item>3 - normal</item>
-        <item>4 - taller</item>
-        <item>5 - tallest</item>
-    </string-array>
-
-    <string-array name="settings_key_height_values_array">
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
-        <item>5</item>
-    </string-array>
-
     <string name="alternates_for_a">àáâäæãåā</string>
     <string name="alternates_for_c">çćč</string>
     <string name="alternates_for_e">èéêëēėę</string>
