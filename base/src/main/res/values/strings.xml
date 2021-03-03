@@ -67,6 +67,18 @@
         <item>5</item>
     </string-array>
 
+    <string name="alternates_for_a">àáâäæãåā</string>
+    <string name="alternates_for_c">çćč</string>
+    <string name="alternates_for_e">èéêëēėę</string>
+    <string name="alternates_for_i">îïíīįì</string>
+    <string name="alternates_for_l">ł</string>
+    <string name="alternates_for_n">ñń</string>
+    <string name="alternates_for_o">ôöòóœøōõ</string>
+    <string name="alternates_for_s">ßśš</string>
+    <string name="alternates_for_u">ûüùúū</string>
+    <string name="alternates_for_y">ÿ</string>
+    <string name="alternates_for_z">žźż</string>
+
     <!-- style names -->
     <string name="name_frowny_faces">Frowny</string>
     <string name="name_happy_faces">Happy</string>
