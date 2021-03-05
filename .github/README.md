@@ -91,15 +91,13 @@ Irregular Expressions is a virtual keyboard for Android devices. With this keybo
 </tr>
 <tr>
 <td align="center">SpOnGeMoCk</td>
-<td align="center">ˢᵘᵖᵉʳᵗᶦⁿʸ (*</td>
+<td align="center">ˢᵘᵖᵉʳᵗᶦⁿʸ</td>
 <td align="center">Regular</td>
 </tr>
 </tbody>
 </table>
 <p align="center">
 Note: some styles are not supported by older versions of Android. Android Oreo (8.0) or higher supports all styles.
-
-*) will be added in 2.5.0
 </p>
 
 * * *
