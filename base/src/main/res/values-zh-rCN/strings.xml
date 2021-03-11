@@ -1,0 +1,102 @@
+<resources>
+    <string name="app_name">Irregular Expressions</string>
+    <string name="title_activity_settings">设置</string>
+    <string name="label_settings">用户首选项</string>
+    <string name="label_developer">开发者</string>
+    <string name="label_about">关于</string>
+    <string name="label_version">版本</string>
+    <string name="label_rate_app">给应用打分</string>
+    <string name="label_feedback">发送反馈</string>
+    <string name="key_vibrations">按键振动</string>
+    <string name="developer">Mobile First</string>
+    <string name="feedback_summary">报告问题或请求功能</string>
+    <string name="source_code">源代码</string>
+    <string name="source_summary">欢迎合并请求</string>
+    <string name="enabled">已启用</string>
+    <string name="disabled">已禁用</string>
+    <string name="all_categories">全部</string>
+    <string name="animals">动物</string>
+    <string name="faces">脸部</string>
+    <string name="lenny">lenny</string>
+    <string name="lines">线条</string>
+    <string name="intro_header">欢迎来到\nIrregular Expressions\n键盘！</string>
+    <string name="intro_subtitle">如何使用</string>
+    <string name="enable_keyboard">1. 启用键盘</string>
+    <string name="select_keyboard">2. 选择键盘</string>
+    <string name="now_try_it">3. 马上试用 — 在此输入：</string>
+    <string name="setting_keyboard_layout">键盘布局</string>
+    <string name="kbd_layout_qwerty">QWERTY</string>
+    <string name="kbd_layout_azerty">AZERTY</string>
+    <string name="kbd_layout_qwertz">QWERTZ</string>
+    <string name="configure_styles">配置文本样式</string>
+    <string name="configure_styles_help">如何配置文本样式</string>
+    <string name="config_styles_summary">对文本样式进行显示、隐藏或重新排序</string>
+    <string name="config_instructions">\n长按然后拖动以重新排序\n\n使用箭头移动到顶部/底部\n\n关闭以隐藏键盘样式</string>
+    <string name="label_send_key">发送</string>
+    <string name="label_next_key">下一步</string>
+    <string name="label_go_key">前往</string>
+    <string name="ok">好的</string>
+    <string name="help">帮助</string>
+    <string name="key_height">键高 (%)</string>
+
+    <string-array name="settings_layout_names_array">
+        <item>@string/kbd_layout_qwerty</item>
+        <item>@string/kbd_layout_azerty</item>
+        <item>@string/kbd_layout_qwertz</item>
+    </string-array>
+
+    <string-array name="settings_layout_values_array">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
+    <string name="alternates_for_a">àáâäæãåā</string>
+    <string name="alternates_for_c">çćč</string>
+    <string name="alternates_for_e">èéêëēėę</string>
+    <string name="alternates_for_i">îïíīįì</string>
+    <string name="alternates_for_l">ł</string>
+    <string name="alternates_for_n">ñń</string>
+    <string name="alternates_for_o">ôöòóœøōõ</string>
+    <string name="alternates_for_s">ßśš</string>
+    <string name="alternates_for_u">ûüùúū</string>
+    <string name="alternates_for_y">ÿ</string>
+    <string name="alternates_for_z">žźż</string>
+
+    <!-- style names -->
+    <string name="name_frowny_faces">皱眉</string>
+    <string name="name_happy_faces">笑脸</string>
+    <string name="name_thunder">打雷</string>
+    <string name="name_slashed">加斜线</string>
+    <string name="name_mustache">胡子</string>
+    <string name="name_starry_night">繁星之夜</string>
+    <string name="name_lite_strikes">带空隙的删除线</string>
+    <string name="name_small_caps">小型大写字母</string>
+    <string name="name_mono">等宽</string>
+    <string name="name_olde_bold">粗体古英语</string>
+    <string name="name_olde">古英语</string>
+    <string name="name_upsidedown">颠倒</string>
+    <string name="name_clapclap">鼓掌 </string>
+    <string name="name_organic">Organic</string>
+    <string name="name_strikethrough">连贯删除线</string>
+    <string name="name_underlined">下划线</string>
+    <string name="name_filled_circles">实心圆框</string>
+    <string name="name_filled_boxes">实心方框</string>
+    <string name="name_clear_circles">加空心圆框</string>
+    <string name="name_clear_boxes">空心方框</string>
+    <string name="name_ss_bold_italic">粗斜体</string>
+    <string name="name_ss_italic">斜体</string>
+    <string name="name_ss_bold">粗体</string>
+    <string name="name_serif_bold">粗衬线体</string>
+    <string name="name_serif_italic">斜衬线体</string>
+    <string name="name_serif_bold_italic">粗斜衬线体</string>
+    <string name="name_script">手写体</string>
+    <string name="name_script_bold">粗手写体</string>
+    <string name="name_full_width">宽体</string>
+    <string name="name_mirror">镜像体</string>
+    <string name="name_cutout">镂空体</string>
+    <string name="name_regular">常规</string>
+    <string name="name_spongemock">Spongemock</string>
+    <string name="name_supertiny">超小体</string>
+
+</resources>
