@@ -2,7 +2,6 @@
 name: Feature request
 about: Suggest an enhancement that would make the app better
 labels: enhancement
-assignees: nkrusch
 
 ---
 
