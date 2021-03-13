@@ -2,7 +2,6 @@
 name: Bug report
 about: Report an issue with current solution
 labels: bug
-assignees: nkrusch
 
 ---
 
