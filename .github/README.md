@@ -114,6 +114,14 @@ This app collects no data about the user, None, 0 KB.
 
 * * *
 
+### Help with translations
+
+If you want to use the keyboard in your native language, consider translating it.
+
+**[Translate on Weblate](https://hosted.weblate.org/engage/irregular-expressions/)**
+
+* * *
+
 ### Sponsor this project
 
 If you enjoy this keyboard and/or find the source code useful consider sponsoring the project. We make ad-free, free software and do not spy or steal your data. All support is greatly appreciated.
