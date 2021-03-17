@@ -9,6 +9,10 @@
 
 <p align="center">
 <img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/MobileFirstLLC/irregular-expressions" /> <img src='https://img.shields.io/github/last-commit/mobilefirstllc/irregular-expressions'/> <img alt="GitHub Release Date" src="https://img.shields.io/github/release-date/MobileFirstLLC/irregular-expressions" /> <a href="https://codeclimate.com/github/MobileFirstLLC/irregular-expressions/maintainability"><img src="https://api.codeclimate.com/v1/badges/7acf23c4d105b11b5d3e/maintainability" /></a>
+<br/>  
+<a href="https://hosted.weblate.org/engage/irregular-expressions/">
+<img src="https://hosted.weblate.org/widgets/irregular-expressions/-/strings/287x66-black.png" alt="Translation status" />
+</a>
 </p>
 
 <h3 align="center">
