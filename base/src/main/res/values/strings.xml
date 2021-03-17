@@ -15,10 +15,6 @@
     <string name="enabled">Enabled</string>
     <string name="disabled">Disabled</string>
     <string name="all_categories">all</string>
-    <string name="animals">animals</string>
-    <string name="faces">faces</string>
-    <string name="lenny">lenny</string>
-    <string name="lines">lines</string>
     <string name="intro_header">Welcome to\nIrregular Expressions\nkeyboard!</string>
     <string name="intro_subtitle">How to use</string>
     <string name="enable_keyboard">1. Enable Keyboard</string>
