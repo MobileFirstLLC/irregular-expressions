@@ -1,2 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="name_supertiny">Molt petita</string>
+    <string name="name_regular">Normal</string>
+    <string name="name_full_width">Ampla</string>
+    <string name="name_serif_bold_italic">Serifa cursiva negreta</string>
+    <string name="name_serif_italic">Serifa cursiva</string>
+    <string name="name_serif_bold">Serifa negreta</string>
+    <string name="name_ss_bold">Negreta</string>
+    <string name="name_ss_italic">Cursiva</string>
+    <string name="name_ss_bold_italic">Cursiva negreta</string>
+    <string name="name_clear_boxes">Requadres</string>
+    <string name="name_clear_circles">Cercles</string>
+    <string name="name_filled_boxes">Requadres</string>
+    <string name="name_filled_circles">Cercles</string>
+    <string name="name_underlined">Subratllada</string>
+    <string name="name_organic">Orgànica</string>
+    <string name="name_upsidedown">Capgirada</string>
+    <string name="name_mono">Tipogràfica</string>
+    <string name="name_small_caps">Versaletes</string>
+    <string name="name_happy_faces">Feliç</string>
+    <string name="key_height">Altura de la tecla (%)</string>
+    <string name="help">Ajuda</string>
+    <string name="ok">D\'ACORD</string>
+    <string name="label_go_key">VES</string>
+    <string name="label_next_key">Endavant</string>
+    <string name="label_send_key">Envia</string>
+    <string name="config_instructions">"
+\nPremeu uns segons per a arrossegar i reordenar
+\n
+\nUseu les fletxes per a moure a la part superior o inferior
+\n
+\nDesactiveu per a amagar l\'estil del teclat"</string>
+    <string name="config_styles_summary">Mostra, amaga i reordena els estils de text</string>
+    <string name="configure_styles_help">Com configurar els estils de text</string>
+    <string name="configure_styles">Configura els estils de text</string>
+    <string name="kbd_layout_qwertz">QWERTZ</string>
+    <string name="kbd_layout_azerty">AZERTY</string>
+    <string name="kbd_layout_qwerty">QWERTY</string>
+    <string name="setting_keyboard_layout">Disposició del teclat</string>
+    <string name="now_try_it">3. Ara proveu-lo. Escriviu aquí:</string>
+    <string name="select_keyboard">2. Seleccioneu el teclat</string>
+    <string name="enable_keyboard">1. Activeu el teclat</string>
+    <string name="intro_subtitle">Guia d\'ús</string>
+    <string name="intro_header">Us donem la benvinguda al teclat
+\nIrregular Expressions!</string>
+    <string name="disabled">Desactivat</string>
+    <string name="enabled">Activat</string>
+    <string name="source_summary">Les PR són benvingudes</string>
+    <string name="source_code">Codi font</string>
+    <string name="feedback_summary">Informe d\'errors o sol·licitud de funcionalitats</string>
+    <string name="key_vibrations">Vibració de la tecla</string>
+    <string name="label_version">Versió</string>
+    <string name="label_about">Quant a</string>
+    <string name="label_developer">Desenvolupador</string>
+    <string name="label_settings">Preferències de l\'usuari</string>
+    <string name="title_activity_settings">Configuració</string>
+</resources>
