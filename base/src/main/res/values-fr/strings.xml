@@ -1,2 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="name_olde">Gothique</string>
+    <string name="name_olde_bold">Gothique Gras</string>
+    <string name="name_small_caps">Petites Lettres</string>
+    <string name="source_summary">Pull requests bienvenues</string>
+    <string name="name_spongemock">Spongemock</string>
+    <string name="name_regular">Normal</string>
+    <string name="name_cutout">Creux</string>
+    <string name="name_script_bold">Script Gras</string>
+    <string name="name_script">Script</string>
+    <string name="name_filled_circles">Cercles</string>
+    <string name="name_underlined">Souligné</string>
+    <string name="name_strikethrough">Barré</string>
+    <string name="name_organic">Organique</string>
+    <string name="name_clapclap">Clap Clap</string>
+    <string name="name_upsidedown">A l\'envers</string>
+    <string name="name_mono">Monospace</string>
+    <string name="name_lite_strikes">PetitesLignes</string>
+    <string name="name_slashed">Sabré</string>
+    <string name="name_mirror">En Miroir</string>
+    <string name="name_starry_night">NuitEtoilée</string>
+    <string name="name_mustache">Moustache</string>
+    <string name="name_thunder">Eclair</string>
+    <string name="name_happy_faces">Joyeux</string>
+    <string name="name_frowny_faces">Triste</string>
+    <string name="name_supertiny">Tout petit</string>
+    <string name="name_full_width">Large</string>
+    <string name="name_serif_bold_italic">Serif gras italique</string>
+    <string name="name_serif_italic">Serif italique</string>
+    <string name="name_serif_bold">Serif gras</string>
+    <string name="name_ss_bold">Gras</string>
+    <string name="name_ss_italic">Italique</string>
+    <string name="name_ss_bold_italic">Gras italique</string>
+    <string name="name_clear_boxes">Boites</string>
+    <string name="name_clear_circles">Cercles</string>
+    <string name="name_filled_boxes">Boites</string>
+    <string name="label_go_key">GO</string>
+    <string name="key_height">Hauteur de touche (%)</string>
+    <string name="help">Aide</string>
+    <string name="ok">OK</string>
+    <string name="label_next_key">Suivant</string>
+    <string name="label_send_key">Envoyer</string>
+    <string name="config_instructions">"
+\nAppuyez longuement puis faites glisser pour réorganiser
+\n
+\nUtilisez les flèches pour vous déplacer vers le haut / le bas
+\n
+\nDésactivez pour masquer le style du clavier"</string>
+    <string name="config_styles_summary">Afficher, masquer et réorganiser les styles de texte</string>
+    <string name="configure_styles_help">Comment configurer les styles de texte</string>
+    <string name="configure_styles">Configurer les styles de texte</string>
+    <string name="kbd_layout_qwertz">QWERTZ</string>
+    <string name="kbd_layout_azerty">AZERTY</string>
+    <string name="kbd_layout_qwerty">QWERTY</string>
+    <string name="setting_keyboard_layout">Disposition du clavier</string>
+    <string name="now_try_it">3. Maintenant essayez-le — tapez ici :</string>
+    <string name="select_keyboard">2. Sélectionnez le clavier</string>
+    <string name="enable_keyboard">1. Activez le clavier</string>
+    <string name="intro_subtitle">Comment l\'utiliser</string>
+    <string name="intro_header">Bienvenue sur le clavier
+\nIrregular Expressions !</string>
+    <string name="disabled">Désactivé</string>
+    <string name="enabled">Activé</string>
+    <string name="source_code">Code source</string>
+    <string name="label_feedback">Envoyer des commentaires</string>
+    <string name="feedback_summary">Signaler des problèmes ou demander des fonctionnalités</string>
+    <string name="key_vibrations">Vibrations de touche</string>
+    <string name="label_rate_app">Evaluer l\'app</string>
+    <string name="label_version">Version</string>
+    <string name="label_about">A propos</string>
+    <string name="label_developer">Développeur</string>
+    <string name="label_settings">Préférences utilisateur</string>
+    <string name="title_activity_settings">Paramètres</string>
+</resources>
