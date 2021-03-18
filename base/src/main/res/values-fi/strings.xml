@@ -1,2 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="app_name">Irregular Expressions</string>
+    <string name="kbd_layout_qwerty">QWERTY</string>
+    <string name="kbd_layout_azerty">AZERTY</string>
+    <string name="kbd_layout_qwertz">QWERTZ</string>
+    <string name="name_mono">Monospace</string>
+    <string name="name_supertiny">Superpieni</string>
+    <string name="name_spongemock">Paavo Pesusieni</string>
+    <string name="name_regular">Normi</string>
+    <string name="name_cutout">Aukkoinen</string>
+    <string name="name_mirror">Peilikuva</string>
+    <string name="name_full_width">Laaja</string>
+    <string name="name_script_bold">Lihavoitu Kauno</string>
+    <string name="name_script">Kauno</string>
+    <string name="name_serif_bold_italic">Lihavoitu Kursiivi Serif</string>
+    <string name="name_serif_italic">Kursiivi Serif</string>
+    <string name="name_serif_bold">Lihavoitu Serif</string>
+    <string name="name_ss_bold">Lihavoitu</string>
+    <string name="name_ss_italic">Kursiivi</string>
+    <string name="name_ss_bold_italic">Lihavoitu Kursiivi</string>
+    <string name="name_clear_boxes">Laatikot</string>
+    <string name="name_clear_circles">Piirit</string>
+    <string name="name_filled_boxes">Laatikot</string>
+    <string name="name_filled_circles">Piirit</string>
+    <string name="name_underlined">Aliviivattu</string>
+    <string name="name_strikethrough">Yliviivattu</string>
+    <string name="name_organic">Orgaaninen</string>
+    <string name="name_clapclap">Tapu Tapu</string>
+    <string name="name_upsidedown">Ylösalaisin</string>
+    <string name="name_olde">Gootti</string>
+    <string name="name_olde_bold">Paksu Gootti</string>
+    <string name="name_small_caps">pienet isot kirjaimet</string>
+    <string name="name_lite_strikes">KevytViiva</string>
+    <string name="name_starry_night">Tähtiyö</string>
+    <string name="name_mustache">Viikset</string>
+    <string name="name_slashed">Kauttaviiva</string>
+    <string name="name_thunder">Ukkonen</string>
+    <string name="name_happy_faces">Iloinen</string>
+    <string name="name_frowny_faces">Apea</string>
+    <string name="key_height">Näppäinten korkeus (%)</string>
+    <string name="help">Apua</string>
+    <string name="ok">OK</string>
+    <string name="label_go_key">Jatka</string>
+    <string name="label_next_key">Seuraava</string>
+    <string name="label_send_key">Lähetä</string>
+    <string name="config_instructions">"
+\nPaina pitkään ja raahaa muuttaaksesi järjestystä
+\n
+\nSiirrä tekstityyli listan alkuun/loppuun nuolien avulla
+\n
+\nVaihda tyyli pois päältä niin se ei näy näppäimistössä"</string>
+    <string name="config_styles_summary">Näytä, piilota, ja järjestä tyylejä</string>
+    <string name="configure_styles_help">Miten muokata tekstityylejä</string>
+    <string name="configure_styles">Hallinnoi tekstityylejä</string>
+    <string name="setting_keyboard_layout">Näppäimistöasettelu</string>
+    <string name="now_try_it">3. Kokeile - kirjoita jotain tekstiä:</string>
+    <string name="select_keyboard">2. Valitse näppäimistö</string>
+    <string name="enable_keyboard">1. Aktivoi näppäimistö</string>
+    <string name="intro_subtitle">Käyttöohjeet</string>
+    <string name="intro_header">Tervetuloa
+\nIrregular Expressions
+\nnäppäimistön käyttäjäksi!</string>
+    <string name="all_categories">kaikki</string>
+    <string name="disabled">Ei käytössä</string>
+    <string name="enabled">Käytössä</string>
+    <string name="source_summary">Vetopyynnöt tervetulleita</string>
+    <string name="source_code">Lähdekoodi</string>
+    <string name="feedback_summary">Ilmoita ongelmista tai ehdota uusia ominaisuuksia</string>
+    <string name="key_vibrations">Näppäinten tärinä</string>
+    <string name="label_rate_app">Arvostele sovellus</string>
+    <string name="label_feedback">Lähetä palautetta</string>
+    <string name="label_version">Versio</string>
+    <string name="label_about">Tietoa</string>
+    <string name="label_developer">Kehittäjä</string>
+    <string name="label_settings">Käyttäjäasetukset</string>
+    <string name="title_activity_settings">Asetukset</string>
+</resources>
