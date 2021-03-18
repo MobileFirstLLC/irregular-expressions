@@ -1,2 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="name_serif_bold_italic">Fet kursiv seriff</string>
+    <string name="name_serif_italic">Kursiv seriff</string>
+    <string name="name_serif_bold">Fet seriff</string>
+    <string name="name_small_caps">Små store bokstaver</string>
+    <string name="name_lite_strikes">Småstreket</string>
+    <string name="name_starry_night">Stjernenatt</string>
+    <string name="name_slashed">Skråstreket</string>
+    <string name="name_frowny_faces">Utilpass</string>
+    <string name="config_instructions">"
+\nTrykk lenge for å endre rekkefølge
+\n
+\nBruk piltastene for å flytte til topp/bunnen
+\n
+\nEndre status for å skjule stil fra tastatur"</string>
+    <string name="name_spongemock">Svamphån</string>
+    <string name="name_supertiny">Superliten</string>
+    <string name="name_regular">Vanlig</string>
+    <string name="name_cutout">Utklipp</string>
+    <string name="name_mirror">Speilet</string>
+    <string name="name_full_width">Bred</string>
+    <string name="name_script_bold">Fet skript</string>
+    <string name="name_script">Skript</string>
+    <string name="name_ss_bold">Fet</string>
+    <string name="name_ss_italic">Kursiv</string>
+    <string name="name_ss_bold_italic">Fet kursiv</string>
+    <string name="name_clear_boxes">Bokser</string>
+    <string name="name_clear_circles">Sirkler</string>
+    <string name="name_filled_boxes">Bokser</string>
+    <string name="name_filled_circles">Sirkler</string>
+    <string name="name_strikethrough">Gjennomstreket</string>
+    <string name="name_underlined">Understreket</string>
+    <string name="name_organic">Organisk</string>
+    <string name="name_clapclap">Klapp klapp</string>
+    <string name="name_upsidedown">Opp-ned</string>
+    <string name="name_olde_bold">Gammelengelsk fet</string>
+    <string name="name_olde">Gammelengelsk</string>
+    <string name="name_mono">Fastbredde</string>
+    <string name="name_mustache">Bart</string>
+    <string name="name_thunder">Torden</string>
+    <string name="name_happy_faces">Glad</string>
+    <string name="key_height">Tastehøyde (%)</string>
+    <string name="label_go_key">Bruk</string>
+    <string name="help">Hjelp</string>
+    <string name="ok">OK</string>
+    <string name="label_next_key">Neste</string>
+    <string name="label_send_key">Send</string>
+    <string name="config_styles_summary">Vis, skjul og endre rekkefølge på tekststiler</string>
+    <string name="configure_styles_help">Hvordan sette opp tekststiler</string>
+    <string name="configure_styles">Sett opp tekststiler</string>
+    <string name="kbd_layout_qwertz">QWERTZ</string>
+    <string name="kbd_layout_azerty">AZERTY</string>
+    <string name="kbd_layout_qwerty">QWERTY</string>
+    <string name="setting_keyboard_layout">Tastaturoppsett</string>
+    <string name="now_try_it">3. Prøv det ved å skrive her:</string>
+    <string name="select_keyboard">2. Velg tastaturet</string>
+    <string name="enable_keyboard">1. Skru på tastaturet</string>
+    <string name="intro_subtitle">Bruk</string>
+    <string name="intro_header">Velkommen til tastaturet
+\nIrregular Expressions.</string>
+    <string name="disabled">Avskrudd</string>
+    <string name="enabled">Påskrudd</string>
+    <string name="source_summary">Flettingsforespørsler er velkomne</string>
+    <string name="source_code">Kildekoder</string>
+    <string name="feedback_summary">Innrapporter feil eller forespør funksjoner</string>
+    <string name="key_vibrations">Tastevibrering</string>
+    <string name="label_feedback">Send tilbakemelding</string>
+    <string name="label_rate_app">Vurder programmet</string>
+    <string name="label_version">Versjon</string>
+    <string name="label_about">Om</string>
+    <string name="label_developer">Utvikler</string>
+    <string name="label_settings">Brukerinnstillinger</string>
+    <string name="title_activity_settings">Innstillinger</string>
+</resources>
