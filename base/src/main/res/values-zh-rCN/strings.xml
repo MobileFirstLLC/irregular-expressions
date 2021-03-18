@@ -14,7 +14,6 @@
     <string name="source_summary">欢迎合并请求</string>
     <string name="enabled">已启用</string>
     <string name="disabled">已禁用</string>
-    <string name="all_categories">全部</string>
     <string name="intro_header">欢迎来到\nIrregular Expressions\n键盘！</string>
     <string name="intro_subtitle">如何使用</string>
     <string name="enable_keyboard">1. 启用键盘</string>
