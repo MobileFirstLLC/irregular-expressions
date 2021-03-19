@@ -116,7 +116,11 @@ This app collects no data about the user, None, 0 KB.
 
 ### Help with translations
 
-If you want to use the keyboard in your native language, consider translating it.
+If you want to use the keyboard in your native language, consider translating it. Current status:
+
+<a href="https://hosted.weblate.org/engage/irregular-expressions/">
+<img src="https://hosted.weblate.org/widgets/irregular-expressions/-/strings/multi-auto.svg" alt="Translation status" width="500" />
+</a>
 
 **[Translate on Weblate](https://hosted.weblate.org/engage/irregular-expressions/)**
 
