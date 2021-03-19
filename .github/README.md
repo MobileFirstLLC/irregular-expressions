@@ -36,6 +36,10 @@ Irregular Expressions is a virtual keyboard for Android devices. With this keybo
 <img alt='Get it on F-Droid' height="72" align="center" src='https://fdroid.gitlab.io/artwork/badge/get-it-on.png'/>
 </a>
 </p> 
+<br/>
+<p align="center">
+You can find APKs under <a href="https://github.com/MobileFirstLLC/irregular-expressions/releases">releases</a>.
+</p>  
 
 <br/><br/>
  
