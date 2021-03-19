@@ -1,2 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="name_supertiny">Superpequeno</string>
+    <string name="name_regular">Normal</string>
+    <string name="name_cutout">Recortado</string>
+    <string name="name_mirror">Espelhado</string>
+    <string name="name_full_width">Largo</string>
+    <string name="name_script_bold">Manuscrito em negrito</string>
+    <string name="name_script">Manuscrito</string>
+    <string name="name_mono">Monoespaçada</string>
+    <string name="name_olde_bold">Inglês antigo em negrito</string>
+    <string name="name_olde">Inglês antigo</string>
+    <string name="name_strikethrough">Riscado</string>
+    <string name="name_organic">Orgânico</string>
+    <string name="name_clapclap">Aplausos</string>
+    <string name="name_upsidedown">De cabeça para baixo</string>
+    <string name="name_serif_bold_italic">Negrito itálico com serifa</string>
+    <string name="name_serif_italic">Itálico com serifa</string>
+    <string name="name_serif_bold">Negrito com serifa</string>
+    <string name="name_ss_bold">Negrito</string>
+    <string name="name_ss_italic">Itálico</string>
+    <string name="name_ss_bold_italic">Negrito itálico</string>
+    <string name="name_clear_boxes">Caixas</string>
+    <string name="name_clear_circles">Círculos</string>
+    <string name="name_filled_boxes">Caixas</string>
+    <string name="name_filled_circles">Círculos</string>
+    <string name="name_underlined">Sublinhado</string>
+    <string name="name_small_caps">Maiúsculo pequeno</string>
+    <string name="name_lite_strikes">Meio riscado</string>
+    <string name="name_starry_night">Noite estrelada</string>
+    <string name="name_mustache">Bigode</string>
+    <string name="name_slashed">Cortado</string>
+    <string name="name_thunder">Trovão</string>
+    <string name="name_happy_faces">Feliz</string>
+    <string name="name_frowny_faces">Carrancudo</string>
+    <string name="key_height">Altura da tecla (%)</string>
+    <string name="help">Ajuda</string>
+    <string name="ok">OK</string>
+    <string name="label_developer">Desenvolvedora</string>
+    <string name="label_next_key">Próximo</string>
+    <string name="label_send_key">Enviar</string>
+    <string name="config_instructions">"
+\nPressione longamente e arraste para reordenar
+\n
+\nUse as setas para mover para cima/para baixo
+\n
+\nDesative para ocultar o estilo do teclado"</string>
+    <string name="config_styles_summary">Mostra, oculta e reordena estilos de texto</string>
+    <string name="configure_styles_help">Como configurar estilos de texto</string>
+    <string name="configure_styles">Configurar estilos de texto</string>
+    <string name="kbd_layout_qwertz">QWERTZ</string>
+    <string name="kbd_layout_azerty">AZERTY</string>
+    <string name="kbd_layout_qwerty">QWERTY</string>
+    <string name="setting_keyboard_layout">Layout do teclado</string>
+    <string name="now_try_it">3. Agora, experimente — digite aqui:</string>
+    <string name="select_keyboard">2. Selecione o teclado</string>
+    <string name="enable_keyboard">1. Habilite o teclado</string>
+    <string name="intro_subtitle">Como usar</string>
+    <string name="intro_header">Bem-vindo ao teclado
+\nIrregular Expressions!</string>
+    <string name="disabled">Desabilitado</string>
+    <string name="enabled">Habilitado</string>
+    <string name="source_summary">PRs são bem-vindas</string>
+    <string name="source_code">Código-fonte</string>
+    <string name="feedback_summary">Relate problemas ou solicite recursos</string>
+    <string name="key_vibrations">Vibrações de teclas</string>
+    <string name="label_feedback">Enviar feedback</string>
+    <string name="label_rate_app">Avaliar o aplicativo</string>
+    <string name="label_version">Versão</string>
+    <string name="label_about">Sobre</string>
+    <string name="label_settings">Preferências de usuário</string>
+    <string name="title_activity_settings">Configurações</string>
+</resources>
