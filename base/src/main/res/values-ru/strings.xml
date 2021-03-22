@@ -1,2 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="name_underlined">Подчеркнутый</string>
+    <string name="name_strikethrough">Зачёркнутый</string>
+    <string name="name_small_caps">Маленькие заглавные буквы</string>
+    <string name="name_slashed">Порезанный</string>
+    <string name="name_thunder">Гром</string>
+    <string name="key_height">Высота клавиш (%)</string>
+    <string name="ok">ОК</string>
+    <string name="source_summary">Pull Request приветствуются</string>
+    <string name="key_vibrations">Виброотклик на нажатие клавиш</string>
+    <string name="name_regular">Обычный</string>
+    <string name="name_full_width">Широкий</string>
+    <string name="name_serif_bold_italic">Жирный курсив с засечками</string>
+    <string name="name_serif_italic">Курсив с засечками</string>
+    <string name="name_serif_bold">Жирный с засечками</string>
+    <string name="name_ss_bold">Жирный</string>
+    <string name="name_ss_italic">Курсив</string>
+    <string name="name_ss_bold_italic">Жирный курсив</string>
+    <string name="name_clear_boxes">Коробки</string>
+    <string name="name_clear_circles">Круги</string>
+    <string name="name_filled_boxes">Ящики</string>
+    <string name="name_filled_circles">Круги</string>
+    <string name="name_upsidedown">Вверх ногами</string>
+    <string name="name_olde">Старый английский</string>
+    <string name="name_starry_night">Звездная ночь</string>
+    <string name="name_mustache">Усы</string>
+    <string name="help">Помощь</string>
+    <string name="label_next_key">Следующий</string>
+    <string name="label_send_key">Отправить</string>
+    <string name="configure_styles_help">Как настроить стили текста</string>
+    <string name="configure_styles">Настройка стилей текста</string>
+    <string name="kbd_layout_qwertz">QWERTZ</string>
+    <string name="kbd_layout_azerty">AZERTY</string>
+    <string name="kbd_layout_qwerty">QWERTY</string>
+    <string name="setting_keyboard_layout">Раскладка клавиатуры</string>
+    <string name="now_try_it">3. А теперь попробуйте — наберите здесь:</string>
+    <string name="select_keyboard">2. Выберите клавиатуру</string>
+    <string name="enable_keyboard">1. Включите клавиатуру</string>
+    <string name="intro_subtitle">Как использовать</string>
+    <string name="intro_header">Добро пожаловать в
+\nклавиатуру
+\nIrregular Expressions!</string>
+    <string name="disabled">Отключено</string>
+    <string name="enabled">Включено</string>
+    <string name="source_code">Исходный код</string>
+    <string name="feedback_summary">Сообщить о проблемах или запросить функции</string>
+    <string name="label_feedback">Отправить отзыв</string>
+    <string name="label_rate_app">Оценить приложение</string>
+    <string name="label_version">Версия</string>
+    <string name="label_about">О приложении</string>
+    <string name="label_developer">Разработчик</string>
+    <string name="label_settings">Пользовательские настройки</string>
+    <string name="title_activity_settings">Настройки</string>
+</resources>
