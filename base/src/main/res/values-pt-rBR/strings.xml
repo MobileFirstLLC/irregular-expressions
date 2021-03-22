@@ -70,4 +70,6 @@
     <string name="label_about">Sobre</string>
     <string name="label_settings">Preferências de usuário</string>
     <string name="title_activity_settings">Configurações</string>
+    <string name="name_spongemock">Meme do Bob Esponja</string>
+    <string name="label_go_key">Vai</string>
 </resources>
