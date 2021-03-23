@@ -1,2 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="name_lite_strikes">Trastrekitete</string>
+    <string name="name_strikethrough">Trastrekite</string>
+    <string name="name_script_bold">Grase Kaligrafie</string>
+    <string name="name_script">Kaligrafie</string>
+    <string name="name_slashed">Suprenstrekoj</string>
+    <string name="name_mirror">Inverse</string>
+    <string name="name_organic">Ekologie</string>
+    <string name="name_cutout">Duobligite</string>
+    <string name="config_instructions">"
+\nLonge premu kaj poste trenu por aliordigi
+\n
+\nUzu sagojn por movi supren/suben
+\n
+\nBaskulige malŝaltu por kaŝi stilon for de klavaro"</string>
+    <string name="label_go_key">EK</string>
+    <string name="label_next_key">Sekven</string>
+    <string name="config_styles_summary">Montri, kaŝi, kaj aliordigi tekstajn stilojn</string>
+    <string name="key_height">Alto de klavoj (%)</string>
+    <string name="name_spongemock">Spongomoko</string>
+    <string name="configure_styles_help">Kiel agordi tekstajn stilojn</string>
+    <string name="configure_styles">Agordi tekstajn stilojn</string>
+    <string name="source_summary">Tirpetoj estas bonvenaj</string>
+    <string name="feedback_summary">Raporti problemojn aŭ peti funkciojn</string>
+    <string name="key_vibrations">Klavaj vibroj</string>
+    <string name="label_feedback">Sendi komentojn</string>
+    <string name="name_clapclap">Aplaŭd Aplaŭd</string>
+    <string name="name_upsidedown">Renversite</string>
+    <string name="name_small_caps">Maljuskletoj</string>
+    <string name="name_supertiny">Malgrandege</string>
+    <string name="name_full_width">Larghe</string>
+    <string name="name_serif_bold_italic">Grase Kursive Serife</string>
+    <string name="name_serif_italic">Kursive Serife</string>
+    <string name="name_serif_bold">Grase Serife</string>
+    <string name="name_regular">Ordinare</string>
+    <string name="name_ss_bold">Grase</string>
+    <string name="name_ss_italic">Kursive</string>
+    <string name="name_ss_bold_italic">Grase Kursive</string>
+    <string name="name_starry_night">Substeloj</string>
+    <string name="name_frowny_faces">Malridetoj</string>
+    <string name="help">Helpo</string>
+    <string name="now_try_it">3. Ekprovu — tajpu ĉi tie:</string>
+    <string name="select_keyboard">2. Elektu Klavaron</string>
+    <string name="enable_keyboard">1. Ŝaltu Klavaron</string>
+    <string name="name_olde_bold">Grasa Frakturo</string>
+    <string name="name_olde">Frakturo</string>
+    <string name="name_mono">Egallarghe</string>
+    <string name="name_mustache">Lipharoj</string>
+    <string name="name_happy_faces">Ridetoj</string>
+    <string name="name_underlined">Substrekite</string>
+    <string name="name_thunder">Tondro</string>
+    <string name="name_clear_boxes">Kvadratoj</string>
+    <string name="name_filled_boxes">Kvadratoj</string>
+    <string name="name_clear_circles">Cirkloj</string>
+    <string name="name_filled_circles">Cirkloj</string>
+    <string name="intro_header">Bonvenon al
+\nklavaro
+\nIrregular Expressions!</string>
+    <string name="setting_keyboard_layout">Klavararanĝo</string>
+    <string name="ok">Bone</string>
+    <string name="label_send_key">Sendi</string>
+    <string name="kbd_layout_qwertz">QWERTZ</string>
+    <string name="kbd_layout_azerty">AZERTY</string>
+    <string name="kbd_layout_qwerty">QWERTY</string>
+    <string name="disabled">Malŝaltita</string>
+    <string name="enabled">Ŝaltita</string>
+    <string name="source_code">Fontkodo</string>
+    <string name="intro_subtitle">Kiel uzi</string>
+    <string name="label_rate_app">Taksi programon</string>
+    <string name="label_version">Versio</string>
+    <string name="label_about">Pri</string>
+    <string name="label_developer">Programisto</string>
+    <string name="label_settings">Preferoj de Uzanto</string>
+    <string name="title_activity_settings">Agordoj</string>
+</resources>
