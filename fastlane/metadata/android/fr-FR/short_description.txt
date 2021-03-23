@@ -1,1 +1,1 @@
-Virtual keyboard for writing expressive messages in various font styles
+Clavier virtuel pour écrire des messages expressifs dans différents styles de police
