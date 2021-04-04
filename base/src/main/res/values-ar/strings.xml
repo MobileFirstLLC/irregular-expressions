@@ -1,2 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="title_activity_settings">الإعدادات</string>
+    <string name="name_supertiny">صغير جداً</string>
+    <string name="name_spongemock">Spongemock</string>
+    <string name="name_regular">عادي</string>
+    <string name="name_mirror">منعكس</string>
+    <string name="name_full_width">عريض</string>
+    <string name="name_serif_bold_italic">غامق مائل مقوس</string>
+    <string name="name_serif_italic">مائل مقوس</string>
+    <string name="name_serif_bold">غامق مقوس</string>
+    <string name="name_ss_bold">غامق</string>
+    <string name="name_mono">Monospace</string>
+    <string name="name_starry_night">ليلة مقمرة</string>
+    <string name="name_mustache">شارب</string>
+    <string name="name_slashed">مقطوع</string>
+    <string name="name_thunder">برق</string>
+    <string name="name_happy_faces">سعيد</string>
+    <string name="name_frowny_faces">عابس</string>
+    <string name="key_height">ارتفاع اللوحة (%)</string>
+    <string name="help">مساعدة</string>
+    <string name="ok">تأكيد</string>
+    <string name="label_go_key">GO</string>
+    <string name="label_next_key">التالي</string>
+    <string name="label_send_key">أرسل</string>
+    <string name="config_instructions">"
+\nاضغط مطوّلاً ثم اسحب لتغيير الترتيب
+\n
+\nاستخدم الأسهم للتحرك للأعلى أو للأسفل
+\n
+\nبدّل إلى \"غير مفعّل\" لإخفاء النمط من لوحة المفاتيح"</string>
+    <string name="config_styles_summary">أظهر، أخفي و أعد ترتيب أنماط النص</string>
+    <string name="configure_styles_help">كيفية تخصيص أنماط النص</string>
+    <string name="configure_styles">خصص أنماط النص</string>
+    <string name="kbd_layout_qwertz">QWERTZ</string>
+    <string name="kbd_layout_azerty">AZERTY</string>
+    <string name="kbd_layout_qwerty">QWERTY</string>
+    <string name="setting_keyboard_layout">تصميم لوحة المفاتيح</string>
+    <string name="now_try_it">3. جربه الآن - اكتب هنا :</string>
+    <string name="select_keyboard">2. اختر الكيبورد</string>
+    <string name="enable_keyboard">1. فعّل الكيبورد</string>
+    <string name="intro_subtitle">كيفية الاستخدام</string>
+    <string name="intro_header">أهلا بك في
+\nلوحة مفاتيح
+\nIrregular Expressions!</string>
+    <string name="disabled">معطّل</string>
+    <string name="enabled">مفعّل</string>
+    <string name="source_summary">الPRs مرحب بها</string>
+    <string name="source_code">الشيفرة المصدرية</string>
+    <string name="feedback_summary">أرسل تقريراً بالأخطاء أو اطلب ميزات</string>
+    <string name="key_vibrations">اهتزاز الأزرار</string>
+    <string name="label_feedback">أرسل رأيك</string>
+    <string name="label_rate_app">قيّم التطبيق</string>
+    <string name="label_version">الإصدار</string>
+    <string name="label_about">حول</string>
+    <string name="label_developer">مطوّر</string>
+    <string name="label_settings">تفضيلات المستخدم</string>
+</resources>
