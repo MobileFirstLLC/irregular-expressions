@@ -1,2 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="intro_header">Willkommen auf der
+\nIrregular Expressions
+\nTastatur!</string>
+    <string name="name_spongemock">Gemischt</string>
+    <string name="name_happy_faces">Glücklich</string>
+    <string name="now_try_it">3. Ausprobieren - schreibe hier:</string>
+    <string name="intro_subtitle">Anleitung</string>
+    <string name="name_supertiny">Winzig</string>
+    <string name="name_regular">Normal</string>
+    <string name="name_cutout">Ausschnitt</string>
+    <string name="name_mirror">Gespiegelt</string>
+    <string name="name_full_width">Breit</string>
+    <string name="name_script_bold">Fettes Skript</string>
+    <string name="name_script">Skript</string>
+    <string name="name_serif_bold_italic">Fette Kursive Serifen</string>
+    <string name="name_serif_italic">Kursive Serifen</string>
+    <string name="name_serif_bold">Fette Serifen</string>
+    <string name="name_ss_bold">Fett</string>
+    <string name="name_ss_italic">Kursiv</string>
+    <string name="name_ss_bold_italic">Fett Kursiv</string>
+    <string name="name_clear_boxes">Boxen</string>
+    <string name="name_clear_circles">Kreise</string>
+    <string name="name_filled_boxes">Boxen</string>
+    <string name="name_filled_circles">Kreise</string>
+    <string name="name_underlined">Unterstrichen</string>
+    <string name="name_strikethrough">Durchgestrichen</string>
+    <string name="name_organic">Organisch</string>
+    <string name="name_clapclap">Klatschen</string>
+    <string name="name_upsidedown">Kopfstehend</string>
+    <string name="name_olde">Alt Englisch</string>
+    <string name="name_olde_bold">Alt Englisch Fett</string>
+    <string name="name_mono">Monospace</string>
+    <string name="name_small_caps">Kleine Blockschrift</string>
+    <string name="name_lite_strikes">Leichte Striche</string>
+    <string name="name_starry_night">Sternenhimmel</string>
+    <string name="name_mustache">Schnurrbart</string>
+    <string name="name_slashed">Geschlitzt</string>
+    <string name="name_thunder">Gewitter</string>
+    <string name="name_frowny_faces">Stirnrunzelnd</string>
+    <string name="key_height">Zeichenhöhe (%)</string>
+    <string name="help">Hilfe</string>
+    <string name="ok">OK</string>
+    <string name="label_go_key">LOS</string>
+    <string name="label_next_key">Vor</string>
+    <string name="label_send_key">Senden</string>
+    <string name="config_instructions">"
+\nDurch Halten und Ziehen kannst du die Stile neu anordnen
+\n
+\nVerwende die Pfeile, um Stile nach ganz oben oder unten zu verschieben
+\n
+\nDeaktiviere Stile, um sie auf der Tastatur zu verbergen"</string>
+    <string name="config_styles_summary">Textstile ein- bzw ausblenden und anordnen</string>
+    <string name="configure_styles_help">Textstile konfigurieren</string>
+    <string name="configure_styles">Textstile konfigurieren</string>
+    <string name="kbd_layout_qwertz">QWERTZ</string>
+    <string name="kbd_layout_azerty">AZERTY</string>
+    <string name="kbd_layout_qwerty">QWERTY</string>
+    <string name="setting_keyboard_layout">Tastaturbelegung</string>
+    <string name="select_keyboard">2. Tastatur auswählen</string>
+    <string name="enable_keyboard">1. Tastatur aktivieren</string>
+    <string name="disabled">Deaktiviert</string>
+    <string name="enabled">Aktiviert</string>
+    <string name="source_summary">Anfragen sind willkommen</string>
+    <string name="source_code">Quellcode</string>
+    <string name="feedback_summary">Fehler melden oder neue Funktionen vorschlagen</string>
+    <string name="key_vibrations">Tastenvibration</string>
+    <string name="label_feedback">Feedback geben</string>
+    <string name="label_rate_app">App bewerten</string>
+    <string name="label_version">Version</string>
+    <string name="label_about">Über</string>
+    <string name="label_developer">Entwickler</string>
+    <string name="label_settings">Konfiguration</string>
+    <string name="title_activity_settings">Einstellungen</string>
+</resources>
