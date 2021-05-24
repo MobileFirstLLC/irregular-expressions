@@ -100,7 +100,7 @@ You can find APKs under <a href="https://github.com/MobileFirstLLC/irregular-exp
 <tr>
 <td align="center">SpOnGeMoCk</td>
 <td align="center">ˢᵘᵖᵉʳᵗᶦⁿʸ</td>
-<td align="center">z̴̪͇͑̏́̾̈́̈́ͅą̶͕̠͓̲̖͔̤̗̭̌̀̾̈̅͐́̽́̉͌̀̂̈̓͝l̸̳͙̪̮̖̙̥͇͉͚̭͙͖͉͆̒͠g̶̣̱̖̦̝͉̗̯̀͋̓͜o̶̻͉̬̼͊͐́̄̕</td>
+<td align="center">z̴̪͇͑̏́̾̈́̈́ͅą̶͕̠͓̲̖͔̤̗̭̌̀̾̈̅͐́̽́̉͌̀̂̈̓͝l̸̳͙̪̮̖̙̥͇͉͚̭͙͖͉͆̒͠g̶̣̱̖̦̝͉̗̯̀͋̓͜o̶̻͉̬̼͊͐́̄̕     <sup>(*</sup></td>
 </tr>
 <tr>
 <td align="center">Regular</td>
