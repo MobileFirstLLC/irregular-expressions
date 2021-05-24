@@ -58,6 +58,7 @@ object AvailableStyles {
         restoreOrder()
         initCharsetFonts(res, res.obtainTypedArray(R.array.charset_styles))
         initRandomCaps(res.getString(R.string.name_spongemock))
+        initZalgoText(res.getString(R.string.name_zalgo))
         initAccentStyles(res, res.obtainTypedArray(R.array.accent_styles))
     }
 
@@ -129,7 +130,6 @@ object AvailableStyles {
      */
     private fun initCharsetFonts(res: Resources, ta: TypedArray) {
 
-        @StyleableRes val idIndex = res.getInteger(R.integer.CharsetIdIndex)
         @StyleableRes val nameIndex = res.getInteger(R.integer.CharsetNameIndex)
         @StyleableRes val reverseIndex = res.getInteger(R.integer.CharsetReverseIndex)
         @StyleableRes val charsetIndex = res.getInteger(R.integer.CharsetIndex)
@@ -156,8 +156,6 @@ object AvailableStyles {
                     )
 
                 styleDef.recycle()
-            } else {
-                Log.d("INIT STYLES", "Invalid resource Id!")
             }
         }
         ta.recycle()
@@ -195,8 +193,6 @@ object AvailableStyles {
                         )
                     )
                 styleDef.recycle()
-            } else {
-                Log.d("INIT STYLES", "Invalid resource Id!")
             }
         }
         ta.recycle()
@@ -206,5 +202,11 @@ object AvailableStyles {
         val id = "spongemock"
         val enabled = !disabledList.contains(id)
         styles.add(RandomCaps(id, name, getOrder(id), enabled))
+    }
+
+    private fun initZalgoText(name: String) {
+        val id = "zalgo"
+        val enabled = !disabledList.contains(id)
+        styles.add(Zalgo(id, name, getOrder(id), enabled))
     }
 }
