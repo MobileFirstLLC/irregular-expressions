@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-
     <string-array name="regular" />
 
     <string-array name="super_tiny">
@@ -2262,6 +2261,8 @@
         <item>~</item>
     </string-array>
 
+    <!-- TODO: transforming extended chars: -->
+    <!-- https://github.com/combatwombat/Lunicode.js/blob/13992ca25d2c4076cfe5ba4b77cc22d760e1f620/lunicode.js#L76 -->
     <string-array name="upsidedown">
         <item>\u0020</item>
         <item>¡</item>

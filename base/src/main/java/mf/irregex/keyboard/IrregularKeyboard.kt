@@ -8,8 +8,7 @@ internal class IrregularKeyboard(
     context: Context?,
     xmlLayoutResId: Int,
     newKeyHeight: Int
-) :
-    Keyboard(context, xmlLayoutResId) {
+) : Keyboard(context, xmlLayoutResId) {
 
     private var height: Int
 
