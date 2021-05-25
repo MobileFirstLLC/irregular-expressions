@@ -56,6 +56,8 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
     private val SECONDARY_KBD_KEYCODE = -11
     private val KEYCODE_SPACE = 32
 
+    private val HISTORY = ArrayList<Int>()
+
     // All available text styles
     private var styles = getEnabledStyles()
 
@@ -397,11 +399,19 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
         val inputConnection = currentInputConnection
         val selectedText = inputConnection.getSelectedText(0)
         if (TextUtils.isEmpty(selectedText)) {
+            val charCount = HISTORY.removeLastOrNull() ?: 1
             if (reverseCursorDirection) {
-                inputConnection.deleteSurroundingText(0, 1)
+                inputConnection.deleteSurroundingText(0, charCount)
             } else
-                inputConnection.deleteSurroundingText(1, 0)
+                inputConnection.deleteSurroundingText(charCount, 0)
         } else {
+            var counter = selectedText.length
+            while (HISTORY.isNotEmpty()) {
+                counter -= HISTORY.removeLastOrNull() ?: 1
+                if (counter <= 0 || HISTORY.isEmpty()) {
+                    break
+                }
+            }
             inputConnection.commitText("", 1)
         }
     }
@@ -437,6 +447,7 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
             }
         }
         inputConnection.commitText(text, 1)
+        HISTORY.add(text.length)
 
         // adjust cursor position when typing right to left
         if (reverseCursorDirection)
