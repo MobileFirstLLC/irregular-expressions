@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="name_upsidedown">De cabeza</string>
+    <string name="name_olde">Letra gótica</string>
+    <string name="name_olde_bold">Letra gótica negrita</string>
+    <string name="name_mono">Monoespaciado</string>
+    <string name="name_slashed">Barrado</string>
+    <string name="name_starry_night">Noche estrellada</string>
+    <string name="name_clapclap">Palmoteo</string>
+    <string name="name_organic">Orgánico</string>
+    <string name="name_spongemock">Remedo Bob Esponja</string>
+    <string name="name_clear_boxes">Cuadros</string>
+    <string name="name_clear_circles">Círculos</string>
+    <string name="name_filled_boxes">Cuadros</string>
+    <string name="name_filled_circles">Círculos</string>
+    <string name="name_underlined">Subrayado</string>
+    <string name="name_strikethrough">Tachado</string>
+    <string name="name_small_caps">Versalitas</string>
+    <string name="name_mustache">Bigote</string>
+    <string name="name_thunder">Relámpago</string>
+    <string name="config_styles_summary">Mostrar, ocultar y reordenar estilos de texto</string>
+    <string name="configure_styles_help">Cómo configurar los estilos de texto</string>
+    <string name="disabled">Desactivado</string>
+    <string name="enabled">Activado</string>
+    <string name="source_summary">Envíe sus modificaciones</string>
+    <string name="feedback_summary">Informar de errores o solicitar funciones</string>
+    <string name="source_code">Código fuente</string>
+    <string name="intro_header">Le damos la bienvenida
+\nal teclado Irregular Expressions.</string>
+    <string name="now_try_it">3. Ahora pruébelo. Escriba aquí:</string>
+    <string name="select_keyboard">2. Seleccione el teclado</string>
+    <string name="enable_keyboard">1. Active el teclado</string>
+    <string name="intro_subtitle">Cómo se utiliza</string>
+    <string name="kbd_layout_qwertz">QWERTZ</string>
+    <string name="kbd_layout_azerty">AZERTY</string>
+    <string name="kbd_layout_qwerty">QWERTY</string>
+    <string name="configure_styles">Configurar estilos de texto</string>
+    <string name="key_height">Altura de teclas (%)</string>
+    <string name="help">Ayuda</string>
+    <string name="ok">Aceptar</string>
+    <string name="label_go_key">Ir</string>
+    <string name="label_next_key">Siguiente</string>
+    <string name="label_send_key">Enviar</string>
+    <string name="setting_keyboard_layout">Disposición de teclado</string>
+    <string name="key_vibrations">Vibraciones de teclas</string>
+    <string name="label_feedback">Enviar comentarios</string>
+    <string name="label_rate_app">Valorar aplicación</string>
+    <string name="label_version">Versión</string>
+    <string name="label_about">Acerca de</string>
+    <string name="label_developer">Desarrollo</string>
+    <string name="label_settings">Preferencias de usuario</string>
+    <string name="title_activity_settings">Configuración</string>
+    <string name="name_happy_faces">Feliz</string>
+    <string name="name_frowny_faces">Triste</string>
+    <string name="config_instructions">"
+\nPara reordenar, mantenga presionado y arrastre
+\n
+\nUtilice las flechas para subir o bajar
+\n
+\nDesactive para ocultar el estilo del teclado"</string>
+</resources>
