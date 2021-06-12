@@ -57,6 +57,7 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
     private val KEYCODE_SPACE = 32
 
     private val HISTORY = ArrayList<Int>()
+    // see https://android.googlesource.com/platform/development/+/master/samples/SoftKeyboard/src/com/example/android/softkeyboard/SoftKeyboard.java
 
     // All available text styles
     private var styles = getEnabledStyles()
