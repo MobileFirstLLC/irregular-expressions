@@ -3,20 +3,27 @@
 
     <!-- theme colors -->
     <color name="colorPrimary">#1E88E5</color>
-    <color name="colorPrimaryDark">#3B3F57</color>
+    <color name="colorPrimaryDark">#1A1B25</color>
     <color name="colorAccent">@color/colorPrimary</color>
+    <color name="transparent">@android:color/transparent</color>
+    <!-- logo background outside app -->
     <color name="ic_launcher_background">#E6E6E6</color>
-    <color name="splash_background">#ddd</color>
-    <color name="transparent">#0000</color>
+    <!-- logo background in splash screen -->
+    <color name="splash_background">#eeeeee</color>
+    <!-- background gradient -->
+    <color name="gradient_mf_blue">#ff009DDC</color>
+    <color name="gradient_mf_green">#ff3ddc84</color>
 
     <!-- style colors -->
     <color name="keyboardBackground">#333333</color>
     <color name="keyboardPreviewBackground">#454545</color>
     <color name="keyboardTextColor">@android:color/white</color>
     <color name="keyboardDivider">#99111111</color>
-    <color name="activity_bg">#f2f2f2</color>
+    <color name="activity_bg">#ffffff</color>
     <color name="icon_color">#88000000</color>
     <color name="settings_background">#ddd</color>
+    <color name="text_color_buttons">#fff</color>
     <color name="text_color">#222</color>
+
 
 </resources>
