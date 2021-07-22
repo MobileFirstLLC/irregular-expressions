@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.content.res.Resources
 import android.content.res.TypedArray
-import android.util.Log
 import androidx.annotation.StyleableRes
 import androidx.preference.PreferenceManager
 import mf.irregex.R

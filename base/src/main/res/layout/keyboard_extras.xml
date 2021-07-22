@@ -1,4 +1,5 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/keyboard_extras"
     android:layout_width="match_parent"
@@ -12,7 +13,7 @@
         android:layout_weight="85"
         android:layout_height="wrap_content"
         android:background="@drawable/key_background"
-        android:gravity="top|start"
+        android:gravity="center|start"
         android:orientation="horizontal"
         android:paddingStart="2dp"
         android:paddingLeft="2dp"

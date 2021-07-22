@@ -11,13 +11,14 @@
 
     <include layout="@layout/keyboard_extras" />
 
-    <android.inputmethodservice.KeyboardView
+    <mf.irregex.keyboard.IrregularKeyboardView
         android:id="@+id/keyboard_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?attr/kbd_bg"
         android:keyBackground="@drawable/key_background"
         android:keyPreviewLayout="@null"
+        android:keyTextSize="24sp"
         android:keyTextColor="?attr/kbd_text_color"
         android:popupLayout="@layout/keyboard_popup"
         android:shadowRadius="0" />

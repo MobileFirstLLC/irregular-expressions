@@ -73,7 +73,7 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
 
     // UI Elements
     private var keyboardLayoutView: LinearLayout? = null
-    private var keyboardView: KeyboardView? = null
+    private var keyboardView: IrregularKeyboardView? = null
     private var keyboard: IrregularKeyboard? = null
     private var styleToggle: AppCompatImageButton? = null
     private var stylePicker: RecyclerView? = null
@@ -540,13 +540,12 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
         val keys = keyboard!!.keys
         val shiftIndex = keyboard!!.shiftKeyIndex
         if (shiftIndex >= 0 && shiftIndex < keys.size) {
-            val currentKey = keys[shiftIndex]
             val icon = when {
                 uppercaseNextKeyOnly -> R.drawable.kbd_ic_arrow_up_bold
                 keyboard!!.isShifted -> R.drawable.kbd_ic_keyboard_caps_filled
                 else -> R.drawable.kbd_ic_arrow_up_bold_outline
             }
-            currentKey.icon = resources.getDrawable(icon)
+            keyboardView!!.setShiftIcon(icon)
         }
     }
 
@@ -571,26 +570,18 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
      *
      * Return boolean to indicate if key height has changed -> invalidate view
      */
-    private fun initPreferences(): Boolean {
+    private fun initPreferences() {
         val window = getSystemService(WINDOW_SERVICE) as WindowManager
         val orientation = resources.configuration.orientation
         val heightMultiplier = if (orientation == Configuration.ORIENTATION_LANDSCAPE) 1.7f else 1f
         val prefs = PreferenceManager.getDefaultSharedPreferences(this)
-        val previousKeyHeight = keyHeight
-        val previousLayout = keyboardLayout
-        val previousAppearance = appearance
 
         keyVibrations = prefs.getBoolean("key_vibrations", DEFAULT_VIBRATIONS)
         keyboardLayout = prefs.getString("kbd_layout", DEFAULT_KBD_LAYOUT).toString()
-        keyHeight = (Math.min(
-            .15f,
+        keyHeight = (.15f.coerceAtMost(
             heightMultiplier * (prefs.getInt("kdb_key_height", DEFAULT_HEIGHT) / 100f)
         ) * window.defaultDisplay.height).roundToInt()
         appearance = prefs.getString("kbd_appearance", DEFAULT_APPEARANCE).toString()
-
-        return keyHeight != previousKeyHeight ||
-                keyboardLayout != previousLayout ||
-                appearance != previousAppearance
     }
 
     /**

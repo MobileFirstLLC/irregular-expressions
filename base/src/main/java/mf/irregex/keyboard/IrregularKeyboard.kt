@@ -4,11 +4,8 @@ import android.content.Context
 import android.inputmethodservice.Keyboard
 
 @Suppress("DEPRECATION")
-internal class IrregularKeyboard(
-    context: Context?,
-    xmlLayoutResId: Int,
-    newKeyHeight: Int
-) : Keyboard(context, xmlLayoutResId) {
+internal class IrregularKeyboard(context: Context?, xmlLayoutResId: Int, newKeyHeight: Int) :
+    Keyboard(context, xmlLayoutResId) {
 
     private var height: Int
 
@@ -20,7 +17,7 @@ internal class IrregularKeyboard(
         return super.getVerticalGap()
     }
 
-    fun setHeight(newHeight: Int) {
+    private fun setHeight(newHeight: Int) {
         height = newHeight
     }
 
@@ -33,7 +30,7 @@ internal class IrregularKeyboard(
         adjustKeyHeight(newKeyHeight)
     }
 
-    fun adjustKeyHeight(newKeyHeight: Int) {
+    private fun adjustKeyHeight(newKeyHeight: Int) {
         val oldKeyHeight = keyHeight
         val verticalGap = verticalGap
         var rows = 0

@@ -1,6 +1,6 @@
 package mf.irregex.styles
 
-import java.util.ArrayList
+import java.util.*
 import kotlin.math.roundToInt
 import kotlin.random.Random
 
