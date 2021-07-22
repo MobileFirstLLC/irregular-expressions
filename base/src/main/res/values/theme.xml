@@ -15,7 +15,7 @@
         <item name="colorSecondary">@color/colorAccent</item>
     </style>
 
-    <style name="SplashTheme" parent="@style/Theme.AppCompat.Light.NoActionBar">
+    <style name="SplashTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="android:windowBackground">@android:color/white</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowActionBar">false</item>

@@ -11,11 +11,20 @@
     <!-- background gradient -->
     <color name="gradient_mf_blue">#303F9F</color>
     <color name="gradient_mf_green">#00695C</color>
-
+    <!-- main activity -->
+    <color name="activity_bg">#2E3437</color>
+    <color name="text_color">#FFF</color>
+    <!-- settings -->
     <color name="settings_background">#111</color>
     <color name="icon_color">#88FFFFFF</color>
-    <color name="activity_bg">#2E3437</color>
-    <color name="text_color_buttons">#fff</color>
-    <color name="text_color">#FFF</color>
+
+    <!-- keyboard colors -->
+    <color name="keyboardBackground">#333333</color>
+    <color name="keyboardPreviewBackground">#454545</color>
+    <color name="keyboardTextColor">@android:color/white</color>
+    <color name="keyboardDivider">#99111111</color>
+    <color name="key_border_color">#000000</color>
+    <color name="key_background">#28282D</color>
+    <color name="key_background_pressed">#5D5D69</color>
 
 </resources>

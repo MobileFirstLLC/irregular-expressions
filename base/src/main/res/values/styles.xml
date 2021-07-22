@@ -28,6 +28,7 @@
 
     <style name="kbd_style_picker_option_active" parent="kbd_style_picker_option">
         <item name="android:background">@drawable/rounded_primary_bg</item>
+        <item name="android:textColor">@color/text_style_selected_color</item>
     </style>
 
     <style name="kbd_vertical_divider">
