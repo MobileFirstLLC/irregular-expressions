@@ -19,12 +19,11 @@ import android.preference.PreferenceManager
 import android.text.InputType
 import android.text.TextUtils
 import android.text.method.MetaKeyKeyListener
-import android.view.KeyEvent
-import android.view.View
+import android.view.*
 import android.view.View.VISIBLE
-import android.view.WindowManager
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
+import android.widget.LinearLayout
 import androidx.appcompat.widget.AppCompatImageButton
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -37,6 +36,7 @@ import mf.irregex.styles.StylePickerAdapter
 import java.util.concurrent.TimeUnit
 import kotlin.math.roundToInt
 
+
 /**
  * This class sets up and handles virtual keyboard events
  */
@@ -48,8 +48,11 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
     private val VIBRATION_DURATION_MS = 25L
     private val LONG_PRESS = 200L
     private val DEFAULT_KBD_LAYOUT = "1" // 1 = qwerty, 2 = azerty, 3 = qwertz
+    private val DEFAULT_APPEARANCE = "3" // 1 = light, 2 = dark, 3 = auto
     private val DEFAULT_VIBRATIONS = false
     private val DEFAULT_HEIGHT = 8
+    private val LIGHT_MODE = "1"
+    private val DARK_MODE = "2"
 
     // Primary vs. secondary keyboards
     private val ALPHA_KEYBOARD_KEYCODE = -10
@@ -69,6 +72,7 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
     private val PHONE_KBD = 3
 
     // UI Elements
+    private var keyboardLayoutView: LinearLayout? = null
     private var keyboardView: KeyboardView? = null
     private var keyboard: IrregularKeyboard? = null
     private var styleToggle: AppCompatImageButton? = null
@@ -99,15 +103,30 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
     private var keyVibrations = DEFAULT_VIBRATIONS
     private var keyboardLayout = DEFAULT_KBD_LAYOUT
     private var keyHeight = DEFAULT_HEIGHT
+    private var appearance = DEFAULT_APPEARANCE
+
+    override fun onCreate() {
+        super.onCreate()
+
+    }
 
     // called initially when inflating keyboard
     override fun onCreateInputView(): View {
-        val layout = layoutInflater.inflate(R.layout.keyboard_view, null)
-        val ctx = layout.context
+
+        val ctx = application.applicationContext
         initPreferences()
+        val theme = when (appearance) {
+            DARK_MODE -> R.style.KeyboardThemeDark
+            LIGHT_MODE -> R.style.KeyboardThemeLight
+            else -> R.style.KeyboardTheme
+        }
+        val contextThemeWrapper = ContextThemeWrapper(ctx, theme)
+        val layout = LayoutInflater.from(contextThemeWrapper).inflate(R.layout.keyboard_view, null)
 
         /* initialize keyboard */
+        keyboardLayoutView = layout.findViewById(R.id.keyboard_layout)
         keyboardView = layout.findViewById(R.id.keyboard_view)
+
         keyboardView?.setOnKeyboardActionListener(this)
         if (keyboardChoice == NUMBER_KBD) {
             enableSymbolicKeyboard()
@@ -182,7 +201,6 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
      */
     override fun onStartInput(attribute: EditorInfo, restarting: Boolean) {
         super.onStartInput(attribute, restarting)
-
         // Reset our state.  We want to do this even if restarting, because
         // the underlying state of the text editor could have changed in any way.
         mComposing.setLength(0)
@@ -509,8 +527,8 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
      */
     private fun setFontStyleIcon(disable: Boolean) {
         styleToggle!!.setImageResource(
-            if (disable) R.drawable.ic_style_off
-            else R.drawable.ic_format
+            if (disable) R.drawable.kbd_ic_style_off
+            else R.drawable.kbd_ic_style_on
         )
         stylePicker!!.alpha = if (disable) 0.5f else 1.0f
     }
@@ -524,9 +542,9 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
         if (shiftIndex >= 0 && shiftIndex < keys.size) {
             val currentKey = keys[shiftIndex]
             val icon = when {
-                uppercaseNextKeyOnly -> R.drawable.ic_arrow_up_bold
-                keyboard!!.isShifted -> R.drawable.ic_keyboard_caps_filled
-                else -> R.drawable.ic_arrow_up_bold_outline
+                uppercaseNextKeyOnly -> R.drawable.kbd_ic_arrow_up_bold
+                keyboard!!.isShifted -> R.drawable.kbd_ic_keyboard_caps_filled
+                else -> R.drawable.kbd_ic_arrow_up_bold_outline
             }
             currentKey.icon = resources.getDrawable(icon)
         }
@@ -556,22 +574,23 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
     private fun initPreferences(): Boolean {
         val window = getSystemService(WINDOW_SERVICE) as WindowManager
         val orientation = resources.configuration.orientation
-        val heightMultiplier =
-            if (orientation == Configuration.ORIENTATION_LANDSCAPE) 1.7f else 1f
+        val heightMultiplier = if (orientation == Configuration.ORIENTATION_LANDSCAPE) 1.7f else 1f
         val prefs = PreferenceManager.getDefaultSharedPreferences(this)
         val previousKeyHeight = keyHeight
         val previousLayout = keyboardLayout
+        val previousAppearance = appearance
 
         keyVibrations = prefs.getBoolean("key_vibrations", DEFAULT_VIBRATIONS)
         keyboardLayout = prefs.getString("kbd_layout", DEFAULT_KBD_LAYOUT).toString()
         keyHeight = (Math.min(
-            .15f, heightMultiplier * (prefs.getInt(
-                "kdb_key_height", DEFAULT_HEIGHT
-            ) / 100f)
+            .15f,
+            heightMultiplier * (prefs.getInt("kdb_key_height", DEFAULT_HEIGHT) / 100f)
         ) * window.defaultDisplay.height).roundToInt()
+        appearance = prefs.getString("kbd_appearance", DEFAULT_APPEARANCE).toString()
 
         return keyHeight != previousKeyHeight ||
-                previousLayout != keyboardLayout
+                keyboardLayout != previousLayout ||
+                appearance != previousAppearance
     }
 
     /**
@@ -605,7 +624,7 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
                 mEnterKey.label = resources.getText(R.string.label_next_key)
             }
             EditorInfo.IME_ACTION_SEARCH -> {
-                mEnterKey.icon = resources.getDrawable(R.drawable.ic_keyboard_search)
+                mEnterKey.icon = resources.getDrawable(R.drawable.kbd_ic_keyboard_search)
                 mEnterKey.label = null
             }
             EditorInfo.IME_ACTION_SEND -> {
@@ -614,7 +633,7 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
                 mEnterKey.label = resources.getText(R.string.label_send_key)
             }
             else -> {
-                mEnterKey.icon = resources.getDrawable(R.drawable.ic_keyboard_return)
+                mEnterKey.icon = resources.getDrawable(R.drawable.kbd_ic_keyboard_return)
                 mEnterKey.label = null
             }
         }

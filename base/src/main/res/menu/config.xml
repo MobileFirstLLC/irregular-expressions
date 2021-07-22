@@ -3,7 +3,7 @@
 
     <item
         android:id="@+id/help"
-        android:icon="@drawable/ic_information_outline_white"
+        android:icon="@drawable/pref_ic_information_outline_white"
         android:title="@string/help"
         app:showAsAction="always" />
 </menu>

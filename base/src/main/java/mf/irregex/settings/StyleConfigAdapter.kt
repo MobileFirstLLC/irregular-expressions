@@ -9,6 +9,7 @@ import android.widget.Switch
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.button.MaterialButton
+import com.google.android.material.switchmaterial.SwitchMaterial
 import mf.irregex.R
 import mf.irregex.styles.AppTextStyle
 import java.util.*
@@ -52,7 +53,7 @@ class StyleConfigAdapter(
     inner class ItemViewHolder internal constructor(v: View) : RecyclerView.ViewHolder(v),
         View.OnClickListener {
         val mTextView: TextView = v.findViewById(R.id.text_value)
-        val mCheckbox: Switch = v.findViewById(R.id.enable_box)
+        val mCheckbox: SwitchMaterial = v.findViewById(R.id.enable_box)
         val mButtonUp: MaterialButton = v.findViewById(R.id.order_btn_up)
         val mButtonDown: MaterialButton = v.findViewById(R.id.order_btn_down)
 

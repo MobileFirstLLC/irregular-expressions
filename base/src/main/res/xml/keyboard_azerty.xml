@@ -30,7 +30,7 @@
         <Key android:keyLabel="m" android:keyEdgeFlags="right"/>
     </Row>
     <Row>
-        <Key android:codes="-1" android:keyIcon="@drawable/ic_arrow_up_bold_outline" android:keyWidth="15%p" android:keyEdgeFlags="left"/>
+        <Key android:codes="-1" android:keyIcon="@drawable/kbd_ic_arrow_up_bold_outline" android:keyWidth="15%p" android:keyEdgeFlags="left"/>
         <Key android:keyLabel="w"/>
         <Key android:keyLabel="x"/>
         <Key android:keyLabel="c" android:popupCharacters="@string/alternates_for_c" android:popupKeyboard="@xml/keyboard_popup" />
@@ -38,14 +38,14 @@
         <Key android:keyLabel="b"/>
         <Key android:keyLabel="n" android:popupCharacters="@string/alternates_for_n" android:popupKeyboard="@xml/keyboard_popup"/>
         <Key android:keyLabel="'"/>
-        <Key android:codes="-5"  android:keyIcon="@drawable/ic_backspace_outline"  android:keyWidth="15%p" android:isRepeatable="true" android:keyEdgeFlags="right"/>
+        <Key android:codes="-5"  android:keyIcon="@drawable/kbd_ic_backspace_outline"  android:keyWidth="15%p" android:isRepeatable="true" android:keyEdgeFlags="right"/>
     </Row>
     <Row android:rowEdgeFlags="bottom">
-        <Key android:codes="-11" android:keyIcon="@drawable/ic_numeric"  android:keyWidth="15%p" android:keyEdgeFlags="left"/>
+        <Key android:codes="-11" android:keyIcon="@drawable/kbd_ic_numeric"  android:keyWidth="15%p" android:keyEdgeFlags="left"/>
         <Key android:keyLabel="/"/>
         <Key android:codes="44" android:keyLabel="," />
         <Key android:codes="32" android:keyLabel=" " android:keyWidth="40%p" android:isRepeatable="true"/>
         <Key android:codes="46" android:keyLabel="."/>
-        <Key android:codes="-4" android:keyIcon="@drawable/ic_keyboard_return" android:keyWidth="15%p" android:keyEdgeFlags="right"/>
+        <Key android:codes="-4" android:keyIcon="@drawable/kbd_ic_keyboard_return" android:keyWidth="15%p" android:keyEdgeFlags="right"/>
     </Row>
 </Keyboard>

@@ -20,14 +20,35 @@
     <color name="settings_background">#ddd</color>
     <color name="icon_color">#88000000</color>
 
-    <!-- keyboard colors -->
-    <color name="keyboardBackground">#eeeeee</color>
-    <color name="keyboardPreviewBackground">#454545</color>
-    <color name="keyboardTextColor">#111</color>
-    <color name="keyboardDivider">#99111111</color>
-    <color name="key_border_color">#eee</color>
-    <color name="key_background">#fff</color>
-    <color name="key_background_pressed">#f5f5f5</color>
-    <color name="text_style_selected_color">#fff</color>
+    <!-- default keyboard colors -->
+    <color name="default_kbd_bg">@color/light_kbd_bg</color>
+    <color name="default_kbd_preview_bg">@color/light_kbd_preview_bg</color>
+    <color name="default_kbd_text_color">@color/light_kbd_text_color</color>
+    <color name="default_kbd_divider">@color/light_kbd_divider</color>
+    <color name="default_key_border_color">@color/light_key_border_color</color>
+    <color name="default_key_bg">@color/light_key_bg</color>
+    <color name="default_key_bg_pressed">@color/light_key_bg_pressed</color>
+    <color name="default_style_text_selected">@color/light_style_text_selected</color>
+
+    <!-- light theme keyboard colors -->
+    <color name="light_kbd_bg">#eeeeee</color>
+    <color name="light_kbd_preview_bg">#454545</color>
+    <color name="light_kbd_text_color">#111</color>
+    <color name="light_kbd_divider">#99444444</color>
+    <color name="light_key_border_color">#eee</color>
+    <color name="light_key_bg">#fff</color>
+    <color name="light_key_bg_pressed">#f5f5f5</color>
+    <color name="light_style_text_selected">#fff</color>
+
+    <!-- dark theme keyboard colors -->
+    <color name="dark_kbd_bg">#333333</color>
+    <color name="dark_kbd_preview_bg">#454545</color>
+    <color name="dark_kbd_text_color">@android:color/white</color>
+    <color name="dark_kbd_divider">#99111111</color>
+    <color name="dark_key_border_color">#000000</color>
+    <color name="dark_key_bg">#28282D</color>
+    <color name="dark_key_bg_pressed">#5D5D69</color>
+    <color name="dark_style_text_selected">#fff</color>
+
 
 </resources>

@@ -26,7 +26,8 @@
             style="@style/kbd_icon"
             android:padding="4dp"
             android:layout_width="40dp"
-            app:srcCompat="@drawable/ic_style_off" />
+            android:background="@color/transparent"
+            app:srcCompat="@drawable/kbd_ic_style_off" />
 
         <View style="@style/kbd_vertical_divider" />
 
@@ -48,5 +49,5 @@
         android:padding="12dp"
         android:background="?android:attr/selectableItemBackground"
         android:layout_height="@dimen/match_parent"
-        app:srcCompat="@drawable/ic_settings" />
+        app:srcCompat="@drawable/kbd_ic_settings" />
 </LinearLayout>

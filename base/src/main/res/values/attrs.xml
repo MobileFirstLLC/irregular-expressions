@@ -1,0 +1,12 @@
+<resources>
+
+    <attr format="reference" name="kbd_bg"/>
+    <attr format="reference" name="kbd_preview_bg"/>
+    <attr format="reference" name="kbd_text_color"/>
+    <attr format="reference" name="kbd_divider"/>
+    <attr format="reference" name="key_border_color"/>
+    <attr format="reference" name="key_bg"/>
+    <attr format="reference" name="key_bg_pressed"/>
+    <attr format="reference" name="style_text_selected"/>
+
+</resources>

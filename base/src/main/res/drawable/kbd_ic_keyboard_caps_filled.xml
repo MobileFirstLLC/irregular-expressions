@@ -4,6 +4,6 @@
     android:viewportWidth="24"
     android:viewportHeight="24">
   <path
-      android:fillColor="@color/keyboardTextColor"
+      android:fillColor="?attr/kbd_text_color"
       android:pathData="m12,1.8301 l-10,10h5v6h10v-6h5zM7,19.8301v2.3398h10v-2.3398z"/>
 </vector>
