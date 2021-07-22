@@ -35,6 +35,17 @@
             android:max="12"
             app:defaultValue="8"
             app:title="@string/key_height" />
+
+        <ListPreference
+            android:defaultValue="3"
+            android:entries="@array/settings_appearance_names_array"
+            android:entryValues="@array/settings_appearance_values_array"
+            android:icon="@drawable/ic_theme_light_dark"
+            android:key="kbd_appearance"
+            android:summary="%s"
+            android:title="@string/appearance" />
+
+
     </PreferenceCategory>
 
     <PreferenceCategory android:title="@string/label_about">
