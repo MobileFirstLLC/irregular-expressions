@@ -14,11 +14,11 @@ class SettingsActivity : AppCompatActivity(),
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_settings)
+
         if (savedInstanceState == null) {
             supportFragmentManager
                 .beginTransaction()
-                .replace(R.id.settings, SettingsFragment())
+                .replace(android.R.id.content, SettingsFragment())
                 .commit()
         } else {
             title = savedInstanceState.getCharSequence(TITLE_TAG)
@@ -30,7 +30,6 @@ class SettingsActivity : AppCompatActivity(),
         }
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
-
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
@@ -59,15 +58,13 @@ class SettingsActivity : AppCompatActivity(),
     }
 
     override fun onPreferenceStartFragment(
-        caller: PreferenceFragmentCompat,
-        pref: Preference
+        caller: PreferenceFragmentCompat, pref: Preference
     ): Boolean {
+
         // Instantiate the new Fragment
         val args = pref.extras
-        val fragment = supportFragmentManager.fragmentFactory.instantiate(
-            classLoader,
-            pref.fragment
-        )
+        val fragment =
+            supportFragmentManager.fragmentFactory.instantiate(classLoader, pref.fragment)
         fragment.arguments = args
         fragment.setTargetFragment(caller, 0)
         supportFragmentManager.beginTransaction()

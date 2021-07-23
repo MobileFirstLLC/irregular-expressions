@@ -37,21 +37,14 @@ class IrregularKeyboardView : KeyboardView {
         determineTheme()
     }
 
-    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(
-        context,
-        attrs,
-        defStyleAttr
-    ) {
+    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) :
+            super(context, attrs, defStyleAttr) {
         determineTheme()
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    constructor(
-        context: Context,
-        attrs: AttributeSet?,
-        defStyleAttr: Int,
-        defStyleRes: Int
-    ) : super(context, attrs, defStyleAttr, defStyleRes) {
+    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int, defStyleRes: Int) :
+            super(context, attrs, defStyleAttr, defStyleRes) {
         determineTheme()
     }
 
@@ -74,13 +67,13 @@ class IrregularKeyboardView : KeyboardView {
         val drawable: Drawable? = VectorDrawableCompat.create(resources, iconResId, theme)
         val minDimension = Math.min(key.height, key.width)
         val iconSize = (minDimension * iconRatio).toInt()
-        val paddingX = (key.width - iconSize)/2
-        val paddingY = (key.height - iconSize)/2
+        val paddingX = (key.width - iconSize) / 2
+        val paddingY = (key.height - iconSize) / 2
 
         val left = key.x + paddingX
         val right = left + iconSize
         val top = key.y + paddingY
-        val bottom = top+iconSize
+        val bottom = top + iconSize
 
         drawable!!.setBounds(left, top, right, bottom)
         drawable.draw(canvas)

@@ -15,10 +15,11 @@
 
     <!-- keyboard dimens -->
     <dimen name="kbd_style_picker_horizontal_padding">7dp</dimen>
-    <dimen name="kbd_icon_button_size">34dp</dimen>
+    <dimen name="kbd_icon_button_size">40dp</dimen>
+    <dimen name="kdb_icon_padding_horizontal">8dp</dimen>
+    <dimen name="kdb_icon_padding_vertical">4dp</dimen>
     <dimen name="kbd_key_icon_size">24dp</dimen>
     <dimen name="kbd_icon_h_margin">0dp</dimen>
-    <dimen name="kdb_icon_padding">8dp</dimen>
     <dimen name="kbd_styles_divider_width">2dp</dimen>
 
     <!-- main activity dimens -->
