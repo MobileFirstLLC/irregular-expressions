@@ -47,7 +47,7 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
     private val DOUBLETAP_MAX_DELAY_MS = 500L
     private val VIBRATION_DURATION_MS = 25L
     private val LONG_PRESS = 200L
-    private val DEFAULT_KBD_LAYOUT = "1" // 1 = qwerty, 2 = azerty, 3 = qwertz
+    private val DEFAULT_KBD_LAYOUT = "1" // 1 = qwerty, 2 = azerty, 3 = qwertz, 4 = dvorak
     private val DEFAULT_APPEARANCE = "3" // 1 = light, 2 = dark, 3 = auto
     private val DEFAULT_VIBRATIONS = false
     private val DEFAULT_HEIGHT = 8
@@ -348,6 +348,7 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
         val keyLayout: Int = when (keyboardLayout) {
             "2" -> R.xml.keyboard_azerty
             "3" -> R.xml.keyboard_qwertz
+            "4" -> R.xml.keyboard_dvorak
             else -> R.xml.keyboard_qwerty
         }
         keyboard = IrregularKeyboard(this, keyLayout, keyHeight)
