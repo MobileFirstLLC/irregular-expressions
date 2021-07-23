@@ -24,31 +24,30 @@
     <color name="default_kbd_bg">@color/light_kbd_bg</color>
     <color name="default_kbd_preview_bg">@color/light_kbd_preview_bg</color>
     <color name="default_kbd_text_color">@color/light_kbd_text_color</color>
-    <color name="default_kbd_divider">@color/light_kbd_divider</color>
     <color name="default_key_border_color">@color/light_key_border_color</color>
     <color name="default_key_bg">@color/light_key_bg</color>
     <color name="default_key_bg_pressed">@color/light_key_bg_pressed</color>
     <color name="default_style_text_selected">@color/light_style_text_selected</color>
+    <color name="default_extras_bg">@color/light_extras_bg</color>
 
     <!-- light theme keyboard colors -->
-    <color name="light_kbd_bg">#e4e4e4</color>
+    <color name="light_kbd_bg">#eeeeee</color>
     <color name="light_kbd_preview_bg">#454545</color>
     <color name="light_kbd_text_color">#111</color>
-    <color name="light_kbd_divider">@color/light_kbd_bg</color>
     <color name="light_key_border_color">#fff</color>
     <color name="light_key_bg">#fff</color>
     <color name="light_key_bg_pressed">#f2f2f2</color>
     <color name="light_style_text_selected">#fff</color>
+    <color name="light_extras_bg">#e0e0e0</color>
 
     <!-- dark theme keyboard colors -->
     <color name="dark_kbd_bg">#3B3B42</color>
     <color name="dark_kbd_preview_bg">#454545</color>
     <color name="dark_kbd_text_color">@android:color/white</color>
-    <color name="dark_kbd_divider">@color/dark_kbd_bg</color>
     <color name="dark_key_border_color">#28282D</color>
     <color name="dark_key_bg">#28282D</color>
     <color name="dark_key_bg_pressed">#38383D</color>
     <color name="dark_style_text_selected">#fff</color>
-
+    <color name="dark_extras_bg">#44000000</color>
 
 </resources>

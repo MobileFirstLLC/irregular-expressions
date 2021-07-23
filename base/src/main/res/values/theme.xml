@@ -28,33 +28,33 @@
         <item name="kbd_bg">@color/default_kbd_bg</item>
         <item name="kbd_preview_bg">@color/default_kbd_preview_bg</item>
         <item name="kbd_text_color">@color/default_kbd_text_color</item>
-        <item name="kbd_divider">@color/default_kbd_divider</item>
         <item name="key_border_color">@color/default_key_border_color</item>
         <item name="key_bg">@color/default_key_bg</item>
         <item name="key_bg_pressed">@color/default_key_bg_pressed</item>
         <item name="style_text_selected">@color/default_style_text_selected</item>
+        <item name="extras_bg">@color/default_extras_bg</item>
     </style>
 
     <style name="KeyboardThemeDark" parent="KeyboardTheme">
         <item name="kbd_bg">@color/dark_kbd_bg</item>
         <item name="kbd_preview_bg">@color/dark_kbd_preview_bg</item>
         <item name="kbd_text_color">@color/dark_kbd_text_color</item>
-        <item name="kbd_divider">@color/dark_kbd_divider</item>
         <item name="key_border_color">@color/dark_key_border_color</item>
         <item name="key_bg">@color/dark_key_bg</item>
         <item name="key_bg_pressed">@color/dark_key_bg_pressed</item>
         <item name="style_text_selected">@color/dark_style_text_selected</item>
+        <item name="extras_bg">@color/dark_extras_bg</item>
     </style>
 
     <style name="KeyboardThemeLight" parent="KeyboardTheme">
         <item name="kbd_bg">@color/light_kbd_bg</item>
         <item name="kbd_preview_bg">@color/light_kbd_preview_bg</item>
         <item name="kbd_text_color">@color/light_kbd_text_color</item>
-        <item name="kbd_divider">@color/light_kbd_divider</item>
         <item name="key_border_color">@color/light_key_border_color</item>
         <item name="key_bg">@color/light_key_bg</item>
         <item name="key_bg_pressed">@color/light_key_bg_pressed</item>
         <item name="style_text_selected">@color/light_style_text_selected</item>
+        <item name="extras_bg">@color/light_extras_bg</item>
     </style>
 
     <style name="PopoverKey">
