@@ -22,12 +22,12 @@
         android:paddingRight="2dp"
         android:paddingBottom="6dp">
 
-        <androidx.appcompat.widget.AppCompatImageButton
+        <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/style_button"
             style="@style/kbd_icon"
             android:padding="4dp"
+            android:tint="?attr/kbd_text_color"
             android:layout_width="40dp"
-            android:background="@color/transparent"
             app:srcCompat="@drawable/kbd_ic_style_off" />
 
         <View style="@style/kbd_vertical_divider" />
@@ -41,13 +41,14 @@
 
     </LinearLayout>
 
-    <androidx.appcompat.widget.AppCompatImageButton
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/settings_button"
         style="@style/kbd_icon"
         android:layout_width="0dp"
         android:layout_weight="15"
         android:layout_margin="0dp"
         android:padding="12dp"
+        android:tint="?attr/kbd_text_color"
         android:background="?android:attr/selectableItemBackground"
         android:layout_height="@dimen/match_parent"
         app:srcCompat="@drawable/kbd_ic_settings" />

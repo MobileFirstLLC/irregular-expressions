@@ -4,13 +4,14 @@
     <!-- keyboard styles -->
 
     <style name="kbd_icon">
-        <item name="android:layout_width">@dimen/kbd_icon_size</item>
-        <item name="android:layout_height">@dimen/kbd_icon_size</item>
+        <item name="android:layout_width">@dimen/kbd_icon_button_size</item>
+        <item name="android:layout_height">@dimen/kbd_icon_button_size</item>
         <item name="android:layout_marginStart">@dimen/kbd_icon_h_margin</item>
         <item name="android:layout_marginLeft">@dimen/kbd_icon_h_margin</item>
         <item name="android:layout_marginEnd">@dimen/kbd_icon_h_margin</item>
         <item name="android:layout_marginRight">@dimen/kbd_icon_h_margin</item>
         <item name="android:padding">@dimen/kdb_icon_padding</item>
+        <item name="android:background">@color/transparent</item>
     </style>
 
     <style name="kbd_style_picker_option">
@@ -32,7 +33,7 @@
     </style>
 
     <style name="kbd_vertical_divider">
-        <item name="android:layout_width">1dp</item>
+        <item name="android:layout_width">@dimen/kbd_styles_divider_width</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:layout_marginTop">4dp</item>
         <item name="android:layout_marginBottom">4dp</item>

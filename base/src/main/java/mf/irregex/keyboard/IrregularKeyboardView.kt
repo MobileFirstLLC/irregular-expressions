@@ -20,16 +20,18 @@ class IrregularKeyboardView : KeyboardView {
 
     private val NUMERIC = resources.getInteger(R.integer.kbd_numeric_switch)
     private val ALPHA = resources.getInteger(R.integer.kbd_alpha_switch)
-    private val DEL_KEY = resources.getInteger(R.integer.kbd_enter_return_key)
+    private val ACTION_KEY = resources.getInteger(R.integer.kbd_enter_return_key)
     private val BACKSPACE = resources.getInteger(R.integer.kbd_backspace_delete)
     private val SHIFT = resources.getInteger(R.integer.kbd_shift_key)
     private val SPACE = resources.getInteger(R.integer.kbd_space_key)
-    private val DEFAULT_APPEARANCE = "3"
-    private val DARK_APPEARANCE = "2"
+    private val MINUS = resources.getInteger(R.integer.kbd_minus_key)
     private val LIGHT_APPEARANCE = "1"
+    private val DARK_APPEARANCE = "2"
+    private val DEFAULT_APPEARANCE = "3"
     private var themeId = R.style.KeyboardTheme
     private var iconRatio = .75f
     private var shiftIcon = R.drawable.kbd_ic_arrow_up_bold_outline
+    private val actionIcon = R.drawable.kbd_ic_keyboard_return
 
     constructor(context: Context, attrs: AttributeSet?) : super(context, attrs) {
         determineTheme()
@@ -70,12 +72,17 @@ class IrregularKeyboardView : KeyboardView {
 
     private fun drawIt(canvas: Canvas, key: Keyboard.Key, iconResId: Int, theme: Theme) {
         val drawable: Drawable? = VectorDrawableCompat.create(resources, iconResId, theme)
-        drawable!!.setBounds(
-            key.x + 2 * (key.width * (.5 - iconRatio / 2)).toInt(),
-            key.y + 2 * (key.height * (.5 - iconRatio / 2)).toInt(),
-            key.x + (key.width * iconRatio).toInt(),
-            key.y + (key.height * iconRatio).toInt()
-        )
+        val minDimension = Math.min(key.height, key.width)
+        val iconSize = (minDimension * iconRatio).toInt()
+        val paddingX = (key.width - iconSize)/2
+        val paddingY = (key.height - iconSize)/2
+
+        val left = key.x + paddingX
+        val right = left + iconSize
+        val top = key.y + paddingY
+        val bottom = top+iconSize
+
+        drawable!!.setBounds(left, top, right, bottom)
         drawable.draw(canvas)
     }
 
@@ -87,12 +94,13 @@ class IrregularKeyboardView : KeyboardView {
         for (key in keys) {
             if (key.codes.isNotEmpty() && key.label == null) {
                 when (key.codes[0]) {
-                    DEL_KEY -> drawIt(canvas, key, R.drawable.kbd_ic_keyboard_return, theme)
+                    ACTION_KEY -> drawIt(canvas, key, actionIcon, theme)
                     NUMERIC -> drawIt(canvas, key, R.drawable.kbd_ic_numeric, theme)
                     BACKSPACE -> drawIt(canvas, key, R.drawable.kbd_ic_backspace_outline, theme)
                     SHIFT -> drawIt(canvas, key, shiftIcon, theme)
                     SPACE -> drawIt(canvas, key, R.drawable.kbd_ic_keyboard_space, theme)
                     ALPHA -> drawIt(canvas, key, R.drawable.kbd_ic_alphabetical_variant, theme)
+                    MINUS -> drawIt(canvas, key, R.drawable.kbd_ic_minus, theme)
                 }
             }
         }

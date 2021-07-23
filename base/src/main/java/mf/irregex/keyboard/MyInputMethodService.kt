@@ -8,7 +8,6 @@ import android.content.res.Configuration
 import android.inputmethodservice.InputMethodService
 import android.inputmethodservice.Keyboard
 import android.inputmethodservice.Keyboard.KEYCODE_DONE
-import android.inputmethodservice.KeyboardView
 import android.inputmethodservice.KeyboardView.GONE
 import android.inputmethodservice.KeyboardView.OnKeyboardActionListener
 import android.os.Build
@@ -19,12 +18,14 @@ import android.preference.PreferenceManager
 import android.text.InputType
 import android.text.TextUtils
 import android.text.method.MetaKeyKeyListener
+import android.util.Log
 import android.view.*
 import android.view.View.VISIBLE
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.LinearLayout
 import androidx.appcompat.widget.AppCompatImageButton
+import androidx.appcompat.widget.AppCompatImageView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -75,7 +76,8 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
     private var keyboardLayoutView: LinearLayout? = null
     private var keyboardView: IrregularKeyboardView? = null
     private var keyboard: IrregularKeyboard? = null
-    private var styleToggle: AppCompatImageButton? = null
+    private var styleToggle: AppCompatImageView? = null
+    private var settingsButton: AppCompatImageView? = null
     private var stylePicker: RecyclerView? = null
     private var adapter: StylePickerAdapter? = null
     private var keyboardExtras: View? = null
@@ -104,24 +106,24 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
     private var keyboardLayout = DEFAULT_KBD_LAYOUT
     private var keyHeight = DEFAULT_HEIGHT
     private var appearance = DEFAULT_APPEARANCE
+    private var sysDarkMode: Boolean? = null
 
     override fun onCreate() {
         super.onCreate()
-
+        initPreferences()
     }
 
     // called initially when inflating keyboard
     override fun onCreateInputView(): View {
 
-        val ctx = application.applicationContext
-        initPreferences()
         val theme = when (appearance) {
             DARK_MODE -> R.style.KeyboardThemeDark
             LIGHT_MODE -> R.style.KeyboardThemeLight
             else -> R.style.KeyboardTheme
         }
-        val contextThemeWrapper = ContextThemeWrapper(ctx, theme)
-        val layout = LayoutInflater.from(contextThemeWrapper).inflate(R.layout.keyboard_view, null)
+        val contextThemeWrapper = ContextThemeWrapper(applicationContext, theme)
+        val layout = LayoutInflater.from(contextThemeWrapper)
+            .inflate(R.layout.keyboard_view, null)
 
         /* initialize keyboard */
         keyboardLayoutView = layout.findViewById(R.id.keyboard_layout)
@@ -146,7 +148,7 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
         keyboardExtras = layout.findViewById(R.id.keyboard_extras)
         adapter = StylePickerAdapter(styles, onFontSelection())
         val layoutManager = GridLayoutManager(
-            ctx, 1, LinearLayoutManager.HORIZONTAL, false
+            applicationContext, 1, LinearLayoutManager.HORIZONTAL, false
         )
         stylePicker?.layoutManager = layoutManager
         stylePicker?.adapter = adapter
@@ -157,9 +159,8 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
         styleToggle = layout.findViewById(R.id.style_button)
         styleToggle?.setOnClickListener(onFontButtonClick())
         setFontStyleIcon(styleIndex == REGULAR_STYLE_INDEX)
-        val settingsButton: View = layout.findViewById(R.id.settings_button)
-        settingsButton.setOnClickListener(onSettingsClick(ctx))
-
+        settingsButton = layout.findViewById(R.id.settings_button)
+        settingsButton?.setOnClickListener(onSettingsClick())
         return layout
     }
 
@@ -191,6 +192,32 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
                 keyboardChoice = ALPHA_KBD
             }
         }
+        when (keyboardChoice) {
+            NUMBER_KBD -> enableSymbolicKeyboard()
+            PHONE_KBD -> enablePhoneKeyboard()
+            else -> enableAlphaKeyboard()
+        }
+    }
+
+    /**
+     * Reload user preferences every time keyboard is inflated
+     * as these preferences may have changed
+     */
+    override fun onStartInputView(info: EditorInfo?, restarting: Boolean) {
+        super.onStartInputView(info, restarting)
+        Log.d("KBD", "Start Input View!")
+        if (initPreferences()) {
+            Log.d("KBD", "restarting...")
+            // when preferences have changed appearance, need to
+            // restart the input method service to apply theme change
+
+            setInputView(onCreateInputView())
+            return
+        }
+        keyboardExtras?.visibility = VISIBLE
+        styles = getEnabledStyles()
+        adapter!!.updateStyles(styles)
+        chooseKeyboardFromInputType(info)
     }
 
     /**
@@ -202,29 +229,11 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
     override fun onStartInput(attribute: EditorInfo, restarting: Boolean) {
         super.onStartInput(attribute, restarting)
         // Reset our state.  We want to do this even if restarting, because
-        // the underlying state of the text editor could have changed in any way.
+        // the underlying state of the text editor could have changed anyway.
         mComposing.setLength(0)
         if (!restarting) mMetaState = 0
         chooseKeyboardFromInputType(attribute)
         setImeOptions(attribute.imeOptions)
-    }
-
-    /**
-     * Reload user preferences every time keyboard is inflated
-     * as these preferences may have changed
-     */
-    override fun onStartInputView(info: EditorInfo?, restarting: Boolean) {
-        super.onStartInputView(info, restarting)
-        initPreferences()
-        keyboardExtras?.visibility = VISIBLE
-        styles = getEnabledStyles()
-        adapter!!.updateStyles(styles)
-        chooseKeyboardFromInputType(info)
-        when (keyboardChoice) {
-            NUMBER_KBD -> enableSymbolicKeyboard()
-            PHONE_KBD -> enablePhoneKeyboard()
-            else -> enableAlphaKeyboard()
-        }
     }
 
     /**
@@ -331,8 +340,8 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
         keyboard = IrregularKeyboard(this, R.xml.keyboard_phone, keyHeight)
         keyboardExtras?.visibility = GONE
         keyboardChoice = PHONE_KBD
-        keyboardView!!.keyboard = keyboard
-        keyboardView!!.invalidateAllKeys()
+        keyboardView?.keyboard = keyboard
+        keyboardView?.invalidateAllKeys()
     }
 
     /**
@@ -349,8 +358,8 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
         keyboard!!.isShifted = false
         uppercaseNextKeyOnly = false
         setShiftKeyIcon()
-        keyboardView!!.keyboard = keyboard
-        keyboardView!!.invalidateAllKeys()
+        keyboardView?.keyboard = keyboard
+        keyboardView?.invalidateAllKeys()
     }
 
     /**
@@ -497,9 +506,9 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
     /**
      * Settings button click launches settings activity
      */
-    private fun onSettingsClick(context: Context): View.OnClickListener {
+    private fun onSettingsClick(): View.OnClickListener {
         return View.OnClickListener {
-            val intent = Intent(context, SettingsActivity::class.java)
+            val intent = Intent(applicationContext, SettingsActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             startActivity(intent)
         }
@@ -545,7 +554,7 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
                 keyboard!!.isShifted -> R.drawable.kbd_ic_keyboard_caps_filled
                 else -> R.drawable.kbd_ic_arrow_up_bold_outline
             }
-            keyboardView!!.setShiftIcon(icon)
+            keyboardView?.setShiftIcon(icon)
         }
     }
 
@@ -568,9 +577,10 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
     /**
      * Initialize user preference variables
      *
-     * Return boolean to indicate if key height has changed -> invalidate view
+     * Return boolean to indicate if preference changes should result in recreating the
+     * keyboard view
      */
-    private fun initPreferences() {
+    private fun initPreferences(): Boolean {
         val window = getSystemService(WINDOW_SERVICE) as WindowManager
         val orientation = resources.configuration.orientation
         val heightMultiplier = if (orientation == Configuration.ORIENTATION_LANDSCAPE) 1.7f else 1f
@@ -579,9 +589,25 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
         keyVibrations = prefs.getBoolean("key_vibrations", DEFAULT_VIBRATIONS)
         keyboardLayout = prefs.getString("kbd_layout", DEFAULT_KBD_LAYOUT).toString()
         keyHeight = (.15f.coerceAtMost(
-            heightMultiplier * (prefs.getInt("kdb_key_height", DEFAULT_HEIGHT) / 100f)
+            heightMultiplier *
+                    (prefs.getInt("kdb_key_height", DEFAULT_HEIGHT) / 100f)
         ) * window.defaultDisplay.height).roundToInt()
-        appearance = prefs.getString("kbd_appearance", DEFAULT_APPEARANCE).toString()
+
+
+        val previousSystemMode = sysDarkMode
+        val previousAppearance = appearance
+
+        appearance = PreferenceManager.getDefaultSharedPreferences(this)
+            .getString("kbd_appearance", DEFAULT_APPEARANCE).toString()
+        if (appearance == DEFAULT_APPEARANCE) {
+            sysDarkMode = when (resources.configuration.uiMode and
+                    Configuration.UI_MODE_NIGHT_MASK) {
+                Configuration.UI_MODE_NIGHT_YES -> true
+                Configuration.UI_MODE_NIGHT_NO -> false
+                else -> null
+            }
+        }
+        return previousAppearance != appearance || previousSystemMode != sysDarkMode
     }
 
     /**
@@ -597,6 +623,9 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
      * appropriate label on the keyboard's enter key (if it has one).
      */
     private fun setImeOptions(options: Int) {
+
+        // skip this for now until it works with theming
+        return
 
         val mEnterKey =
             (if (keyboard != null && mEnterKeyIndex >= 0 && mEnterKeyIndex < keyboard!!.keys.size)

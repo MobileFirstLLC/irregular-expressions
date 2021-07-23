@@ -7,7 +7,7 @@
         <Key android:keyLabel="1" android:keyEdgeFlags="left"/>
         <Key android:keyLabel="2" />
         <Key android:keyLabel="3" />
-        <Key android:keyLabel="-" android:keyEdgeFlags="right"  />
+        <Key android:codes="@integer/kbd_minus_key" android:keyEdgeFlags="right"  />
     </Row>
     <Row>
         <Key android:keyLabel="4" android:keyEdgeFlags="left"/>
