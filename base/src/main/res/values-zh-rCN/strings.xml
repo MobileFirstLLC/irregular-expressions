@@ -1,6 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Irregular Expressions</string>
-    <string name="title_activity_settings">设置</string>
+    <string name="title_activity_settings">设定</string>
     <string name="label_settings">用户首选项</string>
     <string name="label_developer">开发者</string>
     <string name="label_about">关于</string>
@@ -33,19 +34,16 @@
     <string name="ok">好的</string>
     <string name="help">帮助</string>
     <string name="key_height">键高 (%)</string>
-
     <string-array name="settings_layout_names_array">
         <item>@string/kbd_layout_qwerty</item>
         <item>@string/kbd_layout_azerty</item>
         <item>@string/kbd_layout_qwertz</item>
     </string-array>
-
     <string-array name="settings_layout_values_array">
         <item>1</item>
         <item>2</item>
         <item>3</item>
     </string-array>
-
     <string name="alternates_for_a">àáâäæãåā</string>
     <string name="alternates_for_c">çćč</string>
     <string name="alternates_for_e">èéêëēėę</string>
@@ -57,7 +55,6 @@
     <string name="alternates_for_u">ûüùúū</string>
     <string name="alternates_for_y">ÿ</string>
     <string name="alternates_for_z">žźż</string>
-
     <!-- style names -->
     <string name="name_frowny_faces">皱眉</string>
     <string name="name_happy_faces">笑脸</string>
@@ -93,5 +90,4 @@
     <string name="name_regular">常规</string>
     <string name="name_spongemock">Spongemock</string>
     <string name="name_supertiny">超小体</string>
-
 </resources>
