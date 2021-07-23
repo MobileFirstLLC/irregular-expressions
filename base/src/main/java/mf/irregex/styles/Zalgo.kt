@@ -1,6 +1,6 @@
 package mf.irregex.styles
 
-import java.util.ArrayList
+import java.util.*
 import kotlin.math.roundToInt
 import kotlin.random.Random
 
@@ -23,6 +23,8 @@ class Zalgo internal constructor(
     var diacriticsTop = ArrayList<Char>()
     var diacriticsMiddle = ArrayList<Char>()
     var diacriticsBottom = ArrayList<Char>()
+    override val styledName: String
+        get() = encodedName
 
     init {
         for (i in 768..789) {
@@ -73,6 +75,7 @@ class Zalgo internal constructor(
         diacriticsBottom.add((863).toChar())
         diacriticsTop.add((864).toChar())
         diacriticsTop.add((865).toChar())
+        encodedName = encode(name)!!
     }
 
     private fun getRandomChar(input: ArrayList<Char>): Char {

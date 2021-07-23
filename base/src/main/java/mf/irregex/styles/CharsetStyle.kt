@@ -9,7 +9,11 @@ open class CharsetStyle internal constructor(
     reverse: Boolean
 ) : AppTextStyle(id, name, enabled, priority, reverse) {
 
-    override fun encode(text: String?, sequence: CharSequence?): String? {
+    init {
+        encodedName = encode(name)!!
+    }
+
+    final override fun encode(text: String?, sequence: CharSequence?): String? {
         if (!isEmpty(text)) {
             val firstChar = ' '.toInt()
             val cs = text!!.toCharArray()

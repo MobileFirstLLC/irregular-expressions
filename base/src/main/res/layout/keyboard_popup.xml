@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:background="@color/transparent"
         android:keyBackground="@color/transparent"
-        android:keyTextColor="@color/keyboardTextColor"
+        android:keyTextColor="?attr/kbd_text_color"
         android:keyTextSize="22sp"
         android:keyPreviewLayout="@null"
         android:popupLayout="@null" />
@@ -27,5 +27,6 @@
         android:clickable="true"
         android:focusable="true"
         android:alpha="0.5"
-        app:srcCompat="@drawable/ic_close" />
+        android:background="@color/transparent"
+        app:srcCompat="@drawable/kbd_ic_close" />
 </LinearLayout>

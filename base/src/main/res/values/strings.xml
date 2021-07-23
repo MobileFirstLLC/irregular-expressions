@@ -23,6 +23,7 @@
     <string name="kbd_layout_qwerty">QWERTY</string>
     <string name="kbd_layout_azerty">AZERTY</string>
     <string name="kbd_layout_qwertz">QWERTZ</string>
+    <string name="kbd_layout_dvorak">DVORAK</string>
     <string name="configure_styles">Configure text styles</string>
     <string name="configure_styles_help">How to configure text styles</string>
     <string name="config_styles_summary">Show, hide and reorder text styles</string>
@@ -33,18 +34,10 @@
     <string name="ok">OK</string>
     <string name="help">Help</string>
     <string name="key_height">Key height (%)</string>
-
-    <string-array name="settings_layout_names_array">
-        <item>@string/kbd_layout_qwerty</item>
-        <item>@string/kbd_layout_azerty</item>
-        <item>@string/kbd_layout_qwertz</item>
-    </string-array>
-
-    <string-array name="settings_layout_values_array">
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-    </string-array>
+    <string name="appearance">Appearance</string>
+    <string name="appearance_light">Light theme</string>
+    <string name="appearance_dark">Dark theme</string>
+    <string name="appearance_auto">Automatic</string>
 
     <string name="alternates_for_a">àáâäæãåā</string>
     <string name="alternates_for_c">çćč</string>

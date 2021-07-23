@@ -4,13 +4,23 @@
     <!-- keyboard styles -->
 
     <style name="kbd_icon">
-        <item name="android:layout_width">@dimen/kbd_icon_size</item>
-        <item name="android:layout_height">@dimen/kbd_icon_size</item>
+        <item name="android:layout_width">@dimen/kbd_icon_button_size</item>
+        <item name="android:layout_height">@dimen/kbd_icon_button_size</item>
         <item name="android:layout_marginStart">@dimen/kbd_icon_h_margin</item>
         <item name="android:layout_marginLeft">@dimen/kbd_icon_h_margin</item>
         <item name="android:layout_marginEnd">@dimen/kbd_icon_h_margin</item>
         <item name="android:layout_marginRight">@dimen/kbd_icon_h_margin</item>
-        <item name="android:padding">@dimen/kdb_icon_padding</item>
+        <item name="android:paddingStart">@dimen/kdb_icon_padding_horizontal</item>
+        <item name="android:paddingEnd">@dimen/kdb_icon_padding_horizontal</item>
+        <item name="android:paddingLeft">@dimen/kdb_icon_padding_horizontal</item>
+        <item name="android:paddingRight">@dimen/kdb_icon_padding_horizontal</item>
+        <item name="android:paddingTop">@dimen/kdb_icon_padding_vertical</item>
+        <item name="android:paddingBottom">@dimen/kdb_icon_padding_vertical</item>
+        <item name="android:background">@color/transparent</item>
+        <item name="android:tint">?attr/kbd_text_color</item>
+        <item name="layout_constraintTop_toTopOf">parent</item>
+        <item name="layout_constraintBottom_toBottomOf">parent</item>
+        <item name="background">?android:attr/selectableItemBackground</item>
     </style>
 
     <style name="kbd_style_picker_option">
@@ -21,29 +31,32 @@
         <item name="android:paddingLeft">@dimen/kbd_style_picker_horizontal_padding</item>
         <item name="android:paddingEnd">@dimen/kbd_style_picker_horizontal_padding</item>
         <item name="android:paddingRight">@dimen/kbd_style_picker_horizontal_padding</item>
-        <item name="android:textColor">@color/keyboardTextColor</item>
+        <item name="android:textColor">?attr/kbd_text_color</item>
         <item name="layout_constraintStart_toStartOf">parent</item>
         <item name="layout_constraintTop_toTopOf">parent</item>
+        <item name="android:layout_margin">4dp</item>
     </style>
 
     <style name="kbd_style_picker_option_active" parent="kbd_style_picker_option">
-        <item name="android:background">@drawable/rounded_primary_bg</item>
+        <item name="android:background">@drawable/bg_rounded_primary</item>
+        <item name="android:textColor">?attr/style_text_selected</item>
     </style>
 
     <style name="kbd_vertical_divider">
-        <item name="android:layout_width">1dp</item>
+        <item name="android:layout_width">@dimen/kbd_styles_divider_width</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:layout_marginTop">4dp</item>
         <item name="android:layout_marginBottom">4dp</item>
-        <item name="android:background">@color/keyboardDivider</item>
+        <item name="android:background">?attr/kbd_divider</item>
     </style>
 
     <!-- main activity styles -->
 
     <style name="main_scroll_view">
+        <item name="android:fitsSystemWindows">false</item>
         <item name="android:layout_width">@dimen/match_parent</item>
         <item name="android:layout_height">@dimen/match_parent</item>
-        <item name="android:background">@color/colorPrimaryDark</item>
+        <item name="android:background">@drawable/bg_gradient</item>
     </style>
 
     <style name="main_linear">
@@ -55,6 +68,7 @@
     <style name="main_header">
         <item name="android:layout_width">@dimen/match_parent</item>
         <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/main_element_spacing</item>
         <item name="android:padding">@dimen/main_element_spacing</item>
         <item name="android:textStyle">bold</item>
         <item name="android:gravity">center_horizontal</item>
@@ -84,7 +98,7 @@
         <item name="android:layout_gravity">center_horizontal</item>
         <item name="android:layout_marginBottom">@dimen/main_element_spacing</item>
         <item name="android:paddingBottom">@dimen/main_element_spacing_2x</item>
-        <item name="android:background">@drawable/layout_bg</item>
+        <item name="android:background">@drawable/bg_main_layout</item>
     </style>
 
     <style name="main_icon">
@@ -104,6 +118,7 @@
         <item name="layout_constraintLeft_toLeftOf">parent</item>
         <item name="layout_constraintRight_toRightOf">parent</item>
         <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/text_color</item>
         <item name="android:gravity">center</item>
     </style>
 
@@ -126,6 +141,7 @@
         <item name="android:layout_marginRight">@dimen/main_element_spacing</item>
         <item name="android:layout_width">@dimen/main_card_content_width</item>
         <item name="android:layout_height">wrap_content</item>
+<!--        <item name="android:textColor">@color/text_color_buttons</item>-->
         <item name="layout_constraintLeft_toLeftOf">parent</item>
         <item name="layout_constraintRight_toRightOf">parent</item>
     </style>

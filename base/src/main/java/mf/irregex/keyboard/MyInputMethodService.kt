@@ -8,7 +8,6 @@ import android.content.res.Configuration
 import android.inputmethodservice.InputMethodService
 import android.inputmethodservice.Keyboard
 import android.inputmethodservice.Keyboard.KEYCODE_DONE
-import android.inputmethodservice.KeyboardView
 import android.inputmethodservice.KeyboardView.GONE
 import android.inputmethodservice.KeyboardView.OnKeyboardActionListener
 import android.os.Build
@@ -19,13 +18,13 @@ import android.preference.PreferenceManager
 import android.text.InputType
 import android.text.TextUtils
 import android.text.method.MetaKeyKeyListener
-import android.view.KeyEvent
-import android.view.View
+import android.util.Log
+import android.view.*
 import android.view.View.VISIBLE
-import android.view.WindowManager
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
-import androidx.appcompat.widget.AppCompatImageButton
+import android.widget.LinearLayout
+import androidx.appcompat.widget.AppCompatImageView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -37,6 +36,7 @@ import mf.irregex.styles.StylePickerAdapter
 import java.util.concurrent.TimeUnit
 import kotlin.math.roundToInt
 
+
 /**
  * This class sets up and handles virtual keyboard events
  */
@@ -47,23 +47,18 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
     private val DOUBLETAP_MAX_DELAY_MS = 500L
     private val VIBRATION_DURATION_MS = 25L
     private val LONG_PRESS = 200L
-    private val DEFAULT_KBD_LAYOUT = "1" // 1 = qwerty, 2 = azerty, 3 = qwertz
+    private val DEFAULT_KBD_LAYOUT = "1" // 1 = qwerty, 2 = azerty, 3 = qwertz, 4 = dvorak
+    private val DEFAULT_APPEARANCE = "3" // 1 = light, 2 = dark, 3 = auto
     private val DEFAULT_VIBRATIONS = false
     private val DEFAULT_HEIGHT = 8
+    private val LIGHT_MODE = "1"
+    private val DARK_MODE = "2"
+    private val REGULAR_STYLE_INDEX = -1 // Font with "no style"
 
     // Primary vs. secondary keyboards
     private val ALPHA_KEYBOARD_KEYCODE = -10
     private val SECONDARY_KBD_KEYCODE = -11
     private val KEYCODE_SPACE = 32
-
-    private val HISTORY = ArrayList<Int>()
-    // see https://android.googlesource.com/platform/development/+/master/samples/SoftKeyboard/src/com/example/android/softkeyboard/SoftKeyboard.java
-
-    // All available text styles
-    private var styles = getEnabledStyles()
-
-    // Font with "no style"
-    private val REGULAR_STYLE_INDEX = -1
 
     // Keyboard variations
     private val ALPHA_KBD = 0
@@ -71,10 +66,15 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
     private val MATH_KBD = 2
     private val PHONE_KBD = 3
 
+    // All available text styles
+    private var styles = getEnabledStyles()
+
     // UI Elements
-    private var keyboardView: KeyboardView? = null
+    private var keyboardLayoutView: LinearLayout? = null
+    private var keyboardView: IrregularKeyboardView? = null
     private var keyboard: IrregularKeyboard? = null
-    private var styleToggle: AppCompatImageButton? = null
+    private var styleToggle: AppCompatImageView? = null
+    private var settingsButton: AppCompatImageView? = null
     private var stylePicker: RecyclerView? = null
     private var adapter: StylePickerAdapter? = null
     private var keyboardExtras: View? = null
@@ -102,15 +102,30 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
     private var keyVibrations = DEFAULT_VIBRATIONS
     private var keyboardLayout = DEFAULT_KBD_LAYOUT
     private var keyHeight = DEFAULT_HEIGHT
+    private var appearance = DEFAULT_APPEARANCE
+    private var sysDarkMode: Boolean? = null
+
+    override fun onCreate() {
+        super.onCreate()
+        initPreferences()
+    }
 
     // called initially when inflating keyboard
     override fun onCreateInputView(): View {
-        val layout = layoutInflater.inflate(R.layout.keyboard_view, null)
-        val ctx = layout.context
-        initPreferences()
+
+        val theme = when (appearance) {
+            DARK_MODE -> R.style.KeyboardThemeDark
+            LIGHT_MODE -> R.style.KeyboardThemeLight
+            else -> R.style.KeyboardTheme
+        }
+        val contextThemeWrapper = ContextThemeWrapper(applicationContext, theme)
+        val layout = LayoutInflater.from(contextThemeWrapper)
+            .inflate(R.layout.keyboard_view, null)
 
         /* initialize keyboard */
+        keyboardLayoutView = layout.findViewById(R.id.keyboard_layout)
         keyboardView = layout.findViewById(R.id.keyboard_view)
+
         keyboardView?.setOnKeyboardActionListener(this)
         if (keyboardChoice == NUMBER_KBD) {
             enableSymbolicKeyboard()
@@ -130,7 +145,7 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
         keyboardExtras = layout.findViewById(R.id.keyboard_extras)
         adapter = StylePickerAdapter(styles, onFontSelection())
         val layoutManager = GridLayoutManager(
-            ctx, 1, LinearLayoutManager.HORIZONTAL, false
+            applicationContext, 1, LinearLayoutManager.HORIZONTAL, false
         )
         stylePicker?.layoutManager = layoutManager
         stylePicker?.adapter = adapter
@@ -141,9 +156,8 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
         styleToggle = layout.findViewById(R.id.style_button)
         styleToggle?.setOnClickListener(onFontButtonClick())
         setFontStyleIcon(styleIndex == REGULAR_STYLE_INDEX)
-        val settingsButton: View = layout.findViewById(R.id.settings_button)
-        settingsButton.setOnClickListener(onSettingsClick(ctx))
-
+        settingsButton = layout.findViewById(R.id.settings_button)
+        settingsButton?.setOnClickListener(onSettingsClick())
         return layout
     }
 
@@ -175,6 +189,32 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
                 keyboardChoice = ALPHA_KBD
             }
         }
+        when (keyboardChoice) {
+            NUMBER_KBD -> enableSymbolicKeyboard()
+            PHONE_KBD -> enablePhoneKeyboard()
+            else -> enableAlphaKeyboard()
+        }
+    }
+
+    /**
+     * Reload user preferences every time keyboard is inflated
+     * as these preferences may have changed
+     */
+    override fun onStartInputView(info: EditorInfo?, restarting: Boolean) {
+        super.onStartInputView(info, restarting)
+        Log.d("KBD", "Start Input View!")
+        if (initPreferences()) {
+            Log.d("KBD", "restarting...")
+            // when preferences have changed appearance, need to
+            // restart the input method service to apply theme change
+
+            setInputView(onCreateInputView())
+            return
+        }
+        keyboardExtras?.visibility = VISIBLE
+        styles = getEnabledStyles()
+        adapter!!.updateStyles(styles)
+        chooseKeyboardFromInputType(info)
     }
 
     /**
@@ -185,31 +225,12 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
      */
     override fun onStartInput(attribute: EditorInfo, restarting: Boolean) {
         super.onStartInput(attribute, restarting)
-
         // Reset our state.  We want to do this even if restarting, because
-        // the underlying state of the text editor could have changed in any way.
+        // the underlying state of the text editor could have changed anyway.
         mComposing.setLength(0)
         if (!restarting) mMetaState = 0
         chooseKeyboardFromInputType(attribute)
         setImeOptions(attribute.imeOptions)
-    }
-
-    /**
-     * Reload user preferences every time keyboard is inflated
-     * as these preferences may have changed
-     */
-    override fun onStartInputView(info: EditorInfo?, restarting: Boolean) {
-        super.onStartInputView(info, restarting)
-        initPreferences()
-        keyboardExtras?.visibility = VISIBLE
-        styles = getEnabledStyles()
-        adapter!!.updateStyles(styles)
-        chooseKeyboardFromInputType(info)
-        when (keyboardChoice) {
-            NUMBER_KBD -> enableSymbolicKeyboard()
-            PHONE_KBD -> enablePhoneKeyboard()
-            else -> enableAlphaKeyboard()
-        }
     }
 
     /**
@@ -316,8 +337,8 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
         keyboard = IrregularKeyboard(this, R.xml.keyboard_phone, keyHeight)
         keyboardExtras?.visibility = GONE
         keyboardChoice = PHONE_KBD
-        keyboardView!!.keyboard = keyboard
-        keyboardView!!.invalidateAllKeys()
+        keyboardView?.keyboard = keyboard
+        keyboardView?.invalidateAllKeys()
     }
 
     /**
@@ -327,6 +348,7 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
         val keyLayout: Int = when (keyboardLayout) {
             "2" -> R.xml.keyboard_azerty
             "3" -> R.xml.keyboard_qwertz
+            "4" -> R.xml.keyboard_dvorak
             else -> R.xml.keyboard_qwerty
         }
         keyboard = IrregularKeyboard(this, keyLayout, keyHeight)
@@ -334,8 +356,8 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
         keyboard!!.isShifted = false
         uppercaseNextKeyOnly = false
         setShiftKeyIcon()
-        keyboardView!!.keyboard = keyboard
-        keyboardView!!.invalidateAllKeys()
+        keyboardView?.keyboard = keyboard
+        keyboardView?.invalidateAllKeys()
     }
 
     /**
@@ -400,19 +422,11 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
         val inputConnection = currentInputConnection
         val selectedText = inputConnection.getSelectedText(0)
         if (TextUtils.isEmpty(selectedText)) {
-            val charCount = HISTORY.removeLastOrNull() ?: 1
             if (reverseCursorDirection) {
-                inputConnection.deleteSurroundingText(0, charCount)
+                inputConnection.deleteSurroundingText(0, 1)
             } else
-                inputConnection.deleteSurroundingText(charCount, 0)
+                inputConnection.deleteSurroundingText(1, 0)
         } else {
-            var counter = selectedText.length
-            while (HISTORY.isNotEmpty()) {
-                counter -= HISTORY.removeLastOrNull() ?: 1
-                if (counter <= 0 || HISTORY.isEmpty()) {
-                    break
-                }
-            }
             inputConnection.commitText("", 1)
         }
     }
@@ -448,7 +462,6 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
             }
         }
         inputConnection.commitText(text, 1)
-        HISTORY.add(text.length)
 
         // adjust cursor position when typing right to left
         if (reverseCursorDirection)
@@ -491,9 +504,9 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
     /**
      * Settings button click launches settings activity
      */
-    private fun onSettingsClick(context: Context): View.OnClickListener {
+    private fun onSettingsClick(): View.OnClickListener {
         return View.OnClickListener {
-            val intent = Intent(context, SettingsActivity::class.java)
+            val intent = Intent(applicationContext, SettingsActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             startActivity(intent)
         }
@@ -521,10 +534,10 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
      */
     private fun setFontStyleIcon(disable: Boolean) {
         styleToggle!!.setImageResource(
-            if (disable) R.drawable.ic_style_off
-            else R.drawable.ic_format
+            if (disable) R.drawable.kbd_ic_style_off
+            else R.drawable.kbd_ic_style_on
         )
-        stylePicker!!.alpha = if (disable) 0.5f else 1.0f
+        stylePicker!!.alpha = if (disable) 0.65f else 1.0f
     }
 
     /**
@@ -534,13 +547,12 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
         val keys = keyboard!!.keys
         val shiftIndex = keyboard!!.shiftKeyIndex
         if (shiftIndex >= 0 && shiftIndex < keys.size) {
-            val currentKey = keys[shiftIndex]
             val icon = when {
-                uppercaseNextKeyOnly -> R.drawable.ic_arrow_up_bold
-                keyboard!!.isShifted -> R.drawable.ic_keyboard_caps_filled
-                else -> R.drawable.ic_arrow_up_bold_outline
+                uppercaseNextKeyOnly -> R.drawable.kbd_ic_arrow_up_bold
+                keyboard!!.isShifted -> R.drawable.kbd_ic_keyboard_caps_filled
+                else -> R.drawable.kbd_ic_arrow_up_bold_outline
             }
-            currentKey.icon = resources.getDrawable(icon)
+            keyboardView?.setShiftIcon(icon)
         }
     }
 
@@ -563,27 +575,37 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
     /**
      * Initialize user preference variables
      *
-     * Return boolean to indicate if key height has changed -> invalidate view
+     * Return boolean to indicate if preference changes should result in recreating the
+     * keyboard view
      */
     private fun initPreferences(): Boolean {
         val window = getSystemService(WINDOW_SERVICE) as WindowManager
         val orientation = resources.configuration.orientation
-        val heightMultiplier =
-            if (orientation == Configuration.ORIENTATION_LANDSCAPE) 1.7f else 1f
+        val heightMultiplier = if (orientation == Configuration.ORIENTATION_LANDSCAPE) 1.7f else 1f
         val prefs = PreferenceManager.getDefaultSharedPreferences(this)
-        val previousKeyHeight = keyHeight
-        val previousLayout = keyboardLayout
 
         keyVibrations = prefs.getBoolean("key_vibrations", DEFAULT_VIBRATIONS)
         keyboardLayout = prefs.getString("kbd_layout", DEFAULT_KBD_LAYOUT).toString()
-        keyHeight = (Math.min(
-            .15f, heightMultiplier * (prefs.getInt(
-                "kdb_key_height", DEFAULT_HEIGHT
-            ) / 100f)
+        keyHeight = (.15f.coerceAtMost(
+            heightMultiplier *
+                    (prefs.getInt("kdb_key_height", DEFAULT_HEIGHT) / 100f)
         ) * window.defaultDisplay.height).roundToInt()
 
-        return keyHeight != previousKeyHeight ||
-                previousLayout != keyboardLayout
+
+        val previousSystemMode = sysDarkMode
+        val previousAppearance = appearance
+
+        appearance = PreferenceManager.getDefaultSharedPreferences(this)
+            .getString("kbd_appearance", DEFAULT_APPEARANCE).toString()
+        if (appearance == DEFAULT_APPEARANCE) {
+            sysDarkMode = when (resources.configuration.uiMode and
+                    Configuration.UI_MODE_NIGHT_MASK) {
+                Configuration.UI_MODE_NIGHT_YES -> true
+                Configuration.UI_MODE_NIGHT_NO -> false
+                else -> null
+            }
+        }
+        return previousAppearance != appearance || previousSystemMode != sysDarkMode
     }
 
     /**
@@ -599,6 +621,9 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
      * appropriate label on the keyboard's enter key (if it has one).
      */
     private fun setImeOptions(options: Int) {
+
+        // skip this for now until it works with theming
+        return
 
         val mEnterKey =
             (if (keyboard != null && mEnterKeyIndex >= 0 && mEnterKeyIndex < keyboard!!.keys.size)
@@ -617,7 +642,7 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
                 mEnterKey.label = resources.getText(R.string.label_next_key)
             }
             EditorInfo.IME_ACTION_SEARCH -> {
-                mEnterKey.icon = resources.getDrawable(R.drawable.ic_keyboard_search)
+                mEnterKey.icon = resources.getDrawable(R.drawable.kbd_ic_keyboard_search)
                 mEnterKey.label = null
             }
             EditorInfo.IME_ACTION_SEND -> {
@@ -626,7 +651,7 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
                 mEnterKey.label = resources.getText(R.string.label_send_key)
             }
             else -> {
-                mEnterKey.icon = resources.getDrawable(R.drawable.ic_keyboard_return)
+                mEnterKey.icon = resources.getDrawable(R.drawable.kbd_ic_keyboard_return)
                 mEnterKey.label = null
             }
         }

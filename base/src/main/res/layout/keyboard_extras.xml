@@ -1,52 +1,35 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/keyboard_extras"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="2dp"
-    android:layout_marginBottom="0dp"
-    android:orientation="horizontal">
+    android:paddingTop="4dp"
+    android:paddingStart="4dp"
+    android:paddingEnd="4dp"
+    tools:ignore="MissingConstraints">
 
-    <LinearLayout
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/style_button"
+        style="@style/kbd_icon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/kbd_ic_style_off" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/stylePicker"
         android:layout_width="0dp"
-        android:layout_weight="85"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/kbd_icon_button_size"
         android:background="@drawable/key_background"
-        android:gravity="top|start"
-        android:orientation="horizontal"
-        android:paddingStart="2dp"
-        android:paddingLeft="2dp"
-        android:paddingTop="6dp"
-        android:paddingEnd="2dp"
-        android:paddingRight="2dp"
-        android:paddingBottom="6dp">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/settings_button"
+        app:layout_constraintStart_toEndOf="@+id/style_button"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.appcompat.widget.AppCompatImageButton
-            android:id="@+id/style_button"
-            style="@style/kbd_icon"
-            android:padding="4dp"
-            android:layout_width="40dp"
-            app:srcCompat="@drawable/ic_style_off" />
-
-        <View style="@style/kbd_vertical_divider" />
-
-        <!-- TODO: refactor this nested weight -->
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/stylePicker"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1" />
-
-    </LinearLayout>
-
-    <androidx.appcompat.widget.AppCompatImageButton
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/settings_button"
         style="@style/kbd_icon"
-        android:layout_width="0dp"
-        android:layout_weight="15"
-        android:layout_margin="0dp"
-        android:padding="12dp"
-        android:background="?android:attr/selectableItemBackground"
-        android:layout_height="@dimen/match_parent"
-        app:srcCompat="@drawable/ic_settings" />
-</LinearLayout>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/kbd_ic_settings" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

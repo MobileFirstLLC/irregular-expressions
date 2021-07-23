@@ -1,11 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#03A9F4</color>
-    <color name="colorPrimaryDark">#111</color>
-    <color name="colorAccent">@color/colorPrimary</color>
-    <color name="splash_background">#343538</color>
+
+    <!-- theme colors -->
+    <color name="colorPrimary">#3AA3FF</color>
+    <color name="colorPrimaryDark">#1A1B25</color>
+    <!-- logo background outside app -->
+    <color name="ic_launcher_background">#E6E6E6</color>
+    <!-- logo background in splash screen -->
+    <color name="splash_background">#eee</color>
+    <!-- background gradient -->
+    <color name="gradient_mf_blue">#303F9F</color>
+    <color name="gradient_mf_green">#00695C</color>
+    <!-- main activity -->
+    <color name="activity_bg">#2E3437</color>
+    <color name="text_color">#FFF</color>
+    <!-- settings -->
     <color name="settings_background">#111</color>
     <color name="icon_color">#88FFFFFF</color>
-    <color name="activity_bg">#292a2d</color>
-    <color name="text_color">#FFF</color>
+
+    <!-- default keyboard colors -->
+    <color name="default_kbd_bg">@color/dark_kbd_bg</color>
+    <color name="default_kbd_preview_bg">@color/dark_kbd_preview_bg</color>
+    <color name="default_kbd_text_color">@color/dark_kbd_text_color</color>
+    <color name="default_kbd_divider">@color/dark_kbd_divider</color>
+    <color name="default_key_border_color">@color/dark_key_border_color</color>
+    <color name="default_key_bg">@color/dark_key_bg</color>
+    <color name="default_key_bg_pressed">@color/dark_key_bg_pressed</color>
+    <color name="default_style_text_selected">@color/dark_style_text_selected</color>
+
 </resources>

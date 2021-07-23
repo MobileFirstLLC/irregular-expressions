@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:drawable="@color/splash_background" />
+    <item
+        android:gravity="center"
+        android:width="@dimen/match_parent"
+        android:height="@dimen/match_parent"
+        android:drawable="@drawable/bg_gradient" />
 
     <item
         android:gravity="center"

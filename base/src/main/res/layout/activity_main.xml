@@ -1,4 +1,6 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingConstraints"
     style="@style/main_scroll_view">
 
     <LinearLayout style="@style/main_linear">
@@ -12,11 +14,12 @@
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/icon"
-                    style="@style/main_icon" />
+                    style="@style/main_icon"/>
 
                 <TextView
                     android:id="@+id/header"
-                    style="@style/main_card_text_view_1" />
+                    style="@style/main_card_text_view_1"
+                    tools:ignore="MissingConstraints" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/step_1"

@@ -1,22 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/keyboard_layout"
+    style="@style/KeyboardTheme"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_alignParentBottom="true"
-    android:background="@color/keyboardBackground"
+    android:background="?attr/kbd_bg"
     android:orientation="vertical">
 
     <include layout="@layout/keyboard_extras" />
 
-    <android.inputmethodservice.KeyboardView
+    <mf.irregex.keyboard.IrregularKeyboardView
         android:id="@+id/keyboard_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/keyboardBackground"
+        android:background="?attr/kbd_bg"
         android:keyBackground="@drawable/key_background"
         android:keyPreviewLayout="@null"
+        android:keyTextSize="24sp"
+        android:keyTextColor="?attr/kbd_text_color"
         android:popupLayout="@layout/keyboard_popup"
-        android:keyTextColor="@color/keyboardTextColor"
         android:shadowRadius="0" />
 
 </LinearLayout>

@@ -3,20 +3,52 @@
 
     <!-- theme colors -->
     <color name="colorPrimary">#1E88E5</color>
-    <color name="colorPrimaryDark">#3B3F57</color>
+    <color name="colorPrimaryDark">#1A1B25</color>
     <color name="colorAccent">@color/colorPrimary</color>
+    <color name="transparent">@android:color/transparent</color>
+    <!-- logo background outside app -->
     <color name="ic_launcher_background">#E6E6E6</color>
-    <color name="splash_background">#ddd</color>
-    <color name="transparent">#0000</color>
-
-    <!-- style colors -->
-    <color name="keyboardBackground">#333333</color>
-    <color name="keyboardPreviewBackground">#454545</color>
-    <color name="keyboardTextColor">@android:color/white</color>
-    <color name="keyboardDivider">#99111111</color>
-    <color name="activity_bg">#f2f2f2</color>
-    <color name="icon_color">#88000000</color>
-    <color name="settings_background">#ddd</color>
+    <!-- logo background in splash screen -->
+    <color name="splash_background">#eeeeee</color>
+    <!-- background gradient -->
+    <color name="gradient_mf_blue">#ff009DDC</color>
+    <color name="gradient_mf_green">#ff3ddc84</color>
+    <!-- main activity -->
+    <color name="activity_bg">#ffffff</color>
     <color name="text_color">#222</color>
+    <!-- settings -->
+    <color name="settings_background">#ddd</color>
+    <color name="icon_color">#88000000</color>
+
+    <!-- default keyboard colors -->
+    <color name="default_kbd_bg">@color/light_kbd_bg</color>
+    <color name="default_kbd_preview_bg">@color/light_kbd_preview_bg</color>
+    <color name="default_kbd_text_color">@color/light_kbd_text_color</color>
+    <color name="default_kbd_divider">@color/light_kbd_divider</color>
+    <color name="default_key_border_color">@color/light_key_border_color</color>
+    <color name="default_key_bg">@color/light_key_bg</color>
+    <color name="default_key_bg_pressed">@color/light_key_bg_pressed</color>
+    <color name="default_style_text_selected">@color/light_style_text_selected</color>
+
+    <!-- light theme keyboard colors -->
+    <color name="light_kbd_bg">#e4e4e4</color>
+    <color name="light_kbd_preview_bg">#454545</color>
+    <color name="light_kbd_text_color">#111</color>
+    <color name="light_kbd_divider">@color/light_kbd_bg</color>
+    <color name="light_key_border_color">#fff</color>
+    <color name="light_key_bg">#fff</color>
+    <color name="light_key_bg_pressed">#f2f2f2</color>
+    <color name="light_style_text_selected">#fff</color>
+
+    <!-- dark theme keyboard colors -->
+    <color name="dark_kbd_bg">#3B3B42</color>
+    <color name="dark_kbd_preview_bg">#454545</color>
+    <color name="dark_kbd_text_color">@android:color/white</color>
+    <color name="dark_kbd_divider">@color/dark_kbd_bg</color>
+    <color name="dark_key_border_color">#28282D</color>
+    <color name="dark_key_bg">#28282D</color>
+    <color name="dark_key_bg_pressed">#38383D</color>
+    <color name="dark_style_text_selected">#fff</color>
+
 
 </resources>

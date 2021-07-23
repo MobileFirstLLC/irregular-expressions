@@ -7,24 +7,24 @@
         <Key android:keyLabel="1" android:keyEdgeFlags="left"/>
         <Key android:keyLabel="2" />
         <Key android:keyLabel="3" />
-        <Key android:keyLabel="-" android:keyEdgeFlags="right"  />
+        <Key android:codes="@integer/kbd_minus_key" android:keyEdgeFlags="right"  />
     </Row>
     <Row>
         <Key android:keyLabel="4" android:keyEdgeFlags="left"/>
         <Key android:keyLabel="5" />
         <Key android:keyLabel="6" />
-        <Key android:codes="32" android:keyIcon="@drawable/ic_keyboard_space" android:keyEdgeFlags="right"  />
+        <Key android:codes="@integer/kbd_space_key" android:keyEdgeFlags="right"  />
     </Row>
     <Row>
         <Key android:keyLabel="7" android:keyEdgeFlags="left"/>
         <Key android:keyLabel="8" />
         <Key android:keyLabel="9" />
-        <Key android:codes="-5" android:keyIcon="@drawable/ic_backspace_outline" android:isRepeatable="true" android:keyEdgeFlags="right"/>
+        <Key android:codes="@integer/kbd_backspace_delete" android:isRepeatable="true" android:keyEdgeFlags="right"/>
     </Row>
     <Row android:rowEdgeFlags="bottom">
         <Key android:codes="42,35" android:keyLabel="*#" android:keyEdgeFlags="left"/>
         <Key android:codes="48,43" android:keyLabel="0+"/>
         <Key android:codes="46" android:keyLabel="." />
-        <Key android:codes="-4" android:keyIcon="@drawable/ic_keyboard_return" android:keyEdgeFlags="right"/>
+        <Key android:codes="@integer/kbd_enter_return_key" android:keyEdgeFlags="right"/>
     </Row>
 </Keyboard>
