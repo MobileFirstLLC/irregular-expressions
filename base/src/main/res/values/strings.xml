@@ -23,6 +23,7 @@
     <string name="kbd_layout_qwerty">QWERTY</string>
     <string name="kbd_layout_azerty">AZERTY</string>
     <string name="kbd_layout_qwertz">QWERTZ</string>
+    <string name="kbd_layout_dvorak">DVORAK</string>
     <string name="configure_styles">Configure text styles</string>
     <string name="configure_styles_help">How to configure text styles</string>
     <string name="config_styles_summary">Show, hide and reorder text styles</string>
