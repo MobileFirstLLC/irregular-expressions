@@ -20,9 +20,13 @@ class Zalgo internal constructor(
     // randomization 70%, height goes from 30 to 100.
     private val randomization = 100 // 0-100%
 
+    private val encodedName: String
+
     var diacriticsTop = ArrayList<Char>()
     var diacriticsMiddle = ArrayList<Char>()
     var diacriticsBottom = ArrayList<Char>()
+    override val styledName: String
+        get() = encodedName
 
     init {
         for (i in 768..789) {
@@ -73,6 +77,7 @@ class Zalgo internal constructor(
         diacriticsBottom.add((863).toChar())
         diacriticsTop.add((864).toChar())
         diacriticsTop.add((865).toChar())
+        encodedName = encode(name)!!
     }
 
     private fun getRandomChar(input: ArrayList<Char>): Char {
