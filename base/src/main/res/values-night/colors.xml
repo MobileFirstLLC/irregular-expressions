@@ -9,7 +9,7 @@
     <!-- logo background in splash screen -->
     <color name="splash_background">#eee</color>
     <!-- background gradient -->
-    <color name="gradient_mf_blue">#303F9F</color>
+    <color name="gradient_mf_blue">#01579B</color>
     <color name="gradient_mf_green">#00695C</color>
     <!-- main activity -->
     <color name="activity_bg">#2E3437</color>
