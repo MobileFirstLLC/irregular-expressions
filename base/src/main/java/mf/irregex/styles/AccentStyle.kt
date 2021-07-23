@@ -8,6 +8,10 @@ class AccentStyle internal constructor(
     private val uChar: String
 ) : AppTextStyle(id, name, enabled, priority) {
 
+    init {
+        encodedName = encode(name)!!
+    }
+
     override fun encode(text: String?, sequence: CharSequence?): String? {
         if (!isEmpty(text)) {
             val cs = text!!.toCharArray()
