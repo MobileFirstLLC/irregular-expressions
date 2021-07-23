@@ -33,6 +33,7 @@
             </intent-filter>
         </activity>
         <activity
+            android:launchMode="singleInstance"
             android:windowSoftInputMode="stateAlwaysHidden"
             android:name="mf.irregex.settings.SettingsActivity"
             android:label="@string/title_activity_settings"

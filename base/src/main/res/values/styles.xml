@@ -10,8 +10,17 @@
         <item name="android:layout_marginLeft">@dimen/kbd_icon_h_margin</item>
         <item name="android:layout_marginEnd">@dimen/kbd_icon_h_margin</item>
         <item name="android:layout_marginRight">@dimen/kbd_icon_h_margin</item>
-        <item name="android:padding">@dimen/kdb_icon_padding</item>
+        <item name="android:paddingStart">@dimen/kdb_icon_padding_horizontal</item>
+        <item name="android:paddingEnd">@dimen/kdb_icon_padding_horizontal</item>
+        <item name="android:paddingLeft">@dimen/kdb_icon_padding_horizontal</item>
+        <item name="android:paddingRight">@dimen/kdb_icon_padding_horizontal</item>
+        <item name="android:paddingTop">@dimen/kdb_icon_padding_vertical</item>
+        <item name="android:paddingBottom">@dimen/kdb_icon_padding_vertical</item>
         <item name="android:background">@color/transparent</item>
+        <item name="android:tint">?attr/kbd_text_color</item>
+        <item name="layout_constraintTop_toTopOf">parent</item>
+        <item name="layout_constraintBottom_toBottomOf">parent</item>
+        <item name="background">?android:attr/selectableItemBackground</item>
     </style>
 
     <style name="kbd_style_picker_option">
@@ -25,6 +34,7 @@
         <item name="android:textColor">?attr/kbd_text_color</item>
         <item name="layout_constraintStart_toStartOf">parent</item>
         <item name="layout_constraintTop_toTopOf">parent</item>
+        <item name="android:layout_margin">4dp</item>
     </style>
 
     <style name="kbd_style_picker_option_active" parent="kbd_style_picker_option">

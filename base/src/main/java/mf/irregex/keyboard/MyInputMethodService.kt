@@ -53,23 +53,21 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
     private val DEFAULT_HEIGHT = 8
     private val LIGHT_MODE = "1"
     private val DARK_MODE = "2"
+    private val REGULAR_STYLE_INDEX = -1 // Font with "no style"
 
     // Primary vs. secondary keyboards
     private val ALPHA_KEYBOARD_KEYCODE = -10
     private val SECONDARY_KBD_KEYCODE = -11
     private val KEYCODE_SPACE = 32
 
-    // All available text styles
-    private var styles = getEnabledStyles()
-
-    // Font with "no style"
-    private val REGULAR_STYLE_INDEX = -1
-
     // Keyboard variations
     private val ALPHA_KBD = 0
     private val NUMBER_KBD = 1
     private val MATH_KBD = 2
     private val PHONE_KBD = 3
+
+    // All available text styles
+    private var styles = getEnabledStyles()
 
     // UI Elements
     private var keyboardLayoutView: LinearLayout? = null
@@ -538,7 +536,7 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
             if (disable) R.drawable.kbd_ic_style_off
             else R.drawable.kbd_ic_style_on
         )
-        stylePicker!!.alpha = if (disable) 0.5f else 1.0f
+        stylePicker!!.alpha = if (disable) 0.65f else 1.0f
     }
 
     /**
