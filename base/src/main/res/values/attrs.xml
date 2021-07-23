@@ -8,5 +8,6 @@
     <attr format="reference" name="key_bg"/>
     <attr format="reference" name="key_bg_pressed"/>
     <attr format="reference" name="style_text_selected"/>
+    <attr format="reference" name="extras_bg"/>
 
 </resources>

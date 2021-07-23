@@ -70,7 +70,6 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
     private var styles = getEnabledStyles()
 
     // UI Elements
-    private var keyboardLayoutView: LinearLayout? = null
     private var keyboardView: IrregularKeyboardView? = null
     private var keyboard: IrregularKeyboard? = null
     private var styleToggle: AppCompatImageView? = null
@@ -123,7 +122,6 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
             .inflate(R.layout.keyboard_view, null)
 
         /* initialize keyboard */
-        keyboardLayoutView = layout.findViewById(R.id.keyboard_layout)
         keyboardView = layout.findViewById(R.id.keyboard_view)
 
         keyboardView?.setOnKeyboardActionListener(this)
