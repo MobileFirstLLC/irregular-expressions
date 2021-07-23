@@ -1,4 +1,4 @@
-package mf.irregex.app
+package mf.irregex
 
 import android.app.Application
 import mf.irregex.styles.AvailableStyles

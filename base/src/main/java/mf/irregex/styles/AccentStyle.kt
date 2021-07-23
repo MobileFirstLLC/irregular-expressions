@@ -17,11 +17,10 @@ class AccentStyle internal constructor(
             val cs = text!!.toCharArray()
             val temp = StringBuilder()
             for (c in cs) {
+                temp.append(c)
                 if (!Character.isWhitespace(c))
                     temp.append(uChar)
-                temp.append(c)
             }
-            temp.append(uChar)
             return temp.toString()
         }
         return text;

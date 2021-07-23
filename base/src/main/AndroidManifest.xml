@@ -7,7 +7,7 @@
     <dist:module dist:instant="true" />
 
     <application
-        android:name="mf.irregex.app.App"
+        android:name="mf.irregex.App"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
