@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="settings_layout_names_array">
+        <item>@string/kbd_layout_qwerty</item>
+        <item>@string/kbd_layout_azerty</item>
+        <item>@string/kbd_layout_qwertz</item>
+    </string-array>
+
+    <string-array name="settings_layout_values_array">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
+    <string-array name="settings_appearance_names_array">
+        <item>@string/appearance_light</item>
+        <item>@string/appearance_dark</item>
+        <item>@string/appearance_auto</item>
+    </string-array>
+
+    <string-array name="settings_appearance_values_array">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+</resources>

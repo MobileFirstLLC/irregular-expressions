@@ -1,4 +1,5 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/keyboard_extras"
     android:layout_width="match_parent"
@@ -12,7 +13,7 @@
         android:layout_weight="85"
         android:layout_height="wrap_content"
         android:background="@drawable/key_background"
-        android:gravity="top|start"
+        android:gravity="center|start"
         android:orientation="horizontal"
         android:paddingStart="2dp"
         android:paddingLeft="2dp"
@@ -21,12 +22,13 @@
         android:paddingRight="2dp"
         android:paddingBottom="6dp">
 
-        <androidx.appcompat.widget.AppCompatImageButton
+        <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/style_button"
             style="@style/kbd_icon"
             android:padding="4dp"
+            android:tint="?attr/kbd_text_color"
             android:layout_width="40dp"
-            app:srcCompat="@drawable/ic_style_off" />
+            app:srcCompat="@drawable/kbd_ic_style_off" />
 
         <View style="@style/kbd_vertical_divider" />
 
@@ -39,14 +41,15 @@
 
     </LinearLayout>
 
-    <androidx.appcompat.widget.AppCompatImageButton
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/settings_button"
         style="@style/kbd_icon"
         android:layout_width="0dp"
         android:layout_weight="15"
         android:layout_margin="0dp"
         android:padding="12dp"
+        android:tint="?attr/kbd_text_color"
         android:background="?android:attr/selectableItemBackground"
         android:layout_height="@dimen/match_parent"
-        app:srcCompat="@drawable/ic_settings" />
+        app:srcCompat="@drawable/kbd_ic_settings" />
 </LinearLayout>

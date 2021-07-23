@@ -31,7 +31,7 @@
         <Key android:codes="108" android:keyLabel="l" android:popupCharacters="@string/alternates_for_l" android:popupKeyboard="@xml/keyboard_popup" android:keyEdgeFlags="right"/>
     </Row>
     <Row>
-        <Key android:codes="-1" android:keyIcon="@drawable/ic_arrow_up_bold_outline" android:keyWidth="15%p" android:keyEdgeFlags="left"/>
+        <Key android:codes="@integer/kbd_shift_key" android:keyWidth="15%p" android:keyEdgeFlags="left"/>
         <Key android:codes="121" android:keyLabel="y" android:popupCharacters="@string/alternates_for_y" android:popupKeyboard="@xml/keyboard_popup"/>
         <Key android:codes="120" android:keyLabel="x"/>
         <Key android:codes="99" android:keyLabel="c" android:popupCharacters="@string/alternates_for_c" android:popupKeyboard="@xml/keyboard_popup" />
@@ -39,14 +39,14 @@
         <Key android:codes="98" android:keyLabel="b"/>
         <Key android:codes="110" android:keyLabel="n" android:popupCharacters="@string/alternates_for_n" android:popupKeyboard="@xml/keyboard_popup" />
         <Key android:codes="109" android:keyLabel="m"/>
-        <Key android:codes="-5"  android:keyIcon="@drawable/ic_backspace_outline"  android:keyWidth="15%p" android:isRepeatable="true" android:keyEdgeFlags="right"/>
+        <Key android:codes="@integer/kbd_backspace_delete" android:keyWidth="15%p" android:isRepeatable="true" android:keyEdgeFlags="right"/>
     </Row>
     <Row android:rowEdgeFlags="bottom">
-        <Key android:codes="-11" android:keyIcon="@drawable/ic_numeric"  android:keyWidth="15%p" android:keyEdgeFlags="left"/>
+        <Key android:codes="@integer/kbd_numeric_switch" android:keyWidth="15%p" android:keyEdgeFlags="left"/>
         <Key android:codes="63,33" android:keyLabel="\?!"/>
         <Key android:codes="44" android:keyLabel="," />
         <Key android:codes="32" android:keyLabel=" " android:keyWidth="40%p" android:isRepeatable="true"/>
         <Key android:codes="46" android:keyLabel="."/>
-        <Key android:codes="-4" android:keyIcon="@drawable/ic_keyboard_return" android:keyWidth="15%p" android:keyEdgeFlags="right"/>
+        <Key android:codes="@integer/kbd_enter_return_key" android:keyWidth="15%p" android:keyEdgeFlags="right"/>
     </Row>
 </Keyboard>

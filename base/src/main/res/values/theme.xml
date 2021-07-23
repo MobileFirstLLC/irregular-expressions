@@ -15,7 +15,7 @@
         <item name="colorSecondary">@color/colorAccent</item>
     </style>
 
-    <style name="SplashTheme" parent="@style/Theme.AppCompat.Light.NoActionBar">
+    <style name="SplashTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="android:windowBackground">@android:color/white</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowActionBar">false</item>
@@ -23,13 +23,48 @@
         <item name="android:windowContentOverlay">@null</item>
     </style>
 
+    <!-- keyboard themes -->
+    <style name="KeyboardTheme" parent="Theme.AppCompat">
+        <item name="kbd_bg">@color/default_kbd_bg</item>
+        <item name="kbd_preview_bg">@color/default_kbd_preview_bg</item>
+        <item name="kbd_text_color">@color/default_kbd_text_color</item>
+        <item name="kbd_divider">@color/default_kbd_divider</item>
+        <item name="key_border_color">@color/default_key_border_color</item>
+        <item name="key_bg">@color/default_key_bg</item>
+        <item name="key_bg_pressed">@color/default_key_bg_pressed</item>
+        <item name="style_text_selected">@color/default_style_text_selected</item>
+    </style>
+
+    <style name="KeyboardThemeDark" parent="KeyboardTheme">
+        <item name="kbd_bg">@color/dark_kbd_bg</item>
+        <item name="kbd_preview_bg">@color/dark_kbd_preview_bg</item>
+        <item name="kbd_text_color">@color/dark_kbd_text_color</item>
+        <item name="kbd_divider">@color/dark_kbd_divider</item>
+        <item name="key_border_color">@color/dark_key_border_color</item>
+        <item name="key_bg">@color/dark_key_bg</item>
+        <item name="key_bg_pressed">@color/dark_key_bg_pressed</item>
+        <item name="style_text_selected">@color/dark_style_text_selected</item>
+    </style>
+
+    <style name="KeyboardThemeLight" parent="KeyboardTheme">
+        <item name="kbd_bg">@color/light_kbd_bg</item>
+        <item name="kbd_preview_bg">@color/light_kbd_preview_bg</item>
+        <item name="kbd_text_color">@color/light_kbd_text_color</item>
+        <item name="kbd_divider">@color/light_kbd_divider</item>
+        <item name="key_border_color">@color/light_key_border_color</item>
+        <item name="key_bg">@color/light_key_bg</item>
+        <item name="key_bg_pressed">@color/light_key_bg_pressed</item>
+        <item name="style_text_selected">@color/light_style_text_selected</item>
+    </style>
+
     <style name="PopoverKey">
         <item name="android:background">@color/transparent</item>
-        <item name="android:textColor">@color/keyboardTextColor</item>
+        <item name="android:textColor">?attr/kbd_text_color</item>
         <item name="android:paddingRight">6dp</item>
         <item name="android:paddingTop">4dp</item>
         <item name="android:textSize">10sp</item>
         <item name="android:gravity">right</item>
         <item name="android:textStyle">bold</item>
     </style>
+
 </resources>
