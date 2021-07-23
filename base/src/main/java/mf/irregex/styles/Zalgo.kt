@@ -20,8 +20,6 @@ class Zalgo internal constructor(
     // randomization 70%, height goes from 30 to 100.
     private val randomization = 100 // 0-100%
 
-    private val encodedName: String
-
     var diacriticsTop = ArrayList<Char>()
     var diacriticsMiddle = ArrayList<Char>()
     var diacriticsBottom = ArrayList<Char>()

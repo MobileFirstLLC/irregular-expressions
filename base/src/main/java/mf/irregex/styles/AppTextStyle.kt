@@ -16,11 +16,14 @@ abstract class AppTextStyle(
      */
     private var sequenceAware: Boolean = false
 ) {
+
+    protected lateinit var encodedName: String
+
     val styleId: String
         get() = id
 
     open val styledName: String
-        get() = encode(name)!!
+        get() = encodedName
 
     val isReversed: Boolean
         get() = reverse

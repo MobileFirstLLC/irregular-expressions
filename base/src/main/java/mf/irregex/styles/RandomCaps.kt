@@ -7,6 +7,9 @@ class RandomCaps internal constructor(
     enabled: Boolean
 ) : AppTextStyle(id, name, enabled, priority, false, true) {
 
+    init {
+        encodedName = encode(name)!!
+    }
     override fun encode(text: String?, sequence: CharSequence?): String? {
         if (!isEmpty(text)) {
             var lowercase = false
