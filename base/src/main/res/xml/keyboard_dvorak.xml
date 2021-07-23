@@ -44,6 +44,6 @@
         <Key android:codes="113" android:keyLabel="q"  android:keyEdgeFlags="left"/>
         <Key android:codes="32" android:keyLabel=" " android:keyWidth="50%p" android:isRepeatable="true"/>
         <Key android:codes="122" android:keyLabel="z" android:popupCharacters="@string/alternates_for_z" android:popupKeyboard="@xml/keyboard_popup" />
-        <Key android:codes="@integer/kbd_enter_return_key" android:keyWidth="15%p" android:keyEdgeFlags="right"/>
+        <Key android:codes="@integer/kbd_done_key" android:keyWidth="15%p" android:keyEdgeFlags="right"/>
     </Row>
 </Keyboard>

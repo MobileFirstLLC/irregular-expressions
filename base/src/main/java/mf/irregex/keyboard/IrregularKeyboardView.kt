@@ -20,7 +20,7 @@ class IrregularKeyboardView : KeyboardView {
 
     private val NUMERIC = resources.getInteger(R.integer.kbd_numeric_switch)
     private val ALPHA = resources.getInteger(R.integer.kbd_alpha_switch)
-    private val ACTION_KEY = resources.getInteger(R.integer.kbd_enter_return_key)
+    private val ACTION_KEY = resources.getInteger(R.integer.kbd_done_key)
     private val BACKSPACE = resources.getInteger(R.integer.kbd_backspace_delete)
     private val SHIFT = resources.getInteger(R.integer.kbd_shift_key)
     private val SPACE = resources.getInteger(R.integer.kbd_space_key)

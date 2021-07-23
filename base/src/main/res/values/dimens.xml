@@ -5,7 +5,7 @@
 
     <!-- special keyboard key codes (keys with icons) -->
     <integer name="kbd_shift_key">-1</integer>
-    <integer name="kbd_enter_return_key">-4</integer>
+    <integer name="kbd_done_key">-4</integer>
     <integer name="kbd_backspace_delete">-5</integer>
     <integer name="kbd_numeric_switch">-11</integer>
     <integer name="kbd_alpha_switch">-10</integer>
