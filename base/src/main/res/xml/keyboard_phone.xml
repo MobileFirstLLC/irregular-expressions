@@ -25,6 +25,6 @@
         <Key android:codes="42,35" android:keyLabel="*#" android:keyEdgeFlags="left"/>
         <Key android:codes="48,43" android:keyLabel="0+"/>
         <Key android:codes="46" android:keyLabel="." />
-        <Key android:codes="@integer/kbd_enter_return_key" android:keyEdgeFlags="right"/>
+        <Key android:codes="@integer/kbd_done_key" android:keyEdgeFlags="right"/>
     </Row>
 </Keyboard>

@@ -29,6 +29,13 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import mf.irregex.R
+import mf.irregex.keyboard.Constants.DEFAULT_HEIGHT
+import mf.irregex.keyboard.Constants.DEFAULT_VIBRATIONS
+import mf.irregex.keyboard.Constants.DOUBLETAP_MAX_DELAY_MS
+import mf.irregex.keyboard.Constants.LONG_PRESS
+import mf.irregex.keyboard.Constants.PROCESS_HARD_KEYS
+import mf.irregex.keyboard.Constants.REGULAR_STYLE_INDEX
+import mf.irregex.keyboard.Constants.VIBRATION_DURATION_MS
 import mf.irregex.settings.SettingsActivity
 import mf.irregex.styles.AppTextStyle
 import mf.irregex.styles.AvailableStyles.getEnabledStyles
@@ -41,30 +48,6 @@ import kotlin.math.roundToInt
  * This class sets up and handles virtual keyboard events
  */
 class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
-
-    // set true to also process hard keyboard click events
-    private val PROCESS_HARD_KEYS = true
-    private val DOUBLETAP_MAX_DELAY_MS = 500L
-    private val VIBRATION_DURATION_MS = 25L
-    private val LONG_PRESS = 200L
-    private val DEFAULT_KBD_LAYOUT = "1" // 1 = qwerty, 2 = azerty, 3 = qwertz, 4 = dvorak
-    private val DEFAULT_APPEARANCE = "3" // 1 = light, 2 = dark, 3 = auto
-    private val DEFAULT_VIBRATIONS = false
-    private val DEFAULT_HEIGHT = 8
-    private val LIGHT_MODE = "1"
-    private val DARK_MODE = "2"
-    private val REGULAR_STYLE_INDEX = -1 // Font with "no style"
-
-    // Primary vs. secondary keyboards
-    private val ALPHA_KEYBOARD_KEYCODE = -10
-    private val SECONDARY_KBD_KEYCODE = -11
-    private val KEYCODE_SPACE = 32
-
-    // Keyboard variations
-    private val ALPHA_KBD = 0
-    private val NUMBER_KBD = 1
-    private val MATH_KBD = 2
-    private val PHONE_KBD = 3
 
     // All available text styles
     private var styles = getEnabledStyles()
@@ -81,7 +64,7 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
 
     // keyboard default state
     private val mComposing = StringBuilder()
-    private var keyboardChoice = ALPHA_KBD
+    private var keyboardChoice = Constants.ALPHA_KBD
     private var styleIndex = REGULAR_STYLE_INDEX
     private var lastSelectedStyleIndex = REGULAR_STYLE_INDEX
     private var reverseCursorDirection = false
@@ -100,9 +83,9 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
 
     // user preferences
     private var keyVibrations = DEFAULT_VIBRATIONS
-    private var keyboardLayout = DEFAULT_KBD_LAYOUT
+    private var keyboardLayout = Constants.DEFAULT_LAYOUT
     private var keyHeight = DEFAULT_HEIGHT
-    private var appearance = DEFAULT_APPEARANCE
+    private var appearance = Constants.DEFAULT_THEME
     private var sysDarkMode: Boolean? = null
 
     override fun onCreate() {
@@ -114,8 +97,8 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
     override fun onCreateInputView(): View {
 
         val theme = when (appearance) {
-            DARK_MODE -> R.style.KeyboardThemeDark
-            LIGHT_MODE -> R.style.KeyboardThemeLight
+            Constants.DARK -> R.style.KeyboardThemeDark
+            Constants.LIGHT -> R.style.KeyboardThemeLight
             else -> R.style.KeyboardTheme
         }
         val contextThemeWrapper = ContextThemeWrapper(applicationContext, theme)
@@ -127,7 +110,7 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
         keyboardView = layout.findViewById(R.id.keyboard_view)
 
         keyboardView?.setOnKeyboardActionListener(this)
-        if (keyboardChoice == NUMBER_KBD) {
+        if (keyboardChoice == Constants.NUMBER_KBD) {
             enableSymbolicKeyboard()
         } else {
             enableAlphaKeyboard()
@@ -169,29 +152,29 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
             InputType.TYPE_CLASS_NUMBER, InputType.TYPE_CLASS_DATETIME -> {
                 // Numbers and dates default to the symbols keyboard, with
                 // no extra features.
-                keyboardChoice = NUMBER_KBD
+                keyboardChoice = Constants.NUMBER_KBD
             }
             InputType.TYPE_CLASS_PHONE -> {
                 // Phones will also default to the symbols keyboard, though
                 // often you will want to have a dedicated phone keyboard.
-                keyboardChoice = PHONE_KBD
+                keyboardChoice = Constants.PHONE_KBD
             }
             InputType.TYPE_CLASS_TEXT -> {
                 // This is general text editing.  We will default to the
                 // normal alphabetic keyboard, and assume that we should
                 // be doing predictive text (showing candidates as the
                 // user types).
-                keyboardChoice = ALPHA_KBD
+                keyboardChoice = Constants.ALPHA_KBD
             }
             else -> {
                 // For all unknown input types, default to the alphabetic
                 // keyboard with no special features.
-                keyboardChoice = ALPHA_KBD
+                keyboardChoice = Constants.ALPHA_KBD
             }
         }
         when (keyboardChoice) {
-            NUMBER_KBD -> enableSymbolicKeyboard()
-            PHONE_KBD -> enablePhoneKeyboard()
+            Constants.NUMBER_KBD -> enableSymbolicKeyboard()
+            Constants.PHONE_KBD -> enablePhoneKeyboard()
             else -> enableAlphaKeyboard()
         }
     }
@@ -202,12 +185,9 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
      */
     override fun onStartInputView(info: EditorInfo?, restarting: Boolean) {
         super.onStartInputView(info, restarting)
-        Log.d("KBD", "Start Input View!")
         if (initPreferences()) {
-            Log.d("KBD", "restarting...")
             // when preferences have changed appearance, need to
             // restart the input method service to apply theme change
-
             setInputView(onCreateInputView())
             return
         }
@@ -239,12 +219,12 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
     override fun onKey(primaryCode: Int, keyCodes: IntArray) {
         if (currentInputConnection != null) {
             when (primaryCode) {
-                SECONDARY_KBD_KEYCODE -> toggleExtendedKeyboardView()
-                ALPHA_KEYBOARD_KEYCODE -> enableAlphaKeyboard()
+                Constants.SECONDARY_KBD_KEYCODE -> toggleExtendedKeyboardView()
+                Constants.ALPHA_KEYBOARD_KEYCODE -> enableAlphaKeyboard()
                 Keyboard.KEYCODE_DELETE -> handleDeleteKeyPress()
                 Keyboard.KEYCODE_SHIFT -> handleShiftKeyPress()
                 Keyboard.KEYCODE_DONE -> handleDoneKeyPress()
-                KEYCODE_SPACE -> return
+                Constants.KEYCODE_SPACE -> return
                 else -> encodeCharacter(primaryCode)
             }
         }
@@ -255,7 +235,7 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
      */
     override fun onPress(i: Int) {
         vibrate(this)
-        if (i == KEYCODE_SPACE) onSpaceKeyDown()
+        if (i == Constants.KEYCODE_SPACE) onSpaceKeyDown()
     }
 
     override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
@@ -288,7 +268,7 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
     }
 
     override fun onRelease(i: Int) {
-        if (i == KEYCODE_SPACE) onSpaceKeyRelease()
+        if (i == Constants.KEYCODE_SPACE) onSpaceKeyRelease()
     }
 
     /**
@@ -303,8 +283,8 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
         if (c == 0 || currentInputConnection == null) {
             return false
         }
-        if (c == KEYCODE_SPACE) {
-            encodeCharacter(KEYCODE_SPACE)
+        if (c == Constants.KEYCODE_SPACE) {
+            encodeCharacter(Constants.KEYCODE_SPACE)
             return true
         }
         onKey(c, IntArray(0))
@@ -315,12 +295,12 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
      * Switch between numeric and symbolic keyboard
      */
     private fun toggleExtendedKeyboardView() {
-        if (keyboardChoice == NUMBER_KBD) {
+        if (keyboardChoice == Constants.NUMBER_KBD) {
             keyboard = IrregularKeyboard(this, R.xml.keyboard_math, keyHeight)
-            keyboardChoice = MATH_KBD
+            keyboardChoice = Constants.MATH_KBD
         } else {
             keyboard = IrregularKeyboard(this, R.xml.keyboard_extended, keyHeight)
-            keyboardChoice = NUMBER_KBD
+            keyboardChoice = Constants.NUMBER_KBD
         }
         keyboardView!!.keyboard = keyboard
         keyboardView!!.invalidateAllKeys()
@@ -328,7 +308,7 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
 
     private fun enableSymbolicKeyboard() {
         keyboard = IrregularKeyboard(this, R.xml.keyboard_extended, keyHeight)
-        keyboardChoice = NUMBER_KBD
+        keyboardChoice = Constants.NUMBER_KBD
         keyboardView!!.keyboard = keyboard
         keyboardView!!.invalidateAllKeys()
     }
@@ -336,7 +316,7 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
     private fun enablePhoneKeyboard() {
         keyboard = IrregularKeyboard(this, R.xml.keyboard_phone, keyHeight)
         keyboardExtras?.visibility = GONE
-        keyboardChoice = PHONE_KBD
+        keyboardChoice = Constants.PHONE_KBD
         keyboardView?.keyboard = keyboard
         keyboardView?.invalidateAllKeys()
     }
@@ -346,13 +326,13 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
      */
     private fun enableAlphaKeyboard() {
         val keyLayout: Int = when (keyboardLayout) {
-            "2" -> R.xml.keyboard_azerty
-            "3" -> R.xml.keyboard_qwertz
-            "4" -> R.xml.keyboard_dvorak
+            Constants.AZERTY -> R.xml.keyboard_azerty
+            Constants.QWERTZ -> R.xml.keyboard_qwertz
+            Constants.DVORAK -> R.xml.keyboard_dvorak
             else -> R.xml.keyboard_qwerty
         }
         keyboard = IrregularKeyboard(this, keyLayout, keyHeight)
-        keyboardChoice = ALPHA_KBD
+        keyboardChoice = Constants.ALPHA_KBD
         keyboard!!.isShifted = false
         uppercaseNextKeyOnly = false
         setShiftKeyIcon()
@@ -375,7 +355,7 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
     private fun onSpaceKeyRelease() {
         val spaceUp = SystemClock.uptimeMillis()
         if (spaceUp - spaceDown < LONG_PRESS)
-            encodeCharacter(KEYCODE_SPACE)
+            encodeCharacter(Constants.KEYCODE_SPACE)
         else if (!pickerInflated) {
             showKeyboardPicker()
             // prevent continuously inflating this menu
@@ -585,19 +565,19 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
         val prefs = PreferenceManager.getDefaultSharedPreferences(this)
 
         keyVibrations = prefs.getBoolean("key_vibrations", DEFAULT_VIBRATIONS)
-        keyboardLayout = prefs.getString("kbd_layout", DEFAULT_KBD_LAYOUT).toString()
+        keyboardLayout = prefs.getString("kbd_layout", Constants.DEFAULT_LAYOUT.toString())?.toInt()
+            ?: Constants.DEFAULT_LAYOUT
         keyHeight = (.15f.coerceAtMost(
-            heightMultiplier *
-                    (prefs.getInt("kdb_key_height", DEFAULT_HEIGHT) / 100f)
+            heightMultiplier * (prefs.getInt("kdb_key_height", DEFAULT_HEIGHT) / 100f)
         ) * window.defaultDisplay.height).roundToInt()
 
 
         val previousSystemMode = sysDarkMode
         val previousAppearance = appearance
 
-        appearance = PreferenceManager.getDefaultSharedPreferences(this)
-            .getString("kbd_appearance", DEFAULT_APPEARANCE).toString()
-        if (appearance == DEFAULT_APPEARANCE) {
+        appearance = prefs.getString("kbd_appearance", Constants.DEFAULT_THEME.toString())?.toInt()
+            ?:Constants.DEFAULT_THEME
+        if (appearance == Constants.DEFAULT_THEME) {
             sysDarkMode = when (resources.configuration.uiMode and
                     Configuration.UI_MODE_NIGHT_MASK) {
                 Configuration.UI_MODE_NIGHT_YES -> true
