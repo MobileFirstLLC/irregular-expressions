@@ -19,7 +19,7 @@ abstract class AppTextStyle(
     val styleId: String
         get() = id
 
-    val styledName: String
+    open val styledName: String
         get() = encode(name)!!
 
     val isReversed: Boolean
