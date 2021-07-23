@@ -2,13 +2,10 @@ package mf.irregex.settings
 
 import android.os.Bundle
 import android.view.MenuItem
-import android.view.View
-import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import mf.irregex.R
-import kotlin.system.exitProcess
 
 class SettingsActivity : AppCompatActivity(),
     PreferenceFragmentCompat.OnPreferenceStartFragmentCallback {

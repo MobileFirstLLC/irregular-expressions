@@ -1,7 +1,6 @@
 package mf.irregex.app
 
 import android.app.Application
-import androidx.appcompat.app.AppCompatDelegate
 import mf.irregex.styles.AvailableStyles
 
 class App : Application() {
