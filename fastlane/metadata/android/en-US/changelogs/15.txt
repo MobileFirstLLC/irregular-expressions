@@ -1,0 +1,6 @@
+New:
+================
+- translations in following languages: Arabic, Catalan, Chinese (simplified), Esperanto, Finnish, French, German, Norwegian Bokmål, Portuguese (Brazil), Russian, Spanish and Tamil
+- Dvorak layout
+- Light and dark theme support
+- 2 new styles: 🇲​🇦​🇷​🇮​🇹​🇮​🇲​🇪 and z̴̪͇͑̏́̾̈́̈́ͅą̶͕̠͓̲̖͔̤̗̭̌̀̾̈̅͐́̽́̉͌̀̂̈̓͝l̸̳͙̪̮̖̙̥͇͉͚̭͙͖͉͆̒͠g̶̣̱̖̦̝͉̗̯̀͋̓͜o̶̻͉̬̼͊͐́̄̕
