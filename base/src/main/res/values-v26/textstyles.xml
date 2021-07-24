@@ -26,5 +26,6 @@
         <item>@array/charset_upside_down</item>
         <item>@array/charset_mirrored</item>
         <item>@array/charset_supertiny</item>
+        <item>@array/charset_maritime</item>
     </array>
 </resources>
