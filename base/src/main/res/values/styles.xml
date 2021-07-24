@@ -133,7 +133,7 @@
         <item name="android:layout_marginRight">@dimen/main_element_spacing</item>
         <item name="android:layout_width">@dimen/main_card_content_width</item>
         <item name="android:layout_height">wrap_content</item>
-<!--        <item name="android:textColor">@color/text_color_buttons</item>-->
+        <!--        <item name="android:textColor">@color/text_color_buttons</item>-->
         <item name="layout_constraintLeft_toLeftOf">parent</item>
         <item name="layout_constraintRight_toRightOf">parent</item>
     </style>
@@ -170,9 +170,9 @@
     <!-- style config -->
 
     <style name="config_checkbox">
-        <item name="android:paddingStart">@dimen/style_config_padding</item>
+        <item name="android:paddingStart">0dp</item>
+        <item name="android:paddingLeft">0dp</item>
         <item name="android:paddingEnd">@dimen/style_config_padding</item>
-        <item name="android:paddingLeft">@dimen/style_config_padding</item>
         <item name="android:paddingRight">@dimen/style_config_padding</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -206,6 +206,7 @@
         <item name="android:paddingRight">12dp</item>
         <item name="android:minWidth">48dp</item>
         <item name="android:minHeight">48dp</item>
+        <item name="android:gravity">center</item>
         <item name="layout_constraintTop_toTopOf">parent</item>
         <item name="layout_constraintBottom_toBottomOf">parent</item>
     </style>

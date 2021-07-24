@@ -4,19 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginStart="10dp"
-    android:layout_marginLeft="10dp"
-    android:layout_marginTop="5dp"
-    android:layout_marginEnd="10dp"
-    android:layout_marginRight="10dp"
-    android:layout_marginBottom="5dp"
-    android:background="@drawable/bg_main_layout"
+    android:layout_marginStart="8dp"
+    android:layout_marginLeft="8dp"
+    android:layout_marginTop="2dp"
+    android:layout_marginEnd="8dp"
+    android:layout_marginRight="8dp"
+    android:layout_marginBottom="2dp"
+    android:background="@drawable/bg_config_item"
     android:minHeight="@dimen/style_config_row_minHeight"
     tools:ignore="MissingConstraints">
-
-    <com.google.android.material.switchmaterial.SwitchMaterial
-        android:id="@+id/enable_box"
-        style="@style/config_checkbox" />
 
     <TextView
         android:id="@+id/text_value"
@@ -33,5 +29,9 @@
         style="@style/config_order_btn"
         app:icon="@drawable/pref_ic_arrow_up"
         app:layout_constraintEnd_toStartOf="@id/enable_box" />
+
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/enable_box"
+        style="@style/config_checkbox" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
