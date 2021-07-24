@@ -19,7 +19,6 @@ import android.preference.PreferenceManager
 import android.text.InputType
 import android.text.TextUtils
 import android.text.method.MetaKeyKeyListener
-import android.util.Log
 import android.view.*
 import android.view.View.VISIBLE
 import android.view.inputmethod.EditorInfo
@@ -479,7 +478,21 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
                 adapter!!.setSelectedFont(styleIndex)
                 adapter!!.notifyItemChanged(styleIndex)
                 adapter!!.notifyItemChanged(previous)
+                // reEncode()
             }
+        }
+    }
+
+    private fun reEncode(){
+        val inputConnection = currentInputConnection
+        val currentSelection = inputConnection.getSelectedText(0)
+        if (currentSelection.isNotEmpty()) {
+            val newStyle = styles[styleIndex].encode(
+                currentSelection.toString(),
+                inputConnection.getTextBeforeCursor(5, 0)
+            ).toString()
+            // Log.d("KBD", "$currentSelection, $newStyle")
+            inputConnection.setComposingText(newStyle, 0)
         }
     }
 
