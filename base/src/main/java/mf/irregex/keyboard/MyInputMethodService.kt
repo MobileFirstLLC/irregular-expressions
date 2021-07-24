@@ -2,6 +2,7 @@
 
 package mf.irregex.keyboard
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.res.Configuration
@@ -43,7 +44,6 @@ import mf.irregex.styles.StylePickerAdapter
 import java.util.concurrent.TimeUnit
 import kotlin.math.roundToInt
 
-
 /**
  * This class sets up and handles virtual keyboard events
  */
@@ -76,7 +76,6 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
     // SPACE bar variables
     private var spaceDown: Long = 0
     private var spaceIsPressed = false
-    private var mSpaceKeyIndex: Int = -1
     private var pickerInflated: Boolean = false
 
     // ENTER key variables
@@ -95,6 +94,7 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
     }
 
     // called initially when inflating keyboard
+    @SuppressLint("InflateParams", "ClickableViewAccessibility")
     override fun onCreateInputView(): View {
 
         val theme = when (appearance) {
@@ -118,9 +118,7 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
         for (i in 0 until (keyboard!!.keys).size) {
             if (keyboard!!.keys[i].codes.contains(KEYCODE_DONE)) {
                 mEnterKeyIndex = i
-            }
-            if (keyboard!!.keys[i].codes.contains(KEYCODE_SPACE)) {
-                mSpaceKeyIndex = i
+                break
             }
         }
         keyboardView?.setOnTouchListener { _, event ->
@@ -357,7 +355,6 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
         spaceDown = System.nanoTime()
         pickerInflated = false
         spaceIsPressed = true
-        keyboardView!!.invalidateKey(mSpaceKeyIndex)
     }
 
     /**
