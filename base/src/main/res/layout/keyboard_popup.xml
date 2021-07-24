@@ -12,10 +12,11 @@
         android:layout_height="wrap_content"
         android:background="@color/transparent"
         android:keyBackground="@color/transparent"
+        android:keyPreviewLayout="@null"
         android:keyTextColor="?attr/kbd_text_color"
         android:keyTextSize="22sp"
-        android:keyPreviewLayout="@null"
-        android:popupLayout="@null" />
+        android:popupLayout="@null"
+        android:shadowRadius="0" />
 
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@android:id/closeButton"
@@ -24,9 +25,9 @@
         android:layout_gravity="center"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:clickable="true"
-        android:focusable="true"
         android:alpha="0.5"
         android:background="@color/transparent"
+        android:clickable="true"
+        android:focusable="true"
         app:srcCompat="@drawable/kbd_ic_close" />
 </LinearLayout>
