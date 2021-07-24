@@ -41,13 +41,13 @@
     <color name="light_extras_bg">#e0e0e0</color>
 
     <!-- dark theme keyboard colors -->
-    <color name="dark_kbd_bg">#3B3B42</color>
+    <color name="dark_kbd_bg">#28282D</color>
     <color name="dark_kbd_preview_bg">#454545</color>
     <color name="dark_kbd_text_color">@android:color/white</color>
     <color name="dark_key_border_color">#28282D</color>
-    <color name="dark_key_bg">#28282D</color>
-    <color name="dark_key_bg_pressed">#38383D</color>
+    <color name="dark_key_bg">#3B3B42</color>
+    <color name="dark_key_bg_pressed">#48484D</color>
     <color name="dark_style_text_selected">#fff</color>
-    <color name="dark_extras_bg">#44000000</color>
+    <color name="dark_extras_bg">#33000000</color>
 
 </resources>
