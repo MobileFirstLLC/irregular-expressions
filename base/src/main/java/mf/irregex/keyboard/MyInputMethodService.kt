@@ -87,6 +87,7 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
     private var keyHeight = DEFAULT_HEIGHT
     private var appearance = Constants.DEFAULT_THEME
     private var sysDarkMode: Boolean? = null
+    private var longPressMillis: Long = Constants.LONG_PRESS
 
     override fun onCreate() {
         super.onCreate()
@@ -314,7 +315,7 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
         keyboardView!!.invalidateAllKeys()
     }
 
-    private  fun enableSymbolicKeyboard() {
+    private fun enableSymbolicKeyboard() {
         keyboard = IrregularKeyboard(this, R.xml.keyboard_extended, keyHeight)
         keyboardChoice = Constants.NUMBER_KBD
         keyboardView!!.keyboard = keyboard
@@ -364,10 +365,11 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
     private fun onSpaceKeyRelease() {
         val spaceUp = System.nanoTime()
         val diff = spaceUp - spaceDown
-        if (!spaceIsPressed && diff < LONG_PRESS) {
+        val longPressNanos = longPressMillis * 1000000
+
+        if (!spaceIsPressed && diff < longPressNanos) {
             encodeCharacter(KEYCODE_SPACE)
-        }
-        else if (!pickerInflated && diff >= LONG_PRESS) {
+        } else if (!pickerInflated && diff >= longPressNanos) {
             showKeyboardPicker()
             // prevent continuously inflating this menu
             pickerInflated = true
@@ -576,6 +578,7 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
         val prefs = PreferenceManager.getDefaultSharedPreferences(this)
 
         keyVibrations = prefs.getBoolean("key_vibrations", DEFAULT_VIBRATIONS)
+        longPressMillis = prefs.getInt("kdb_long_press_delay", LONG_PRESS.toInt()).toLong()
         keyboardLayout = prefs.getString("kbd_layout", Constants.DEFAULT_LAYOUT.toString())?.toInt()
             ?: Constants.DEFAULT_LAYOUT
         keyHeight = (.15f.coerceAtMost(

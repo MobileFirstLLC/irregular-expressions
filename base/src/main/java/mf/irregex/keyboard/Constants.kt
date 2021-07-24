@@ -31,7 +31,7 @@ object Constants {
     const val PROCESS_HARD_KEYS = true
     const val DOUBLETAP_MAX_DELAY_MS = 500L
     const val VIBRATION_DURATION_MS = 25L
-    const val LONG_PRESS = 200L * 1000000
+    const val LONG_PRESS = 400L
     const val DEFAULT_HEIGHT = 8
     const val DEFAULT_VIBRATIONS = false
     const val REGULAR_STYLE_INDEX = -1 // Font with "no style"

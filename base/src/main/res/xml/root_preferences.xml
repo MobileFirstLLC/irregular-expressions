@@ -28,13 +28,22 @@
             android:title="@string/setting_keyboard_layout" />
 
         <SeekBarPreference
-            app:key="kdb_key_height"
-            app:showSeekBarValue="true"
             android:icon="@drawable/pref_ic_arrow_up_down"
-            app:min="5"
             android:max="12"
             app:defaultValue="8"
+            app:key="kdb_key_height"
+            app:min="5"
+            app:showSeekBarValue="true"
             app:title="@string/key_height" />
+
+<!--        <SeekBarPreference-->
+<!--            android:icon="@drawable/pref_ic_down"-->
+<!--            android:max="800"-->
+<!--            app:min="100"-->
+<!--            app:defaultValue="400"-->
+<!--            app:key="kdb_long_press_delay"-->
+<!--            app:showSeekBarValue="true"-->
+<!--            app:title="@string/long_keypress_millis" />-->
 
         <ListPreference
             android:defaultValue="3"
@@ -44,6 +53,8 @@
             android:key="kbd_appearance"
             android:summary="%s"
             android:title="@string/appearance" />
+
+
 
     </PreferenceCategory>
 

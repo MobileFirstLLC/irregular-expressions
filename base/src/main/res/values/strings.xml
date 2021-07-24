@@ -38,6 +38,7 @@
     <string name="appearance_light">Light theme</string>
     <string name="appearance_dark">Dark theme</string>
     <string name="appearance_auto">Automatic</string>
+    <string name="long_keypress_millis">Long key press (milliseconds)</string>
 
     <string name="alternates_for_a">àáâäæãåā</string>
     <string name="alternates_for_c">çćč</string>
