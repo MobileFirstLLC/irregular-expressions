@@ -103,14 +103,14 @@ You can find APKs under <a href="https://github.com/MobileFirstLLC/irregular-exp
 <td align="center">z̴̪͇͑̏́̾̈́̈́ͅą̶͕̠͓̲̖͔̤̗̭̌̀̾̈̅͐́̽́̉͌̀̂̈̓͝l̸̳͙̪̮̖̙̥͇͉͚̭͙͖͉͆̒͠g̶̣̱̖̦̝͉̗̯̀͋̓͜o̶̻͉̬̼͊͐́̄̕     <sup>(*</sup></td>
 </tr>
 <tr>
+<td align="center">🇲​🇦​🇷​🇮​🇹​🇮​🇲​🇪​<sup>(*</sup></td>
 <td align="center">Regular</td>
-<td></td>
 <td></td>
 </tr>
 </tbody>
 </table>
 <p align="center">
-*) added in v2.6.0
+*) in next release
 <br/><br/>
 Note: some styles are not supported by older versions of Android. Android Oreo (8.0) or higher supports all styles.
 </p>
