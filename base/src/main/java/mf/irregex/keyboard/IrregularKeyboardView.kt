@@ -18,18 +18,8 @@ import mf.irregex.R
 
 class IrregularKeyboardView : KeyboardView {
 
-    private val NUMERIC = resources.getInteger(R.integer.kbd_numeric_switch)
-    private val ALPHA = resources.getInteger(R.integer.kbd_alpha_switch)
-    private val ACTION_KEY = resources.getInteger(R.integer.kbd_done_key)
-    private val BACKSPACE = resources.getInteger(R.integer.kbd_backspace_delete)
-    private val SHIFT = resources.getInteger(R.integer.kbd_shift_key)
-    private val SPACE = resources.getInteger(R.integer.kbd_space_key)
-    private val MINUS = resources.getInteger(R.integer.kbd_minus_key)
-    private val LIGHT_APPEARANCE = "1"
-    private val DARK_APPEARANCE = "2"
-    private val DEFAULT_APPEARANCE = "3"
-    private var themeId = R.style.KeyboardTheme
     private var iconRatio = .75f
+    private var themeId = R.style.KeyboardTheme
     private var shiftIcon = R.drawable.kbd_ic_arrow_up_bold_outline
     private val actionIcon = R.drawable.kbd_ic_keyboard_return
 
@@ -50,10 +40,13 @@ class IrregularKeyboardView : KeyboardView {
 
     private fun determineTheme() {
         val prefs = PreferenceManager.getDefaultSharedPreferences(context)
-        when (prefs.getString("kbd_appearance", DEFAULT_APPEARANCE)) {
-            DARK_APPEARANCE -> themeId = R.style.KeyboardThemeDark
-            LIGHT_APPEARANCE -> themeId = R.style.KeyboardThemeLight
-        }
+        themeId =
+            when (prefs.getString("kbd_appearance", Constants.DEFAULT_THEME.toString())?.toInt()
+                ?: Constants.DEFAULT_THEME) {
+                Constants.DARK -> R.style.KeyboardThemeDark
+                Constants.LIGHT -> R.style.KeyboardThemeLight
+                else -> R.style.KeyboardTheme
+            }
         val outValue = TypedValue()
         resources.getValue(R.dimen.key_icon_ratio, outValue, true)
         iconRatio = outValue.float
@@ -87,13 +80,33 @@ class IrregularKeyboardView : KeyboardView {
         for (key in keys) {
             if (key.codes.isNotEmpty() && key.label == null) {
                 when (key.codes[0]) {
-                    ACTION_KEY -> drawIt(canvas, key, actionIcon, theme)
-                    NUMERIC -> drawIt(canvas, key, R.drawable.kbd_ic_numeric, theme)
-                    BACKSPACE -> drawIt(canvas, key, R.drawable.kbd_ic_backspace_outline, theme)
-                    SHIFT -> drawIt(canvas, key, shiftIcon, theme)
-                    SPACE -> drawIt(canvas, key, R.drawable.kbd_ic_keyboard_space, theme)
-                    ALPHA -> drawIt(canvas, key, R.drawable.kbd_ic_alphabetical_variant, theme)
-                    MINUS -> drawIt(canvas, key, R.drawable.kbd_ic_minus, theme)
+                    Keyboard.KEYCODE_DONE -> drawIt(canvas, key, actionIcon, theme)
+                    Keyboard.KEYCODE_DELETE -> drawIt(
+                        canvas,
+                        key,
+                        R.drawable.kbd_ic_backspace_outline,
+                        theme
+                    )
+                    Keyboard.KEYCODE_SHIFT -> drawIt(canvas, key, shiftIcon, theme)
+                    Constants.SECONDARY_KBD_KEYCODE -> drawIt(
+                        canvas,
+                        key,
+                        R.drawable.kbd_ic_numeric,
+                        theme
+                    )
+                    Constants.KEYCODE_SPACE -> drawIt(
+                        canvas,
+                        key,
+                        R.drawable.kbd_ic_keyboard_space,
+                        theme
+                    )
+                    Constants.ALPHA_KEYBOARD_KEYCODE -> drawIt(
+                        canvas,
+                        key,
+                        R.drawable.kbd_ic_alphabetical_variant,
+                        theme
+                    )
+                    Constants.KEYCODE_MINUS -> drawIt(canvas, key, R.drawable.kbd_ic_minus, theme)
                 }
             }
         }

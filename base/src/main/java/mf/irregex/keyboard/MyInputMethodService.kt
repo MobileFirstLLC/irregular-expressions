@@ -23,7 +23,6 @@ import android.view.*
 import android.view.View.VISIBLE
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
-import android.widget.LinearLayout
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -32,6 +31,7 @@ import mf.irregex.R
 import mf.irregex.keyboard.Constants.DEFAULT_HEIGHT
 import mf.irregex.keyboard.Constants.DEFAULT_VIBRATIONS
 import mf.irregex.keyboard.Constants.DOUBLETAP_MAX_DELAY_MS
+import mf.irregex.keyboard.Constants.KEYCODE_SPACE
 import mf.irregex.keyboard.Constants.LONG_PRESS
 import mf.irregex.keyboard.Constants.PROCESS_HARD_KEYS
 import mf.irregex.keyboard.Constants.REGULAR_STYLE_INDEX
@@ -60,6 +60,7 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
     private var stylePicker: RecyclerView? = null
     private var adapter: StylePickerAdapter? = null
     private var keyboardExtras: View? = null
+    private val mRepeatableKeys: MutableList<Int> = arrayListOf()
 
     // keyboard default state
     private val mComposing = StringBuilder()
@@ -75,6 +76,8 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
 
     // SPACE bar variables
     private var spaceDown: Long = 0
+    private var spaceIsPressed = false
+    private var mSpaceKeyIndex: Int = -1
     private var pickerInflated: Boolean = false
 
     // ENTER key variables
@@ -113,11 +116,24 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
         } else {
             enableAlphaKeyboard()
         }
-        for (i in 0..(keyboard!!.keys).size) {
+        for (i in 0 until (keyboard!!.keys).size) {
+            if(keyboard!!.keys[i].repeatable) {
+                mRepeatableKeys.add(keyboard!!.keys[i].codes[0])
+            };
             if (keyboard!!.keys[i].codes.contains(KEYCODE_DONE)) {
                 mEnterKeyIndex = i
-                break
             }
+            if (keyboard!!.keys[i].codes.contains(KEYCODE_SPACE)) {
+                mSpaceKeyIndex = i
+            }
+        }
+        keyboardView?.setOnTouchListener { _, event ->
+            if (event.action == MotionEvent.ACTION_UP)
+                if (spaceIsPressed) {
+                    spaceIsPressed = false
+                    onSpaceKeyRelease()
+                }
+            false
         }
 
         /* setup style picker recyclerView */
@@ -221,8 +237,8 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
                 Constants.ALPHA_KEYBOARD_KEYCODE -> enableAlphaKeyboard()
                 Keyboard.KEYCODE_DELETE -> handleDeleteKeyPress()
                 Keyboard.KEYCODE_SHIFT -> handleShiftKeyPress()
-                Keyboard.KEYCODE_DONE -> handleDoneKeyPress()
-                Constants.KEYCODE_SPACE -> return
+                KEYCODE_DONE -> handleDoneKeyPress()
+                KEYCODE_SPACE -> return
                 else -> encodeCharacter(primaryCode)
             }
         }
@@ -233,7 +249,7 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
      */
     override fun onPress(i: Int) {
         vibrate(this)
-        if (i == Constants.KEYCODE_SPACE) onSpaceKeyDown()
+        if (i == KEYCODE_SPACE) onSpaceKeyDown()
     }
 
     override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
@@ -266,7 +282,7 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
     }
 
     override fun onRelease(i: Int) {
-        if (i == Constants.KEYCODE_SPACE) onSpaceKeyRelease()
+        if (i == KEYCODE_SPACE) onSpaceKeyRelease()
     }
 
     /**
@@ -304,7 +320,7 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
         keyboardView!!.invalidateAllKeys()
     }
 
-    private fun enableSymbolicKeyboard() {
+    private  fun enableSymbolicKeyboard() {
         keyboard = IrregularKeyboard(this, R.xml.keyboard_extended, keyHeight)
         keyboardChoice = Constants.NUMBER_KBD
         keyboardView!!.keyboard = keyboard
@@ -342,8 +358,10 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
      * Special handler for space down
      */
     private fun onSpaceKeyDown() {
-        spaceDown = SystemClock.uptimeMillis()
+        spaceDown = System.nanoTime()
         pickerInflated = false
+        spaceIsPressed = true
+        keyboardView!!.invalidateKey(mSpaceKeyIndex)
     }
 
     /**
@@ -351,10 +369,12 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
      * Long press inflates keyboard picker
      */
     private fun onSpaceKeyRelease() {
-        val spaceUp = SystemClock.uptimeMillis()
-        if (spaceUp - spaceDown < LONG_PRESS)
-            encodeCharacter(Constants.KEYCODE_SPACE)
-        else if (!pickerInflated) {
+        val spaceUp = System.nanoTime()
+        val diff = spaceUp - spaceDown
+        if (!spaceIsPressed && diff < LONG_PRESS) {
+            encodeCharacter(KEYCODE_SPACE)
+        }
+        else if (!pickerInflated && diff >= LONG_PRESS) {
             showKeyboardPicker()
             // prevent continuously inflating this menu
             pickerInflated = true
@@ -574,7 +594,7 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
         val previousAppearance = appearance
 
         appearance = prefs.getString("kbd_appearance", Constants.DEFAULT_THEME.toString())?.toInt()
-            ?:Constants.DEFAULT_THEME
+            ?: Constants.DEFAULT_THEME
         if (appearance == Constants.DEFAULT_THEME) {
             sysDarkMode = when (resources.configuration.uiMode and
                     Configuration.UI_MODE_NIGHT_MASK) {
