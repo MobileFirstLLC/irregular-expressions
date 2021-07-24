@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="name_happy_faces">சந்தோஷமாக</string>
+    <string name="name_frowny_faces">முகம் சுளித்தல்</string>
+    <string name="label_go_key">போ</string>
+    <string name="label_developer">டெவலப்பர்</string>
+    <string name="name_supertiny">சூப்பர்டைனி</string>
+    <string name="name_spongemock">கடற்பாசி</string>
+    <string name="name_regular">வழக்கமான</string>
+    <string name="name_cutout">வெட்டி எடு</string>
+    <string name="name_mirror">பிரதிபலித்தது</string>
+    <string name="name_full_width">பரந்த</string>
+    <string name="name_script_bold">தடித்த ஸ்கிரிப்ட்</string>
+    <string name="name_script">கையால் எழுதப்பட்ட தாள்</string>
+    <string name="name_serif_bold_italic">தடித்த சாய்வான செரிஃப்</string>
+    <string name="name_serif_italic">சாய்வெழுத்து செரிஃப்</string>
+    <string name="name_serif_bold">தடித்த செரிஃப்</string>
+    <string name="name_ss_bold">தைரியமான</string>
+    <string name="name_ss_italic">சாய்வெழுத்து</string>
+    <string name="name_ss_bold_italic">தடித்த சாய்வான</string>
+    <string name="name_clear_boxes">பெட்டிகள்</string>
+    <string name="name_clear_circles">வட்டங்கள்</string>
+    <string name="name_filled_boxes">பெட்டிகள்</string>
+    <string name="name_filled_circles">வட்டங்கள்</string>
+    <string name="name_underlined">அடிக்கோடிட்ட</string>
+    <string name="name_strikethrough">கோடிட்ட</string>
+    <string name="name_organic">கரிம</string>
+    <string name="name_clapclap">கைதட்டல்</string>
+    <string name="name_upsidedown">தலைகீழாக</string>
+    <string name="name_olde">பழைய ஆங்கிலம்</string>
+    <string name="name_olde_bold">பழைய ஆங்கில தைரியம்</string>
+    <string name="name_mono">ஒற்றை இடைவெளி</string>
+    <string name="name_lite_strikes">லைட்ஸ்ட்ரைக்ஸ்</string>
+    <string name="name_starry_night">நட்சத்திர இரவு</string>
+    <string name="name_mustache">மீசை</string>
+    <string name="name_slashed">வெட்டப்பட்டது</string>
+    <string name="name_thunder">இடி</string>
+    <string name="key_height">முக்கிய உயரம் (%)</string>
+    <string name="help">உதவி</string>
+    <string name="ok">சரி</string>
+    <string name="label_next_key">அடுத்த</string>
+    <string name="label_send_key">அனுப்பு</string>
+    <string name="config_instructions">"
+\nநீண்ட நேரம் அழுத்தி, மறுவரிசைப்படுத்த இழுக்கவும்
+\n
+\nமேல் / கீழ் நோக்கி செல்ல அம்புகளைப் பயன்படுத்தவும்
+\n
+\nவிசைப்பலகையிலிருந்து பாணியை மறைக்க நிலைமாற்று"</string>
+    <string name="config_styles_summary">உரை நடைகளைக் காண்பி, மறைக்க மற்றும் மறுவரிசைப்படுத்துங்கள்</string>
+    <string name="configure_styles_help">உரை நடைகளை எவ்வாறு கட்டமைப்பது</string>
+    <string name="configure_styles">உரை நடைகளை உள்ளமைக்கவும்</string>
+    <string name="kbd_layout_qwertz">குவெர்ட்ஸ்</string>
+    <string name="kbd_layout_azerty">ஏசர்டி</string>
+    <string name="kbd_layout_qwerty">குவெர்டி</string>
+    <string name="setting_keyboard_layout">விசைப்பலகை வடிவமைப்பு</string>
+    <string name="now_try_it">3. இப்போது இதை முயற்சிக்கவும் - இங்கே தட்டச்சு செய்க:</string>
+    <string name="select_keyboard">2. விசைப்பலகை தேர்ந்தெடுக்கவும்</string>
+    <string name="enable_keyboard">1. விசைப்பலகை இயக்கு</string>
+    <string name="intro_subtitle">எப்படி பயன்படுத்துவது</string>
+    <string name="intro_header">வரவேற்கிறோம்
+\nஒழுங்கற்ற வெளிப்பாடுகள்
+\nவிசைப்பலகை!</string>
+    <string name="disabled">முடக்கப்பட்டது</string>
+    <string name="enabled">இயக்கப்பட்டது</string>
+    <string name="source_code">மூல குறியீடு</string>
+    <string name="feedback_summary">சிக்கல்களைப் புகாரளிக்கவும் அல்லது அம்சங்களைக் கோருங்கள்</string>
+    <string name="key_vibrations">முக்கிய அதிர்வுகள்</string>
+    <string name="label_feedback">கருத்தினை அனுப்பவும்</string>
+    <string name="label_rate_app">பயன்பாட்டை மதிப்பிடுங்கள்</string>
+    <string name="label_version">பதிப்பு</string>
+    <string name="label_about">விவரங்கள்</string>
+    <string name="label_settings">பயனர் விருப்பத்தேர்வுகள்</string>
+    <string name="title_activity_settings">அமைப்புகள்</string>
+</resources>
