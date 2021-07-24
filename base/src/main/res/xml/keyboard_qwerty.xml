@@ -44,9 +44,8 @@
     </Row>
     <Row android:rowEdgeFlags="bottom">
         <Key android:codes="@integer/kbd_numeric_switch" android:keyWidth="15%p" android:keyEdgeFlags="left"/>
-        <Key android:codes="63,33" android:keyLabel="\?!"/>
         <Key android:codes="44" android:keyLabel="," />
-        <Key android:codes="32" android:keyLabel=" " android:keyWidth="40%p" android:isRepeatable="true"/>
+        <Key android:codes="32" android:keyLabel=" " android:keyWidth="50%p" android:isRepeatable="true"/>
         <Key android:codes="46" android:keyLabel="."/>
         <Key android:codes="@integer/kbd_done_key" android:keyWidth="15%p" android:keyEdgeFlags="right"/>
     </Row>

@@ -21,6 +21,7 @@
     <dimen name="kbd_key_icon_size">24dp</dimen>
     <dimen name="kbd_icon_h_margin">0dp</dimen>
     <dimen name="kbd_styles_divider_width">2dp</dimen>
+    <dimen name="kbd_bg_gap">2dp</dimen>
 
     <!-- main activity dimens -->
     <dimen name="main_card_width">350dp</dimen>
