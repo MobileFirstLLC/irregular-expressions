@@ -60,7 +60,6 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
     private var stylePicker: RecyclerView? = null
     private var adapter: StylePickerAdapter? = null
     private var keyboardExtras: View? = null
-    private val mRepeatableKeys: MutableList<Int> = arrayListOf()
 
     // keyboard default state
     private val mComposing = StringBuilder()
@@ -117,9 +116,6 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
             enableAlphaKeyboard()
         }
         for (i in 0 until (keyboard!!.keys).size) {
-            if(keyboard!!.keys[i].repeatable) {
-                mRepeatableKeys.add(keyboard!!.keys[i].codes[0])
-            };
             if (keyboard!!.keys[i].codes.contains(KEYCODE_DONE)) {
                 mEnterKeyIndex = i
             }
