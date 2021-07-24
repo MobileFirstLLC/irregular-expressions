@@ -37,6 +37,7 @@
         <item>@array/charset_script_bold</item>
         <item>@array/charset_cutout</item>
         <item>@array/charset_supertiny</item>
+        <item>@array/charset_maritime</item>
     </array>
 
 </resources>

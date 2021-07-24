@@ -128,6 +128,12 @@
         <item name="reverse">0</item>
         <item name="charset">@array/filled_circle</item>
     </array>
+    <array name="charset_maritime">
+        <item>charset_maritime</item>
+        <item name="name">@string/name_maritime</item>
+        <item name="reverse">0</item>
+        <item name="charset">@array/maritime</item>
+    </array>
     <array name="charset_underlined">
         <item>charset_underlined</item>
         <item name="name">@string/name_underlined</item>
