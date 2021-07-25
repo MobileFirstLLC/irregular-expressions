@@ -305,13 +305,15 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
      * Switch between numeric and symbolic keyboard
      */
     private fun toggleExtendedKeyboardView() {
+        val keyboardRes : Int
         if (keyboardChoice == Constants.NUMBER_KBD) {
-            keyboard = IrregularKeyboard(this, R.xml.keyboard_math, keyHeight)
+            keyboardRes = R.xml.keyboard_math
             keyboardChoice = Constants.MATH_KBD
         } else {
-            keyboard = IrregularKeyboard(this, R.xml.keyboard_extended, keyHeight)
+            keyboardRes = R.xml.keyboard_extended
             keyboardChoice = Constants.NUMBER_KBD
         }
+        keyboard = IrregularKeyboard(this, keyboardRes, keyHeight)
         keyboardView!!.keyboard = keyboard
         keyboardView!!.invalidateAllKeys()
     }
