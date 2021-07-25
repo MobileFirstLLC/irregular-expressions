@@ -5,6 +5,7 @@ package mf.irregex.keyboard
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.content.res.Configuration
 import android.inputmethodservice.InputMethodService
 import android.inputmethodservice.Keyboard
@@ -304,13 +305,15 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
      * Switch between numeric and symbolic keyboard
      */
     private fun toggleExtendedKeyboardView() {
+        val keyboardRes : Int
         if (keyboardChoice == Constants.NUMBER_KBD) {
-            keyboard = IrregularKeyboard(this, R.xml.keyboard_math, keyHeight)
+            keyboardRes = R.xml.keyboard_math
             keyboardChoice = Constants.MATH_KBD
         } else {
-            keyboard = IrregularKeyboard(this, R.xml.keyboard_extended, keyHeight)
+            keyboardRes = R.xml.keyboard_extended
             keyboardChoice = Constants.NUMBER_KBD
         }
+        keyboard = IrregularKeyboard(this, keyboardRes, keyHeight)
         keyboardView!!.keyboard = keyboard
         keyboardView!!.invalidateAllKeys()
     }
@@ -566,6 +569,13 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
     }
 
     /**
+     * Read and convert a string preference to an integer
+     */
+    private fun prefStringToInt(prefs: SharedPreferences, key: String, defaultValue: Int): Int {
+        return prefs.getString(key, defaultValue.toString())?.toInt() ?: defaultValue
+    }
+
+    /**
      * Initialize user preference variables
      *
      * Return boolean to indicate if preference changes should result in recreating the
@@ -576,21 +586,17 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
         val orientation = resources.configuration.orientation
         val heightMultiplier = if (orientation == Configuration.ORIENTATION_LANDSCAPE) 1.7f else 1f
         val prefs = PreferenceManager.getDefaultSharedPreferences(this)
+        val previousSystemMode = sysDarkMode
+        val previousAppearance = appearance
 
         keyVibrations = prefs.getBoolean("key_vibrations", DEFAULT_VIBRATIONS)
         longPressMillis = prefs.getInt("kdb_long_press_delay", LONG_PRESS.toInt()).toLong()
-        keyboardLayout = prefs.getString("kbd_layout", Constants.DEFAULT_LAYOUT.toString())?.toInt()
-            ?: Constants.DEFAULT_LAYOUT
+        keyboardLayout = prefStringToInt(prefs, "kbd_layout", Constants.DEFAULT_LAYOUT)
+        appearance = prefStringToInt(prefs, "kbd_appearance", Constants.DEFAULT_THEME)
         keyHeight = (.15f.coerceAtMost(
             heightMultiplier * (prefs.getInt("kdb_key_height", DEFAULT_HEIGHT) / 100f)
         ) * window.defaultDisplay.height).roundToInt()
 
-
-        val previousSystemMode = sysDarkMode
-        val previousAppearance = appearance
-
-        appearance = prefs.getString("kbd_appearance", Constants.DEFAULT_THEME.toString())?.toInt()
-            ?: Constants.DEFAULT_THEME
         if (appearance == Constants.DEFAULT_THEME) {
             sysDarkMode = when (resources.configuration.uiMode and
                     Configuration.UI_MODE_NIGHT_MASK) {
@@ -641,7 +647,8 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
 
         mEnterKey.iconPreview = null
         mEnterKey.label = if (labelRes != null) resources.getText(labelRes) else null
-        mEnterKey.icon = if (labelRes == null || iconRes == null) null else resources.getDrawable(iconRes)
+        mEnterKey.icon =
+            if (labelRes == null || iconRes == null) null else resources.getDrawable(iconRes)
         if (keyboardView != null) keyboardView!!.invalidateKey(mEnterKeyIndex)
     }
 

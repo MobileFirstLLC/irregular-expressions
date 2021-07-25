@@ -8,11 +8,14 @@ import kotlin.random.Random
  * see: https://lingojam.com/ZalgoText
  */
 class Zalgo internal constructor(
-    id: String,
     name: String,
     priority: Int,
     enabled: Boolean
 ) : AppTextStyle(id, name, enabled, priority, false, true) {
+
+    companion object {
+        const val id = "zalgo"
+    }
 
     private val maxHeight = 15   // How many diacritic marks to put on top/bottom
 
