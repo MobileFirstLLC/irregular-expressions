@@ -619,36 +619,29 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
         // skip this for now until it works with theming
         return
 
-        val mEnterKey =
-            (if (keyboard != null && mEnterKeyIndex >= 0 && mEnterKeyIndex < keyboard!!.keys.size)
-                keyboard!!.keys[mEnterKeyIndex] else null)
-                ?: return
+        val mEnterKey = (if (keyboard != null && mEnterKeyIndex in 0 until keyboard!!.keys.size)
+            keyboard!!.keys[mEnterKeyIndex] else null) ?: return
+        var labelRes: Int? = null
+        var iconRes: Int? = R.drawable.kbd_ic_keyboard_return
 
         when (options and (EditorInfo.IME_MASK_ACTION or EditorInfo.IME_FLAG_NO_ENTER_ACTION)) {
             EditorInfo.IME_ACTION_GO -> {
-                mEnterKey.iconPreview = null
-                mEnterKey.icon = null
-                mEnterKey.label = resources.getText(R.string.label_go_key)
+                labelRes = R.string.label_go_key
             }
             EditorInfo.IME_ACTION_NEXT -> {
-                mEnterKey.iconPreview = null
-                mEnterKey.icon = null
-                mEnterKey.label = resources.getText(R.string.label_next_key)
-            }
-            EditorInfo.IME_ACTION_SEARCH -> {
-                mEnterKey.icon = resources.getDrawable(R.drawable.kbd_ic_keyboard_search)
-                mEnterKey.label = null
+                labelRes = R.string.label_next_key
             }
             EditorInfo.IME_ACTION_SEND -> {
-                mEnterKey.iconPreview = null
-                mEnterKey.icon = null
-                mEnterKey.label = resources.getText(R.string.label_send_key)
+                labelRes = R.string.label_send_key
             }
-            else -> {
-                mEnterKey.icon = resources.getDrawable(R.drawable.kbd_ic_keyboard_return)
-                mEnterKey.label = null
+            EditorInfo.IME_ACTION_SEARCH -> {
+                iconRes = R.drawable.kbd_ic_keyboard_search
             }
         }
+
+        mEnterKey.iconPreview = null
+        mEnterKey.label = if (labelRes != null) resources.getText(labelRes) else null
+        mEnterKey.icon = if (labelRes == null || iconRes == null) null else resources.getDrawable(iconRes)
         if (keyboardView != null) keyboardView!!.invalidateKey(mEnterKeyIndex)
     }
 
