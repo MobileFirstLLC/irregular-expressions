@@ -1,25 +1,25 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:ignore="MissingConstraints"
-    style="@style/main_scroll_view">
+    style="@style/main_scroll_view"
+    tools:ignore="MissingConstraints">
 
     <LinearLayout style="@style/main_linear">
+
         <TextView style="@style/main_header" />
 
         <LinearLayout style="@style/main_card_container">
+
             <View style="@style/main_intro_card_gutter" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                style="@style/main_intro_card">
+            <androidx.constraintlayout.widget.ConstraintLayout style="@style/main_intro_card">
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/icon"
-                    style="@style/main_icon"/>
+                    style="@style/main_icon" />
 
                 <TextView
                     android:id="@+id/header"
-                    style="@style/main_card_text_view_1"
-                    tools:ignore="MissingConstraints" />
+                    style="@style/main_card_text_view_1" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/step_1"
@@ -37,14 +37,12 @@
                     android:id="@+id/test_input"
                     style="@style/main_input_text_input_layout">
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        style="@style/main_input_text_input_edit_text" />
-
+                    <com.google.android.material.textfield.TextInputEditText style="@style/main_input_text_input_edit_text" />
                 </com.google.android.material.textfield.TextInputLayout>
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <View style="@style/main_intro_card_gutter" />
         </LinearLayout>
-
     </LinearLayout>
 </ScrollView>

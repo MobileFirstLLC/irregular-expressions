@@ -99,16 +99,20 @@
         <item name="android:layout_marginTop">@dimen/main_element_spacing_2x</item>
         <item name="layout_constraintLeft_toLeftOf">parent</item>
         <item name="layout_constraintRight_toRightOf">parent</item>
+        <item name="layout_constraintStart_toStartOf">parent</item>
+        <item name="layout_constraintEnd_toEndOf">parent</item>
         <item name="layout_constraintTop_toTopOf">parent</item>
         <item name="srcCompat">@drawable/ic_icon_round</item>
     </style>
 
     <style name="main_card_text_view">
-        <item name="android:layout_width">@dimen/main_card_content_width</item>
+        <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:padding">@dimen/main_element_spacing</item>
         <item name="layout_constraintLeft_toLeftOf">parent</item>
         <item name="layout_constraintRight_toRightOf">parent</item>
+        <item name="layout_constraintStart_toStartOf">parent</item>
+        <item name="layout_constraintEnd_toEndOf">parent</item>
+        <item name="android:padding">@dimen/main_element_spacing</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/text_color</item>
         <item name="android:gravity">center</item>
@@ -127,15 +131,17 @@
 
     <style name="main_card_button">
         <item name="android:enabled">false</item>
+        <item name="android:maxWidth">@dimen/main_card_width</item>
+        <item name="android:layout_width">0dp</item>
         <item name="android:layout_marginStart">@dimen/main_element_spacing</item>
         <item name="android:layout_marginLeft">@dimen/main_element_spacing</item>
         <item name="android:layout_marginEnd">@dimen/main_element_spacing</item>
         <item name="android:layout_marginRight">@dimen/main_element_spacing</item>
-        <item name="android:layout_width">@dimen/main_card_content_width</item>
         <item name="android:layout_height">wrap_content</item>
-        <!--        <item name="android:textColor">@color/text_color_buttons</item>-->
         <item name="layout_constraintLeft_toLeftOf">parent</item>
         <item name="layout_constraintRight_toRightOf">parent</item>
+        <item name="layout_constraintStart_toStartOf">parent</item>
+        <item name="layout_constraintEnd_toEndOf">parent</item>
     </style>
 
     <style name="main_card_button_1" parent="@style/main_card_button">
@@ -149,7 +155,8 @@
     </style>
 
     <style name="main_input_text_input_layout" parent="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-        <item name="android:layout_width">@dimen/main_card_content_width</item>
+        <item name="android:maxWidth">@dimen/main_card_width</item>
+        <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginStart">@dimen/main_element_spacing</item>
         <item name="android:layout_marginLeft">@dimen/main_element_spacing</item>
@@ -162,6 +169,7 @@
     </style>
 
     <style name="main_input_text_input_edit_text">
+        <item name="android:contentDescription">@string/now_try_it</item>
         <item name="android:layout_width">@dimen/match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:lines">@integer/main_input_lines</item>
