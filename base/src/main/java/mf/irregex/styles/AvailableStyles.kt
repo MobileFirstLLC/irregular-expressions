@@ -184,16 +184,10 @@ object AvailableStyles {
                 val name = styleDef.getString(accentNameIndex)
                 val accentChar = styleDef.getString(accentCharIndex)
                 val enabled = !disabledList.contains(styleId)
-                if (styleId != null && name != null && accentChar != null)
-                    styles.add(
-                        AccentStyle(
-                            styleId,
-                            name,
-                            getOrder(styleId),
-                            enabled,
-                            accentChar
-                        )
-                    )
+                if (styleId != null && name != null && accentChar != null) {
+                    val order = getOrder(styleId)
+                    styles.add(AccentStyle(styleId, name, order, enabled, accentChar))
+                }
                 styleDef.recycle()
             }
         }
