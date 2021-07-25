@@ -57,7 +57,6 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
     private var keyboardView: IrregularKeyboardView? = null
     private var keyboard: IrregularKeyboard? = null
     private var styleToggle: AppCompatImageView? = null
-    private var settingsButton: AppCompatImageView? = null
     private var stylePicker: RecyclerView? = null
     private var adapter: StylePickerAdapter? = null
     private var keyboardExtras: View? = null
@@ -78,9 +77,6 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
     private var spaceDown: Long = 0
     private var spaceIsPressed = false
     private var pickerInflated: Boolean = false
-
-    // ENTER key variables
-    private var mEnterKeyIndex: Int = -1
 
     // user preferences
     private var keyVibrations = DEFAULT_VIBRATIONS
@@ -110,47 +106,28 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
 
         /* initialize keyboard */
         keyboardView = layout.findViewById(R.id.keyboard_view)
-
         keyboardView?.setOnKeyboardActionListener(this)
-        if (keyboardChoice == Constants.NUMBER_KBD) {
-            enableSymbolicKeyboard()
-        } else {
-            enableAlphaKeyboard()
-        }
-        for (i in 0 until (keyboard!!.keys).size) {
-            if (keyboard!!.keys[i].codes.contains(KEYCODE_DONE)) {
-                mEnterKeyIndex = i
-                break
-            }
-        }
-        keyboardView?.setOnTouchListener { _, event ->
-            if (event.action == MotionEvent.ACTION_UP)
-                if (spaceIsPressed) {
-                    spaceIsPressed = false
-                    onSpaceKeyRelease()
-                }
-            false
-        }
+        if (keyboardChoice == Constants.NUMBER_KBD) enableSymbolicKeyboard()
+        else enableAlphaKeyboard()
+        keyboardView?.setOnTouchListener(onTouch())
 
         /* setup style picker recyclerView */
-
         stylePicker = layout.findViewById(R.id.stylePicker)
         keyboardExtras = layout.findViewById(R.id.keyboard_extras)
         adapter = StylePickerAdapter(styles, onFontSelection())
         val layoutManager = GridLayoutManager(
-            applicationContext, 1, LinearLayoutManager.HORIZONTAL, false
+            applicationContext, 1,
+            LinearLayoutManager.HORIZONTAL, false
         )
         stylePicker?.layoutManager = layoutManager
         stylePicker?.adapter = adapter
         adapter!!.setSelectedFont(styleIndex)
 
         /* setup UI icon buttons */
-
         styleToggle = layout.findViewById(R.id.style_button)
         styleToggle?.setOnClickListener(onFontButtonClick())
         setFontStyleIcon(styleIndex == REGULAR_STYLE_INDEX)
-        settingsButton = layout.findViewById(R.id.settings_button)
-        settingsButton?.setOnClickListener(onSettingsClick())
+        layout.findViewById<View>(R.id.settings_button).setOnClickListener(onSettingsClick())
         return layout
     }
 
@@ -282,6 +259,20 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
     }
 
     /**
+     * Handle physical touch event
+     */
+    private fun onTouch(): View.OnTouchListener {
+        return View.OnTouchListener { _, event ->
+            if (event.action == MotionEvent.ACTION_UP)
+                if (spaceIsPressed) {
+                    spaceIsPressed = false
+                    onSpaceKeyRelease()
+                }
+            false
+        }
+    }
+
+    /**
      * This translates incoming hard key events in to edit operations on an
      * InputConnection.  It is only needed when using the
      * PROCESS_HARD_KEYS option.
@@ -305,7 +296,7 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
      * Switch between numeric and symbolic keyboard
      */
     private fun toggleExtendedKeyboardView() {
-        val keyboardRes : Int
+        val keyboardRes: Int
         if (keyboardChoice == Constants.NUMBER_KBD) {
             keyboardRes = R.xml.keyboard_math
             keyboardChoice = Constants.MATH_KBD
@@ -625,8 +616,14 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
         // skip this for now until it works with theming
         return
 
-        val mEnterKey = (if (keyboard != null && mEnterKeyIndex in 0 until keyboard!!.keys.size)
-            keyboard!!.keys[mEnterKeyIndex] else null) ?: return
+        val mEnterKeyIndex: Int = -1
+        for (i in 0 until (keyboard?.keys)?.size!!) {
+            if (keyboard!!.keys[i].codes.contains(KEYCODE_DONE)) {
+                mEnterKeyIndex = i
+                break
+            }
+        }
+        val mEnterKey = if (mEnterKeyIndex >= 0) keyboard!!.keys[mEnterKeyIndex] else return
         var labelRes: Int? = null
         var iconRes: Int? = R.drawable.kbd_ic_keyboard_return
 
