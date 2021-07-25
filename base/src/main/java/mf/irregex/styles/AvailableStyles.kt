@@ -56,8 +56,20 @@ object AvailableStyles {
         restoreDisabledList()
         restoreOrder()
         initCharsetFonts(res, res.obtainTypedArray(R.array.charset_styles))
-        styles.add(RandomCaps(res.getString(R.string.name_spongemock), getOrder(RandomCaps.id), !disabledList.contains(RandomCaps.id)))
-        styles.add(Zalgo(res.getString(R.string.name_zalgo), getOrder(Zalgo.id), !disabledList.contains(Zalgo.id)))
+        styles.add(
+            RandomCaps(
+                res.getString(R.string.name_spongemock),
+                getOrder(RandomCaps.id),
+                !disabledList.contains(RandomCaps.id)
+            )
+        )
+        styles.add(
+            Zalgo(
+                res.getString(R.string.name_zalgo),
+                getOrder(Zalgo.id),
+                !disabledList.contains(Zalgo.id)
+            )
+        )
         initAccentStyles(res, res.obtainTypedArray(R.array.accent_styles))
     }
 
@@ -142,18 +154,9 @@ object AvailableStyles {
                 val charset = res.getStringArray(styleDef.getResourceId(charsetIndex, 0))
                 val reversed = styleDef.getBoolean(reverseIndex, false)
                 val enabled = !disabledList.contains(styleId)
+                val order = getOrder(styleId)
                 if (name != null)
-                    styles.add(
-                        CharsetStyle(
-                            styleId,
-                            name,
-                            getOrder(styleId),
-                            enabled,
-                            charset,
-                            reversed
-                        )
-                    )
-
+                    styles.add(CharsetStyle(styleId, name, order, enabled, charset, reversed))
                 styleDef.recycle()
             }
         }
@@ -181,16 +184,10 @@ object AvailableStyles {
                 val name = styleDef.getString(accentNameIndex)
                 val accentChar = styleDef.getString(accentCharIndex)
                 val enabled = !disabledList.contains(styleId)
-                if (styleId != null && name != null && accentChar != null)
-                    styles.add(
-                        AccentStyle(
-                            styleId,
-                            name,
-                            getOrder(styleId),
-                            enabled,
-                            accentChar
-                        )
-                    )
+                if (styleId != null && name != null && accentChar != null) {
+                    val order = getOrder(styleId)
+                    styles.add(AccentStyle(styleId, name, order, enabled, accentChar))
+                }
                 styleDef.recycle()
             }
         }
