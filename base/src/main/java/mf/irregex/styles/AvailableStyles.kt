@@ -56,8 +56,21 @@ object AvailableStyles {
         restoreDisabledList()
         restoreOrder()
         initCharsetFonts(res, res.obtainTypedArray(R.array.charset_styles))
-        initRandomCaps(res.getString(R.string.name_spongemock))
-        initZalgoText(res.getString(R.string.name_zalgo))
+        styles.add(
+            RandomCaps(
+                "spongemock", res.getString(R.string.name_spongemock),
+                getOrder("spongemock"), !disabledList.contains("spongemock")
+            )
+        )
+        styles.add(
+            Zalgo(
+                "zalgo",
+                res.getString(R.string.name_zalgo),
+                getOrder("zalgo"),
+                !disabledList.contains("zalgo")
+            )
+        )
+
         initAccentStyles(res, res.obtainTypedArray(R.array.accent_styles))
     }
 
@@ -195,17 +208,5 @@ object AvailableStyles {
             }
         }
         ta.recycle()
-    }
-
-    private fun initRandomCaps(name: String) {
-        val id = "spongemock"
-        val enabled = !disabledList.contains(id)
-        styles.add(RandomCaps(id, name, getOrder(id), enabled))
-    }
-
-    private fun initZalgoText(name: String) {
-        val id = "zalgo"
-        val enabled = !disabledList.contains(id)
-        styles.add(Zalgo(id, name, getOrder(id), enabled))
     }
 }
