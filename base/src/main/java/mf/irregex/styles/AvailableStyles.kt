@@ -56,21 +56,8 @@ object AvailableStyles {
         restoreDisabledList()
         restoreOrder()
         initCharsetFonts(res, res.obtainTypedArray(R.array.charset_styles))
-        styles.add(
-            RandomCaps(
-                "spongemock", res.getString(R.string.name_spongemock),
-                getOrder("spongemock"), !disabledList.contains("spongemock")
-            )
-        )
-        styles.add(
-            Zalgo(
-                "zalgo",
-                res.getString(R.string.name_zalgo),
-                getOrder("zalgo"),
-                !disabledList.contains("zalgo")
-            )
-        )
-
+        styles.add(RandomCaps(res.getString(R.string.name_spongemock), getOrder(RandomCaps.id), !disabledList.contains(RandomCaps.id)))
+        styles.add(Zalgo(res.getString(R.string.name_zalgo), getOrder(Zalgo.id), !disabledList.contains(Zalgo.id)))
         initAccentStyles(res, res.obtainTypedArray(R.array.accent_styles))
     }
 

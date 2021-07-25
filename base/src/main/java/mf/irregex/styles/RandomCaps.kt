@@ -1,7 +1,6 @@
 package mf.irregex.styles
 
 class RandomCaps internal constructor(
-    id: String,
     name: String,
     priority: Int,
     enabled: Boolean
@@ -10,6 +9,12 @@ class RandomCaps internal constructor(
     init {
         encodedName = encode(name)!!
     }
+
+    companion object {
+        const val id = "spongemock"
+    }
+
+
     override fun encode(text: String?, sequence: CharSequence?): String? {
         if (!isEmpty(text)) {
             var lowercase = false
