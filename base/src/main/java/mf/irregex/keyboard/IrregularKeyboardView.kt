@@ -79,35 +79,17 @@ class IrregularKeyboardView : KeyboardView {
         val keys = keyboard.keys
         for (key in keys) {
             if (key.codes.isNotEmpty() && key.label == null) {
-                when (key.codes[0]) {
-                    Keyboard.KEYCODE_DONE -> drawIt(canvas, key, actionIcon, theme)
-                    Keyboard.KEYCODE_DELETE -> drawIt(
-                        canvas,
-                        key,
-                        R.drawable.kbd_ic_backspace_outline,
-                        theme
-                    )
-                    Keyboard.KEYCODE_SHIFT -> drawIt(canvas, key, shiftIcon, theme)
-                    Constants.SECONDARY_KBD_KEYCODE -> drawIt(
-                        canvas,
-                        key,
-                        R.drawable.kbd_ic_numeric,
-                        theme
-                    )
-                    Constants.KEYCODE_SPACE -> drawIt(
-                        canvas,
-                        key,
-                        R.drawable.kbd_ic_keyboard_space,
-                        theme
-                    )
-                    Constants.ALPHA_KEYBOARD_KEYCODE -> drawIt(
-                        canvas,
-                        key,
-                        R.drawable.kbd_ic_alphabetical_variant,
-                        theme
-                    )
-                    Constants.KEYCODE_MINUS -> drawIt(canvas, key, R.drawable.kbd_ic_minus, theme)
+                val iconRes: Int? = when (key.codes[0]) {
+                    Keyboard.KEYCODE_DONE -> actionIcon
+                    Keyboard.KEYCODE_DELETE -> R.drawable.kbd_ic_backspace_outline
+                    Keyboard.KEYCODE_SHIFT -> shiftIcon
+                    Constants.SECONDARY_KBD_KEYCODE -> R.drawable.kbd_ic_numeric
+                    Constants.KEYCODE_SPACE -> R.drawable.kbd_ic_keyboard_space
+                    Constants.ALPHA_KEYBOARD_KEYCODE -> R.drawable.kbd_ic_alphabetical_variant
+                    Constants.KEYCODE_MINUS -> R.drawable.kbd_ic_minus
+                    else -> null
                 }
+                if (iconRes != null) drawIt(canvas, key, iconRes, theme)
             }
         }
     }
