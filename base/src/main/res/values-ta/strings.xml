@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="name_happy_faces">சந்தோஷமாக</string>
-    <string name="name_frowny_faces">முகம் சுளித்தல்</string>
+    <string name="name_frowny_faces">முகம் சுளிக்கும்</string>
     <string name="label_go_key">போ</string>
-    <string name="label_developer">டெவலப்பர்</string>
-    <string name="name_supertiny">சூப்பர்டைனி</string>
+    <string name="label_developer">உருவாக்குநர்</string>
+    <string name="name_supertiny">சூப்பர்டினி</string>
     <string name="name_spongemock">கடற்பாசி</string>
     <string name="name_regular">வழக்கமான</string>
     <string name="name_cutout">வெட்டி எடு</string>
@@ -13,9 +13,9 @@
     <string name="name_script_bold">தடித்த ஸ்கிரிப்ட்</string>
     <string name="name_script">கையால் எழுதப்பட்ட தாள்</string>
     <string name="name_serif_bold_italic">தடித்த சாய்வான செரிஃப்</string>
-    <string name="name_serif_italic">சாய்வெழுத்து செரிஃப்</string>
+    <string name="name_serif_italic">சாய்வு செரிஃப்</string>
     <string name="name_serif_bold">தடித்த செரிஃப்</string>
-    <string name="name_ss_bold">தைரியமான</string>
+    <string name="name_ss_bold">தடித்த</string>
     <string name="name_ss_italic">சாய்வெழுத்து</string>
     <string name="name_ss_bold_italic">தடித்த சாய்வான</string>
     <string name="name_clear_boxes">பெட்டிகள்</string>
@@ -71,4 +71,6 @@
     <string name="label_about">விவரங்கள்</string>
     <string name="label_settings">பயனர் விருப்பத்தேர்வுகள்</string>
     <string name="title_activity_settings">அமைப்புகள்</string>
+    <string name="source_summary">PR கள் வரவேற்கப்படுகின்றன</string>
+    <string name="name_small_caps">சிறிய தொப்பிகள்</string>
 </resources>
