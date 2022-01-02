@@ -1,2 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="ok">U redu</string>
+    <string name="name_organic">Organsko</string>
+    <string name="name_strikethrough">Precrtano</string>
+    <string name="name_underlined">Podcrtano</string>
+    <string name="name_filled_circles">Ispunjeni krugovi</string>
+    <string name="title_activity_settings">Postavke</string>
+    <string name="enabled">Aktivirano</string>
+    <string name="disabled">Deaktivirano</string>
+    <string name="label_settings">Korisničke postavke</string>
+    <string name="label_developer">Programer</string>
+    <string name="label_about">O programu</string>
+    <string name="label_version">Verzija</string>
+    <string name="label_rate_app">Ocijeni program</string>
+    <string name="intro_header">Dobro došao, dobro došla u
+\nIrregular Expressions
+\ntipkovnicu!</string>
+    <string name="intro_subtitle">Kako koristiti</string>
+    <string name="enable_keyboard">1. Aktiviraj tipkovnicu</string>
+    <string name="select_keyboard">2. Odaberi tipkovnicu</string>
+    <string name="label_feedback">Pošalji povratne informacije</string>
+    <string name="key_vibrations">Vibriranje tipki</string>
+    <string name="feedback_summary">Prijavi problem ili zatraži funkciju</string>
+    <string name="source_code">Izvorni kod</string>
+    <string name="source_summary">Zahtjevi za preuzimanje su dobrodošli</string>
+    <string name="now_try_it">3. Sada je isprobaj – tipkaj ovdje:</string>
+    <string name="setting_keyboard_layout">Raspored tipkovnice</string>
+    <string name="kbd_layout_qwerty">QWERTY</string>
+    <string name="kbd_layout_azerty">AZERTY</string>
+    <string name="kbd_layout_qwertz">QWERTZ</string>
+    <string name="configure_styles">Konfiguriraj stil teksta</string>
+    <string name="configure_styles_help">Kako konfigurirati stil teksta</string>
+    <string name="config_styles_summary">Prikaži, sakrij i promijeni redoslijed stilova teksta</string>
+    <string name="name_mustache">Brk</string>
+    <string name="config_instructions">"
+\nPritisni dugo i povuci za promjenu redoslijeda
+\n
+\nKoristi strelice za premještanje na početak/kraj
+\n
+\nIsključi za skrivanje stila s tipkovnice"</string>
+    <string name="label_send_key">Pošalji</string>
+    <string name="label_next_key">Dalje</string>
+    <string name="label_go_key">IDI</string>
+    <string name="help">Pomoć</string>
+    <string name="key_height">Visina tipke (%)</string>
+    <string name="name_frowny_faces">Namrgođeno</string>
+    <string name="name_happy_faces">Sretno</string>
+    <string name="name_thunder">Grom</string>
+    <string name="name_slashed">Precrtano</string>
+    <string name="name_starry_night">Zvjezdana noć</string>
+    <string name="name_lite_strikes">Tanko precrtano</string>
+    <string name="name_small_caps">Kapitalke</string>
+    <string name="name_mono">Fiksne širine</string>
+    <string name="name_olde_bold">Stari engleski podebljani</string>
+    <string name="name_olde">Stari engleski</string>
+    <string name="name_upsidedown">Naglavačke</string>
+    <string name="name_clapclap">Pljesak</string>
+    <string name="name_filled_boxes">Ispunjeni okviri</string>
+    <string name="name_clear_circles">Krugovi</string>
+    <string name="name_clear_boxes">Okviri</string>
+    <string name="name_ss_bold_italic">Podebljani kurziv</string>
+    <string name="name_ss_italic">Kurziv</string>
+    <string name="name_ss_bold">Podebljano</string>
+    <string name="name_serif_bold">Serifni podebljani</string>
+    <string name="name_serif_italic">Serifni kurziv</string>
+    <string name="name_serif_bold_italic">Serifni podebljani kurziv</string>
+    <string name="name_script">Krasopis</string>
+    <string name="name_script_bold">Debeli krasopis</string>
+    <string name="name_full_width">Široko</string>
+    <string name="name_mirror">Zrcaljeno</string>
+    <string name="name_cutout">Izrezano</string>
+    <string name="name_regular">Normalno</string>
+    <string name="name_spongemock">Spongemock</string>
+    <string name="name_supertiny">Smanjeno</string>
+</resources>
