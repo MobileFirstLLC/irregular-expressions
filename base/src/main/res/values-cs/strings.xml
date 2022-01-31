@@ -1,2 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="source_summary">PR vítány</string>
+    <string name="title_activity_settings">Nastavení</string>
+    <string name="label_developer">Vývojář</string>
+    <string name="label_about">O aplikaci</string>
+    <string name="label_version">Verze</string>
+    <string name="label_rate_app">Ohodnotit aplikaci</string>
+    <string name="label_feedback">Zpětná vazba</string>
+    <string name="key_vibrations">Vibrace kláves</string>
+    <string name="feedback_summary">Nahlaste chybu nebo navrhněte funkci</string>
+    <string name="source_code">Zdrojový kód</string>
+    <string name="label_settings">Uživatelské možnosti</string>
+    <string name="disabled">Vypnuto</string>
+    <string name="enabled">Zapnuto</string>
+    <string name="intro_subtitle">Jak na to</string>
+    <string name="enable_keyboard">1. Povolte klávesnici</string>
+    <string name="select_keyboard">2. Zvolte klávesnici</string>
+    <string name="now_try_it">3. Zkuste si - piště zde:</string>
+    <string name="setting_keyboard_layout">Rozložení klávesnice</string>
+    <string name="kbd_layout_azerty">AZERTY</string>
+    <string name="configure_styles">Možnosti textových stylů</string>
+    <string name="configure_styles_help">Jak nastavit textové styly</string>
+    <string name="config_styles_summary">Zobrazte, skryjte nebo změňte pořadí stylů</string>
+    <string name="config_instructions">"
+\nPodržením a přetažením měňte pořadí
+\n
+\nŠipkami přemístě styl navrch/dospod
+\n
+\nVypnutím styl skryjete z klávesnice"</string>
+    <string name="label_send_key">Odeslat</string>
+    <string name="label_next_key">Další</string>
+    <string name="ok">OK</string>
+    <string name="name_frowny_faces">Zamračený</string>
+    <string name="label_go_key">Jít</string>
+    <string name="name_happy_faces">Veselý</string>
+    <string name="name_thunder">Bouřka</string>
+    <string name="name_slashed">Rozřezaný</string>
+    <string name="name_mustache">Knírek</string>
+    <string name="name_starry_night">Hvězdná noc</string>
+    <string name="name_small_caps">Malá Velká</string>
+    <string name="name_olde_bold">Stará Angličtina Tučná</string>
+    <string name="name_olde">Stará Angličtina</string>
+    <string name="name_upsidedown">Vzhůru nohama</string>
+    <string name="name_clapclap">Tlesk Tlesk</string>
+    <string name="name_organic">Přírodní</string>
+    <string name="name_strikethrough">Přeškrtlý</string>
+    <string name="name_filled_circles">Kruhy</string>
+    <string name="name_clear_boxes">Čtverce</string>
+    <string name="name_ss_bold_italic">Tučná kurzíva</string>
+    <string name="name_ss_italic">Kurzíva</string>
+    <string name="name_ss_bold">Tučný</string>
+    <string name="name_serif_italic">Kurzíva Patková</string>
+    <string name="name_serif_bold">Tučné Patkové</string>
+    <string name="name_serif_bold_italic">Tučná Kurzíva Patková</string>
+    <string name="name_script">Script</string>
+    <string name="name_script_bold">Tučný Script</string>
+    <string name="name_full_width">Široký</string>
+    <string name="name_mirror">Zrcadlený</string>
+    <string name="name_cutout">Vyříznuté</string>
+    <string name="name_regular">Běžný</string>
+    <string name="name_spongemock">Střídačka</string>
+    <string name="name_supertiny">Prťavý</string>
+    <string name="kbd_layout_qwertz">QWERTZ</string>
+    <string name="help">Nápověda</string>
+    <string name="intro_header">Vítejte v
+\nIrregular Expressions
+\nklávesnici!</string>
+    <string name="kbd_layout_qwerty">QWERTY</string>
+    <string name="name_underlined">Podtržený</string>
+    <string name="key_height">Výška kláves (%)</string>
+    <string name="name_mono">Monospace</string>
+    <string name="name_lite_strikes">Malé škrtance</string>
+    <string name="name_filled_boxes">Čtverce</string>
+    <string name="name_clear_circles">Kruhy</string>
+</resources>
