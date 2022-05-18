@@ -2,7 +2,7 @@
 <resources>
     <string name="name_underlined">Подчеркнутый</string>
     <string name="name_strikethrough">Зачёркнутый</string>
-    <string name="name_small_caps">Маленькие заглавные буквы</string>
+    <string name="name_small_caps">Капитель</string>
     <string name="name_slashed">Порезанный</string>
     <string name="name_thunder">Гром</string>
     <string name="key_height">Высота клавиш (%)</string>
@@ -38,8 +38,8 @@
     <string name="select_keyboard">2. Выберите клавиатуру</string>
     <string name="enable_keyboard">1. Включите клавиатуру</string>
     <string name="intro_subtitle">Как использовать</string>
-    <string name="intro_header">Добро пожаловать в
-\nклавиатуру
+    <string name="intro_header">Добро пожаловать
+\nв клавиатуру
 \nIrregular Expressions!</string>
     <string name="disabled">Отключено</string>
     <string name="enabled">Включено</string>
@@ -52,4 +52,20 @@
     <string name="label_developer">Разработчик</string>
     <string name="label_settings">Пользовательские настройки</string>
     <string name="title_activity_settings">Настройки</string>
+    <string name="name_mirror">Отзеркаленный</string>
+    <string name="config_instructions">"
+\nДолгое нажатие для переупорядочивания
+\n
+\nСтрелочки для перемещения вверх/вниз
+\n
+\nВыключение скроет стиль из клавиатуры"</string>
+    <string name="config_styles_summary">Показать, скрыть, или переупорядочить стили текста</string>
+    <string name="name_mono">Моноширинный</string>
+    <string name="name_lite_strikes">Чуть зачеркнутый</string>
+    <string name="name_olde_bold">Старый жирный английский</string>
+    <string name="name_clapclap">Хлоп хлоп</string>
+    <string name="name_script">Рукописный</string>
+    <string name="name_script_bold">Жирный рукописный</string>
+    <string name="name_cutout">Очерченный</string>
+    <string name="name_supertiny">Сверхмелкий</string>
 </resources>
