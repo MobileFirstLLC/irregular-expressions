@@ -1,2 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="title_activity_settings">Impostazioni</string>
+    <string name="label_developer">Sviluppatore</string>
+    <string name="label_about">Informazioni</string>
+    <string name="label_version">Versione</string>
+    <string name="label_feedback">Invia feedback</string>
+    <string name="key_vibrations">Vibratione tasti</string>
+    <string name="feedback_summary">Segnala problemi o richiedi funzionalità</string>
+    <string name="source_code">Codice sorgente</string>
+    <string name="source_summary">PRs benvenute</string>
+    <string name="disabled">Disabilitato</string>
+    <string name="intro_header">Benevenuto alla
+\ntastiera
+\nIrregular Expressions!</string>
+    <string name="intro_subtitle">Come usarla</string>
+    <string name="enable_keyboard">1. Abilita tastiera</string>
+    <string name="now_try_it">3. Ora provala — scrivi qui:</string>
+    <string name="setting_keyboard_layout">Layout tastiera</string>
+    <string name="kbd_layout_qwerty">QWERTY</string>
+    <string name="configure_styles_help">Come configurare gli stili di testo</string>
+    <string name="config_styles_summary">Mostra, nascondi e riordina gli stili di testo</string>
+    <string name="config_instructions">"
+\nPremi a lungo e trascina per riordinare
+\n
+\nUse le frecce per spostare su e giù
+\n
+\nDisabilita per nascondere lo stile dalla tastiera"</string>
+    <string name="configure_styles">Configura gli stili di testo</string>
+    <string name="label_next_key">Prossimo</string>
+    <string name="label_go_key">VAI</string>
+    <string name="ok">OK</string>
+    <string name="help">Aiuto</string>
+    <string name="key_height">Altezza tasti (%)</string>
+    <string name="name_frowny_faces">Imbronciato</string>
+    <string name="name_happy_faces">Felice</string>
+    <string name="name_thunder">Fulmine</string>
+    <string name="name_mustache">Baffo</string>
+    <string name="name_small_caps">Maiuscolo Piccolo</string>
+    <string name="name_mono">Monospazio</string>
+    <string name="name_lite_strikes">BarratoLeggero</string>
+    <string name="name_starry_night">NotteStellata</string>
+    <string name="name_olde_bold">Inglese Vecchio Grassetto</string>
+    <string name="name_olde">Inglese Vecchio</string>
+    <string name="name_upsidedown">Sottosopra</string>
+    <string name="name_clapclap">Applausi</string>
+    <string name="name_filled_boxes">Quadrati</string>
+    <string name="name_clear_circles">Cerchi</string>
+    <string name="name_clear_boxes">Quadrati</string>
+    <string name="name_ss_bold_italic">Grassetto Corsivo</string>
+    <string name="name_ss_italic">Corsivo</string>
+    <string name="name_ss_bold">Grassetto</string>
+    <string name="name_serif_bold">Grassetto Serif</string>
+    <string name="name_serif_italic">Corsivo Serif</string>
+    <string name="name_script">Script</string>
+    <string name="name_script_bold">Grassetto Script</string>
+    <string name="name_full_width">Largo</string>
+    <string name="name_mirror">Specchiato</string>
+    <string name="name_cutout">Ritagliato</string>
+    <string name="name_spongemock">Spongebob Beffardo</string>
+    <string name="name_supertiny">Superpiccolo</string>
+    <string name="label_settings">Preferenze Utente</string>
+    <string name="label_rate_app">Valuta l\'app</string>
+    <string name="kbd_layout_qwertz">QWERTZ</string>
+    <string name="enabled">Abilitato</string>
+    <string name="select_keyboard">2. Seleziona Tastiera</string>
+    <string name="kbd_layout_azerty">AZERTY</string>
+    <string name="label_send_key">Invio</string>
+    <string name="name_slashed">Barrato</string>
+    <string name="name_organic">Organico</string>
+    <string name="name_filled_circles">Cerchi</string>
+    <string name="name_serif_bold_italic">Grassetto Corsivo Serif</string>
+    <string name="name_strikethrough">Barrato</string>
+    <string name="name_underlined">Sottolineato</string>
+    <string name="name_regular">Regolare</string>
+</resources>
