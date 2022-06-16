@@ -1,2 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="title_activity_settings">Pengaturan</string>
+    <string name="label_settings">Preferensi Pengguna</string>
+    <string name="label_developer">Pengembang</string>
+    <string name="label_about">Tentang</string>
+    <string name="label_version">Versi</string>
+    <string name="intro_subtitle">Cara menggunakan</string>
+    <string name="label_rate_app">Nilai aplikasi</string>
+    <string name="key_vibrations">Getaran tombol</string>
+    <string name="feedback_summary">Laporkan masalah atau minta fitur</string>
+    <string name="source_code">Kode sumber</string>
+    <string name="source_summary">PR diterima</string>
+    <string name="enabled">Aktif</string>
+    <string name="disabled">Nonaktif</string>
+    <string name="intro_header">Selamat datang di
+\npapan ketik
+\nIrregular Expressions!</string>
+    <string name="enable_keyboard">1. Aktifkan Papan Ketik</string>
+    <string name="select_keyboard">2. Pilih Papan Ketik</string>
+    <string name="now_try_it">3. Sekarang cobalah — ketik di sini:</string>
+    <string name="setting_keyboard_layout">Tata letak papan ketik</string>
+    <string name="kbd_layout_qwertz">QWERTZ</string>
+    <string name="configure_styles">Konfigurasi gaya teks</string>
+    <string name="configure_styles_help">Cara mengkonfigurasi gaya teks</string>
+    <string name="config_styles_summary">Tampilkan, sembunyikan dan susun ulang gaya teks</string>
+    <string name="label_send_key">Kirim</string>
+    <string name="label_next_key">Lanjut</string>
+    <string name="ok">OK</string>
+    <string name="help">Bantuan</string>
+    <string name="name_happy_faces">Bahagia</string>
+    <string name="name_thunder">Petir</string>
+    <string name="name_mustache">Kumis</string>
+    <string name="name_starry_night">MalamBerbintang</string>
+    <string name="name_mono">Monospace</string>
+    <string name="name_olde_bold">Inggris Kuno Tebal</string>
+    <string name="name_olde">Inggris Kuno</string>
+    <string name="name_clapclap">Tepuk Tangan</string>
+    <string name="kbd_layout_azerty">AZERTY</string>
+    <string name="name_organic">Organik</string>
+    <string name="name_underlined">Digarisbawahi</string>
+    <string name="name_filled_circles">Lingkaran</string>
+    <string name="name_filled_boxes">Kotak</string>
+    <string name="name_clear_circles">Lingkaran</string>
+    <string name="name_clear_boxes">Kotak</string>
+    <string name="name_ss_bold_italic">Miring Tebal</string>
+    <string name="name_ss_italic">Miring</string>
+    <string name="name_ss_bold">Tebal</string>
+    <string name="name_serif_bold">Serif Tebal</string>
+    <string name="name_serif_italic">Serif Miring</string>
+    <string name="name_serif_bold_italic">Serif Miring Tebal</string>
+    <string name="name_script">Naskah</string>
+    <string name="name_script_bold">Naskah Tebal</string>
+    <string name="name_full_width">Lebar</string>
+    <string name="name_regular">Reguler</string>
+    <string name="name_supertiny">Sangat kecil</string>
+    <string name="kbd_layout_qwerty">QWERTY</string>
+    <string name="key_height">Tinggi tombol (%)</string>
+    <string name="name_upsidedown">Terbalik</string>
+</resources>
