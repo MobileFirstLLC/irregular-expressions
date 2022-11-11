@@ -68,4 +68,8 @@
     <string name="name_script_bold">Жирный рукописный</string>
     <string name="name_cutout">Очерченный</string>
     <string name="name_supertiny">Сверхмелкий</string>
+    <string name="name_happy_faces">Счастливый</string>
+    <string name="name_frowny_faces">Грустный</string>
+    <string name="name_organic">Органичный</string>
+    <string name="name_spongemock">СпАнЧбОб</string>
 </resources>
