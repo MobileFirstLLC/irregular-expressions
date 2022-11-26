@@ -1,2 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="label_settings">Kullanıcı Tercihleri</string>
+    <string name="label_about">Hakkında</string>
+    <string name="label_version">Sürüm</string>
+    <string name="label_rate_app">Uygulamayı değerlendir</string>
+    <string name="label_feedback">Geri bildirim gönder</string>
+    <string name="feedback_summary">Sorun bildir veya özellik iste</string>
+    <string name="source_code">Kaynak kodu</string>
+    <string name="source_summary">Çekme istekleri kabul edilir</string>
+    <string name="enabled">Etkin</string>
+    <string name="disabled">Devre dışı</string>
+    <string name="intro_header">Irregular Expressions
+\nklavyesine
+\nhoş geldiniz!</string>
+    <string name="enable_keyboard">1. Klavyeyi etkinleştirin</string>
+    <string name="select_keyboard">2. Klavyeyi seçin</string>
+    <string name="kbd_layout_qwerty">QWERTY</string>
+    <string name="kbd_layout_azerty">AZERTY</string>
+    <string name="kbd_layout_qwertz">QWERTZ</string>
+    <string name="configure_styles">Metin tarzlarını yapılandır</string>
+    <string name="configure_styles_help">Metin tarzları nasıl yapılandırılır</string>
+    <string name="config_styles_summary">Metin tarzlarını göster, gizle ve yeniden sırala</string>
+    <string name="label_send_key">Gönder</string>
+    <string name="label_next_key">Sonraki</string>
+    <string name="label_go_key">GİT</string>
+    <string name="ok">Tamam</string>
+    <string name="help">Yardım</string>
+    <string name="key_height">Tuş yüksekliği (%)</string>
+    <string name="name_mustache">Bıyık</string>
+    <string name="name_olde_bold">Eski İngilizce Kalın</string>
+    <string name="name_thunder">Gök Gürültüsü</string>
+    <string name="name_starry_night">Yıldızlı Gece</string>
+    <string name="name_lite_strikes">Hafif Çizgiler</string>
+    <string name="name_small_caps">Küçük Harfler</string>
+    <string name="name_mono">Tek Aralıklı</string>
+    <string name="name_upsidedown">Baş Aşağı</string>
+    <string name="name_clapclap">Alkış Alkış</string>
+    <string name="name_organic">Organik</string>
+    <string name="name_strikethrough">Üstü Çizili</string>
+    <string name="name_underlined">Altı Çizili</string>
+    <string name="name_filled_circles">Daireler</string>
+    <string name="name_filled_boxes">Kutular</string>
+    <string name="name_clear_boxes">Kutular</string>
+    <string name="name_ss_bold_italic">Kalın Eğik</string>
+    <string name="name_ss_italic">Eğik</string>
+    <string name="name_ss_bold">Kalın</string>
+    <string name="name_serif_italic">Eğik Serif</string>
+    <string name="name_serif_bold_italic">Kalın Eğik Serif</string>
+    <string name="name_slashed">Eğik Çizgili</string>
+    <string name="name_script_bold">Kalın Betik</string>
+    <string name="name_mirror">Yansıtılmış</string>
+    <string name="title_activity_settings">Ayarlar</string>
+    <string name="key_vibrations">Tuş titreşimleri</string>
+    <string name="name_spongemock">Sünger Taklidi</string>
+    <string name="name_supertiny">Çok Küçük</string>
+    <string name="label_developer">Geliştirici</string>
+    <string name="intro_subtitle">Nasıl kullanılır</string>
+    <string name="now_try_it">3. Şimdi deneyin — buraya yazın:</string>
+    <string name="setting_keyboard_layout">Klavye düzeni</string>
+    <string name="name_olde">Eski İngilizce</string>
+    <string name="config_instructions">"
+\nYeniden sıralamak için uzun basın ve sürükleyin
+\n
+\nÜste/altta taşımak için okları kullanın
+\n
+\nKlavyeden tarzı gizlemek için kapatın"</string>
+    <string name="name_happy_faces">Mutlu</string>
+    <string name="name_clear_circles">Daireler</string>
+    <string name="name_regular">Normal</string>
+    <string name="name_frowny_faces">Çatık Kaşlı</string>
+    <string name="name_serif_bold">Kalın Serif</string>
+    <string name="name_script">Betik</string>
+    <string name="name_full_width">Geniş</string>
+    <string name="name_cutout">Kesik</string>
+</resources>
