@@ -58,4 +58,18 @@
 \nUtilice las flechas para subir o bajar
 \n
 \nDesactive para ocultar el estilo del teclado"</string>
+    <string name="name_lite_strikes">Tachado</string>
+    <string name="name_ss_bold_italic">Negrita cursiva</string>
+    <string name="name_ss_bold">Negrita</string>
+    <string name="name_serif_bold">Serif negrita</string>
+    <string name="name_serif_italic">Serif cursiva</string>
+    <string name="name_ss_italic">Cursiva</string>
+    <string name="name_serif_bold_italic">Serif negrita cursiva</string>
+    <string name="name_script">Manuscrito</string>
+    <string name="name_script_bold">Escritura en negrita</string>
+    <string name="name_full_width">Ancho</string>
+    <string name="name_mirror">Reflejada</string>
+    <string name="name_cutout">Separar</string>
+    <string name="name_regular">Regular</string>
+    <string name="name_supertiny">Diminuta</string>
 </resources>
