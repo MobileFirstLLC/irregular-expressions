@@ -1,2 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="source_code">Програмен код</string>
+    <string name="source_summary">PR е съкращение от „заявка за изтегляне“ в терминологията на Github.</string>
+    <string name="enabled">Активирано</string>
+    <string name="disabled">Деактивирано</string>
+    <string name="intro_subtitle">Как да използвам</string>
+    <string name="enable_keyboard">1. Активирайте клавиатурата</string>
+    <string name="kbd_layout_qwerty">QWERTY</string>
+    <string name="kbd_layout_azerty">AZERTY</string>
+    <string name="kbd_layout_qwertz">QWERTZ</string>
+    <string name="configure_styles">Конфигуриране на текстови стилове</string>
+    <string name="configure_styles_help">Как да конфигурирате текстови стилове</string>
+    <string name="title_activity_settings">Настройки</string>
+    <string name="label_settings">Потребителски предпочитания</string>
+    <string name="label_developer">Разработчик</string>
+    <string name="label_feedback">Изпратете отзиви</string>
+    <string name="key_vibrations">Ключови вибрации</string>
+    <string name="feedback_summary">Докладвайте за проблеми или поискайте функции</string>
+    <string name="label_about">Относно</string>
+    <string name="label_version">Версия</string>
+    <string name="label_rate_app">Оценете приложението</string>
+    <string name="select_keyboard">2. Изберете Клавиатура</string>
+    <string name="now_try_it">3. Сега опитайте - въведете тук:</string>
+    <string name="setting_keyboard_layout">Клавиатурна подредба</string>
+    <string name="name_clear_circles">Кръгове</string>
+    <string name="name_spongemock">Спонджмок</string>
+    <string name="config_instructions">"
+\nНатиснете продължително, след което плъзнете, за да пренаредите
+\n
+\nИзползвайте стрелките, за да се придвижите горе/долу
+\n
+\nИзключете, за да скриете стила от клавиатурата"</string>
+    <string name="label_send_key">Изпрати</string>
+    <string name="label_next_key">Следващо</string>
+    <string name="label_go_key">GO</string>
+    <string name="ok">Добре</string>
+    <string name="help">Помощ</string>
+    <string name="key_height">Височина на клавишите (%)</string>
+    <string name="name_frowny_faces">Намръщен</string>
+    <string name="name_happy_faces">Щастлив</string>
+    <string name="name_thunder">Гръм</string>
+    <string name="name_mustache">Мустак</string>
+    <string name="name_starry_night">Звездна нощ</string>
+    <string name="name_small_caps">Малки букви</string>
+    <string name="name_olde_bold">удебелен староанглийски</string>
+    <string name="name_olde">староанглийски</string>
+    <string name="name_upsidedown">наопаки</string>
+    <string name="name_clapclap">пляскане пляскане</string>
+    <string name="name_organic">Био</string>
+    <string name="name_strikethrough">Зачеркване</string>
+    <string name="name_underlined">Подчертано</string>
+    <string name="name_filled_circles">Кръгове</string>
+    <string name="name_filled_boxes">Кутии</string>
+    <string name="name_clear_boxes">Кутии</string>
+    <string name="name_ss_bold">Удебелено</string>
+    <string name="name_script">сценарий</string>
+    <string name="name_script_bold">удебелен сценарий</string>
+    <string name="name_mirror">Огледален</string>
+    <string name="name_regular">Редовен</string>
+    <string name="name_supertiny">Супер мъничко</string>
+    <string name="intro_header">Добре дошли в
+\nНеправилни изрази
+\nклавиатура!</string>
+    <string name="config_styles_summary">Показване, скриване и пренареждане на стилове на текст</string>
+</resources>
