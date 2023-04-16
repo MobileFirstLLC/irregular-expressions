@@ -59,7 +59,7 @@
 \nСтрелочки для перемещения вверх/вниз
 \n
 \nВыключение скроет стиль из клавиатуры"</string>
-    <string name="config_styles_summary">Показать, скрыть, или переупорядочить стили текста</string>
+    <string name="config_styles_summary">Показать, скрыть, изменить порядок</string>
     <string name="name_mono">Моноширинный</string>
     <string name="name_lite_strikes">Чуть зачеркнутый</string>
     <string name="name_olde_bold">Старый жирный английский</string>
