@@ -1,2 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="label_about">ଵିଷୟରେ</string>
+    <string name="title_activity_settings">ସେଟିଂ</string>
+    <string name="label_version">ସଂସ୍କରଣ</string>
+    <string name="label_send_key">ପଠାଅ</string>
+</resources>
