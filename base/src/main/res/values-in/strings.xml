@@ -57,4 +57,20 @@
     <string name="kbd_layout_qwerty">QWERTY</string>
     <string name="key_height">Tinggi tombol (%)</string>
     <string name="name_upsidedown">Terbalik</string>
+    <string name="label_feedback">Kirim umpan balik</string>
+    <string name="label_go_key">GO</string>
+    <string name="name_strikethrough">Dicoret</string>
+    <string name="name_mirror">dicerminkan</string>
+    <string name="config_instructions">"
+\nTekan lama lalu seret untuk menyusun ulang
+\n
+\nGunakan panah untuk berpindah ke atas/bawah
+\n
+\nMenonaktifkan untuk menyembunyikan gaya dari keyboard"</string>
+    <string name="name_frowny_faces">Frowny</string>
+    <string name="name_slashed">Ditebas</string>
+    <string name="name_lite_strikes">LiteStrikes</string>
+    <string name="name_small_caps">huruf Kecil</string>
+    <string name="name_cutout">Dipotong</string>
+    <string name="name_spongemock">Spongemock</string>
 </resources>
