@@ -2,7 +2,7 @@
 <resources>
     <string name="ok">U redu</string>
     <string name="name_organic">Organsko</string>
-    <string name="name_strikethrough">Precrtano</string>
+    <string name="name_strikethrough">Prekriženo</string>
     <string name="name_underlined">Podcrtano</string>
     <string name="name_filled_circles">Ispunjeni krugovi</string>
     <string name="title_activity_settings">Postavke</string>
@@ -47,7 +47,7 @@
     <string name="name_frowny_faces">Namrgođeno</string>
     <string name="name_happy_faces">Sretno</string>
     <string name="name_thunder">Grom</string>
-    <string name="name_slashed">Precrtano</string>
+    <string name="name_slashed">Prekriženo</string>
     <string name="name_starry_night">Zvjezdana noć</string>
     <string name="name_lite_strikes">Tanko precrtano</string>
     <string name="name_small_caps">Kapitalke</string>
