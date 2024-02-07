@@ -64,13 +64,19 @@ class SettingsActivity : AppCompatActivity(),
         // Instantiate the new Fragment
         val args = pref.extras
         val fragment =
-            supportFragmentManager.fragmentFactory.instantiate(classLoader, pref.fragment)
-        fragment.arguments = args
-        fragment.setTargetFragment(caller, 0)
-        supportFragmentManager.beginTransaction()
-            .add(android.R.id.content, fragment)
-            .addToBackStack(null)
-            .commit()
+            pref.fragment?.let {
+                supportFragmentManager.fragmentFactory.instantiate(classLoader,
+                    it
+                )
+            }
+        fragment?.arguments = args
+        fragment?.setTargetFragment(caller, 0)
+        fragment?.let {
+            supportFragmentManager.beginTransaction()
+                .add(android.R.id.content, it)
+                .addToBackStack(null)
+                .commit()
+        }
         title = pref.title
         return true
     }
