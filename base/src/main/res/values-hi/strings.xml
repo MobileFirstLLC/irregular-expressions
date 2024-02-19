@@ -1,2 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="label_settings">उपयोगकर्ता वरीयताएं</string>
+    <string name="label_developer">डेवलपर</string>
+    <string name="label_version">वर्जन</string>
+    <string name="label_feedback">फीडबैक भेजे</string>
+    <string name="source_code">सोर्स कोड</string>
+    <string name="enabled">इनेबल किया गया</string>
+    <string name="now_try_it">3. अब इसे ट्राई करे — यहां लिखे:</string>
+    <string name="kbd_layout_qwertz">QWERTZ</string>
+    <string name="title_activity_settings">सेटिंग</string>
+    <string name="label_about">के बारे में</string>
+    <string name="label_rate_app">ऐप को रेट करें</string>
+    <string name="feedback_summary">मुद्दों की रिपोर्ट करें या फीचर्स को रिक्वेस्ट करे</string>
+    <string name="source_summary">PRs का स्वागत है</string>
+    <string name="disabled">डिसेबल किया गया</string>
+    <string name="intro_header">स्वागत है
+\nइरेगुलर एक्सप्रेशंस
+\nकीबोर्ड में!</string>
+    <string name="intro_subtitle">उपयोग कैसे करे</string>
+    <string name="enable_keyboard">1. कीबोर्ड को सक्रिय करे</string>
+    <string name="select_keyboard">2. कीबोर्ड को चुने</string>
+    <string name="setting_keyboard_layout">कीबोर्ड का लेआउट</string>
+    <string name="kbd_layout_qwerty">QWERTY</string>
+    <string name="kbd_layout_azerty">AZERTY</string>
+</resources>
