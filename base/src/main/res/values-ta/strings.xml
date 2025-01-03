@@ -15,7 +15,7 @@
     <string name="name_serif_bold_italic">தடித்த சாய்வான செரிஃப்</string>
     <string name="name_serif_italic">சாய்வு செரிஃப்</string>
     <string name="name_serif_bold">தடித்த செரிஃப்</string>
-    <string name="name_ss_bold">தடித்த</string>
+    <string name="name_ss_bold">தடிமான</string>
     <string name="name_ss_italic">சாய்வெழுத்து</string>
     <string name="name_ss_bold_italic">தடித்த சாய்வான</string>
     <string name="name_clear_boxes">பெட்டிகள்</string>
@@ -72,5 +72,5 @@
     <string name="label_settings">பயனர் விருப்பத்தேர்வுகள்</string>
     <string name="title_activity_settings">அமைப்புகள்</string>
     <string name="source_summary">PR கள் வரவேற்கப்படுகின்றன</string>
-    <string name="name_small_caps">சிறிய தொப்பிகள்</string>
+    <string name="name_small_caps">சிறிய தொப்பிகள்</string>
 </resources>
