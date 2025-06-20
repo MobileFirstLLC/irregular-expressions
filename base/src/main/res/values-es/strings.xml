@@ -25,9 +25,7 @@
     <string name="source_summary">Envíe sus modificaciones</string>
     <string name="feedback_summary">Informar de errores o solicitar funciones</string>
     <string name="source_code">Código fuente</string>
-    <string name="intro_header">¡Bienvenido al
-\nteclado de
-\nIrregular Expressions!</string>
+    <string name="intro_header">Le damos la bienvenida\nal teclado Irregular Expressions.</string>
     <string name="now_try_it">3. Ahora pruébelo. Escriba aquí:</string>
     <string name="select_keyboard">2. Seleccione el teclado</string>
     <string name="enable_keyboard">1. Active el teclado</string>
@@ -39,7 +37,7 @@
     <string name="key_height">Altura de teclas (%)</string>
     <string name="help">Ayuda</string>
     <string name="ok">Aceptar</string>
-    <string name="label_go_key">Ir</string>
+    <string name="label_go_key">IR</string>
     <string name="label_next_key">Siguiente</string>
     <string name="label_send_key">Enviar</string>
     <string name="setting_keyboard_layout">Disposición de teclado</string>
