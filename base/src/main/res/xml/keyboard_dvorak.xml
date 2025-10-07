@@ -32,7 +32,7 @@
             android:popupCharacters="@string/alternates_for_u" android:popupKeyboard="@xml/keyboard_popup"/>
         <Key android:codes="105" android:keyLabel="i"
             android:popupCharacters="@string/alternates_for_i" android:popupKeyboard="@xml/keyboard_popup"/>
-        <Key android:codes="100" android:keyLabel="d"/>
+        <Key android:codes="100" android:keyLabel="d" android:popupCharacters="@string/alternates_for_d" android:popupKeyboard="@xml/keyboard_popup" />
         <Key android:codes="104" android:keyLabel="h"/>
         <Key android:codes="116" android:keyLabel="t"/>
         <Key android:codes="110" android:keyLabel="n"
