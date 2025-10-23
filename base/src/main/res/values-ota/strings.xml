@@ -1,3 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="title_activity_settings">عیارلر</string>
+    <string name="label_developer">گلیشدریجی</string>
+    <string name="label_about">حقندە</string>
+    <string name="label_version">سوروم</string>
+    <string name="disabled">دورە دیشی</string>
+    <string name="label_send_key">گوندر</string>
+    <string name="label_next_key">صوڭراكی</string>
+    <string name="label_go_key">گیت</string>
+    <string name="ok">تمام</string>
+    <string name="help">یاردیم</string>
+    <string name="name_frowny_faces">چاتیق قاشلی</string>
+    <string name="name_happy_faces">موتلی</string>
 </resources>
