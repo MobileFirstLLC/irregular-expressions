@@ -28,7 +28,7 @@ class RandomCaps internal constructor(
             val cs = text!!.toCharArray()
             val temp = StringBuilder()
             for (c in cs) {
-                temp.append(if (lowercase) c.toLowerCase() else c.toUpperCase())
+                temp.append(if (lowercase) c.lowercaseChar() else c.uppercaseChar())
                 lowercase = !lowercase
             }
             return temp.toString()

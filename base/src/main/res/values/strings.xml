@@ -8,7 +8,6 @@
     <string name="label_rate_app">Rate app</string>
     <string name="label_feedback">Send feedback</string>
     <string name="key_vibrations">Key vibrations</string>
-    <string name="developer">Mobile First</string>
     <string name="feedback_summary">Report issues or request features</string>
     <string name="source_code">Source code</string>
     <string name="source_summary">PRs welcome</string>

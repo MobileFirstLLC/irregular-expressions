@@ -20,7 +20,6 @@ import android.preference.PreferenceManager
 import android.text.InputType
 import android.text.TextUtils
 import android.text.method.MetaKeyKeyListener
-import android.util.Log
 import android.view.*
 import android.view.View.VISIBLE
 import android.view.inputmethod.EditorInfo
@@ -117,7 +116,8 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
         adapter = StylePickerAdapter(styles, onFontSelection())
         val layoutManager = GridLayoutManager(
             applicationContext, 1,
-            LinearLayoutManager.HORIZONTAL, false
+            LinearLayoutManager.HORIZONTAL,
+            false
         )
         stylePicker?.layoutManager = layoutManager
         stylePicker?.adapter = adapter
@@ -141,11 +141,13 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
                 // no extra features.
                 keyboardChoice = Constants.NUMBER_KBD
             }
+
             InputType.TYPE_CLASS_PHONE -> {
                 // Phones will also default to the symbols keyboard, though
                 // often you will want to have a dedicated phone keyboard.
                 keyboardChoice = Constants.PHONE_KBD
             }
+
             InputType.TYPE_CLASS_TEXT -> {
                 // This is general text editing.  We will default to the
                 // normal alphabetic keyboard, and assume that we should
@@ -153,6 +155,7 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
                 // user types).
                 keyboardChoice = Constants.ALPHA_KBD
             }
+
             else -> {
                 // For all unknown input types, default to the alphabetic
                 // keyboard with no special features.
@@ -203,6 +206,7 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
     /**
      * Handle keyboard key presses; if key is held down this fires multiple times
      */
+    @Deprecated("Deprecated in Java")
     override fun onKey(primaryCode: Int, keyCodes: IntArray) {
         if (currentInputConnection != null) {
             when (primaryCode) {
@@ -220,6 +224,7 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
     /**
      * Fired each time key is pressed; if key is held down this fires only once
      */
+    @Deprecated("Deprecated in Java")
     override fun onPress(i: Int) {
         vibrate(this)
         if (i == KEYCODE_SPACE) onSpaceKeyDown()
@@ -235,6 +240,7 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
                         return true
                     }
                 }
+
             else -> {
                 if (PROCESS_HARD_KEYS && event != null) {
                     return translateKeyDown(keyCode, event)
@@ -254,6 +260,7 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
         return super.onKeyUp(keyCode, event)
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onRelease(i: Int) {
         if (i == KEYCODE_SPACE) onSpaceKeyRelease()
     }
@@ -549,14 +556,10 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
     private fun vibrate(ctx: Context) {
         if (!keyVibrations) return
         val vibrator = ctx.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val vibrationEffect = VibrationEffect.createOneShot(
-                VIBRATION_DURATION_MS, VibrationEffect.DEFAULT_AMPLITUDE
-            )
-            vibrator.vibrate(vibrationEffect)
-        } else {
-            vibrator.vibrate(TimeUnit.MILLISECONDS.toMillis(VIBRATION_DURATION_MS))
-        }
+        val vibrationEffect = VibrationEffect.createOneShot(
+            VIBRATION_DURATION_MS, VibrationEffect.DEFAULT_AMPLITUDE
+        )
+        vibrator.vibrate(vibrationEffect)
     }
 
     /**
@@ -616,34 +619,39 @@ class MyInputMethodService : InputMethodService(), OnKeyboardActionListener {
         // skip this for now until it works with theming
         return
 
-        val mEnterKeyIndex: Int = -1
-        for (i in 0 until (keyboard?.keys)?.size!!) {
-            if (keyboard!!.keys[i].codes.contains(KEYCODE_DONE)) {
-                mEnterKeyIndex = i
-                break
-            }
-        }
-        val mEnterKey = if (mEnterKeyIndex >= 0) keyboard!!.keys[mEnterKeyIndex] else return
-        var labelRes: Int? = null
-        var iconRes: Int? = R.drawable.kbd_ic_keyboard_return
-
-        when (options and (EditorInfo.IME_MASK_ACTION or EditorInfo.IME_FLAG_NO_ENTER_ACTION)) {
-            EditorInfo.IME_ACTION_GO -> labelRes = R.string.label_go_key
-            EditorInfo.IME_ACTION_NEXT -> labelRes = R.string.label_next_key
-            EditorInfo.IME_ACTION_SEND -> labelRes = R.string.label_send_key
-            EditorInfo.IME_ACTION_SEARCH -> iconRes = R.drawable.kbd_ic_keyboard_search
-        }
-
-        mEnterKey.iconPreview = null
-        mEnterKey.label = if (labelRes != null) resources.getText(labelRes) else null
-        mEnterKey.icon =
-            if (labelRes == null || iconRes == null) null else resources.getDrawable(iconRes)
-        if (keyboardView != null) keyboardView!!.invalidateKey(mEnterKeyIndex)
+//        val mEnterKeyIndex: Int = -1
+//        for (i in 0 until (keyboard?.keys)?.size!!) {
+//            if (keyboard!!.keys[i].codes.contains(KEYCODE_DONE)) {
+//                mEnterKeyIndex = i
+//                break
+//            }
+//        }
+//        val mEnterKey = if (mEnterKeyIndex >= 0) keyboard!!.keys[mEnterKeyIndex] else return
+//        var labelRes: Int? = null
+//        var iconRes: Int? = R.drawable.kbd_ic_keyboard_return
+//
+//        when (options and (EditorInfo.IME_MASK_ACTION or EditorInfo.IME_FLAG_NO_ENTER_ACTION)) {
+//            EditorInfo.IME_ACTION_GO -> labelRes = R.string.label_go_key
+//            EditorInfo.IME_ACTION_NEXT -> labelRes = R.string.label_next_key
+//            EditorInfo.IME_ACTION_SEND -> labelRes = R.string.label_send_key
+//            EditorInfo.IME_ACTION_SEARCH -> iconRes = R.drawable.kbd_ic_keyboard_search
+//        }
+//
+//        mEnterKey.iconPreview = null
+//        mEnterKey.label = if (labelRes != null) resources.getText(labelRes) else null
+//        mEnterKey.icon =
+//            if (labelRes == null || iconRes == null) null else resources.getDrawable(iconRes)
+//        if (keyboardView != null) keyboardView!!.invalidateKey(mEnterKeyIndex)
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onText(charSequence: CharSequence) {}
+    @Deprecated("Deprecated in Java")
     override fun swipeLeft() {}
+    @Deprecated("Deprecated in Java")
     override fun swipeRight() {}
+    @Deprecated("Deprecated in Java")
     override fun swipeDown() {}
+    @Deprecated("Deprecated in Java")
     override fun swipeUp() {}
 }

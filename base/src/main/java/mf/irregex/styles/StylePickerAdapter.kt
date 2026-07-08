@@ -19,7 +19,7 @@ class StylePickerAdapter(
         fun onItemClick(item: AppTextStyle?, index: Int)
     }
 
-    fun updateStyles(newDataSource: List<AppTextStyle>?){
+    fun updateStyles(newDataSource: List<AppTextStyle>?) {
         dataSource = newDataSource
         notifyDataSetChanged()
     }
@@ -54,9 +54,11 @@ class StylePickerAdapter(
         val mTextView: TextView = v.findViewById(R.id.text_value)
         override fun onClick(v: View) {
             try {
-                val index = adapterPosition
-                val item = dataSource!![index]
-                mItemClickListener.onItemClick(item, index)
+                val index = bindingAdapterPosition
+                if (index != RecyclerView.NO_POSITION) {
+                    val item = dataSource!![index]
+                    mItemClickListener.onItemClick(item, index)
+                }
             } catch (e: Exception) {
                 e.printStackTrace()
             }

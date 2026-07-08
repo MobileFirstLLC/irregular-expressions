@@ -6,26 +6,23 @@ import android.os.Bundle
 import android.view.WindowInsets
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityOptionsCompat
 
 class SplashScreen : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            window.insetsController?.hide(WindowInsets.Type.statusBars())
-        } else {
-            @Suppress("DEPRECATION")
-            window.setFlags(
-                WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN
-            )
-        }
+        window.insetsController?.hide(WindowInsets.Type.statusBars())
         val mainActivityClass = MainActivity::class.java
         val intent = Intent(this, mainActivityClass)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-        startActivity(intent)
+        val options = ActivityOptionsCompat.makeCustomAnimation(
+            this,
+            R.anim.fade_in,
+            R.anim.fade_out
+        ).toBundle()
+        startActivity(intent, options)
         finish()
-        overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
     }
 }

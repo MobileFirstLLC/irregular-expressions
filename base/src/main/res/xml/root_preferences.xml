@@ -1,9 +1,8 @@
-<!--suppress AndroidDomInspection -->
+<!--suppress AndroidElementNotAllowed -->
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <PreferenceCategory android:title="@string/label_settings">
-
         <Preference
             android:icon="@drawable/pref_ic_sort"
             android:key="style_configs"
@@ -36,15 +35,6 @@
             app:showSeekBarValue="true"
             app:title="@string/key_height" />
 
-<!--        <SeekBarPreference-->
-<!--            android:icon="@drawable/pref_ic_down"-->
-<!--            android:max="800"-->
-<!--            app:min="100"-->
-<!--            app:defaultValue="400"-->
-<!--            app:key="kdb_long_press_delay"-->
-<!--            app:showSeekBarValue="true"-->
-<!--            app:title="@string/long_keypress_millis" />-->
-
         <ListPreference
             android:defaultValue="3"
             android:entries="@array/settings_appearance_names_array"
@@ -53,8 +43,6 @@
             android:key="kbd_appearance"
             android:summary="%s"
             android:title="@string/appearance" />
-
-
 
     </PreferenceCategory>
 
@@ -72,13 +60,12 @@
             android:summary="@string/versionName"
             android:title="@string/label_version" />
         <PreferenceScreen
-            android:icon="@drawable/pref_ic_mf"
-            android:summary="@string/developer"
+            android:icon="@drawable/pref_ic_dev"
+            android:summary="neea.dev (@nkrusch)"
             android:title="@string/label_developer">
             <intent
                 android:action="android.intent.action.VIEW"
-                android:data="https://mobilefirst.me" />
+                android:data="https://github.com/nkrusch" />
         </PreferenceScreen>
     </PreferenceCategory>
-
 </PreferenceScreen>

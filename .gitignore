@@ -15,3 +15,5 @@ keystore
 local.properties
 secret.properties
 gradle-daemon-jvm.properties
+gradlew
+gradlew.bat

@@ -58,18 +58,20 @@ class StyleConfigAdapter(
 
         override fun onClick(v: View) {
             try {
-                val index = adapterPosition
-                val style = dataSource?.get(index) ?: return
+                val index = bindingAdapterPosition
+                if (index != RecyclerView.NO_POSITION) {
+                    val style = dataSource?.get(index) ?: return
 
-                if (v.id == R.id.enable_box) {
-                    mItemClickListener.onEnableClick(style.styleId)
-                    notifyItemChanged(index)
-                }
-                if (v.id == R.id.order_btn_up) {
-                    mItemClickListener.onReorderClick(style.styleId, 0)
-                }
-                if (v.id == R.id.order_btn_down) {
-                    mItemClickListener.onReorderClick(style.styleId, itemCount - 1)
+                    if (v.id == R.id.enable_box) {
+                        mItemClickListener.onEnableClick(style.styleId)
+                        notifyItemChanged(index)
+                    }
+                    if (v.id == R.id.order_btn_up) {
+                        mItemClickListener.onReorderClick(style.styleId, 0)
+                    }
+                    if (v.id == R.id.order_btn_down) {
+                        mItemClickListener.onReorderClick(style.styleId, itemCount - 1)
+                    }
                 }
             } catch (e: Exception) {
                 e.printStackTrace()
