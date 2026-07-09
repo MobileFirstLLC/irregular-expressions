@@ -94,6 +94,7 @@ You can also find APKs in <a href="https://github.com/MobileFirstLLC/irregular-e
 </tbody>
 </table>
 
+
 ### Translations
 
 If you would like to use the keyboard in your native language, consider translating it.
@@ -106,11 +107,12 @@ Current translation status:
 
 ![Translation status](https://hosted.weblate.org/widgets/irregular-expressions/-/strings/multi-auto.svg)
 
-[Translate on Weblate]: https://hosted.weblate.org/engage/irregular-expressions/
-
 
 ### Privacy Policy
 
 The app collects no data about the user.
 There is no tracking, analytics, or any other types of intrusions.
 Feel free to inspect the source code to verify this statement.
+
+
+[Translate on Weblate]: https://hosted.weblate.org/engage/irregular-expressions/
