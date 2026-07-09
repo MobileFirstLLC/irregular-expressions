@@ -9,7 +9,6 @@
     <string name="label_rate_app">给应用打分</string>
     <string name="label_feedback">发送反馈</string>
     <string name="key_vibrations">按键振动</string>
-    <string name="developer">Mobile First</string>
     <string name="feedback_summary">报告问题或请求功能</string>
     <string name="source_code">源代码</string>
     <string name="source_summary">欢迎合并请求</string>

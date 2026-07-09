@@ -17,3 +17,4 @@ secret.properties
 gradle-daemon-jvm.properties
 gradlew
 gradlew.bat
+base/debug/*
