@@ -1,8 +1,11 @@
 # 🅸🆁𝚛🄴🅖🅄ʟ🄰ⓡ Expressions
 
-**Irregular Expressions is a virtual keyboard for Android devices. 
-Add expressive flair to text everywhere,
-even in places where font styles are not allowed (SMS, comments, etc.)**
+**Irregular Expressions is a virtual 
+<kbd>k</kbd><kbd>e</kbd><kbd>y</kbd><kbd>b</kbd><kbd>o</kbd><kbd>a</kbd><kbd>r</kbd><kbd>d</kbd>
+for Android devices.**     
+
+**Add expressive flair to text everywhere,
+even in places where font styles are not allowed: SMS, comments, etc.**
 
 <br/><br/>
 <p align="center">
@@ -24,7 +27,7 @@ even in places where font styles are not allowed (SMS, comments, etc.)**
 You can also find APKs in <a href="https://github.com/MobileFirstLLC/irregular-expressions/releases">releases</a>.
 </p>  
  
-### Available Text Styles
+### Available Styles
 
 <table width="100%">
 <tbody>
@@ -90,14 +93,10 @@ You can also find APKs in <a href="https://github.com/MobileFirstLLC/irregular-e
 </tr>
 </tbody>
 </table>
-<p align="center">
-Note: some styles may not supported by older Android versions or devices.
-</p>
 
+### Translations
 
-### Help with translations
-
-If you want to use the keyboard in your native language, consider translating it.
+If you would like to use the keyboard in your native language, consider translating it.
 
 **[Translate on Weblate]**
 
@@ -114,4 +113,4 @@ Current translation status:
 
 The app collects no data about the user.
 There is no tracking, analytics, or any other types of intrusions.
-Feel free to inspect the source code to verify this.
+Feel free to inspect the source code to verify this statement.

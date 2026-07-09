@@ -9,7 +9,7 @@
     <!-- logo background outside app -->
     <color name="ic_launcher_background">#E6E6E6</color>
     <!-- logo background in splash screen -->
-    <color name="splash_background">#eeeeee</color>
+    <color name="splash_background">#fff</color>
     <!-- background gradient -->
     <color name="gradient_mf_blue">#ff009DDC</color>
     <color name="gradient_mf_green">#ff3ddc84</color>

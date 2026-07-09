@@ -43,7 +43,6 @@
             android:key="kbd_appearance"
             android:summary="%s"
             android:title="@string/appearance" />
-
     </PreferenceCategory>
 
     <PreferenceCategory android:title="@string/label_about">
@@ -61,7 +60,7 @@
             android:title="@string/label_version" />
         <PreferenceScreen
             android:icon="@drawable/pref_ic_dev"
-            android:summary="neea.dev (@nkrusch)"
+            android:summary="𝚗𝚎𝚎𝚊 (@nkrusch)"
             android:title="@string/label_developer">
             <intent
                 android:action="android.intent.action.VIEW"
